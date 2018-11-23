@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/receiveAddressName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="收货人地址" />
+    <TextView
+        android:id="@+id/receiveName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="收货人姓名"
+        android:layout_below="@id/receiveAdressName"/>
+    <TextView
+        android:id="@+id/receivePhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="收货人电话"
+        android:layout_below="@id/receiveAdressName"
+        android:layout_toRightOf="@id/receiveName"
+        android:layout_marginLeft="30dp"/>
+
+</RelativeLayout>

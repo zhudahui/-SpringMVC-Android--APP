@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mobileclient.activity"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="26" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- 文件读写权限 -->
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 允许程序打开网络套接字 -->
+
+
+    <!-- 允许程序获取网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 允许程序访问WiFi网络信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 允许程序读写手机状态和身份 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 用于读取手机当前的状态 -->
+    <!-- 用于申请调用A-GPS模块 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
+    <!-- 文件读写权限 -->
+
+
+    <!-- 允许程序访问WiFi网络信息 -->
+
+
+    <!-- 定位需要的服务 使用2.0的定位需要加上这个 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <application
+        android:name="com.mobileclient.app.Declare"
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@drawable/xiaohui"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="a15dd3edafce81e5774392c33467b81e" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.cameraalbumtest.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name="com.mobileclient.activity.RegisterActivity" />
+        <activity android:name="com.mobileclient.activity.IndexActivity" />
+        <activity android:name="com.mobileclient.activity.MainActivity" />
+        <activity android:name="com.mobileclient.activity.MainUserActivity" />
+        <activity android:name="com.mobileclient.activity.MoreActivity" />
+        <activity android:name="com.mobileclient.activity.AboutActivity" />
+        <activity android:name="com.mobileclient.activity.MainMenuActivity" />
+        <activity android:name="com.mobileclient.activity.UserInfoListActivity" />
+        <activity android:name="com.mobileclient.activity.UserInfoQueryActivity" />
+        <activity android:name="com.mobileclient.activity.UserInfoAddActivity" />
+        <activity android:name="com.mobileclient.activity.UserInfoRegisterActivity" />
+        <activity android:name="com.mobileclient.activity.UserInfoEditActivity" />
+        <activity android:name="com.mobileclient.activity.UserInfoDetailActivity" />
+        <activity android:name="com.mobileclient.activity.ExpressTakeListActivity" />
+        <activity android:name="com.mobileclient.activity.ExpressTakeUserListActivity" />
+        <activity android:name="com.mobileclient.activity.ExpressTakeMyListActivity" />
+        <activity android:name="com.mobileclient.activity.ExpressTakeQueryActivity" />
+        <activity android:name="com.mobileclient.activity.ExpressTakeAddActivity" />
+        <activity android:name="com.mobileclient.activity.ExpressTakeUserAddActivity" />
+        <activity android:name="com.mobileclient.activity.ExpressTakeEditActivity" />
+        <activity
+            android:name="com.mobileclient.activity.ExpressTakeDetailActivity"
+            android:configChanges="keyboard|keyboardHidden" />
+        <activity android:name="com.mobileclient.activity.CompanyListActivity" />
+        <activity android:name="com.mobileclient.activity.CompanyQueryActivity" />
+        <activity android:name="com.mobileclient.activity.CompanyAddActivity" />
+        <activity android:name="com.mobileclient.activity.CompanyEditActivity" />
+        <activity android:name="com.mobileclient.activity.CompanyDetailActivity" />
+        <activity android:name="com.mobileclient.activity.OrderStateListActivity" />
+        <activity android:name="com.mobileclient.activity.OrderStateQueryActivity" />
+        <activity android:name="com.mobileclient.activity.OrderStateAddActivity" />
+        <activity android:name="com.mobileclient.activity.OrderStateEditActivity" />
+        <activity android:name="com.mobileclient.activity.OrderStateDetailActivity" />
+        <activity android:name="com.mobileclient.activity.TakeOrderListActivity" />
+        <activity
+            android:name="com.mobileclient.activity.TakeOrderUserListActivity"
+            android:configChanges="keyboard|keyboardHidden" />
+        <activity android:name="com.mobileclient.activity.TakeOrderQueryActivity" />
+        <activity android:name="com.mobileclient.activity.TakeOrderAddActivity" />
+        <activity android:name="com.mobileclient.activity.TakeOrderEditActivity" />
+        <activity android:name="com.mobileclient.activity.TakeOrderUserEditActivity" />
+        <activity android:name="com.mobileclient.activity.TakeOrderDetailActivity" />
+        <activity android:name="com.mobileclient.activity.NoticeListActivity" />
+        <activity android:name="com.mobileclient.activity.NoticeQueryActivity" />
+        <activity android:name="com.mobileclient.activity.NoticeAddActivity" />
+        <activity android:name="com.mobileclient.activity.NoticeEditActivity" />
+        <activity android:name="com.mobileclient.activity.NoticeDetailActivity" />
+        <activity android:name="com.mobileclient.activity.RouteActivity" />
+        <activity android:name="com.mobileclient.activity.photoListActivity" />
+        <activity android:name="com.mobileclient.activity.fileListActivity" />
+        <activity android:name="com.xp.calendar.calendar.MainActivity" />
+
+        <service android:name="com.amap.api.location.APSService" />
+
+        <activity
+            android:name="com.mobileclient.activity.ExpressRouteActivity"
+            android:label="@string/title_activity_express_route" />
+        <activity
+            android:name="com.mobileclient.activity.TjpuActivity"
+            android:label="@string/title_activity_tjpu" />
+        <activity
+            android:name="com.mobileclient.activity.KechengbiaoActivity"
+            android:label="@string/title_activity_kechengbiao" />
+        <activity
+            android:name="com.xp.calendar.calendar.SpecialActivity"
+            android:label="@string/title_activity_special" />
+        <activity
+            android:name="com.mobileclient.activity.AdminLoginActivity"
+            android:label="@string/title_activity_admin_login" />
+        <activity
+            android:name="com.mobileclient.activity.LoginActivity"
+            android:label="@string/login" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.mobileclient.activity.TakeOrderDetail2Activity" />
+        <activity android:name="com.mobileclient.activity.SearchActivity" />
+        <activity android:name="com.mobileclient.activity.ExpressOrderAddActivity" />
+
+        <meta-data
+            android:name="android.support.VERSION"
+            android:value="26.0.0" />
+    </application>
+
+</manifest>

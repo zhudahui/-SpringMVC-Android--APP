@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_ele_search"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/frame_bg"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="#0096FF"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/location_tv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="北京市海淀区西二旗"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/back_iv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center|left"
+            android:src="@mipmap/back_icon" />
+
+        <RelativeLayout
+            android:id="@+id/tv_search_rlt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/ele_search_bg"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp">
+
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/tv_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/search_icon"
+            android:hint="搜索商家,商品名称"
+            android:textSize="13sp"
+            android:textColorHint="#535253"
+            android:background="@null" />
+
+        <TextView
+            android:id="@+id/tv_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:layout_marginRight="5dp"
+            android:text="搜索"
+            android:textColor="#fff" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_content_bg"
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></ListView>
+    </FrameLayout>
+</LinearLayout>

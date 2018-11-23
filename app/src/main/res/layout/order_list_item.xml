@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userPhoto"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/bizhi"/>
+        <TextView
+            android:id="@+id/userName"
+            android:layout_below="@id/userPhoto"
+            android:layout_width="70dp"
+            android:layout_height="20dp"
+            android:hint="发布用户"/>
+        <TextView
+            android:id="@+id/orderName"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:hint="物品信息"
+            android:layout_toRightOf="@id/userPhoto"
+            android:layout_marginLeft="30dp"/>
+        <TextView
+            android:id="@+id/expressCompanyName"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_toRightOf="@id/userPhoto"
+            android:layout_below="@id/orderName"
+            android:hint="快递公司"
+            android:layout_marginLeft="30dp"/>
+
+        <TextView
+            android:id="@+id/expressCompanyAdress"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_toRightOf="@id/userPhoto"
+            android:layout_below="@id/expressCompanyName"
+            android:hint="取货地址"
+            android:layout_marginLeft="30dp"/>
+
+        <TextView
+            android:id="@+id/receiveAdressName"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/expressCompanyName"
+            android:layout_toRightOf="@id/expressCompanyName"
+            android:hint="送达地址" />
+
+        <TextView
+            android:id="@+id/addTime"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/expressCompanyAdress"
+            android:layout_toRightOf="@id/userName"
+            android:hint="发布时间"
+            android:layout_marginLeft="30dp"/>
+        <TextView
+            android:id="@+id/orderState"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/expressCompanyAdress"
+            android:layout_toRightOf="@id/orderName"
+            android:hint="订单状态"/>
+     </RelativeLayout>

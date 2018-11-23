@@ -1,0 +1,170 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .gradle/
+* .gradle/4.4/
+* .gradle/4.4/fileChanges/
+* .gradle/4.4/fileChanges/last-build.bin
+* .gradle/4.4/fileContent/
+* .gradle/4.4/fileContent/fileContent.lock
+* .gradle/4.4/fileHashes/
+* .gradle/4.4/fileHashes/fileHashes.bin
+* .gradle/4.4/fileHashes/fileHashes.lock
+* .gradle/4.4/fileHashes/resourceHashesCache.bin
+* .gradle/4.4/javaCompile/
+* .gradle/4.4/javaCompile/classAnalysis.bin
+* .gradle/4.4/javaCompile/jarAnalysis.bin
+* .gradle/4.4/javaCompile/javaCompile.lock
+* .gradle/4.4/javaCompile/taskHistory.bin
+* .gradle/4.4/javaCompile/taskJars.bin
+* .gradle/4.4/taskHistory/
+* .gradle/4.4/taskHistory/taskHistory.bin
+* .gradle/4.4/taskHistory/taskHistory.lock
+* .gradle/buildOutputCleanup/
+* .gradle/buildOutputCleanup/buildOutputCleanup.lock
+* .gradle/buildOutputCleanup/cache.properties
+* .gradle/buildOutputCleanup/outputFiles.bin
+* .ic_launcher-web.png
+* .idea/
+* .idea/caches/
+* .idea/caches/build_file_checksums.ser
+* .idea/codeStyles/
+* .idea/codeStyles/Project.xml
+* .idea/dictionaries/
+* .idea/dictionaries/Administrator.xml
+* .idea/encodings.xml
+* .idea/gradle.xml
+* .idea/libraries/
+* .idea/libraries/Gradle____local_aars___C__Users_Administrator_Desktop_AMap_Android_API_3DMap_Demo_android_studio_aaa_libs_AMap_Location_V4_0_1_20180426_jar_unspecified_jar.xml
+* .idea/libraries/Gradle____local_aars___C__Users_Administrator_Desktop_AMap_Android_API_3DMap_Demo_android_studio_aaa_libs_AMap_Search_V6_1_0_20180330_jar_unspecified_jar.xml
+* .idea/libraries/Gradle____local_aars___C__Users_Administrator_Desktop_AMap_Android_API_3DMap_Demo_android_studio_aaa_libs_Android_Map3D_SDK_V6_2_0_20180427_jar_unspecified_jar.xml
+* .idea/libraries/Gradle____local_aars___C__Users_Administrator_Desktop_AMap_Android_API_3DMap_Demo_android_studio_aaa_libs_ApiStoreSDK1_0_4_jar_unspecified_jar.xml
+* .idea/libraries/Gradle____local_aars___C__Users_Administrator_Desktop_AMap_Android_API_3DMap_Demo_android_studio_aaa_libs_MyTabActivity_jar_unspecified_jar.xml
+* .idea/libraries/Gradle____local_aars___C__Users_Administrator_Desktop_AMap_Android_API_3DMap_Demo_android_studio_aaa_libs_Volley_jar_unspecified_jar.xml
+* .idea/libraries/Gradle____local_aars___C__Users_Administrator_Desktop_AMap_Android_API_3DMap_Demo_android_studio_aaa_libs_cordova_jar_unspecified_jar.xml
+* .idea/libraries/Gradle____local_aars___C__Users_Administrator_Desktop_AMap_Android_API_3DMap_Demo_android_studio_aaa_libs_cordovaplugs_jar_unspecified_jar.xml
+* .idea/libraries/Gradle____local_aars___C__Users_Administrator_Desktop_AMap_Android_API_3DMap_Demo_android_studio_aaa_libs_gson_2_1_jar_unspecified_jar.xml
+* .idea/libraries/Gradle__android_arch_core_common_1_0_0_jar.xml
+* .idea/libraries/Gradle__android_arch_lifecycle_common_1_0_0_jar.xml
+* .idea/libraries/Gradle__android_arch_lifecycle_runtime_1_0_0.xml
+* .idea/libraries/Gradle__com_android_support_animated_vector_drawable_26_1_0.xml
+* .idea/libraries/Gradle__com_android_support_appcompat_v7_26_1_0.xml
+* .idea/libraries/Gradle__com_android_support_cardview_v7_21_0_3.xml
+* .idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_0.xml
+* .idea/libraries/Gradle__com_android_support_constraint_constraint_layout_solver_1_1_0_jar.xml
+* .idea/libraries/Gradle__com_android_support_design_23_1_1.xml
+* .idea/libraries/Gradle__com_android_support_recyclerview_v7_23_1_1.xml
+* .idea/libraries/Gradle__com_android_support_support_annotations_26_1_0_jar.xml
+* .idea/libraries/Gradle__com_android_support_support_compat_26_1_0.xml
+* .idea/libraries/Gradle__com_android_support_support_core_ui_26_1_0.xml
+* .idea/libraries/Gradle__com_android_support_support_core_utils_26_1_0.xml
+* .idea/libraries/Gradle__com_android_support_support_fragment_26_1_0.xml
+* .idea/libraries/Gradle__com_android_support_support_media_compat_26_1_0.xml
+* .idea/libraries/Gradle__com_android_support_support_v4_26_1_0.xml
+* .idea/libraries/Gradle__com_android_support_support_vector_drawable_26_1_0.xml
+* .idea/libraries/Gradle__org_apache_http_legacy_android_26.xml
+* .idea/misc.xml
+* .idea/modules.xml
+* .idea/runConfigurations.xml
+* .idea/workspace.xml
+* JniLibs/
+* JniLibs/AMap_Location_V4.0.1_20180426.jar
+* JniLibs/AMap_Search_V6.1.0_20180330.jar
+* JniLibs/Android_Map3D_SDK_V6.2.0_20180427.jar
+* JniLibs/MyTabActivity.jar
+* JniLibs/Volley.jar
+* JniLibs/arm64-v8a/
+* JniLibs/arm64-v8a/libAMapSDK_MAP_v6_2_0.so
+* JniLibs/arm64-v8a/libAMapSDK_NAVI_v6_1_0.so
+* JniLibs/arm64-v8a/librtbt828.so
+* JniLibs/arm64-v8a/libwtbt828.so
+* JniLibs/arm64-v8a/libztcodec2.so
+* JniLibs/armeabi-v7a/
+* JniLibs/armeabi-v7a/libAMapSDK_MAP_v6_2_0.so
+* JniLibs/armeabi/
+* JniLibs/armeabi/libAMapSDK_MAP_v6_2_0.so
+* JniLibs/armeabi/libAMapSDK_NAVI_v6_1_0.so
+* JniLibs/armeabi/librtbt828.so
+* JniLibs/armeabi/libwtbt828.so
+* JniLibs/armeabi/libztcodec2.so
+* JniLibs/x86/
+* JniLibs/x86/libAMapSDK_MAP_v6_2_0.so
+* JniLibs/x86_64/
+* JniLibs/x86_64/libAMapSDK_MAP_v6_2_0.so
+* aaa.iml
+* build.gradle
+* gradle/
+* gradle/wrapper/
+* gradle/wrapper/gradle-wrapper.jar
+* gradle/wrapper/gradle-wrapper.properties
+* gradlew
+* gradlew.bat
+* proguard-project.txt
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+gson-2.1.jar => com.google.code.gson:gson:2.1
+
+Potentially Missing Dependency:
+-------------------------------
+When we replaced the following .jar files with a Gradle dependency, we
+inferred the dependency version number from the filename. This
+specific version may not actually be available from the repository.
+If you get a build error stating that the dependency is missing, edit
+the version number to for example "+" to pick up the latest version
+instead. (This may require you to update your code if the library APIs
+have changed.)
+
+gson-2.1.jar => version 2.1 in com.google.code.gson:gson:2.1
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app/src/main/AndroidManifest.xml
+* assets/ => app/src/main/assets/
+* libs/AMap_Location_V4.0.1_20180426.jar => app/libs/AMap_Location_V4.0.1_20180426.jar
+* libs/AMap_Search_V6.1.0_20180330.jar => app/libs/AMap_Search_V6.1.0_20180330.jar
+* libs/Android_Map3D_SDK_V6.2.0_20180427.jar => app/libs/Android_Map3D_SDK_V6.2.0_20180427.jar
+* libs/ApiStoreSDK1.0.4.jar => app/libs/ApiStoreSDK1.0.4.jar
+* libs/MyTabActivity.jar => app/libs/MyTabActivity.jar
+* libs/Volley.jar => app/libs/Volley.jar
+* libs/arm64-v8a/libAMapSDK_MAP_v6_2_0.so => app/src/main/jniLibs/arm64-v8a/libAMapSDK_MAP_v6_2_0.so
+* libs/armeabi-v7a/libAMapSDK_MAP_v6_2_0.so => app/src/main/jniLibs/armeabi-v7a/libAMapSDK_MAP_v6_2_0.so
+* libs/armeabi/libAMapSDK_MAP_v6_2_0.so => app/src/main/jniLibs/armeabi/libAMapSDK_MAP_v6_2_0.so
+* libs/cordova.jar => app/libs/cordova.jar
+* libs/cordovaplugs.jar => app/libs/cordovaplugs.jar
+* libs/x86/libAMapSDK_MAP_v6_2_0.so => app/src/main/jniLibs/x86/libAMapSDK_MAP_v6_2_0.so
+* libs/x86_64/libAMapSDK_MAP_v6_2_0.so => app/src/main/jniLibs/x86_64/libAMapSDK_MAP_v6_2_0.so
+* res/ => app/src/main/res/
+* src/ => app/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

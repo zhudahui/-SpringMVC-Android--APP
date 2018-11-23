@@ -1,0 +1,488 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-152:12
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-152:12
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-152:12
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-152:12
+MERGED from [com.android.support:design:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/4ff121265bc4715678f12795402d779f/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:appcompat-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/3d0f6e2556144088db93fa04b577105e/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:cardview-v7:26.0.2] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.0.2.aar/a00bb0020977fb9f7a61cd56c9369acc/AndroidManifest.xml:17:1-28:12
+MERGED from [de.hdodenhof:circleimageview:2.1.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/circleimageview-2.1.0.aar/5573c66be9cb50ff187f5282f833dec1/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:animated-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.0.0.aar/f48223766cd02c69029ff933199fca7a/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.0.0.aar/d040e048ea347baaa3fcf5547813b4bd/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:recyclerview-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.0.0.aar/47044fcdb8d4f2a561ca7e4a2532b333/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:transition:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/transition-26.0.0.aar/a26d8302f20445f8ad8bbc4102ab4075/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-v4-26.0.0.aar/d47cb6a03dbd13e08b15afe21187f134/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-media-compat:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.0.0.aar/92e7f7a4fdc04e2397db678d0b29c024/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-fragment-26.0.0.aar/e59765c27091903a86d9ac388416ace9/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.0.0.aar/f714a3a3c71abae28fcf1121a13d68b1/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-ui:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.0.0.aar/8af152b07257eea16c66e93e5f9d52d9/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.0.aar/f6637adda0bba887c2e7dd64129248a2/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:multidex:1.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/multidex-1.0.1.aar/66bd4faa0f8603cd5f3bf9f194d314af/AndroidManifest.xml:16:1-19:12
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-152:12
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-152:12
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-152:12
+	package
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:4:5-40
+		INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:6:5-30
+		INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:3:5-51
+	xmlns:android
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:5:5-28
+		INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:9:5-67
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:9:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:13:5-81
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:13:22-78
+uses-permission#android.permission.CAMERA
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:16:5-65
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:16:22-62
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:20:5-79
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:20:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:22:5-76
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:22:22-73
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:24:5-75
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:24:22-72
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:26:5-81
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:26:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:28:5-79
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:28:22-76
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:30:5-76
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:30:22-73
+uses-permission#android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:33:5-89
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:33:22-86
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:44:5-80
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:44:22-77
+uses-permission#android.permission.SEND_SMS
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:47:5-67
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:47:22-64
+uses-permission#com.android.alarm.permission.SET_ALARM
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:49:5-78
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:49:22-75
+uses-permission#android.permission.CALL_PHONE
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:50:5-69
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:50:22-66
+application
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:52:5-150:19
+MERGED from [com.android.support:design:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/4ff121265bc4715678f12795402d779f/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:design:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/4ff121265bc4715678f12795402d779f/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/3d0f6e2556144088db93fa04b577105e/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/3d0f6e2556144088db93fa04b577105e/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:cardview-v7:26.0.2] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.0.2.aar/a00bb0020977fb9f7a61cd56c9369acc/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:cardview-v7:26.0.2] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.0.2.aar/a00bb0020977fb9f7a61cd56c9369acc/AndroidManifest.xml:22:5-26:19
+MERGED from [de.hdodenhof:circleimageview:2.1.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/circleimageview-2.1.0.aar/5573c66be9cb50ff187f5282f833dec1/AndroidManifest.xml:9:5-20
+MERGED from [de.hdodenhof:circleimageview:2.1.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/circleimageview-2.1.0.aar/5573c66be9cb50ff187f5282f833dec1/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.0.0.aar/f48223766cd02c69029ff933199fca7a/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:animated-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.0.0.aar/f48223766cd02c69029ff933199fca7a/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.0.0.aar/d040e048ea347baaa3fcf5547813b4bd/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.0.0.aar/d040e048ea347baaa3fcf5547813b4bd/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.0.0.aar/47044fcdb8d4f2a561ca7e4a2532b333/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.0.0.aar/47044fcdb8d4f2a561ca7e4a2532b333/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/transition-26.0.0.aar/a26d8302f20445f8ad8bbc4102ab4075/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/transition-26.0.0.aar/a26d8302f20445f8ad8bbc4102ab4075/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-v4-26.0.0.aar/d47cb6a03dbd13e08b15afe21187f134/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-v4-26.0.0.aar/d47cb6a03dbd13e08b15afe21187f134/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.0.0.aar/92e7f7a4fdc04e2397db678d0b29c024/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.0.0.aar/92e7f7a4fdc04e2397db678d0b29c024/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-fragment-26.0.0.aar/e59765c27091903a86d9ac388416ace9/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-fragment-26.0.0.aar/e59765c27091903a86d9ac388416ace9/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.0.0.aar/f714a3a3c71abae28fcf1121a13d68b1/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.0.0.aar/f714a3a3c71abae28fcf1121a13d68b1/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.0.0.aar/8af152b07257eea16c66e93e5f9d52d9/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.0.0.aar/8af152b07257eea16c66e93e5f9d52d9/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.0.aar/f6637adda0bba887c2e7dd64129248a2/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.0.aar/f6637adda0bba887c2e7dd64129248a2/AndroidManifest.xml:25:5-29:19
+	android:label
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:56:9-41
+	android:icon
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:55:9-41
+	android:allowBackup
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:54:9-35
+	android:theme
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:57:9-40
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:53:9-52
+meta-data#com.amap.api.v2.apikey
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:58:9-61:64
+	android:value
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:61:13-61
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:60:13-50
+provider#android.support.v4.content.FileProvider
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:62:9-71:20
+	android:grantUriPermissions
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:66:13-47
+	android:authorities
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:63:13-75
+	android:exported
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:65:13-37
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:64:13-67
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:67:12-70:18
+	android:resource
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:69:16-50
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:68:16-66
+activity#com.mobileclient.activity.RegisterActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:72:9-54
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:72:19-51
+activity#com.mobileclient.activity.IndexActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:73:9-51
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:73:19-48
+activity#com.mobileclient.activity.MainActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:74:9-50
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:74:19-47
+activity#com.mobileclient.activity.MainUserActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:75:9-54
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:75:19-51
+activity#com.mobileclient.activity.MoreActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:76:9-50
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:76:19-47
+activity#com.mobileclient.activity.AboutActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:77:9-51
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:77:19-48
+activity#com.mobileclient.activity.MainMenuActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:78:9-54
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:78:19-51
+activity#com.mobileclient.activity.UserInfoListActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:79:9-58
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:79:19-55
+activity#com.mobileclient.activity.UserInfoQueryActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:80:9-59
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:80:19-56
+activity#com.mobileclient.activity.UserInfoAddActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:81:9-57
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:81:19-54
+activity#com.mobileclient.activity.UserInfoRegisterActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:82:9-62
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:82:19-59
+activity#com.mobileclient.activity.UserInfoEditActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:83:9-58
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:83:19-55
+activity#com.mobileclient.activity.UserInfoDetailActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:84:9-60
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:84:19-57
+activity#com.mobileclient.activity.ExpressTakeListActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:85:9-61
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:85:19-58
+activity#com.mobileclient.activity.ExpressTakeUserListActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:86:9-65
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:86:19-62
+activity#com.mobileclient.activity.ExpressTakeMyListActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:87:9-63
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:87:19-60
+activity#com.mobileclient.activity.ExpressTakeQueryActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:88:9-62
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:88:19-59
+activity#com.mobileclient.activity.ExpressTakeAddActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:89:9-60
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:89:19-57
+activity#com.mobileclient.activity.ExpressTakeUserAddActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:90:9-64
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:90:19-61
+activity#com.mobileclient.activity.ExpressTakeEditActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:91:9-61
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:91:19-58
+activity#com.mobileclient.activity.ExpressTakeDetailActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:92:9-111
+	android:configChanges
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:92:61-108
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:92:19-60
+activity#com.mobileclient.activity.CompanyListActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:93:9-57
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:93:19-54
+activity#com.mobileclient.activity.CompanyQueryActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:94:9-58
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:94:19-55
+activity#com.mobileclient.activity.CompanyAddActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:95:9-56
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:95:19-53
+activity#com.mobileclient.activity.CompanyEditActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:96:9-57
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:96:19-54
+activity#com.mobileclient.activity.CompanyDetailActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:97:9-59
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:97:19-56
+activity#com.mobileclient.activity.OrderStateListActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:98:9-60
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:98:19-57
+activity#com.mobileclient.activity.OrderStateQueryActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:99:9-61
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:99:19-58
+activity#com.mobileclient.activity.OrderStateAddActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:100:9-59
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:100:19-56
+activity#com.mobileclient.activity.OrderStateEditActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:101:9-60
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:101:19-57
+activity#com.mobileclient.activity.OrderStateDetailActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:102:9-62
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:102:19-59
+activity#com.mobileclient.activity.TakeOrderListActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:103:9-59
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:103:19-56
+activity#com.mobileclient.activity.TakeOrderUserListActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:104:9-110
+	android:configChanges
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:104:61-108
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:104:19-60
+activity#com.mobileclient.activity.TakeOrderQueryActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:105:9-60
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:105:19-57
+activity#com.mobileclient.activity.TakeOrderAddActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:106:9-58
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:106:19-55
+activity#com.mobileclient.activity.TakeOrderEditActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:107:9-59
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:107:19-56
+activity#com.mobileclient.activity.TakeOrderUserEditActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:108:9-63
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:108:19-60
+activity#com.mobileclient.activity.TakeOrderDetailActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:109:9-61
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:109:19-58
+activity#com.mobileclient.activity.NoticeListActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:110:9-56
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:110:19-53
+activity#com.mobileclient.activity.NoticeQueryActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:111:9-57
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:111:19-54
+activity#com.mobileclient.activity.NoticeAddActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:112:9-55
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:112:19-52
+activity#com.mobileclient.activity.NoticeEditActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:113:9-56
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:113:19-53
+activity#com.mobileclient.activity.NoticeDetailActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:114:9-58
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:114:19-55
+activity#com.mobileclient.activity.RouteActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:115:9-51
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:115:19-48
+activity#com.mobileclient.activity.photoListActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:116:9-55
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:116:19-52
+activity#com.mobileclient.activity.fileListActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:117:9-54
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:117:19-51
+activity#com.xp.calendar.calendar.MainActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:118:9-74
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:118:19-71
+service#com.amap.api.location.APSService
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:120:9-68
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:120:18-65
+activity#com.mobileclient.activity.ExpressRouteActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:123:9-125:68
+	android:label
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:125:13-65
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:124:13-49
+activity#com.mobileclient.activity.TjpuActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:126:9-128:59
+	android:label
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:128:13-56
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:127:13-41
+activity#com.mobileclient.activity.KechengbiaoActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:129:9-131:66
+	android:label
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:131:13-63
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:130:13-48
+activity#com.xp.calendar.calendar.SpecialActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:132:9-134:62
+	android:label
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:134:13-59
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:133:13-68
+activity#com.mobileclient.activity.AdminLoginActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:135:9-137:66
+	android:label
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:137:13-63
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:136:13-47
+activity#com.mobileclient.activity.LoginActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:138:9-146:20
+	android:label
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:140:13-42
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:139:13-42
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:141:13-145:29
+action#android.intent.action.MAIN
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:142:17-69
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:142:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:144:17-77
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:144:27-74
+activity#com.mobileclient.activity.TakeOrderDetail2Activity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:147:9-62
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:147:19-59
+activity#com.mobileclient.activity.SearchActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:148:9-52
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:148:19-49
+activity#com.mobileclient.activity.ExpressOrderAddActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:149:9-61
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:149:19-58
+uses-sdk
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:design:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/4ff121265bc4715678f12795402d779f/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:design:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/4ff121265bc4715678f12795402d779f/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/3d0f6e2556144088db93fa04b577105e/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/3d0f6e2556144088db93fa04b577105e/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:cardview-v7:26.0.2] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.0.2.aar/a00bb0020977fb9f7a61cd56c9369acc/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:26.0.2] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.0.2.aar/a00bb0020977fb9f7a61cd56c9369acc/AndroidManifest.xml:20:5-44
+MERGED from [de.hdodenhof:circleimageview:2.1.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/circleimageview-2.1.0.aar/5573c66be9cb50ff187f5282f833dec1/AndroidManifest.xml:5:5-7:41
+MERGED from [de.hdodenhof:circleimageview:2.1.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/circleimageview-2.1.0.aar/5573c66be9cb50ff187f5282f833dec1/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:animated-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.0.0.aar/f48223766cd02c69029ff933199fca7a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.0.0.aar/f48223766cd02c69029ff933199fca7a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.0.0.aar/d040e048ea347baaa3fcf5547813b4bd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.0.0.aar/d040e048ea347baaa3fcf5547813b4bd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.0.0.aar/47044fcdb8d4f2a561ca7e4a2532b333/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.0.0.aar/47044fcdb8d4f2a561ca7e4a2532b333/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/transition-26.0.0.aar/a26d8302f20445f8ad8bbc4102ab4075/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/transition-26.0.0.aar/a26d8302f20445f8ad8bbc4102ab4075/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-v4-26.0.0.aar/d47cb6a03dbd13e08b15afe21187f134/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-v4-26.0.0.aar/d47cb6a03dbd13e08b15afe21187f134/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-media-compat:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.0.0.aar/92e7f7a4fdc04e2397db678d0b29c024/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.0.0.aar/92e7f7a4fdc04e2397db678d0b29c024/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-fragment-26.0.0.aar/e59765c27091903a86d9ac388416ace9/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-fragment-26.0.0.aar/e59765c27091903a86d9ac388416ace9/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-utils:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.0.0.aar/f714a3a3c71abae28fcf1121a13d68b1/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.0.0.aar/f714a3a3c71abae28fcf1121a13d68b1/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-ui:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.0.0.aar/8af152b07257eea16c66e93e5f9d52d9/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.0.0.aar/8af152b07257eea16c66e93e5f9d52d9/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.0.aar/f6637adda0bba887c2e7dd64129248a2/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.0.aar/f6637adda0bba887c2e7dd64129248a2/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:multidex:1.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/multidex-1.0.1.aar/66bd4faa0f8603cd5f3bf9f194d314af/AndroidManifest.xml:18:5-43
+MERGED from [com.android.support:multidex:1.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/multidex-1.0.1.aar/66bd4faa0f8603cd5f3bf9f194d314af/AndroidManifest.xml:18:5-43
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/4ff121265bc4715678f12795402d779f/AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/4ff121265bc4715678f12795402d779f/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/3d0f6e2556144088db93fa04b577105e/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/3d0f6e2556144088db93fa04b577105e/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:cardview-v7:26.0.2] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.0.2.aar/a00bb0020977fb9f7a61cd56c9369acc/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:cardview-v7:26.0.2] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.0.2.aar/a00bb0020977fb9f7a61cd56c9369acc/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:animated-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.0.0.aar/f48223766cd02c69029ff933199fca7a/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:animated-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.0.0.aar/f48223766cd02c69029ff933199fca7a/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.0.0.aar/d040e048ea347baaa3fcf5547813b4bd/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.0.0.aar/d040e048ea347baaa3fcf5547813b4bd/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.0.0.aar/47044fcdb8d4f2a561ca7e4a2532b333/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.0.0.aar/47044fcdb8d4f2a561ca7e4a2532b333/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/transition-26.0.0.aar/a26d8302f20445f8ad8bbc4102ab4075/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/transition-26.0.0.aar/a26d8302f20445f8ad8bbc4102ab4075/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-v4:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-v4-26.0.0.aar/d47cb6a03dbd13e08b15afe21187f134/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-v4:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-v4-26.0.0.aar/d47cb6a03dbd13e08b15afe21187f134/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.0.0.aar/92e7f7a4fdc04e2397db678d0b29c024/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.0.0.aar/92e7f7a4fdc04e2397db678d0b29c024/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-fragment-26.0.0.aar/e59765c27091903a86d9ac388416ace9/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-fragment-26.0.0.aar/e59765c27091903a86d9ac388416ace9/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.0.0.aar/f714a3a3c71abae28fcf1121a13d68b1/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.0.0.aar/f714a3a3c71abae28fcf1121a13d68b1/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.0.0.aar/8af152b07257eea16c66e93e5f9d52d9/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.0.0.aar/8af152b07257eea16c66e93e5f9d52d9/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.0.aar/f6637adda0bba887c2e7dd64129248a2/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.0.aar/f6637adda0bba887c2e7dd64129248a2/AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:design:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/4ff121265bc4715678f12795402d779f/AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:design:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/4ff121265bc4715678f12795402d779f/AndroidManifest.xml:27:13-51

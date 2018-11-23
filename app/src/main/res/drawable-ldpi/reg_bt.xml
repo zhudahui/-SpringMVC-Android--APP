@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/disbtnbga"
+        android:state_enabled="false"/>
+    <item android:drawable="@drawable/reg_btn_ona"
+        android:state_focused="true" android:state_enabled="true"/>
+    <item android:drawable="@drawable/reg_btn_ona"
+        android:state_selected="true" android:state_enabled="true"/>
+    <item android:drawable="@drawable/reg_btn_ona"
+        android:state_pressed="true" android:state_enabled="true"/>
+    <item android:drawable="@drawable/reg_btn_outb"/>
+
+</selector>
