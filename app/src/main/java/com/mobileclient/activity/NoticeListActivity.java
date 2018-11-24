@@ -8,7 +8,7 @@ import java.util.Map;
 import com.mobileclient.app.Declare;
 import com.mobileclient.domain.Notice;
 import com.mobileclient.service.NoticeService;
-import com.mobileclient.util.ActivityUtils;import com.mobileclient.util.NoticeSimpleAdapter;
+import com.mobileclient.util.ActivityUtils;import com.mobileclient.adapter.NoticeSimpleAdapter;
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
@@ -42,16 +42,17 @@ public class NoticeListActivity extends Activity {
 	private Notice queryConditionNotice;
 
 	private MyProgressDialog dialog; //进度条	@Override
+	Declare declare;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//去除title
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		//去掉Activity上面的状态栏
-		getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.notice_list);
 		dialog = MyProgressDialog.getInstance(this);
-		Declare declare = (Declare) getApplicationContext();
+		declare = (Declare) getApplicationContext();
 		String username = declare.getUserName();
 		//标题栏控件
 		ImageView search = (ImageView) this.findViewById(R.id.search);
@@ -60,20 +61,27 @@ public class NoticeListActivity extends Activity {
 			public void onClick(View arg0) {
 				Intent intent = new Intent();
 				intent.setClass(NoticeListActivity.this, NoticeQueryActivity.class);
-				startActivityForResult(intent,ActivityUtils.QUERY_CODE);//此处的requestCode应与下面结果处理函中调用的requestCode一致
+				startActivityForResult(intent, ActivityUtils.QUERY_CODE);//此处的requestCode应与下面结果处理函中调用的requestCode一致
 			}
 		});
 		TextView title = (TextView) this.findViewById(R.id.title);
-		title.setText("校讯通");
+		title.setText("通知公告");
 		ImageView add_btn = (ImageView) this.findViewById(R.id.add_btn);
-		add_btn.setOnClickListener(new android.view.View.OnClickListener(){ 
+		if (declare.getIdentify().equals("user"))
+			add_btn.setImageResource(R.drawable.back);
+		add_btn.setOnClickListener(new android.view.View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				Intent intent = new Intent();
-				intent.setClass(NoticeListActivity.this, NoticeAddActivity.class);
-				startActivityForResult(intent,ActivityUtils.ADD_CODE);
+				if (declare.getIdentify().equals("user"))
+					finish();
+				else {
+					intent.setClass(NoticeListActivity.this, NoticeAddActivity.class);
+					startActivityForResult(intent, ActivityUtils.ADD_CODE);
+				}
 			}
 		});
+
 		if(declare.getIdentify().equals("user")) {
 			add_btn.setImageResource(R.drawable.btn_left_normal);
 			add_btn.setOnClickListener(new View.OnClickListener() {
@@ -121,8 +129,8 @@ public class NoticeListActivity extends Activity {
 						dialog.cancel();
 						adapter = new NoticeSimpleAdapter(NoticeListActivity.this, list,
 	        					R.layout.notice_list_item,
-	        					new String[] { "noticeId","title","publishDate" },
-	        					new int[] { R.id.tv_noticeId,R.id.tv_title,R.id.tv_publishDate,},lv);
+	        					new String[] { "noticeTitle","publishDate", },
+	        					new int[] { R.id.tv_noticeTitle,R.id.tv_publishDate},lv);
 	        			lv.setAdapter(adapter);
 					}
 				});
@@ -139,6 +147,11 @@ public class NoticeListActivity extends Activity {
             	intent.setClass(NoticeListActivity.this, NoticeDetailActivity.class);
             	Bundle bundle = new Bundle();
             	bundle.putInt("noticeId", noticeId);
+            	bundle.putString("noticeTitle",list.get(arg2).get("noticeTitle").toString());
+				bundle.putString("noticeContent",list.get(arg2).get("noticeContent").toString());
+				bundle.putString("noticeTitle",list.get(arg2).get("noticeTitle").toString());
+				bundle.putString("publishDate",list.get(arg2).get("publishDate").toString());
+				bundle.putString("noticeFile",list.get(arg2).get("noticeFile").toString());
             	intent.putExtras(bundle);
             	startActivity(intent);
             }
@@ -193,7 +206,7 @@ public class NoticeListActivity extends Activity {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				String result = noticeService.DeleteNotice(noticeId);
-				Toast.makeText(getApplicationContext(), result, 1).show();
+				Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
 				setViews();
 				dialog.dismiss();
 			}
@@ -214,9 +227,11 @@ public class NoticeListActivity extends Activity {
 			List<Notice> noticeList = noticeService.QueryNotice(queryConditionNotice);
 			for (int i = 0; i < noticeList.size(); i++) {
 				Map<String, Object> map = new HashMap<String, Object>();
-				map.put("noticeId", noticeList.get(i).getNoticeId());
-				map.put("title", noticeList.get(i).getNoticeTitle());
+				map.put("noticeId",noticeList.get(i).getNoticeId());
+				map.put("noticeTitle", noticeList.get(i).getNoticeTitle());
+				map.put("noticeContent", noticeList.get(i).getNoticeContent());
 				map.put("publishDate", noticeList.get(i).getPublishDate());
+				map.put("noticeFile",noticeList.get(i).getNoticeFile());
 				list.add(map);
 			}
 		} catch (Exception e) { 

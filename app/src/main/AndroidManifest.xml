@@ -6,6 +6,7 @@
     android:versionName="1.0">
 
 
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEM"/>
     <uses-permission android:name="android.permission.INTERNET" />
 
     <!-- 文件读写权限 -->
@@ -82,7 +83,6 @@
         <activity android:name=".UserInfoRegisterActivity" />
         <activity android:name=".UserInfoEditActivity" />
         <activity android:name=".UserInfoDetailActivity" />
-        <activity android:name=".ExpressTakeListActivity" />
         <activity android:name=".ExpressTakeUserListActivity" />
         <activity android:name=".ExpressTakeMyListActivity" />
         <activity android:name=".ExpressTakeQueryActivity" />
@@ -136,7 +136,7 @@
             android:name=".AdminLoginActivity"
             android:label="@string/title_activity_admin_login" />
         <activity
-            android:name=".ExpressOrderListActivity"
+            android:name=".LoginActivity"
             android:label="@string/login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -146,8 +146,9 @@
         </activity>
         <activity android:name=".TakeOrderDetail2Activity" />
         <activity android:name=".SearchActivity" />
-
+        <activity android:name=".ExpressOrderListActivity"/>
         <activity android:name=".ExpressOrderAddActivity" />
+        <activity android:name=".ExpressOrderDetailActivity"/>
     </application>
 
 </manifest>

@@ -19,6 +19,8 @@ public class Notice implements Serializable {
     private String noticeContent;
     /*发布时间*/
     private String publishDate;
+    /*发布公告的附件*/
+    private String noticeFile;
     public String getPublishDate() {
         return publishDate;
     }
@@ -40,5 +42,13 @@ public class Notice implements Serializable {
 
     public void setNoticeContent(String noticeContent) {
         this.noticeContent = noticeContent;
+    }
+
+    public String getNoticeFile() {
+        return noticeFile;
+    }
+
+    public void setNoticeFile(String noticeFile) {
+        this.noticeFile = noticeFile;
     }
 }

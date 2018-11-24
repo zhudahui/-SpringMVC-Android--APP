@@ -1250,7 +1250,7 @@ id TV_email
 id TV_email_Label
 id TV_evaluate
 id TV_evaluate_Label
-id TV_expressCompanyAdress
+id TV_expressCompanyAddress
 id TV_expressCompanyName
 id TV_expressTakeObj
 id TV_expressTakeObj_Label
@@ -1260,8 +1260,11 @@ id TV_giveMoney
 id TV_giveMoney_Label
 id TV_name
 id TV_name_Label
+id TV_noticeContent
+id TV_noticeFile
 id TV_noticeId
 id TV_noticeId_Label
+id TV_noticeTitle
 id TV_orderId
 id TV_orderId_Label
 id TV_orderName
@@ -1277,8 +1280,8 @@ id TV_password
 id TV_password_Label
 id TV_publishDate
 id TV_publishDate_Label
+id TV_receiveAddress
 id TV_receiveAddressName
-id TV_receiveAdress
 id TV_receiveCode
 id TV_receiveMemo
 id TV_receiveMemo_Label
@@ -1445,6 +1448,7 @@ id exitButton
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id expressCompanyAddress
 id expressCompanyAdress
 id expressCompanyName
 id fill
@@ -1547,6 +1551,7 @@ id r1
 id radio
 id re1
 id re2
+id receiveAddress
 id receiveAddressName
 id receiveAdress
 id receiveAdressName
@@ -1664,7 +1669,7 @@ id tv_gender
 id tv_giveMoney
 id tv_hint
 id tv_name
-id tv_noticeId
+id tv_noticeTitle
 id tv_orderStateId
 id tv_orderStateName
 id tv_orderStateObj
@@ -1680,7 +1685,6 @@ id tv_takeStateObj
 id tv_takeTime
 id tv_taskTitle
 id tv_telephone
-id tv_title
 id tv_userObj
 id tv_userType
 id tv_user_name
@@ -1787,6 +1791,7 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
+layout expressmyorder_detail
 layout expressorder_add
 layout expressorder_detail
 layout expresstake_add

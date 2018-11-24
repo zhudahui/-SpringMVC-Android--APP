@@ -22,6 +22,8 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mobileclient.adapter.ExpressOrderAdapter;
+
 public class MainMenuActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -145,7 +147,7 @@ public class MainMenuActivity extends Activity {
 		public void onClick(View v) {
 			Intent intent = new Intent();
 			// 启动快递代拿管理Activity
-			intent.setClass(MainMenuActivity.this, ExpressTakeListActivity.class);
+			intent.setClass(MainMenuActivity.this, ExpressOrderListActivity.class);
 			startActivity(intent);
 		}
 	};

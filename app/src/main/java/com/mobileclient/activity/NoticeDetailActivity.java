@@ -16,13 +16,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 public class NoticeDetailActivity extends Activity {
 	// 声明返回按钮
-	private Button btnReturn;
-	// 声明公告id控件
-	private TextView TV_noticeId;
-	// 声明标题控件
-	private TextView TV_title;
+	private ImageView btnReturn;
+	// 声明公告标题控件
+	private TextView TV_noticeTitle;
+	// 声明附件控件
+	private TextView TV_noticeFile;
 	// 声明公告内容控件
-	private TextView TV_content;
+	private TextView TV_noticeContent;
 	// 声明发布时间控件
 	private TextView TV_publishDate;
 	/* 要保存的新闻公告信息 */
@@ -42,7 +42,7 @@ public class NoticeDetailActivity extends Activity {
 		ImageView search = (ImageView) this.findViewById(R.id.search);
 		search.setVisibility(View.GONE);
 		TextView title = (TextView) this.findViewById(R.id.title);
-		title.setText("查看新闻公告详情");
+		title.setText("公告详情");
 		ImageView back = (ImageView) this.findViewById(R.id.back_btn);
 		back.setOnClickListener(new OnClickListener(){ 
 			@Override
@@ -51,52 +51,25 @@ public class NoticeDetailActivity extends Activity {
 			}
 		});
 		// 通过findViewById方法实例化组件
-		btnReturn = (Button) findViewById(R.id.btnReturn);
-		TV_noticeId = (TextView) findViewById(R.id.TV_noticeId);
-		TV_title = (TextView) findViewById(R.id.TV_title);
-		TV_content = (TextView) findViewById(R.id.TV_content);
-		TV_publishDate = (TextView) findViewById(R.id.TV_publishDate);
+
 		Bundle extras = this.getIntent().getExtras();
 		noticeId = extras.getInt("noticeId");
+        TV_noticeTitle=findViewById(R.id.TV_noticeTitle);
+        TV_noticeContent=findViewById(R.id.TV_noticeContent);
+        TV_publishDate=findViewById(R.id.TV_publishDate);
+        TV_noticeFile=findViewById(R.id.TV_noticeFile);
+        TV_noticeTitle.setText(extras.getString("noticeTitle"));
+        TV_noticeContent.setText("noticeContent");
+        TV_publishDate.setText("publishDate");
+        TV_noticeFile.setText("noticeFile");
+        btnReturn=findViewById(R.id.back_btn);
 		btnReturn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				NoticeDetailActivity.this.finish();
 			}
-		}); 
-		initViewData();
+		});
 	}
 	/* 初始化显示详情界面的数据 */
-	private void initViewData() {
-		final Handler handler=new Handler(){
-			@Override
-			public void handleMessage(Message msg) {
-				super.handleMessage(msg);
-				if(msg.what==0x123){
-					TV_noticeId.setText(msg.getData().getString("noticeId"));
-					TV_title.setText(msg.getData().getString("title"));
-					TV_content.setText(msg.getData().getString("content"));
-					TV_publishDate.setText(msg.getData().getString("publishDate"));
-				}
-			}
-		};
-		new Thread(){
-			@Override
-			public void run() {
-				super.run();
-				notice = noticeService.GetNotice(noticeId);
-				Bundle bundle=new Bundle();
-				Message msg=new Message();
-				bundle.putString("noticeId",notice.getNoticeId() + "");
-				bundle.putString("title",notice.getNoticeTitle());
-				bundle.putString("content",notice.getNoticeContent());
-				bundle.putString("publishDate",notice.getPublishDate());
-				msg.setData(bundle);
-				msg.what=0x123;
-				handler.sendMessage(msg);
-			}
-		};
-	   // notice = noticeService.GetNotice(noticeId);
 
-	} 
 }

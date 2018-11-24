@@ -9,7 +9,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Base64;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,18 +37,22 @@ import com.mobileclient.util.ActivityUtils;
 import com.mobileclient.util.HttpUtil;
 import com.mobileclient.util.ImageService;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
+import static org.apache.cordova.Config.init;
+
 public class MoreActivity extends Activity {
 	private String[] strs = new String[]{"订单状态","代拿订单","新闻公告","修改个人信息","关于"};
 	private ListView list = null;
 	private TextView mName;
-	private ImageView mIcon;
+	private CircleImageView photo;
 	private Button unlogin;
 	/*用户管理业务逻辑层*/
 	/*要保存的用户信息*/
 	UserInfo userInfo = new UserInfo();
 	/*用户管理业务逻辑层*/
 	private UserInfoService userInfoService = new UserInfoService();
-
+	Declare declare;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -58,16 +65,17 @@ public class MoreActivity extends Activity {
 		setContentView(R.layout.more);
 		// 通过findViewById方法实例化组件
 		mName = (TextView) this.findViewById(R.id.username);
-		mIcon = (ImageView) this.findViewById(R.id.icon);
+		photo =  this.findViewById(R.id.userPhoto);
 		list = (ListView) this.findViewById(R.id.list);
-		mIcon.setImageResource(R.drawable.xiaohui);
-		mIcon.setEnabled(true);
+		photo.setImageResource(R.drawable.xiaohui);
+		photo.setEnabled(true);
 		unlogin = (Button) this.findViewById(R.id.unlogin);
 		unlogin.setVisibility(View.GONE);
-		final Declare declare = (Declare) MoreActivity.this.getApplication();
+		declare = (Declare) MoreActivity.this.getApplication();
 		mName.setText(declare.getUserName());
 		TextView title = (TextView) this.findViewById(R.id.title);
 		title.setText("个人");
+		init();
         ImageView back = (ImageView) this.findViewById(R.id.back_btn);
         back.setOnClickListener(new OnClickListener(){
             @Override
@@ -77,7 +85,7 @@ public class MoreActivity extends Activity {
             }
         });
 		if(declare.getIdentify().equals("user"))
-			strs = new String[]{"校讯通查询","修改个人信息","发布快递","我的快递","关于"};
+			strs = new String[]{"通知公告","个人信息","收货地址","我的快递","关于"};
 		
 		list.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -167,7 +175,7 @@ public class MoreActivity extends Activity {
 		});
 		
 		
-		mIcon.setOnClickListener(new OnClickListener() {
+		photo.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
@@ -219,4 +227,45 @@ public class MoreActivity extends Activity {
 		}
 		return true;
 	}
+	/*
+	 *
+	 *
+	 *
+	 */
+	private void init(){
+		final Handler handler=new Handler(){
+			@Override
+			public void handleMessage(Message msg) {
+				super.handleMessage(msg);
+				if(msg.what==0x123) {
+					byte[] Photo = null;
+					Photo=msg.getData().getByteArray("userPhoto_data");
+					Log.i("gggggggg","1111"+Photo);
+					Bitmap userPhoto = BitmapFactory.decodeByteArray(Photo, 0, Photo.length);
+					photo.setImageBitmap(userPhoto);
+				}
+			}
+		};
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				byte[] userPhoto_data = null;
+				try {
+					// 获取图片数据
+					userPhoto_data = ImageService.getImage(HttpUtil.DOWNURL + declare.getUserPhoto());
+					Log.i("gggggggg","2222"+userPhoto_data);
+					Bundle bundle=new Bundle();
+					Message msg=new Message();
+					bundle.putByteArray("userPhoto_data",userPhoto_data);
+					msg.what=0x123;
+					msg.setData(bundle);
+					handler.sendMessage(msg);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+
+
 }

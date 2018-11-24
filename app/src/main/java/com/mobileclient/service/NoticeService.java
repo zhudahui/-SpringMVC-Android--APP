@@ -24,13 +24,13 @@ public class NoticeService {
 		try {
 			OkHttpClient client=new OkHttpClient();
 			RequestBody body=new FormBody.Builder()
-					.add("noticeId", notice.getNoticeId() + "")
-					.add("title", notice.getNoticeTitle())
-					.add("content", notice.getNoticeContent())
+					.add("noticeTitle", notice.getNoticeTitle())
+					.add("noticeContent", notice.getNoticeContent())
 					.add("publishDate", notice.getPublishDate())
+					.add("noticeFile",notice.getNoticeFile())
 					.add("action", "add")
 					.build();
-			Request request=new Request.Builder().url(HttpUtil.BASE_URL + "NoticeServlet?").post(body).build();
+			Request request=new Request.Builder().url(HttpUtil.BASE_URL + "notice/add?").post(body).build();
 			Response response=client.newCall(request).execute();
 			String result=response.body().string();
 			//resultByte = HttpUtil.SendPostRequest(HttpUtil.BASE_URL + "NoticeServlet?", params, "UTF-8");
@@ -44,25 +44,27 @@ public class NoticeService {
 
 	/* 查询新闻公告 */
 	public List<Notice> QueryNotice(Notice queryConditionNotice) throws Exception {
-		String urlString = HttpUtil.BASE_URL + "NoticeServlet?action=query";
+		String urlString = HttpUtil.BASE_URL + "notice/all?action=query";
 		if(queryConditionNotice != null) {
-			urlString += "&title=" + URLEncoder.encode(queryConditionNotice.getNoticeTitle(), "UTF-8") + "";
+			urlString += "&noticeTitle=" + URLEncoder.encode(queryConditionNotice.getNoticeTitle(), "UTF-8") + "";
 			urlString += "&publishDate=" + URLEncoder.encode(queryConditionNotice.getPublishDate(), "UTF-8") + "";
 		}
 		List<Notice> noticeList = new ArrayList<Notice>();
-		byte[] resultByte;
 		try {
-			resultByte = HttpUtil.SendPostRequest(urlString, null, "UTF-8");
-			String result = new String(resultByte, "UTF-8");
+			OkHttpClient okHttpClient=new OkHttpClient();
+			Request request=new Request.Builder().url(urlString).build();
+			Response response=okHttpClient.newCall(request).execute();
+			String result=response.body().string();
 			JSONArray array = new JSONArray(result);
 			int length = array.length();
 			for (int i = 0; i < length; i++) {
 				JSONObject object = array.getJSONObject(i);
 				Notice notice = new Notice();
 				notice.setNoticeId(object.getInt("noticeId"));
-				notice.setNoticeTitle(object.getString("title"));
-				notice.setNoticeContent(object.getString("content"));
+				notice.setNoticeTitle(object.getString("noticeTitle"));
+				notice.setNoticeContent(object.getString("noticeContent"));
 				notice.setPublishDate(object.getString("publishDate"));
+				notice.setNoticeFile(object.getString("noticeFile"));
 				noticeList.add(notice);
 			}
 		} catch (Exception e) {

@@ -93,6 +93,9 @@ public class LoginActivity extends Activity {
                                 if(user.getUserPassword().equals(et_userPwd.getText().toString()))   //用户账号存在时验证密码是否正确
                                 {
                                     declare.setUserId(Integer.parseInt(et_userId.getText().toString()));   //将学号存储为全局可用
+                                    declare.setUserType(user.getUserName());
+                                    declare.setUserType(user.getUserType());
+                                    declare.setUserPhoto(user.getUserPhoto());
                                     handler.sendEmptyMessage(1);
                                 }
                                 else{
@@ -122,7 +125,7 @@ public class LoginActivity extends Activity {
                 case 1:           //账号密码正确时登陆跳转到主页
                     Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
-                    intent.setClass(LoginActivity.this,ExpressOrderListActivity.class);
+                    intent.setClass(LoginActivity.this,MainUserActivity.class);
                     startActivity(intent);
                     LoginActivity.this.finish();
                     break;

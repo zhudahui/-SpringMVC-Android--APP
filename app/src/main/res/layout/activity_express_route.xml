@@ -81,38 +81,7 @@
         android:text="TextView"
         android:visibility="gone"/>
 
-    <RadioGroup
-        android:id="@+id/gps_radio_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|left"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="100dp"
-        android:background="@color/grey"
-        android:orientation="vertical" >
 
-
-        <RadioButton
-            android:id="@+id/gps_locate_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/gpslocate"
-            android:textColor="@android:color/black" />
-
-        <RadioButton
-            android:id="@+id/gps_follow_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/gpsfollow"
-            android:textColor="@android:color/black" />
-
-        <RadioButton
-            android:id="@+id/gps_rotate_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/gpsrotate"
-            android:textColor="@android:color/black" />
-    </RadioGroup>
     <LinearLayout
         android:id="@+id/bus_result"
         android:layout_width="match_parent"

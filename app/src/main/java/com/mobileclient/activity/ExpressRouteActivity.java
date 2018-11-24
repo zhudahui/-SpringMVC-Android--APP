@@ -620,7 +620,7 @@ public class ExpressRouteActivity extends Activity implements OnMapClickListener
     public void getLatlon(final String name) {
         //	showDialog();
 
-        GeocodeQuery query = new GeocodeQuery(name, "022");// 第一个参数表示地址，第二个参数表示查询城市，中文或者中文全拼，citycode、adcode，
+        GeocodeQuery query = new GeocodeQuery(name, "010");// 第一个参数表示地址，第二个参数表示查询城市，中文或者中文全拼，citycode、adcode，
         geocoderSearch.getFromLocationNameAsyn(query);// 设置同步地理编码请求
 
     }

@@ -16,12 +16,15 @@ import com.mobileclient.service.ReceiveAddressService;
 import com.mobileclient.service.UserService;
 import com.mobileclient.util.ActivityUtils;import com.mobileclient.util.ExpressTakeSimpleAdapter;
 import com.mobileclient.util.HttpUtil;
+import com.mobileclient.util.ImageService;
 
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -168,10 +171,23 @@ public class ExpressOrderListActivity extends Activity {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
                 int orderId = Integer.parseInt(list.get(arg2).get("orderId").toString());
                 Intent intent = new Intent();
-                intent.setClass(ExpressOrderListActivity.this, ExpressTakeDetailActivity.class);
+                intent.setClass(ExpressOrderListActivity.this, ExpressOrderDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt("orderId", orderId);
-                Log.i("34566",""+orderId);
+                bundle.putString("orderName",list.get(arg2).get("orderName").toString());
+                bundle.putString("userName",list.get(arg2).get("userName").toString());
+                bundle.putByteArray("photo", (byte[]) list.get(arg2).get("photo"));
+                bundle.putString("expressCompanyName",list.get(arg2).get("expressCompanyName").toString());
+                bundle.putString("expressCompanyAddress",list.get(arg2).get("expressCompanyAddress").toString());
+                bundle.putString("receiveAddressName",list.get(arg2).get("receiveAddressName").toString());
+                bundle.putString("receiveName",list.get(arg2).get("receiveName").toString());
+                bundle.putString("receivePhone",list.get(arg2).get("receivePhone").toString());
+                bundle.putString("remark",list.get(arg2).get("remark").toString());
+                bundle.putString("receiveCode",list.get(arg2).get("receiveCode").toString());
+                bundle.putString("receiveName",list.get(arg2).get("receiveName").toString());
+                bundle.putString("orderPay",list.get(arg2).get("orderPay").toString());
+                bundle.putString("orderState",list.get(arg2).get("orderState").toString());
+                bundle.putString("addTime",list.get(arg2).get("addTime").toString());
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -253,8 +269,12 @@ public class ExpressOrderListActivity extends Activity {
                 map.put("userId", expressOrderList.get(i).getUserId());
                 user=userService.GetUserInfo(expressOrderList.get(i).getUserId());
                 map.put("userName", user.getUserName());
-                HttpUtil.downloadFile(user.getUserPhoto());
-                map.put("userPhoto","/storage/emulated/0/mobileclient/"+user.getUserPhoto());
+                byte[] userPhoto_data = null;
+                    // 获取图片数据
+                userPhoto_data = ImageService.getImage(HttpUtil.DOWNURL + user.getUserPhoto());
+                map.put("photo",userPhoto_data);
+                Bitmap userPhoto = BitmapFactory.decodeByteArray(userPhoto_data, 0, userPhoto_data.length);
+                map.put("userPhoto",userPhoto);
                 map.put("expressCompanyName", expressOrderList.get(i).getExpressCompanyName());
                 map.put("expressCompanyAddress", expressOrderList.get(i).getExpressCompanyAddress());
                // 根据获取到的地址Id，查询地址名以及收获人姓名
@@ -262,6 +282,7 @@ public class ExpressOrderListActivity extends Activity {
                 Log.i("zhu1111","查询"+receiveAddress.getReceiveAddressName());
                 map.put("receiveAddressName", receiveAddress.getReceiveAddressName());
                 map.put("receiveName",receiveAddress.getReceiveName());
+                map.put("receivePhone",receiveAddress.getReceivePhone());
                 map.put("addTime", expressOrderList.get(i).getAddTime());
                 map.put("orderState", expressOrderList.get(i).getOrderState());
                 map.put("orderPay", expressOrderList.get(i).getOrderPay());

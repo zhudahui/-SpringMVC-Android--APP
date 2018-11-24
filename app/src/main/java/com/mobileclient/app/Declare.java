@@ -25,11 +25,21 @@ public class Declare extends Application {
 	
 	private int userId;//用户Id
     private String userName;
-    private String identify; //用户身份
+
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+	private String userType; //用户身份
     private  String userPhoto;
     private int  companyLength;
 	private int query;//判断查询状态
-
+    private  String identify;
     public String getUserName() {
 		return userName;
 	}
@@ -38,12 +48,6 @@ public class Declare extends Application {
 		this.userName = userName;
 	}
 
-	public String getIdentify() {
-		return identify;
-	}
-	public void setIdentify(String identify) {
-		this.identify = identify;
-	}
 	public String getUserPhoto() {
 		return userPhoto;
 	}
@@ -75,4 +79,12 @@ public class Declare extends Application {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+
+    public String getIdentify() {
+        return identify;
+    }
+
+    public void setIdentify(String identify) {
+        this.identify = identify;
+    }
 }
