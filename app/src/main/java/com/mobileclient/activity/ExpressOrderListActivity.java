@@ -6,12 +6,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.mobileclient.adapter.ExpressOrderAdapter;
 import com.mobileclient.app.Declare;
 import com.mobileclient.domain.Order;
 import com.mobileclient.domain.ReceiveAddress;
+import com.mobileclient.domain.User;
 import com.mobileclient.service.OrderService;
 import com.mobileclient.service.ReceiveAddressService;
+import com.mobileclient.service.UserService;
 import com.mobileclient.util.ActivityUtils;import com.mobileclient.util.ExpressTakeSimpleAdapter;
+import com.mobileclient.util.HttpUtil;
+
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
@@ -36,7 +41,7 @@ import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 
 public class ExpressOrderListActivity extends Activity {
-    ExpressTakeSimpleAdapter adapter;
+    ExpressOrderAdapter adapter;
     ListView lv;
     List<Map<String, Object>> list;
     int orderId;
@@ -47,6 +52,9 @@ public class ExpressOrderListActivity extends Activity {
     private ImageView back_btn;
     private MyProgressDialog dialog; //进度条	@Override
     RelativeLayout tvSearchRlt;
+    UserService userService=new UserService();
+    User user=new User();
+    ReceiveAddress receiveAddress=new ReceiveAddress();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +66,7 @@ public class ExpressOrderListActivity extends Activity {
         dialog = MyProgressDialog.getInstance(this);
         Declare declare = (Declare) getApplicationContext();
         tvSearchRlt = (RelativeLayout) findViewById(R.id.tv_search_rlt);
+        Log.i("ppppp","ppppp");
         tvSearchRlt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,9 +150,9 @@ public class ExpressOrderListActivity extends Activity {
                     @Override
                     public void run() {
                         dialog.cancel();
-                        adapter = new ExpressTakeSimpleAdapter(ExpressOrderListActivity.this, list,
+                        adapter = new ExpressOrderAdapter(ExpressOrderListActivity.this, list,
                                 R.layout.order_list_item,
-                                new String[] { "userPhoto","userName","orderName","expressCompanyName","expressCompanyAdress","receiveAdressName","addTime","orderState" },
+                                new String[] { "userPhoto","userName","orderName","expressCompanyName","expressCompanyAddress","receiveAddressName","addTime","orderState" },
                                 new int[] { R.id.userPhoto,R.id.userName,R.id.orderName,R.id.expressCompanyName,R.id.expressCompanyAdress,
                                         R.id.addTime,R.id.orderState},lv);
                         lv.setAdapter(adapter);
@@ -233,29 +242,32 @@ public class ExpressOrderListActivity extends Activity {
 
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         try {
-            Log.i("zhu1010","查询");
+
             ReceiveAddressService receiveAdressService=new ReceiveAddressService();
-            ReceiveAddress receiveAdress=new ReceiveAddress();
             /* 查询快递代拿信息 */
             List<Order> expressOrderList = orderService.QueryOrder(queryConditionExpressOrder);
-           // Log.i("zhu1111","查询"+expressTakeList);
             for (int i = 0; i < expressOrderList.size(); i++) {
                 Map<String, Object> map = new HashMap<String, Object>();
                 map.put("orderId",expressOrderList.get(i).getOrderId());
                 map.put("orderName", expressOrderList.get(i).getOrderName());
                 map.put("userId", expressOrderList.get(i).getUserId());
+                user=userService.GetUserInfo(expressOrderList.get(i).getUserId());
+                map.put("userName", user.getUserName());
+                HttpUtil.downloadFile(user.getUserPhoto());
+                map.put("userPhoto","/storage/emulated/0/mobileclient/"+user.getUserPhoto());
                 map.put("expressCompanyName", expressOrderList.get(i).getExpressCompanyName());
-                map.put("expressCompanyAdress", expressOrderList.get(i).getExpressCompanyAddress());
+                map.put("expressCompanyAddress", expressOrderList.get(i).getExpressCompanyAddress());
                // 根据获取到的地址Id，查询地址名以及收获人姓名
-                receiveAdress=receiveAdressService.GetReceiveAdress(expressOrderList.get(i).getReceiveAddressId());
-                map.put("receiveAdressName", receiveAdress.getReceiveAddressName());
-                map.put("receiveName",receiveAdress.getReceiveName());
+                receiveAddress=receiveAdressService.QueryReceiveAdress(expressOrderList.get(i).getReceiveAddressId());
+                Log.i("zhu1111","查询"+receiveAddress.getReceiveAddressName());
+                map.put("receiveAddressName", receiveAddress.getReceiveAddressName());
+                map.put("receiveName",receiveAddress.getReceiveName());
                 map.put("addTime", expressOrderList.get(i).getAddTime());
                 map.put("orderState", expressOrderList.get(i).getOrderState());
                 map.put("orderPay", expressOrderList.get(i).getOrderPay());
                 map.put("remark", expressOrderList.get(i).getRemark());
                 map.put("receiveCode", expressOrderList.get(i).getReceiveCode());
-                map.put("userPhone", expressOrderList.get(i).getAddTime());
+                //map.put("userPhone", expressOrderList.get(i).getAddTime());
                 list.add(map);
             }
         } catch (Exception e) {

@@ -79,11 +79,12 @@ public class OrderService {
                 JSONObject object = array.getJSONObject(i);
                 Order order = new Order();
                 order.setOrderId(object.getInt("orderId"));
+                Log.i("zhuhui",object.getInt("orderId")+"result");
                 order.setOrderName(object.getString("orderName"));
                 order.setUserId(object.getInt("userId"));
                 order.setExpressCompanyName(object.getString("expressCompanyName"));
-                order.setExpressCompanyAdress(object.getString("expressCompanyAdress"));
-                order.setReceiveAdressId(object.getInt("receiveAdressId"));
+                order.setExpressCompanyAdress(object.getString("expressCompanyAddress"));
+                order.setReceiveAdressId(object.getInt("receiveAddressId"));
                 order.setAddTime(object.getString("addTime"));
                 order.setOrderState(object.getString("orderState"));
                 order.setOrderPay(object.getString("orderPay"));
@@ -95,6 +96,7 @@ public class OrderService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Log.i("zhuhui",orderList.size()+"result");
         return orderList;
     }
 

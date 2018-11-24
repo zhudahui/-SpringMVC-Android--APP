@@ -122,7 +122,7 @@ public class LoginActivity extends Activity {
                 case 1:           //账号密码正确时登陆跳转到主页
                     Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
-                    intent.setClass(LoginActivity.this,ExpressOrderAddActivity.class);
+                    intent.setClass(LoginActivity.this,ExpressOrderListActivity.class);
                     startActivity(intent);
                     LoginActivity.this.finish();
                     break;

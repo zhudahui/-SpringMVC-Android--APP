@@ -54,7 +54,7 @@ public class ReceiveAddress implements Serializable {
         return receiveAddressName;
     }
 
-    public void setReceiveAdressName(String receiveAddressName) {
+    public void setReceiveAddressName(String receiveAddressName) {
         this.receiveAddressName = receiveAddressName;
     }
 }

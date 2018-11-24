@@ -136,7 +136,7 @@
             android:name=".AdminLoginActivity"
             android:label="@string/title_activity_admin_login" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ExpressOrderListActivity"
             android:label="@string/login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -146,6 +146,7 @@
         </activity>
         <activity android:name=".TakeOrderDetail2Activity" />
         <activity android:name=".SearchActivity" />
+
         <activity android:name=".ExpressOrderAddActivity" />
     </application>
 

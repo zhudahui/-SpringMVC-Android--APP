@@ -436,12 +436,13 @@ public class HttpUtil {
 		//要下载的文件路径
 		String urlDownload = "";
 		//urlDownload =  "http://192.168.3.39/text.txt";
-		urlDownload = HttpUtil.BASE_URL + uploadPath;
+		urlDownload = HttpUtil.DOWNURL + uploadPath;
 		// 获得存储卡路径，构成 保存文件的目标路径  
 		File f = new File(HttpUtil.FILE_PATH);
 		if(!f.exists())  f.mkdir();
 
 		File f2 = new File(HttpUtil.FILE_PATH + "/upload");
+
 		if(!f2.exists())  f2.mkdir();
 
 		//准备拼接新的文件名（保存在存储卡后的文件名）

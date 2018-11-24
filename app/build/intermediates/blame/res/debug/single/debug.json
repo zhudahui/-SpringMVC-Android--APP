@@ -304,12 +304,12 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/3d0f6e2556144088db93fa04b577105e/res/drawable-xhdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/color-v23_abc_tint_spinner.xml.flat",
-        "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/3d0f6e2556144088db93fa04b577105e/res/color-v23/abc_tint_spinner.xml"
-    },
-    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/xml_file_paths.xml.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/xml/file_paths.xml"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/color-v23_abc_tint_spinner.xml.flat",
+        "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/3d0f6e2556144088db93fa04b577105e/res/color-v23/abc_tint_spinner.xml"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_abc_ratingbar_material.xml.flat",
@@ -764,16 +764,16 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/city_item.xml"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_button_i.png.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/button_i.png"
-    },
-    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_list_item_btn.xml.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable/list_item_btn.xml"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_popup_down.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/popup_down.png"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_button_i.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/button_i.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_selector_disabled_holo_dark.9.png.flat",
@@ -3020,12 +3020,12 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/calendar.png"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/color_abc_hint_foreground_material_light.xml.flat",
-        "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/3d0f6e2556144088db93fa04b577105e/res/color/abc_hint_foreground_material_light.xml"
-    },
-    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_receiveadress_list_item.xml.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/receiveadress_list_item.xml"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/color_abc_hint_foreground_material_light.xml.flat",
+        "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/3d0f6e2556144088db93fa04b577105e/res/color/abc_hint_foreground_material_light.xml"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",

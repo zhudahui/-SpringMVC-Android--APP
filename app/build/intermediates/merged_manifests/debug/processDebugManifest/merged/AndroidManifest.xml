@@ -136,7 +136,7 @@
             android:name="com.mobileclient.activity.AdminLoginActivity"
             android:label="@string/title_activity_admin_login" />
         <activity
-            android:name="com.mobileclient.activity.LoginActivity"
+            android:name="com.mobileclient.activity.ExpressOrderListActivity"
             android:label="@string/login" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

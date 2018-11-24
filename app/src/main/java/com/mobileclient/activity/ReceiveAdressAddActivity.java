@@ -50,7 +50,7 @@ public class ReceiveAdressAddActivity extends Activity {
             public void run() {
                 receiveAdress.setReceiveName(et_receiveName.getText().toString());
                 receiveAdress.setReceivePhone(et_receivePhone.getText().toString());
-                receiveAdress.setReceiveAdressName(et_receiveAdressName.getText().toString());
+                receiveAdress.setReceiveAddressName(et_receiveAdressName.getText().toString());
                 receiveAdress.setUserId(declare.getUserId());
                 List<ReceiveAddress> receiveAdressesList = new ArrayList<ReceiveAddress>();
                 try {

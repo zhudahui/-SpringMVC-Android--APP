@@ -1,6 +1,9 @@
 package com.mobileclient.service;
 
 
+import android.text.TextUtils;
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -73,7 +76,7 @@ public class ReceiveAddressService {
     }
     /* 根据用户Id查询地址列表 */
     public List<ReceiveAddress> QueryReceiveAdressList(int userId) throws Exception {
-        String urlString = HttpUtil.BASE_URL + "TakeOrderServlet?userId="+userId;
+        String urlString = HttpUtil.BASE_URL + "receive-address?userId="+userId;
 //
         List<ReceiveAddress> receiveAdressesList = new ArrayList<ReceiveAddress>();
         byte[] resultByte;
@@ -85,7 +88,7 @@ public class ReceiveAddressService {
             for (int i = 0; i < length; i++) {
                 JSONObject object = array.getJSONObject(i);
                 ReceiveAddress receiveAdress = new ReceiveAddress();
-                receiveAdress.setReceiveId(object.getInt("receiveAdressId"));
+                receiveAdress.setReceiveId(object.getInt("receiveAddressId"));
                 receiveAdress.setUserId(object.getInt("userId"));
                 receiveAdress.setReceiveName(object.getString("receiveName"));
                 receiveAdress.setReceivePhone(object.getString("receivePhone"));
@@ -96,6 +99,35 @@ public class ReceiveAddressService {
             e.printStackTrace();
         }
         return receiveAdressesList;
+    }
+    //根据收货地址Id查询地址
+    public ReceiveAddress QueryReceiveAdress(int receiveAddressId) throws Exception {
+        String urlString = HttpUtil.BASE_URL + "receive-address?receiveId="+receiveAddressId;
+        ReceiveAddress receiveAddress = new ReceiveAddress();
+
+        try {
+            OkHttpClient client=new OkHttpClient();
+            Request request=new Request.Builder().url(urlString).build();
+            Response response=client.newCall(request).execute();
+            String result=response.body().string();
+            JSONObject object;
+            if(!TextUtils.isEmpty(result)) {
+                object=new JSONObject(result);
+                //ReceiveAddress receiveAddress = new ReceiveAddress();
+                receiveAddress.setReceiveId(object.getInt("receiveId"));
+                //receiveAdress.setUserId(object.getInt("userId"));
+
+                receiveAddress.setReceiveName(object.getString("receiveName"));
+                receiveAddress.setReceivePhone(object.getString("receivePhone"));
+                receiveAddress.setReceiveState(object.getString("receiveState"));
+                receiveAddress.setReceiveAddressName(object.getString("receiveAddressName"));
+                Log.i("zhu","查询name"+object.getString("receiveAddressName"));
+               // receiveAdressesList.add(receiveAdress);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return receiveAddress;
     }
     /* 更新代拿订单 */
     public String UpdateTakeOrder(TakeOrder takeOrder) {

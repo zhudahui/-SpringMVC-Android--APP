@@ -1,16 +1,13 @@
 package com.mobileclient.adapter;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
-import com.mobileclient.service.CompanyService;
-import com.mobileclient.service.UserInfoService;
 import com.mobileclient.activity.R;
 import com.mobileclient.imgCache.ListViewOnScrollListener;
 import com.mobileclient.imgCache.SyncImageLoader;
-import com.mobileclient.util.HttpUtil;
-import com.mobileclient.util.ImageService;
-
+import de.hdodenhof.circleimageview.CircleImageView;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -29,13 +26,15 @@ public class ExpressOrderAdapter extends SimpleAdapter {
     private String[] mFrom;
     /*需要绑定的数据*/
     private List<? extends Map<String, ?>> mData;
-
+    private static final String TAG = "uploadImage";
+    private Bitmap orc_bitmap;//获取下载后的图片
     private LayoutInflater mInflater;
     Context context = null;
-
+    String  photoPath;
     private ListView mListView;
     //图片异步缓存加载类,带内存缓存和文件缓存
     private SyncImageLoader syncImageLoader;
+    File file;
 
     public ExpressOrderAdapter(Context context, List<? extends Map<String, ?>> data, int resource, String[] from, int[] to,ListView listView) {
         super(context, data, resource, from, to);
@@ -68,25 +67,27 @@ public class ExpressOrderAdapter extends SimpleAdapter {
         holder.orderState=convertView.findViewById(R.id.orderState);
         /*设置各个控件的展示内容*/
         /*设置各个控件的展示内容*/
-        String photoPath=mData.get(position).get("userPhoto").toString();
-        Log.i("头像路径",""+photoPath);
+         photoPath=mData.get(position).get("userPhoto").toString();//获取头像路径绑定在组件上
+       // Log.i("zhuhui",""+photoPath);
         byte[] userPhoto_data = null;
         try {
-            if(photoPath!=null) {
-                // 获取图片数据
-                userPhoto_data = ImageService.getImage(HttpUtil.DOWNURL + photoPath);
-                Bitmap userPhoto = BitmapFactory.decodeByteArray(userPhoto_data, 0, userPhoto_data.length);
-                holder.userPhoto.setImageBitmap(userPhoto);
+                if(photoPath!=null)
+                   file = new File(photoPath);
+            if(file.exists()){
+                Bitmap bm = BitmapFactory.decodeFile(photoPath);
+                holder.userPhoto.setImageBitmap(bm);
             }
+
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         holder.userName.setText( mData.get(position).get("userName").toString());
-        Log.i("33334444",""+mData.get(position).get("userName").toString());
         holder.orderName.setText( (mData.get(position).get("orderName").toString()));
         holder.expressCompanyName.setText( mData.get(position).get("expressCompanyName").toString());
-        holder.expressCompanyAdress.setText( mData.get(position).get("expressCompanyAdress").toString());
-        holder.receiveAdressName.setText( mData.get(position).get("receiveAdressName").toString());
+        holder.expressCompanyAdress.setText( mData.get(position).get("expressCompanyAddress").toString());
+        holder.receiveAdressName.setText( mData.get(position).get("receiveAddressName").toString());
         holder.addTime.setText(mData.get(position).get("addTime").toString());
         holder.orderState.setText( mData.get(position).get("orderState").toString());
         /*返回修改好的view*/
@@ -103,4 +104,10 @@ public class ExpressOrderAdapter extends SimpleAdapter {
         TextView addTime;
         TextView orderState;
     }
+    //改变拍完照后图片方向不正的问题
+    private void ImgUpdateDirection(String filepath) {
+
+
+    }
+
 }
