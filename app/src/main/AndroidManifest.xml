@@ -83,11 +83,9 @@
         <activity android:name=".UserInfoRegisterActivity" />
         <activity android:name=".UserInfoEditActivity" />
         <activity android:name=".UserInfoDetailActivity" />
-        <activity android:name=".ExpressTakeUserListActivity" />
         <activity android:name=".ExpressTakeMyListActivity" />
         <activity android:name=".ExpressTakeQueryActivity" />
         <activity android:name=".ExpressTakeAddActivity" />
-        <activity android:name=".ExpressTakeUserAddActivity" />
         <activity android:name=".ExpressTakeEditActivity" />
         <activity android:name=".ExpressTakeDetailActivity" android:configChanges="keyboard|keyboardHidden" />
         <activity android:name=".CompanyListActivity" />

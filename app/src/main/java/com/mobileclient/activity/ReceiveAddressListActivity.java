@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ListView;
@@ -27,7 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 
-public class ReceiveAddressListActivity extends Activity {
+public class ReceiveAddressListActivity extends Activity implements ReceiveAddressAdapter.MyClickListener {
     ReceiveAddressAdapter adapter;
     ListView lv;
     List<Map<String, Object>> list;
@@ -86,7 +87,7 @@ public class ReceiveAddressListActivity extends Activity {
                     public void run() {
                         dialog.cancel();
                         adapter = new ReceiveAddressAdapter(ReceiveAddressListActivity.this, list,
-                                R.layout.notice_list_item,
+                                R.layout.receiveadress_list_item,
                                 new String[] { "receiveAddressName","receiveName","receivePhone" },
                                 new int[] { R.id.receiveAddressName,R.id.receiveName,R.id.receivePhone,},lv);
                         lv.setAdapter(adapter);
@@ -101,7 +102,7 @@ public class ReceiveAddressListActivity extends Activity {
     // 长按菜单响应函数
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        if (item.getItemId() == 0) {  //编辑新闻公告信息
+        if (item.getItemId() == 0) {  //编辑地址信息
             ContextMenuInfo info = item.getMenuInfo();
             AdapterContextMenuInfo contextMenuInfo = (AdapterContextMenuInfo) info;
             // 获取选中行位置
@@ -114,7 +115,7 @@ public class ReceiveAddressListActivity extends Activity {
            // bundle.putInt("noticeId", noticeId);
             intent.putExtras(bundle);
             startActivityForResult(intent,ActivityUtils.EDIT_CODE);
-        } else if (item.getItemId() == 1) {// 删除新闻公告信息
+        } else if (item.getItemId() == 1) {// 删除地址公告信息
             ContextMenuInfo info = item.getMenuInfo();
             AdapterContextMenuInfo contextMenuInfo = (AdapterContextMenuInfo) info;
             // 获取选中行位置
@@ -156,15 +157,36 @@ public class ReceiveAddressListActivity extends Activity {
             List<ReceiveAddress> receiveAddressList= receiveAddressService.QueryReceiveAdress(queryConditionReceiveAddress);
             for (int i = 0; i < receiveAddressList.size(); i++) {
                 Map<String, Object> map = new HashMap<String, Object>();
+                map.put("receiveId",receiveAddressList.get(i).getReceiveId());
+                map.put("userId",receiveAddressList.get(i).getUserId());
                 map.put("receiveAddressName", receiveAddressList.get(i).getReceiveAddressName());
                 map.put("receiveName", receiveAddressList.get(i).getReceiveName());
                 map.put("receivePhone",receiveAddressList.get(i).getReceivePhone());
+                map.put("receiveState",receiveAddressList.get(i).getReceiveState());
                 list.add(map);
             }
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
         }
         return list;
+    }
+    /**
+     * 接口方法，响应ListView按钮点击事件
+     */
+    public void clickListener(View v) {
+        // 点击之后的操作在这里写
+        Intent intent=new Intent();
+        Bundle bundle = new Bundle();
+        // bundle.putInt("noticeId", noticeId);
+        intent.setClass(ReceiveAddressListActivity.this,ReceiveAddressEditActivity.class);
+        bundle.putInt("receiveId", Integer.parseInt(list.get((Integer) v.getTag()).get("receiveId").toString()));
+        bundle.putString("receiveAddressName",list.get((Integer) v.getTag()).get("receiveAddressName").toString());
+        bundle.putString("receiveName",list.get((Integer) v.getTag()).get("receiveName").toString());
+        bundle.putString("receivePhone",list.get((Integer) v.getTag()).get("receivePhone").toString());
+        bundle.putString("receiveState",list.get((Integer) v.getTag()).get("receiveState").toString());
+        intent.putExtras(bundle);
+        startActivity(intent);
+
     }
 
 }

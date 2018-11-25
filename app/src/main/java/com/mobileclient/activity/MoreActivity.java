@@ -129,7 +129,7 @@ public class MoreActivity extends Activity {
 						startActivityForResult(intent,ActivityUtils.EDIT_CODE);
 					}
 					if(arg2 == 2){
-						Intent intent  = new Intent(MoreActivity.this, ExpressTakeUserAddActivity.class);
+						Intent intent  = new Intent(MoreActivity.this, ReceiveAddressListActivity.class);
 						startActivity(intent);
 					}
 					if(arg2 == 3){

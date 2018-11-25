@@ -114,7 +114,7 @@ public class SearchActivity extends Activity {
                     intent.putExtra("q",1);
                     //Log.i("zhu8888",""+declare.getQuery());
                     setResult(RESULT_OK,intent);
-                    intent.setClass(SearchActivity.this,ExpressTakeUserListActivity.class);
+                    intent.setClass(SearchActivity.this,ReceiveAddressListActivity.class);
                     startActivity(intent);
                 } catch (Exception e) {}
             }

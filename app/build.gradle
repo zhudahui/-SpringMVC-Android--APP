@@ -49,5 +49,4 @@ dependencies {
     // Glide
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation files('libs/gson-2.7-javadoc.jar')
-
 }

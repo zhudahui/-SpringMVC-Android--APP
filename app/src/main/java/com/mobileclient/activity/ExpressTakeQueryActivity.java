@@ -120,8 +120,8 @@ public class ExpressTakeQueryActivity extends Activity {
 					intent.putExtra("q",1);
 					//Log.i("zhu8888",""+declare.getQuery());
 					setResult(RESULT_OK,intent);
-					intent.setClass(ExpressTakeQueryActivity.this,ExpressTakeUserListActivity.class);
-					startActivity(intent);
+					//intent.setClass(ExpressTakeQueryActivity.this,ExpressTakeUserListActivity.class);
+					//startActivity(intent);
 				} catch (Exception e) {}
 			}
 			});
@@ -177,7 +177,5 @@ public class ExpressTakeQueryActivity extends Activity {
 				myHandler.sendMessage(msg);
 			}
 		}).start();
-
-
 	}
 }

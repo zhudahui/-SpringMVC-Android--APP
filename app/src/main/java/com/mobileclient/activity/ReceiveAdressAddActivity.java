@@ -19,7 +19,7 @@ import java.util.List;
 public class ReceiveAdressAddActivity extends Activity {
     private EditText et_receiveName;
     private EditText et_receivePhone;
-    private EditText et_receiveAdressName;
+    private EditText et_receiveAddressName;
     private Button btn_save;
     ReceiveAddressService receiveAdressService=new ReceiveAddressService();
     ReceiveAddress receiveAdress=new ReceiveAddress();
@@ -35,7 +35,7 @@ public class ReceiveAdressAddActivity extends Activity {
         setContentView(R.layout.receive_adress);
         et_receiveName=findViewById(R.id.et_receiveName);
         et_receivePhone=findViewById(R.id.et_receivePhone);
-        et_receiveAdressName=findViewById(R.id.et_receiveAdressName);
+        et_receiveAddressName=findViewById(R.id.et_receiveAdressName);
         btn_save=findViewById(R.id.btn_save);
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +50,7 @@ public class ReceiveAdressAddActivity extends Activity {
             public void run() {
                 receiveAdress.setReceiveName(et_receiveName.getText().toString());
                 receiveAdress.setReceivePhone(et_receivePhone.getText().toString());
-                receiveAdress.setReceiveAddressName(et_receiveAdressName.getText().toString());
+                receiveAdress.setReceiveAddressName(et_receiveAddressName.getText().toString());
                 receiveAdress.setUserId(declare.getUserId());
                 List<ReceiveAddress> receiveAdressesList = new ArrayList<ReceiveAddress>();
                 try {

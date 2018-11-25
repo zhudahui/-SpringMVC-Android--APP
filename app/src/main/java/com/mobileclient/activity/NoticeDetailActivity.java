@@ -28,7 +28,6 @@ public class NoticeDetailActivity extends Activity {
 	/* 要保存的新闻公告信息 */
 	Notice notice = new Notice(); 
 	/* 新闻公告管理业务逻辑层 */
-	private NoticeService noticeService = new NoticeService();
 	private int noticeId;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
