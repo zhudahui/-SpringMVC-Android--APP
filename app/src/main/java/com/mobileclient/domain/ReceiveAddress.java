@@ -3,9 +3,9 @@ package com.mobileclient.domain;
 import java.io.Serializable;
 
 public class ReceiveAddress implements Serializable {
-    private int receiveId;
-    private String receiveAddressName;
-    private int userId;
+    private int receiveId;   //地址Id
+    private String receiveAddressName;  //地址名
+    private int userId;  //用户Id
     private String receiveName;
     private String receivePhone;
     private String receiveState;

@@ -80,7 +80,6 @@
         <activity android:name=".UserInfoListActivity" />
         <activity android:name=".UserInfoQueryActivity" />
         <activity android:name=".UserInfoAddActivity" />
-        <activity android:name=".UserInfoRegisterActivity" />
         <activity android:name=".UserInfoEditActivity" />
         <activity android:name=".UserInfoDetailActivity" />
         <activity android:name=".ExpressTakeMyListActivity" />
@@ -88,11 +87,6 @@
         <activity android:name=".ExpressTakeAddActivity" />
         <activity android:name=".ExpressTakeEditActivity" />
         <activity android:name=".ExpressTakeDetailActivity" android:configChanges="keyboard|keyboardHidden" />
-        <activity android:name=".CompanyListActivity" />
-        <activity android:name=".CompanyQueryActivity" />
-        <activity android:name=".CompanyAddActivity" />
-        <activity android:name=".CompanyEditActivity" />
-        <activity android:name=".CompanyDetailActivity" />
         <activity android:name=".OrderStateListActivity" />
         <activity android:name=".OrderStateQueryActivity" />
         <activity android:name=".OrderStateAddActivity" />
@@ -112,7 +106,6 @@
         <activity android:name=".NoticeDetailActivity" />
         <activity android:name=".RouteActivity" />
         <activity android:name=".photoListActivity" />
-        <activity android:name=".fileListActivity" />
         <activity android:name="com.xp.calendar.calendar.MainActivity" />
 
         <service android:name="com.amap.api.location.APSService" />
@@ -124,9 +117,6 @@
         <activity
             android:name=".TjpuActivity"
             android:label="@string/title_activity_tjpu" />
-        <activity
-            android:name=".KechengbiaoActivity"
-            android:label="@string/title_activity_kechengbiao" />
         <activity
             android:name="com.xp.calendar.calendar.SpecialActivity"
             android:label="@string/title_activity_special" />

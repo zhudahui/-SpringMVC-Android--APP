@@ -59,7 +59,7 @@ public class LoginActivity extends Activity {
         register.setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(LoginActivity.this,UserInfoRegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -93,9 +93,15 @@ public class LoginActivity extends Activity {
                                 if(user.getUserPassword().equals(et_userPwd.getText().toString()))   //用户账号存在时验证密码是否正确
                                 {
                                     declare.setUserId(Integer.parseInt(et_userId.getText().toString()));   //将学号存储为全局可用
-                                    declare.setUserType(user.getUserName());
+                                    declare.setUserName(user.getUserName());
                                     declare.setUserType(user.getUserType());
                                     declare.setUserPhoto(user.getUserPhoto());
+                                    declare.setUserMoney(user.getUserMoney());
+                                    declare.setUserGender(user.getUserGender());
+                                    declare.setRegTime(user.getRegTime());
+                                    declare.setUserEmail(user.getUserEmail());
+                                    declare.setUserReputation(user.getUserReputation());
+
                                     handler.sendEmptyMessage(1);
                                 }
                                 else{

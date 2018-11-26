@@ -51,7 +51,7 @@ public class MainActivity extends MyTabActivity {
 		secondBtn.setText("快递代拿");
 		/*第三tab页*/
 		TabSpec thirdSpec = tabHost.newTabSpec(THIRD_TAB).setIndicator(THIRD_TAB)
-				.setContent(new Intent(this,CompanyListActivity.class));
+				.setContent(new Intent(this,ReceiveAddressListActivity.class));
 		Button thirdBtn = (Button)findViewById(R.id.thirdBtn);
 		thirdBtn.setText("物流公司");
 		/*第四tab页*/

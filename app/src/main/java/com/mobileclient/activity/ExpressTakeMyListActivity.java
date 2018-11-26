@@ -85,7 +85,6 @@ public class ExpressTakeMyListActivity extends Activity {
 		title.setText("我发布的快递代拿");
 		Log.i("zhu7777","我发布的快递代拿");
 		ImageView add_btn = (ImageView) this.findViewById(R.id.add_btn);
-
 		add_btn.setImageResource(R.drawable.btn_left_normal);
 		add_btn.setVisibility(View.GONE);
 		add_btn.setOnClickListener(new android.view.View.OnClickListener(){

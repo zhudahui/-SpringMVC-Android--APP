@@ -965,9 +965,13 @@ drawable gongda
 drawable gongjiaochaxun
 drawable gradient_bg
 drawable gradient_bg_hover
+drawable gray_thumb
+drawable gray_track
 drawable green_bt
 drawable green_btn_ona
 drawable green_btn_outb
+drawable green_thumb
+drawable green_track
 drawable gridviewbackg
 drawable gridviewbg_presseda
 drawable gridviewbga
@@ -1124,6 +1128,7 @@ drawable tabhome
 drawable tabquery
 drawable tea
 drawable text_list_selector
+drawable thumb
 drawable tianqiyubao
 drawable ticket_bar
 drawable ticket_n
@@ -1137,6 +1142,7 @@ drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable top
 drawable top_background
+drawable track
 drawable trend_bg_line
 drawable tushuguan
 drawable txsj
@@ -1285,7 +1291,9 @@ id TV_receiveAddressName
 id TV_receiveCode
 id TV_receiveMemo
 id TV_receiveMemo_Label
+id TV_receiveName
 id TV_receivePhone
+id TV_receiveState
 id TV_receiverName
 id TV_receiverName_Label
 id TV_regTime
@@ -1368,7 +1376,9 @@ id beginning
 id blocking
 id bottom
 id bottom_layout
+id btnDelete
 id btnDownAuthFile
+id btnEdit
 id btnEvaluate
 id btnGetOrder
 id btnQuery
@@ -1429,6 +1439,7 @@ id details
 id dialog_layout
 id disableHome
 id dp_birthDate
+id edit
 id edit_query
 id edt
 id ems
@@ -1558,6 +1569,7 @@ id receiveAdressName
 id receiveCode
 id receiveName
 id receivePhone
+id receiveState
 id recycler_view
 id register
 id registerButton
@@ -1573,6 +1585,7 @@ id route_map
 id routemap_choose
 id routemap_header
 id rsmap
+id save
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
@@ -1646,6 +1659,7 @@ id thirdBtn
 id time
 id title
 id titleDividerNoCustom
+id title_layout
 id title_template
 id top
 id topPanel
@@ -1695,6 +1709,7 @@ id up
 id useLogo
 id user
 id userEditText
+id userId
 id userName
 id userObj
 id userPhoto
@@ -1854,6 +1869,7 @@ layout orderstate_query
 layout photolist
 layout query
 layout receive_adress
+layout receiveaddress_edit
 layout receiveaddress_list
 layout receiveadress_list_item
 layout register
@@ -1875,6 +1891,7 @@ layout takeorder_list_item
 layout takeorder_query
 layout takeorder_user_edit
 layout title
+layout title_layout
 layout title_list
 layout tooltip
 layout user_login

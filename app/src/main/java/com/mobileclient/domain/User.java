@@ -11,7 +11,7 @@ public class User implements Serializable {
     private String userPhone;           //用户手机号
     private String userGender;          //用户性别
     private String userEmail;           //用户邮箱
-    private int  userPeputation;        //用户信誉分
+    private int    userReputation;        //用户信誉分
     private String userMoney;           //用户资金
     private String userAuthFile;        //认证文件
     private String regTime;             //创建事件
@@ -74,14 +74,6 @@ public class User implements Serializable {
         this.userEmail = userEmail;
     }
 
-    public int getUserPeputation() {
-        return userPeputation;
-    }
-
-    public void setUserPeputation(int userPeputation) {
-        this.userPeputation = userPeputation;
-    }
-
     public String getUserMoney() {
         return userMoney;
     }
@@ -112,5 +104,13 @@ public class User implements Serializable {
 
     public void setUserPhoto(String userPhoto) {
         this.userPhoto = userPhoto;
+    }
+
+    public int getUserReputation() {
+        return userReputation;
+    }
+
+    public void setUserReputation(int userReputation) {
+        this.userReputation = userReputation;
     }
 }

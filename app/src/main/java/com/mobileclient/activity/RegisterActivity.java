@@ -220,7 +220,7 @@ public class RegisterActivity extends Activity {
 							user.setUserPhone(userPhone.getText().toString());
 							user.setUserGender(userGender.getText().toString());
 							user.setUserEmail(userEmail.getText().toString());
-							user.setUserPeputation(100);
+							user.setUserReputation(100);
 							user.setUserMoney("" + 0);
 							user.setUserAuthFile("");
 							user.setRegTime("" + 100);

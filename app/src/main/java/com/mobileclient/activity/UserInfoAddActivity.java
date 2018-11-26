@@ -123,7 +123,7 @@ public class UserInfoAddActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				Intent intent = new Intent();
-				intent.setClass(UserInfoAddActivity.this,fileListActivity.class);
+				//intent.setClass(UserInfoAddActivity.this,fileListActivity.class);
 				startActivityForResult(intent,REQ_CODE_SELECT_FILE_authFile);
 			}
 		});

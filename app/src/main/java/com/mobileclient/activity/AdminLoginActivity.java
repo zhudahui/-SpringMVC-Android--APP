@@ -68,7 +68,7 @@ public class AdminLoginActivity extends Activity {
         register.setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(AdminLoginActivity.this,UserInfoRegisterActivity.class);
+                Intent intent = new Intent(AdminLoginActivity.this,RegisterActivity.class);
                 startActivity(intent);
             }
         });

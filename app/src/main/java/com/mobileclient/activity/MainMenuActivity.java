@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mobileclient.adapter.ExpressOrderAdapter;
+import com.mobileclient.domain.ReceiveAddress;
 
 public class MainMenuActivity extends Activity {
     @Override
@@ -156,7 +157,7 @@ public class MainMenuActivity extends Activity {
 		public void onClick(View v) {
 			Intent intent = new Intent();
 			// 启动物流公司管理Activity
-			intent.setClass(MainMenuActivity.this, CompanyListActivity.class);
+			intent.setClass(MainMenuActivity.this, ReceiveAddressListActivity.class);
 			startActivity(intent);
 		}
 	};

@@ -37,7 +37,7 @@ public class UserService {
                     .add("userPhone", user.getUserPhone())
                     .add("userGender", user.getUserGender())
                     .add("userEmail", user.getUserEmail())
-                    .add("userReputation", String.valueOf(user.getUserPeputation()))
+                    .add("userReputation", String.valueOf(user.getUserReputation()))
                     .add("userMoney", user.getUserMoney())
                     .add("userAuthFile", user.getUserAuthFile())
                     .add("regTime", user.getRegTime())
@@ -114,7 +114,7 @@ public class UserService {
                     .add("userPhone", user.getUserPhone())
                     .add("userGender", user.getUserGender())
                     .add("userEmail", user.getUserEmail())
-                    .add("userReputation", String.valueOf(user.getUserPeputation()))
+                    .add("userReputation", String.valueOf(user.getUserReputation()))
                     .add("userMoney", user.getUserMoney())
                     .add("userAuthFile", user.getUserAuthFile())
                     .add("regTime", user.getRegTime())
@@ -177,7 +177,7 @@ public class UserService {
                 user.setUserPhone(object.getString("userPhone"));
                 user.setUserGender(object.getString("userGender"));
                 user.setUserEmail(object.getString("userEmail"));
-                user.setUserPeputation(object.getInt("userReputation"));
+                user.setUserReputation(object.getInt("userReputation"));
                 user.setUserMoney(object.getString("userMoney"));
                 user.setUserAuthFile(object.getString("userAuthFile"));
                 user.setRegTime(object.getString("regTime"));

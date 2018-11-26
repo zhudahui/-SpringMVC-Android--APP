@@ -52,7 +52,6 @@
         android:debuggable="true"
         android:icon="@drawable/xiaohui"
         android:label="@string/app_name"
-        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.amap.api.v2.apikey"
@@ -78,23 +77,15 @@
         <activity android:name="com.mobileclient.activity.UserInfoListActivity" />
         <activity android:name="com.mobileclient.activity.UserInfoQueryActivity" />
         <activity android:name="com.mobileclient.activity.UserInfoAddActivity" />
-        <activity android:name="com.mobileclient.activity.UserInfoRegisterActivity" />
         <activity android:name="com.mobileclient.activity.UserInfoEditActivity" />
         <activity android:name="com.mobileclient.activity.UserInfoDetailActivity" />
-        <activity android:name="com.mobileclient.activity.ExpressTakeUserListActivity" />
         <activity android:name="com.mobileclient.activity.ExpressTakeMyListActivity" />
         <activity android:name="com.mobileclient.activity.ExpressTakeQueryActivity" />
         <activity android:name="com.mobileclient.activity.ExpressTakeAddActivity" />
-        <activity android:name="com.mobileclient.activity.ExpressTakeUserAddActivity" />
         <activity android:name="com.mobileclient.activity.ExpressTakeEditActivity" />
         <activity
             android:name="com.mobileclient.activity.ExpressTakeDetailActivity"
             android:configChanges="keyboard|keyboardHidden" />
-        <activity android:name="com.mobileclient.activity.CompanyListActivity" />
-        <activity android:name="com.mobileclient.activity.CompanyQueryActivity" />
-        <activity android:name="com.mobileclient.activity.CompanyAddActivity" />
-        <activity android:name="com.mobileclient.activity.CompanyEditActivity" />
-        <activity android:name="com.mobileclient.activity.CompanyDetailActivity" />
         <activity android:name="com.mobileclient.activity.OrderStateListActivity" />
         <activity android:name="com.mobileclient.activity.OrderStateQueryActivity" />
         <activity android:name="com.mobileclient.activity.OrderStateAddActivity" />
@@ -116,7 +107,6 @@
         <activity android:name="com.mobileclient.activity.NoticeDetailActivity" />
         <activity android:name="com.mobileclient.activity.RouteActivity" />
         <activity android:name="com.mobileclient.activity.photoListActivity" />
-        <activity android:name="com.mobileclient.activity.fileListActivity" />
         <activity android:name="com.xp.calendar.calendar.MainActivity" />
 
         <service android:name="com.amap.api.location.APSService" />
@@ -127,9 +117,6 @@
         <activity
             android:name="com.mobileclient.activity.TjpuActivity"
             android:label="@string/title_activity_tjpu" />
-        <activity
-            android:name="com.mobileclient.activity.KechengbiaoActivity"
-            android:label="@string/title_activity_kechengbiao" />
         <activity
             android:name="com.xp.calendar.calendar.SpecialActivity"
             android:label="@string/title_activity_special" />
