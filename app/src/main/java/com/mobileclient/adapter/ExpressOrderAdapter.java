@@ -61,35 +61,19 @@ public class ExpressOrderAdapter extends SimpleAdapter {
         holder.userName=convertView.findViewById(R.id.userName);
         holder.orderName=convertView.findViewById(R.id.orderName);
         holder.expressCompanyName=convertView.findViewById(R.id.expressCompanyName);
-        holder.expressCompanyAdress=convertView.findViewById(R.id.expressCompanyAdress);
-        holder.receiveAdressName=convertView.findViewById(R.id.receiveAdressName);
+        holder.expressCompanyAddress=convertView.findViewById(R.id.expressCompanyAddress);
+       // holder.receiveAddressName=convertView.findViewById(R.id.receiveAddressName);
+        holder.receiveAddressName=convertView.findViewById(R.id.tv_receiveAddressName);
         holder.addTime = (TextView)convertView.findViewById(R.id.addTime);
         holder.orderState=convertView.findViewById(R.id.orderState);
         /*设置各个控件的展示内容*/
         /*设置各个控件的展示内容*/
-         //photoPath=mData.get(position).get("userPhoto").toString();//获取头像
-       // Log.i("zhuhui",""+photoPath);\
-
-         holder.userPhoto.setImageBitmap((Bitmap) mData.get(position).get("userPhoto"));
-//        byte[] userPhoto_data = null;
-//        try {
-//                if(photoPath!=null)
-//                   file = new File(photoPath);
-//            if(file.exists()){
-//                Bitmap bm = BitmapFactory.decodeFile(photoPath);
-//                holder.userPhoto.setImageBitmap(bm);
-//            }
-//
-//
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        holder.userPhoto.setImageBitmap((Bitmap) mData.get(position).get("userPhoto"));
         holder.userName.setText( mData.get(position).get("userName").toString());
         holder.orderName.setText( (mData.get(position).get("orderName").toString()));
         holder.expressCompanyName.setText( mData.get(position).get("expressCompanyName").toString());
-        holder.expressCompanyAdress.setText( mData.get(position).get("expressCompanyAddress").toString());
-        holder.receiveAdressName.setText( mData.get(position).get("receiveAddressName").toString());
+        holder.expressCompanyAddress.setText( mData.get(position).get("expressCompanyAddress").toString());
+        holder.receiveAddressName.setText( mData.get(position).get("receiveAddressName").toString());
         holder.addTime.setText(mData.get(position).get("addTime").toString());
         holder.orderState.setText( mData.get(position).get("orderState").toString());
         /*返回修改好的view*/
@@ -101,8 +85,8 @@ public class ExpressOrderAdapter extends SimpleAdapter {
         TextView userName;
         TextView orderName;
         TextView expressCompanyName;
-        TextView expressCompanyAdress;
-        TextView receiveAdressName;
+        TextView expressCompanyAddress;
+        TextView receiveAddressName;
         TextView addTime;
         TextView orderState;
     }

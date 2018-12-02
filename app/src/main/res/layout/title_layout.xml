@@ -6,7 +6,7 @@
     android:background="#D64F4D"
     >
     <TextView
-        android:id="@+id/title_layout"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"

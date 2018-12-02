@@ -24,7 +24,7 @@ android {
 
 dependencies {
     implementation 'com.android.support:appcompat-v7:26.0.0'
-    implementation 'com.android.support:cardview-v7:26.0.+'
+    implementation 'com.android.support:cardview-v7:26.0.0'
     implementation 'com.android.support:design:26.0.0'
     implementation files('libs/AMap_Location_V4.0.1_20180426.jar')
     implementation files('libs/AMap_Search_V6.1.0_20180330.jar')

@@ -17,7 +17,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-public class ReceiveAddressAdapter extends SimpleAdapter implements View.OnClickListener {
+public class ReceiveAddressAdapter extends SimpleAdapter {
     /*需要绑定的控件资源id*/
     private int[] mTo;
     /*map集合关键字数组*/
@@ -50,7 +50,7 @@ public class ReceiveAddressAdapter extends SimpleAdapter implements View.OnClick
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ReceiveAddressAdapter.ViewHolder holder = null;
         ///*第一次装载这个view时=null,就新建一个调用inflate渲染一个view*/
         if (convertView == null) convertView = mInflater.inflate(R.layout.receiveadress_list_item, null);
@@ -61,8 +61,12 @@ public class ReceiveAddressAdapter extends SimpleAdapter implements View.OnClick
         holder.receiveName = (TextView)convertView.findViewById(R.id.receiveName);
         holder.receivePhone = (TextView)convertView.findViewById(R.id.receivePhone);
         holder.edit=convertView.findViewById(R.id.edit);
-        holder.edit.setOnClickListener(this);
-        holder.edit.setTag(position);
+        holder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnItemEditListener.onDeleteClick(position);
+            }
+        });
         /*设置各个控件的展示内容*/
         holder.receiveAddressName.setText( mData.get(position).get("receiveAddressName").toString());
         holder.receiveName.setText(mData.get(position).get("receiveName").toString());
@@ -70,6 +74,20 @@ public class ReceiveAddressAdapter extends SimpleAdapter implements View.OnClick
         /*返回修改好的view*/
         return convertView;
     }
+    //响应按钮点击事件,调用子定义接口，并传入View
+
+    /**
+     * 编辑按钮的监听接口
+     */
+    public interface onItemEditListener {
+        void onDeleteClick(int i);
+    }
+    private onItemEditListener mOnItemEditListener;
+
+    public void setOnItemEditClickListener(onItemEditListener mOnItemEditListener) {
+        this.mOnItemEditListener = mOnItemEditListener;
+    }
+
 
     static class ViewHolder{
         TextView receiveAddressName;
@@ -77,12 +95,4 @@ public class ReceiveAddressAdapter extends SimpleAdapter implements View.OnClick
         TextView receivePhone;
         ImageView edit;
     }
-    //响应按钮点击事件,调用子定义接口，并传入View
-    @Override
-    public void onClick(View v) {
-        mListener.clickListener(v);
-    }
-
-
-
 }

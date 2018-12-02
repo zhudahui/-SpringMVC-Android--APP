@@ -1175,6 +1175,7 @@ id ALT
 id BtnAdd
 id BtnUpdate
 id CTRL
+id ET_Evaluate
 id ET_addTime
 id ET_address
 id ET_companyName
@@ -1236,6 +1237,7 @@ id Spinner_userObj
 id Spinner_userType
 id TR_auth
 id TR_authFile
+id TV_Evaluate
 id TV_addTime
 id TV_addTime_Label
 id TV_address
@@ -1367,6 +1369,7 @@ id alertTitle
 id all
 id always
 id async
+id authFile
 id auto
 id ba
 id back_btn
@@ -1384,6 +1387,7 @@ id btnGetOrder
 id btnQuery
 id btnRegister
 id btnReturn
+id btnUpload
 id btnViewOrder
 id btn_authFile
 id btn_cancel
@@ -1565,7 +1569,6 @@ id re2
 id receiveAddress
 id receiveAddressName
 id receiveAdress
-id receiveAdressName
 id receiveCode
 id receiveName
 id receivePhone
@@ -1659,7 +1662,6 @@ id thirdBtn
 id time
 id title
 id titleDividerNoCustom
-id title_layout
 id title_template
 id top
 id topPanel
@@ -1688,6 +1690,7 @@ id tv_orderStateId
 id tv_orderStateName
 id tv_orderStateObj
 id tv_publishDate
+id tv_receiveAddressName
 id tv_receiveMemo
 id tv_receiverName
 id tv_search
@@ -1877,6 +1880,7 @@ layout route_activity
 layout search_layout
 layout search_list_item
 layout second_hand
+layout secondexpressorder_detail
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -1895,6 +1899,7 @@ layout title_layout
 layout title_list
 layout tooltip
 layout user_login
+layout userauth
 layout userinfo_add
 layout userinfo_detail
 layout userinfo_edit

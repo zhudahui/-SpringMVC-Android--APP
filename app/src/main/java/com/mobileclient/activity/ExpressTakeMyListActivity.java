@@ -7,7 +7,6 @@ import java.util.Map;
 
 import com.mobileclient.adapter.ExpressOrderAdapter;
 import com.mobileclient.app.Declare;
-import com.mobileclient.domain.ExpressTake;
 import com.mobileclient.domain.Order;
 import com.mobileclient.domain.ReceiveAddress;
 import com.mobileclient.domain.User;
@@ -15,7 +14,7 @@ import com.mobileclient.service.ExpressTakeService;
 import com.mobileclient.service.OrderService;
 import com.mobileclient.service.ReceiveAddressService;
 import com.mobileclient.service.UserService;
-import com.mobileclient.util.ActivityUtils;import com.mobileclient.util.ExpressTakeSimpleAdapter;
+import com.mobileclient.util.ActivityUtils;
 import com.mobileclient.util.HttpUtil;
 import com.mobileclient.util.ImageService;
 
@@ -59,6 +58,7 @@ public class ExpressTakeMyListActivity extends Activity {
 	User user=new User();
 	UserService userService=new UserService();
 	ReceiveAddress receiveAddress=new ReceiveAddress();
+	private int userId;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -69,21 +69,19 @@ public class ExpressTakeMyListActivity extends Activity {
 		setContentView(R.layout.expresstake_list);
 		dialog = MyProgressDialog.getInstance(this);
 		Declare declare = (Declare) getApplicationContext();
-		String username = declare.getUserName();
+		userId=declare.getUserId();
 		//标题栏控件
-		ImageView search = (ImageView) this.findViewById(R.id.search);
-		search.setImageResource(R.drawable.btn_add);
-		search.setOnClickListener(new View.OnClickListener() {
+		ImageView orderAdd = (ImageView) this.findViewById(R.id.search);
+		orderAdd.setImageResource(R.drawable.btn_add);
+		orderAdd.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent=new Intent();
-				intent.setClass(ExpressTakeMyListActivity.this,ExpressOrderAddActivity.class);
-				startActivity(intent);
+				startActivityForResult(new Intent(ExpressTakeMyListActivity.this, ExpressOrderAddActivity.class), 1);
 			}
 		});
 		TextView title = (TextView) this.findViewById(R.id.title);
 		title.setText("我发布的快递代拿");
-		Log.i("zhu7777","我发布的快递代拿");
+		Log.i("zhu7777","我发布的快递代拿"+declare.getUserId());
 		ImageView add_btn = (ImageView) this.findViewById(R.id.add_btn);
 		add_btn.setImageResource(R.drawable.btn_left_normal);
 		add_btn.setVisibility(View.GONE);
@@ -104,19 +102,14 @@ public class ExpressTakeMyListActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==ActivityUtils.QUERY_CODE && resultCode==RESULT_OK){
-        	Bundle extras = data.getExtras();
-        	if(extras != null)
-				queryConditionExpressOrder = (Order)extras.getSerializable("queryConditionExpressTake");
-        	setViews();
-        }
-        if(requestCode==ActivityUtils.EDIT_CODE && resultCode==RESULT_OK){
-        	setViews();
-        }
-        if(requestCode == ActivityUtils.ADD_CODE && resultCode == RESULT_OK) {
-			queryConditionExpressOrder = null;
-        	setViews();
-        }
+		if(requestCode==ActivityUtils.UPDATE_CODE&&resultCode==RESULT_OK) {    //从Detail页面回来
+			Bundle extras = data.getExtras();
+			if (extras != null) {
+				int p = extras.getInt("p");
+				if (p == 1)
+					setViews();
+			}
+		}
     }
 
 	private void setViews() {
@@ -151,9 +144,10 @@ public class ExpressTakeMyListActivity extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
             	int orderId = Integer.parseInt(list.get(arg2).get("orderId").toString());
             	Intent intent = new Intent();
-            	intent.setClass(ExpressTakeMyListActivity.this, ExpressTakeDetailActivity.class);
-            	Bundle bundle = new Bundle();
+            	//intent.setClass(ExpressTakeMyListActivity.this, ExpressTakeDetailActivity.class);
+				Bundle bundle = new Bundle();
 				bundle.putInt("orderId", orderId);
+				bundle.putInt("userId",Integer.parseInt(list.get(arg2).get("userId").toString()));
 				bundle.putString("orderName",list.get(arg2).get("orderName").toString());
 				bundle.putString("userName",list.get(arg2).get("userName").toString());
 				bundle.putByteArray("photo", (byte[]) list.get(arg2).get("photo"));
@@ -168,9 +162,23 @@ public class ExpressTakeMyListActivity extends Activity {
 				bundle.putString("orderPay",list.get(arg2).get("orderPay").toString());
 				bundle.putString("orderState",list.get(arg2).get("orderState").toString());
 				bundle.putString("addTime",list.get(arg2).get("addTime").toString());
-				intent.putExtras(bundle);
-				startActivity(intent);
-            }
+				bundle.putInt("receiveAddressId",Integer.parseInt(list.get(arg2).get("receiveAddressId").toString()));
+				bundle.putString("evaluate",list.get(arg2).get("evaluate").toString());
+				bundle.putInt("takeUserId", Integer.parseInt(list.get(arg2).get("takeUserId").toString()));
+				if (list.get(arg2).get("evaluate").toString().equals("--")||list.get(arg2).get("evaluate").toString().equals("请评价")) {//若评价为空
+					intent.putExtras(bundle);
+					intent.setClass(ExpressTakeMyListActivity.this, ExpressOrderDetailActivity.class);   //已评价
+					startActivityForResult(intent, ActivityUtils.UPDATE_CODE);
+				}
+				else {
+					Log.i("zhu111", "已评价");
+					intent.setClass(ExpressTakeMyListActivity.this, SecondOrderDetailActivity.class);   //已评价
+					intent.putExtras(bundle);
+					startActivity(intent);
+				}
+
+
+			}
         });
 	}
 	private OnCreateContextMenuListener expressTakeListItemListener = new OnCreateContextMenuListener() {
@@ -227,7 +235,7 @@ public class ExpressTakeMyListActivity extends Activity {
 			/* 查询快递代拿信息 */
 			ReceiveAddressService receiveAdressService=new ReceiveAddressService();
 			/* 查询快递代拿信息 */
-			List<Order> expressOrderList = orderService.OrderQuery(queryConditionExpressOrder);
+			List<Order> expressOrderList = orderService.UserQuery(userId);
 			for (int i = 0; i < expressOrderList.size(); i++) {
 				Map<String, Object> map = new HashMap<String, Object>();
 				map.put("orderId",expressOrderList.get(i).getOrderId());
@@ -243,9 +251,10 @@ public class ExpressTakeMyListActivity extends Activity {
 				map.put("userPhoto",userPhoto);
 				map.put("expressCompanyName", expressOrderList.get(i).getExpressCompanyName());
 				map.put("expressCompanyAddress", expressOrderList.get(i).getExpressCompanyAddress());
+				map.put("receiveAddressId", expressOrderList.get(i).getReceiveAddressId());
 				// 根据获取到的地址Id，查询地址名以及收获人姓名
 				receiveAddress=receiveAdressService.QueryReceiveAdress(expressOrderList.get(i).getReceiveAddressId());
-				Log.i("zhu1111","查询"+receiveAddress.getReceiveAddressName());
+				Log.i("zhu1111","查询ttt"+receiveAddress.getReceiveAddressName());
 				map.put("receiveAddressName", receiveAddress.getReceiveAddressName());
 				map.put("receiveName",receiveAddress.getReceiveName());
 				map.put("receivePhone",receiveAddress.getReceivePhone());
@@ -254,6 +263,8 @@ public class ExpressTakeMyListActivity extends Activity {
 				map.put("orderPay", expressOrderList.get(i).getOrderPay());
 				map.put("remark", expressOrderList.get(i).getRemark());
 				map.put("receiveCode", expressOrderList.get(i).getReceiveCode());
+				map.put("evaluate",expressOrderList.get(i).getOrderEvaluate());
+				map.put("takeUserId",expressOrderList.get(i).getTakeUserId());
 				//map.put("userPhone", expressOrderList.get(i).getAddTime());
 				list.add(map);
 			}

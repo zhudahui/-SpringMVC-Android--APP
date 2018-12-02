@@ -178,7 +178,7 @@ public class ExpressTakeDetailActivity extends Activity {
 //                    TakeOrder takeOrder= takeOrderService.QueryTakeOrder(queryConditionTakeOrder).get(0);
 //
 //                    Intent intent = new Intent();
-//                    intent.setClass(ExpressOrderDetailActivity.this, TakeOrderDetailActivity.class);
+//
 //                    Bundle bundle = new Bundle();
 //                    bundle.putInt("orderId", takeOrder.getOrderId());
 //                    intent.putExtras(bundle);

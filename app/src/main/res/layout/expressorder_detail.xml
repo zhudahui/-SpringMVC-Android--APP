@@ -209,6 +209,23 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center">
+                <EditText
+                    android:text=""
+                    android:id="@+id/ET_Evaluate"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_weight="4"
+                    android:layout_marginTop="5dip"
+                    android:background="@drawable/btn_item_medium_default"
+                    android:drawableLeft="@drawable/ic_user_pwd"
+                    android:drawablePadding="5dp"
+                    android:ellipsize="end"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:singleLine="false"
+                    android:scrollHorizontally="false"
+                    android:layout_marginRight="5dp"
+                    android:visibility="gone"/>
                 <Button
                     android:text="我要抢单"
                     android:id="@+id/btnGetOrder"

@@ -119,9 +119,9 @@ public class UserService {
                     .add("userAuthFile", user.getUserAuthFile())
                     .add("regTime", user.getRegTime())
                     .add("action", "update")
+                    .add("userAuthFile",user.getUserAuthFile())
                     .build();
-
-            Request request=new Request.Builder().url(HttpUtil.BASE_URL + "UserInfoServlet?").post(body).build();
+            Request request=new Request.Builder().url(HttpUtil.BASE_URL + "user/update?").post(body).build();
             //resultByte = HttpUtil.SendPostRequest(HttpUtil.BASE_URL + "UserInfoServlet?", params, "UTF-8");
             //String result = new String(resultByte, "UTF-8");
             Response reponse=client.newCall(request).execute();

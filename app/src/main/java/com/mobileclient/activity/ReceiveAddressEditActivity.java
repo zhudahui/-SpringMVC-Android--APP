@@ -8,6 +8,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ public class ReceiveAddressEditActivity extends Activity {
     private TextView save;
     private Declare declare;
     private Button btnDelete;
+    private ImageView back;
     ReceiveAddress receiveAddress=new ReceiveAddress();
     ReceiveAddressService receiveAddressService=new ReceiveAddressService();
     @Override
@@ -39,6 +41,13 @@ public class ReceiveAddressEditActivity extends Activity {
         ET_receiveName=findViewById(R.id.et_receiveName);
         ET_reivePhone=findViewById(R.id.et_receivePhone);
         receiveState=findViewById(R.id.receiveState);
+        back=findViewById(R.id.back_btn);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         btnDelete=findViewById(R.id.btnDelete);
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +66,7 @@ public class ReceiveAddressEditActivity extends Activity {
         ET_reivePhone.setText(extras.getString("receivePhone"));
         String state=extras.getString("receiveState");
         final int receiveId=extras.getInt("receiveId");
-        if(state.equals("0"))
+        if(state.equals("1"))
             receiveState.setChecked(true);
         receiveState.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

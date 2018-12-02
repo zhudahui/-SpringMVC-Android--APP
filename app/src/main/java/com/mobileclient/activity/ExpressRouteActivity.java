@@ -129,6 +129,18 @@ public class ExpressRouteActivity extends Activity implements OnMapClickListener
 
             getLatlon(value);
         }
+        /***
+         *
+         *
+         * 定位
+         */
+        aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
+        mLocationOption.setOnceLocation(true);
+        aMap.setMyLocationType(AMap.LOCATION_TYPE_MAP_FOLLOW);
+        aMap.setMyLocationType(AMap.LOCATION_TYPE_MAP_ROTATE);
+        mLocationOption.setOnceLocation(false);
+        mlocationClient.setLocationOption(mLocationOption);
+        mlocationClient.startLocation();
     }
 
     private void setfromandtoMarker() {
@@ -152,8 +164,8 @@ public class ExpressRouteActivity extends Activity implements OnMapClickListener
                             .defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
         }
         registerListener();
-        mGPSModeGroup = (RadioGroup) findViewById(R.id.gps_radio_group);
-        mGPSModeGroup.setOnCheckedChangeListener(this);
+       // mGPSModeGroup = (RadioGroup) findViewById(R.id.gps_radio_group);
+//        mGPSModeGroup.setOnCheckedChangeListener(this);
         mLocationErrText = (TextView)findViewById(R.id.location_errInfo_text);
         mLocationErrText.setVisibility(View.GONE);
         mRouteSearch = new RouteSearch(this);

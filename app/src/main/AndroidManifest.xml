@@ -92,13 +92,8 @@
         <activity android:name=".OrderStateAddActivity" />
         <activity android:name=".OrderStateEditActivity" />
         <activity android:name=".OrderStateDetailActivity" />
-        <activity android:name=".TakeOrderListActivity" />
         <activity android:name=".TakeOrderUserListActivity" android:configChanges="keyboard|keyboardHidden"/>
-        <activity android:name=".TakeOrderQueryActivity" />
-        <activity android:name=".TakeOrderAddActivity" />
-        <activity android:name=".TakeOrderEditActivity" />
         <activity android:name=".TakeOrderUserEditActivity" />
-        <activity android:name=".TakeOrderDetailActivity" />
         <activity android:name=".NoticeListActivity" />
         <activity android:name=".NoticeQueryActivity" />
         <activity android:name=".NoticeAddActivity" />
@@ -132,11 +127,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TakeOrderDetail2Activity" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".ExpressOrderListActivity"/>
         <activity android:name=".ExpressOrderAddActivity" />
         <activity android:name=".ExpressOrderDetailActivity"/>
+        <activity android:name=".ReceiveAddressListActivity"/>
+        <activity android:name=".ReceiveAddressEditActivity"/>
+        <activity android:name=".ReceiveAddressAddActivity"/>
+        <activity android:name=".SecondAddressListActivity"/>
+        <activity android:name=".SecondOrderDetailActivity"/>
+        <activity android:name=".UserAuthActivity"/>
     </application>
 
 </manifest>

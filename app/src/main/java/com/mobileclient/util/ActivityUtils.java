@@ -27,7 +27,7 @@ public class ActivityUtils {
 	public static final int QUERY_CODE = 1000;
 	public static final int EDIT_CODE = 1001;
 	public static final int ADD_CODE = 1002;
-
+	public static final int UPDATE_CODE = 1003;
 	private static ActivityUtils activityTransitionUtils;
 	public static List<Activity> activityList = new ArrayList<Activity>();
 

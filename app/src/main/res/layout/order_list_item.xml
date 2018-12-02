@@ -31,7 +31,7 @@
             android:layout_marginLeft="30dp"/>
 
         <TextView
-            android:id="@+id/expressCompanyAdress"
+            android:id="@+id/expressCompanyAddress"
             android:layout_width="100dp"
             android:layout_height="20dp"
             android:layout_toRightOf="@id/userPhoto"
@@ -40,7 +40,7 @@
             android:layout_marginLeft="30dp"/>
 
         <TextView
-            android:id="@+id/receiveAdressName"
+            android:id="@+id/tv_receiveAddressName"
             android:layout_width="100dp"
             android:layout_height="20dp"
             android:layout_below="@id/expressCompanyName"
@@ -51,7 +51,7 @@
             android:id="@+id/addTime"
             android:layout_width="100dp"
             android:layout_height="20dp"
-            android:layout_below="@id/expressCompanyAdress"
+            android:layout_below="@id/expressCompanyAddress"
             android:layout_toRightOf="@id/userName"
             android:hint="发布时间"
             android:layout_marginLeft="22dp"/>
@@ -59,7 +59,7 @@
             android:id="@+id/orderState"
             android:layout_width="100dp"
             android:layout_height="20dp"
-            android:layout_below="@id/expressCompanyAdress"
+            android:layout_below="@id/expressCompanyAddress"
             android:layout_toRightOf="@id/orderName"
             android:hint="订单状态"/>
      </RelativeLayout>

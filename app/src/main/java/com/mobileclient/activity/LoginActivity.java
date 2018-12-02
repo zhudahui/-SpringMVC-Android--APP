@@ -92,7 +92,8 @@ public class LoginActivity extends Activity {
                             if(user!=null){ //验证用户是否存在
                                 if(user.getUserPassword().equals(et_userPwd.getText().toString()))   //用户账号存在时验证密码是否正确
                                 {
-                                    declare.setUserId(Integer.parseInt(et_userId.getText().toString()));   //将学号存储为全局可用
+                                    declare.setUserId(Integer.parseInt(et_userId.getText().toString()));
+                                    Log.i("pppppppp","cccc"+declare.getUserId());//将学号存储为全局可用
                                     declare.setUserName(user.getUserName());
                                     declare.setUserType(user.getUserType());
                                     declare.setUserPhoto(user.getUserPhoto());
@@ -101,6 +102,9 @@ public class LoginActivity extends Activity {
                                     declare.setRegTime(user.getRegTime());
                                     declare.setUserEmail(user.getUserEmail());
                                     declare.setUserReputation(user.getUserReputation());
+                                    declare.setUserAuthFile(user.getUserAuthFile());
+                                    declare.setUserPhone(user.getUserPhone());
+                                    declare.setUserPassword(user.getUserPassword());
 
                                     handler.sendEmptyMessage(1);
                                 }

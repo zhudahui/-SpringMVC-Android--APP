@@ -175,7 +175,7 @@ public class MainMenuActivity extends Activity {
 		public void onClick(View v) {
 			Intent intent = new Intent();
 			// 启动代拿订单管理Activity
-			intent.setClass(MainMenuActivity.this, TakeOrderListActivity.class);
+			intent.setClass(MainMenuActivity.this, TakeOrderUserListActivity.class);
 			startActivity(intent);
 		}
 	};

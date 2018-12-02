@@ -5,8 +5,6 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
-import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,19 +14,15 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.mobileclient.adapter.CircleImageView;
 import com.mobileclient.adapter.SearchAdapter;
 import com.mobileclient.domain.ExpressTake;
 import com.mobileclient.service.ExpressTakeService;
-import com.mobileclient.util.ExpressTakeSimpleAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;

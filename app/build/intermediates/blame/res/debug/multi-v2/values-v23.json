@@ -4,7 +4,7 @@
             "outputFile": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.0.2.aar/a00bb0020977fb9f7a61cd56c9369acc/res/values-v23/values-v23.xml",
+                    "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.0.0.aar/1a2d79291c6fff7e217a65009680e3af/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

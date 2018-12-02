@@ -82,6 +82,7 @@ public class ExpressOrderDetailActivity extends Activity {
     private int takeUserId;
     private int  flag;
     private int  p=0; //判断是否发生数据更新，1发生。0否
+    private int q=0;//异步抢单
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -258,11 +259,49 @@ public class ExpressOrderDetailActivity extends Activity {
             btnGetOrder.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(btnGetOrder.getText().toString().equals("等待确认收货")){
-                        Toast.makeText(ExpressOrderDetailActivity.this, "对方还未确认收货！", Toast.LENGTH_SHORT).show();
+                    if(flag==1) {
+                        final Handler handler = new Handler() {
+                            @Override
+                            public void handleMessage(Message msg) {
+                                super.handleMessage(msg);
+                                if (msg.what == 0x123) {
+                                    if (msg.getData().getInt("takeUserId") != -1) {
+                                        Toast.makeText(ExpressOrderDetailActivity.this, "已有人接单！", Toast.LENGTH_SHORT).show();
+                                        tx_orderState.setText("送单中");
+                                    }
+                                    else
+                                        showDialog();
+                                }
+                            }
+                        };
+
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    order =  orderService.QueryTake(order.getOrderId());
+                                    Bundle bundle = new Bundle();
+                                    bundle.putInt("takeUserId", order.getTakeUserId());
+                                    Log.i("zhuUser",""+order.getTakeUserId());
+                                    Message msg = new Message();
+                                    msg.what = 0x123;
+                                    msg.setData(bundle);
+                                    handler.sendMessage(msg);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }).start();
+
+                        p=1;
                     }
-                    else
-                   showDialog();
+                    else {
+                        if (btnGetOrder.getText().toString().equals("等待确认收货")) {
+                            Toast.makeText(ExpressOrderDetailActivity.this, "对方还未确认收货！", Toast.LENGTH_SHORT).show();
+                        } else
+                            showDialog();
+
+                    }
 
                 }
             });

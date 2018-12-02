@@ -85,7 +85,7 @@ public class MoreActivity extends Activity {
             }
         });
 		if(declare.getIdentify().equals("user"))
-			strs = new String[]{"通知公告","个人信息","收货地址","我的快递","关于"};
+			strs = new String[]{"通知公告","个人信息","收货地址","身份认证","关于"};
 		
 		list.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -98,7 +98,7 @@ public class MoreActivity extends Activity {
 						startActivity(intent);
 					}
 					if(arg2 == 1){
-						Intent intent  = new Intent(MoreActivity.this, TakeOrderListActivity.class);
+						Intent intent  = new Intent(MoreActivity.this, TakeOrderUserListActivity.class);
 						startActivity(intent);
 					}
 					if(arg2 == 2){
@@ -133,7 +133,7 @@ public class MoreActivity extends Activity {
 						startActivity(intent);
 					}
 					if(arg2 == 3){
-						Intent intent  = new Intent(MoreActivity.this, ExpressTakeMyListActivity.class);
+						Intent intent  = new Intent(MoreActivity.this, UserAuthActivity.class);
 						startActivity(intent);
 					}
 					if(arg2 == 4){

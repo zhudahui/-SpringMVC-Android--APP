@@ -224,6 +224,7 @@ public class RegisterActivity extends Activity {
 							user.setUserMoney("" + 0);
 							user.setUserAuthFile("");
 							user.setRegTime("" + 100);
+							user.setUserAuthFile("--");
 							userService.AddUserInfo(user);
 							msg.what = 0x123;
 						}
