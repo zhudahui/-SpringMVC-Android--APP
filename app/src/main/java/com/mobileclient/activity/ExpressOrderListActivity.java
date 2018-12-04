@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.mobileclient.adapter.ExpressOrderAdapter;
 import com.mobileclient.app.Declare;
+import com.mobileclient.app.RefreshListView;
 import com.mobileclient.domain.Order;
 import com.mobileclient.domain.ReceiveAddress;
 import com.mobileclient.domain.User;
@@ -27,25 +28,30 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnCreateContextMenuListener;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
+import android.widget.ArrayAdapter;
+
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 
-public class ExpressOrderListActivity extends Activity {
+public class ExpressOrderListActivity extends Activity implements RefreshListView.OnRefreshListener,RefreshListView.OnLoadMoreListener{
     ExpressOrderAdapter adapter;
-    ListView lv;
+    private RefreshListView lv;
     List<Map<String, Object>> list;
     int orderId;
     /* 快递代拿操作业务逻辑层对象 */
@@ -59,6 +65,14 @@ public class ExpressOrderListActivity extends Activity {
     User user=new User();
     ReceiveAddress receiveAddress=new ReceiveAddress();
     Declare declare ;
+    //================下拉刷新==============================
+    private final static int REFRESH_COMPLETE = 0;
+    private final static int LOAD_COMPLETE = 1;
+    //==============================================
+    private ViewPager advPager1 = null;
+    private ViewPager viewPager;
+    private View view1, view2, view3;
+    private List<View> viewList;//view数组
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,6 +128,54 @@ public class ExpressOrderListActivity extends Activity {
         //	queryConditionExpressTake = null;
         //	setViews();
         //}
+        //===================================================
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        LayoutInflater inflater=getLayoutInflater();
+        view1 = inflater.inflate(R.layout.layout1, null);
+        view2 = inflater.inflate(R.layout.layout2,null);
+        view3 = inflater.inflate(R.layout.layout3, null);
+
+        viewList = new ArrayList<View>();// 将要分页显示的View装入数组中
+        viewList.add(view1);
+        viewList.add(view2);
+        viewList.add(view3);
+
+
+        PagerAdapter pagerAdapter = new PagerAdapter() {
+
+            @Override
+            public boolean isViewFromObject(View arg0, Object arg1) {
+                // TODO Auto-generated method stub
+                return arg0 == arg1;
+            }
+
+            @Override
+            public int getCount() {
+                // TODO Auto-generated method stub
+                return viewList.size();
+            }
+
+            @Override
+            public void destroyItem(ViewGroup container, int position,
+                                    Object object) {
+                // TODO Auto-generated method stub
+                container.removeView(viewList.get(position));
+            }
+
+            @Override
+            public Object instantiateItem(ViewGroup container, int position) {
+                // TODO Auto-generated method stub
+                container.addView(viewList.get(position));
+
+
+                return viewList.get(position);
+            }
+        };
+
+
+        viewPager.setAdapter(pagerAdapter);
+
+        //===============================================
         setViews();
     }
 
@@ -162,15 +224,17 @@ public class ExpressOrderListActivity extends Activity {
                 });
             }
         }.start();
-
+        lv.setOnRefreshListener(this);
+        lv.setOnLoadMoreListener(this);
         // 添加点击
         lv.setOnCreateContextMenuListener(expressTakeListItemListener);
         lv.setOnItemClickListener(new OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
+                arg2=arg2-1;
+                Log.i("zhu1111","查询ttt"+Integer.parseInt(list.get(arg2).get("orderId").toString()));
                 int orderId = Integer.parseInt(list.get(arg2).get("orderId").toString());
                 Intent intent = new Intent();
-
                 Bundle bundle = new Bundle();
                 bundle.putInt("orderId", orderId);
                 bundle.putInt("userId",Integer.parseInt(list.get(arg2).get("userId").toString()));
@@ -295,7 +359,6 @@ public class ExpressOrderListActivity extends Activity {
                 map.put("receiveAddressId", expressOrderList.get(i).getReceiveAddressId());
                // 根据获取到的地址Id，查询地址名以及收获人姓名
                 receiveAddress=receiveAdressService.QueryReceiveAdress(expressOrderList.get(i).getReceiveAddressId());
-                Log.i("zhu1111","查询ttt"+receiveAddress.getReceiveAddressName());
                 map.put("receiveAddressName", receiveAddress.getReceiveAddressName());
                 map.put("receiveName",receiveAddress.getReceiveName());
                 map.put("receivePhone",receiveAddress.getReceivePhone());
@@ -313,5 +376,34 @@ public class ExpressOrderListActivity extends Activity {
             //Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
         }
         return list;
+    }
+//    /***下拉刷新***/
+//    private Handler mHandler = new Handler(){
+//        public void handleMessage(android.os.Message msg) {
+//            switch (msg.what) {
+//                case REFRESH_COMPLETE:
+//                    setViews();
+//                    //mListView.setOnRefreshComplete();
+//                   // mAdapter.notifyDataSetChanged();
+//                    break;
+//                case LOAD_COMPLETE:
+//                   // setViews();
+//                   // mListView.setOnLoadMoreComplete();
+//                    //mAdapter.notifyDataSetChanged();
+//                    break;
+//            }
+//        };
+//    };
+
+    @Override
+    public void onRefresh() {
+        setViews();
+        lv.setOnRefreshComplete();
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onLoadMore() {
+
     }
 }

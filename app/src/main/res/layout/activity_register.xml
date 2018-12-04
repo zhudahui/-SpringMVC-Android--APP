@@ -40,39 +40,15 @@
                 </TableRow>
                 <TableRow android:layout_marginTop="8dp">
                     <TextView
-                        android:text="学号："
-                        android:id="@+id/TV_userId"
+                        android:text="登录名："
+                        android:id="@+id/TV_nickName"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textColor="@color/hint_color"
                         android:layout_weight="1.5"/>
                     <EditText
                         android:text=""
-                        android:id="@+id/ET_userId"
-                        android:layout_width="0dp"
-                        android:layout_weight="4"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="5dip"
-                        android:layout_marginRight="5dp"
-                        android:background="@drawable/btn_item_medium_default"
-                        android:drawableLeft="@drawable/ic_user_info"
-                        android:drawablePadding="10dp"
-                        android:ellipsize="end"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="4dp"
-                        android:singleLine="true"/>
-                </TableRow>
-                <TableRow android:layout_marginTop="8dp">
-                    <TextView
-                        android:text="姓名："
-                        android:id="@+id/TV_userName"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/hint_color"
-                        android:layout_weight="1.5"/>
-                    <EditText
-                        android:text=""
-                        android:id="@+id/ET_userName"
+                        android:id="@+id/ET_nickName"
                         android:layout_width="0dp"
                         android:layout_weight="4"
                         android:layout_height="40dp"

@@ -59,7 +59,8 @@ public class RegisterActivity extends Activity {
 	// 声明登录、取消按钮
 	private Button btnRegister;
 	// 声明用户名、密码输入框
-	private EditText userId,userName,userPassword,userType,userPhone,userGender,userEmail;
+	private EditText userId,userPassword,nickName,userPhone,userGender,userEmail;
+
 	public static final int TO_SELECT_PHOTO = 3;
 	private  CircleImageView userPhoto;
 	User user1=new User();
@@ -83,8 +84,8 @@ public class RegisterActivity extends Activity {
 		// 设置当前Activity界面布局
 		setContentView(R.layout.activity_register);
 		// 通过findViewById方法实例化组件
-		userId = findViewById(R.id.ET_userId);
-		userName = findViewById(R.id.ET_userName);
+		//userId = findViewById(R.id.ET_userId);
+		nickName=findViewById(R.id.ET_nickName);   //用户名
 		userPassword = findViewById(R.id.ET_userPwd);
 		userPhoto=findViewById(R.id.userPhoto);
 		//userType = findViewById(R.id.ET_userType);
@@ -92,6 +93,7 @@ public class RegisterActivity extends Activity {
 		userGender = findViewById(R.id.ET_userGender);
 		userEmail = findViewById(R.id.ET_userEmail);
 		btnRegister = findViewById(R.id.btnRegister);
+
         userPhoto.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -101,20 +103,14 @@ public class RegisterActivity extends Activity {
 		btnRegister.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(userId.getText().toString().equals(""))
+				if(nickName.getText().toString().equals(""))
 				{
-					Toast.makeText(RegisterActivity.this, "学号输入不能为空!", Toast.LENGTH_LONG).show();
-					userId.setFocusable(true);
-					userId.requestFocus();
+					Toast.makeText(RegisterActivity.this, "用户名输入不能为空!", Toast.LENGTH_LONG).show();
+					nickName.setFocusable(true);
+					nickName.requestFocus();
 					return;
 				}
-				if(userName.getText().toString().equals(""))
-				{
-					Toast.makeText(RegisterActivity.this, "姓名输入不能为空!", Toast.LENGTH_LONG).show();
-					userName.setFocusable(true);
-					userName.requestFocus();
-					return;
-				}if(userPassword.getText().toString().equals(""))
+				if(userPassword.getText().toString().equals(""))
 				{
 					Toast.makeText(RegisterActivity.this, "密码输入不能为空!", Toast.LENGTH_LONG).show();
 					userPassword.setFocusable(true);
@@ -206,25 +202,26 @@ public class RegisterActivity extends Activity {
 				Bundle bundle = new Bundle();
 				Message msg = new Message();
 				try {
-					user1 = userService.GetUserInfo(Integer.parseInt(userId.getText().toString()));
+					user1 = userService.GetUserInfo(nickName.getText().toString());    //验证登录名是否已被其他人注册
 					//Log.i("pppp","wooo"+user);
 				//	user.setUserPhoto("111");
 					if (user1==null) {
 						if(imagePath!=null) {
 							upload();
 							user.setUserPhoto(photo);
-							user.setUserId(Integer.parseInt(userId.getText().toString()));
-							user.setUserName(userName.getText().toString());
+							user.setUserName("--");
 							user.setUserPassword(userPassword.getText().toString());
 							user.setUserType("普通用户");
 							user.setUserPhone(userPhone.getText().toString());
 							user.setUserGender(userGender.getText().toString());
 							user.setUserEmail(userEmail.getText().toString());
-							user.setUserReputation(100);
-							user.setUserMoney("" + 0);
+							user.setUserReputation(100);   //用户初始信誉为100
+							user.setUserMoney("" + 6);   //用户初始余额为6元
 							user.setUserAuthFile("");
 							user.setRegTime("" + 100);
 							user.setUserAuthFile("--");
+							user.setStudentId(-1);     //未认证用户学生号默认为-1
+							user.setNickName(nickName.getText().toString());
 							userService.AddUserInfo(user);
 							msg.what = 0x123;
 						}

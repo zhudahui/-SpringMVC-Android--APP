@@ -47,7 +47,9 @@ public class Declare extends Application {
 	private int  userReputation;        //用户信誉分
 	private String userMoney;           //用户资金
 	private String userAuthFile;        //认证文件
-	private String regTime;             //创建事件
+	private String regTime;             //创建时间
+	private String nickName;           //登录名
+	private int studentId;         //学号
     public String getUserName() {
 		return userName;
 	}
@@ -159,5 +161,21 @@ public class Declare extends Application {
 
 	public void setUserReputation(int userReputation) {
 		this.userReputation = userReputation;
+	}
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
+	public int getStudentId() {
+		return studentId;
+	}
+
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
 	}
 }

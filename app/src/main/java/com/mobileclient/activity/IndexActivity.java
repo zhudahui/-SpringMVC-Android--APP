@@ -42,7 +42,7 @@ import android.widget.Toast;
 
 import com.mobileclient.app.Declare;
 
-import com.xp.calendar.calendar.MainActivity;
+
 
 public class IndexActivity extends Activity {
 	//TabHost tabhost;
@@ -159,7 +159,7 @@ public class IndexActivity extends Activity {
 			public void onClick(View v) {
 				Uri uri = Uri.parse("tel:"+8470388);
 				Intent intent = new Intent(Intent.ACTION_CALL, uri);
-				startActivity(intent);
+				//startActivity(intent);
 			}
 		});
 		iv2.setOnClickListener(new View.OnClickListener() {

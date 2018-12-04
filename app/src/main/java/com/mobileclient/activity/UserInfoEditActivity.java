@@ -75,8 +75,8 @@ public class UserInfoEditActivity extends Activity {
 	// 声明登录、取消按钮
 	private Button btnEdit;
 	// 声明用户名、密码输入框
-	private EditText userName,userType,userPhone,userGender,userEmail;
-	private TextView userId;
+	private EditText userPhone,userGender,userEmail;
+	private TextView studentId,nickName,tv_studentId,userName,TV_userName;
 	public static final int TO_SELECT_PHOTO = 3;
 	private CircleImageView userPhoto;
 	User user1=new User();
@@ -107,8 +107,9 @@ public class UserInfoEditActivity extends Activity {
 		// 设置当前Activity界面布局
 		setContentView(R.layout.userinfo_edit);
 		declare = (Declare)this.getApplication();
-		userId = findViewById(R.id.TV_userId);
-		userName = findViewById(R.id.ET_userName);
+		studentId = findViewById(R.id.TV_studentId);
+		userName = findViewById(R.id.tv_userName);
+		TV_userName=findViewById(R.id.TV_userName);
 		userPhoto=findViewById(R.id.userPhoto);
 		//userType = findViewById(R.id.ET_userType);
 		userPhone = findViewById(R.id.ET_userPhone);
@@ -120,6 +121,8 @@ public class UserInfoEditActivity extends Activity {
 		back=findViewById(R.id.back_btn);
 		title=findViewById(R.id.title);
 		title.setText("个人信息");
+		nickName=findViewById(R.id.tv_nickName);
+		tv_studentId=findViewById(R.id.tv_studentId);
 		back.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -150,8 +153,15 @@ public class UserInfoEditActivity extends Activity {
 			}
 		}).start();
 
-
-		userId.setText(String.valueOf(declare.getUserId()));
+         if(declare.getUserType().equals("快递员")) {    //若已认证，则显示出认证studentId
+         	 tv_studentId.setVisibility(View.VISIBLE);
+			 studentId.setVisibility(View.VISIBLE);
+			 studentId.setText(String.valueOf(declare.getUserId()));
+			 TV_userName.setVisibility(View.VISIBLE);
+			 userName.setVisibility(View.VISIBLE);
+			 userName.setText(declare.getUserName());
+		 }
+		nickName.setText(declare.getNickName());
 		userName.setText(declare.getUserName());
 		//userPassword = findViewById(R.id.ET_userPwd);
 		userPhone.setText(declare.getUserPhone());
@@ -160,13 +170,7 @@ public class UserInfoEditActivity extends Activity {
 		btnEdit.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(userId.getText().toString().equals(""))
-				{
-					Toast.makeText(UserInfoEditActivity.this, "学号输入不能为空!", Toast.LENGTH_LONG).show();
-					userId.setFocusable(true);
-					userId.requestFocus();
-					return;
-				}
+
 				if(userName.getText().toString().equals(""))
 				{
 					Toast.makeText(UserInfoEditActivity.this, "姓名输入不能为空!", Toast.LENGTH_LONG).show();
@@ -174,11 +178,11 @@ public class UserInfoEditActivity extends Activity {
 					userName.requestFocus();
 					return;
 				}
-//				if(userPassword.getText().toString().equals(""))
+//				if(nickName.getText().toString().equals(""))
 //				{
-//					Toast.makeText(UserInfoEditActivity.this, "密码输入不能为空!", Toast.LENGTH_LONG).show();
-//					userPassword.setFocusable(true);
-//					userPassword.requestFocus();
+//					Toast.makeText(UserInfoEditActivity.this, "用户名输入不能为空!", Toast.LENGTH_LONG).show();
+//					nickName.setFocusable(true);
+//					nickName.requestFocus();
 //					return;
 //				}
 
@@ -208,8 +212,8 @@ public class UserInfoEditActivity extends Activity {
 						Message msg=new Message();
 						if(imagePath!=null){  //选择了新图片
 							upload();
-							user.setUserId(Integer.parseInt(userId.getText().toString()));
-							user.setUserName(userName.getText().toString());
+							user.setUserId(declare.getUserId());
+							user.setUserName(declare.getUserName());
 							user.setUserAuthFile(declare.getUserAuthFile());
 							Log.i("ooooo",""+photo);
 							user.setUserPhoto(photo);
@@ -222,6 +226,8 @@ public class UserInfoEditActivity extends Activity {
 							user.setUserPassword(declare.getUserPassword());
 							user.setUserReputation(declare.getUserReputation());
 							user.setUserType(declare.getUserType());
+							user.setNickName(declare.getNickName());
+							user.setStudentId(declare.getStudentId());
 							userService.UpdateUserInfo(user);
 							user=userService.GetUserInfo(declare.getUserId());
 							Bundle bundle=new Bundle();
@@ -230,8 +236,8 @@ public class UserInfoEditActivity extends Activity {
 							msg.what=0x123;
 						}
 						else{
-							user.setUserId(Integer.parseInt(userId.getText().toString()));
-							user.setUserName(userName.getText().toString());
+							user.setUserId(declare.getUserId());
+							user.setUserName(declare.getUserName());
 							user.setUserAuthFile(declare.getUserAuthFile());
 							Log.i("ooooo",""+declare.getUserPhoto());
 							user.setUserPhoto(declare.getUserPhoto());
@@ -245,6 +251,7 @@ public class UserInfoEditActivity extends Activity {
 							user.setUserReputation(declare.getUserReputation());
 							user.setUserType(declare.getUserType());
 							userService.UpdateUserInfo(user);
+							user.setNickName(declare.getNickName());
 							user=userService.GetUserInfo(declare.getUserId());
 							Bundle bundle=new Bundle();
 							bundle.putSerializable("user", user);
@@ -278,6 +285,8 @@ public class UserInfoEditActivity extends Activity {
 				declare.setUserReputation(userInfo.getUserReputation());
 				declare.setUserAuthFile(userInfo.getUserAuthFile());
 				declare.setUserPassword(userInfo.getUserPassword());
+				declare.setNickName(userInfo.getNickName());
+				declare.setStudentId(userInfo.getStudentId());
 				Toast.makeText(UserInfoEditActivity.this, "更新成功!", Toast.LENGTH_LONG).show();
 			}
 			if(msg.what==0x124){
@@ -293,6 +302,8 @@ public class UserInfoEditActivity extends Activity {
 				declare.setUserReputation(userInfo.getUserReputation());
 				declare.setUserAuthFile(userInfo.getUserAuthFile());
 				declare.setUserPassword(userInfo.getUserPassword());
+				declare.setNickName(userInfo.getNickName());
+				declare.setStudentId(userInfo.getStudentId());
 				Toast.makeText(UserInfoEditActivity.this, "更新成功!", Toast.LENGTH_LONG).show();
 			}
             if(msg.what==0x120){

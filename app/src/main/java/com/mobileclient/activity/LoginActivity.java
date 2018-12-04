@@ -39,7 +39,7 @@ import com.mobileclient.util.HttpUtil;
 public class LoginActivity extends Activity {
     private TextView register;
     private Button btn_login;
-    private EditText et_userId;
+    private EditText et_nickName;
     private EditText et_userPwd;
     private MyProgressDialog dialog;
     UserService userService=new UserService();
@@ -53,7 +53,7 @@ public class LoginActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
         setContentView(R.layout.login);
         dialog = MyProgressDialog.getInstance(this);
-        et_userId= findViewById(R.id.et_userId);    //用户学号
+        et_nickName= findViewById(R.id.et_nickName);    //用户学号
         et_userPwd = findViewById(R.id.et_userPwd);  //用户密码
         register = (TextView)findViewById(R.id.register);
         register.setOnClickListener(new OnClickListener(){
@@ -73,7 +73,7 @@ public class LoginActivity extends Activity {
         btn_login.setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View arg0) {
-                if("".equals(et_userId.getText().toString())){
+                if("".equals(et_nickName.getText().toString())){
                     Toast.makeText(LoginActivity.this, "用户名必填", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -88,12 +88,15 @@ public class LoginActivity extends Activity {
                     public void run() {
                         Declare declare = (Declare) LoginActivity.this.getApplication();
                         try {
-                            user=userService.GetUserInfo(Integer.parseInt(et_userId.getText().toString()));
+                            user=userService.GetUserInfo(et_nickName.getText().toString());  //验证登录名是否存在
+
                             if(user!=null){ //验证用户是否存在
+                                Log.i("pppppppp","cccc"+user.getUserPassword()+""+et_userPwd.getText().toString());
                                 if(user.getUserPassword().equals(et_userPwd.getText().toString()))   //用户账号存在时验证密码是否正确
                                 {
-                                    declare.setUserId(Integer.parseInt(et_userId.getText().toString()));
-                                    Log.i("pppppppp","cccc"+declare.getUserId());//将学号存储为全局可用
+                                    //declare.setUserId(Integer.parseInt(et_nickName.getText().toString()));
+                                    Log.i("pppppppp","cccc"+declare.getUserId());
+                                    declare.setUserId(user.getUserId());  //将系统Id存储为全局可用
                                     declare.setUserName(user.getUserName());
                                     declare.setUserType(user.getUserType());
                                     declare.setUserPhoto(user.getUserPhoto());
@@ -105,7 +108,8 @@ public class LoginActivity extends Activity {
                                     declare.setUserAuthFile(user.getUserAuthFile());
                                     declare.setUserPhone(user.getUserPhone());
                                     declare.setUserPassword(user.getUserPassword());
-
+                                    declare.setNickName(user.getNickName());
+                                    declare.setStudentId(user.getStudentId());
                                     handler.sendEmptyMessage(1);
                                 }
                                 else{

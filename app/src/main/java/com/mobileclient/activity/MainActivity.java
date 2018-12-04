@@ -43,7 +43,7 @@ public class MainActivity extends MyTabActivity {
 		TabSpec firstSpec = tabHost.newTabSpec(FIRST_TAB).setIndicator(FIRST_TAB)
 				.setContent(new Intent(this, UserInfoListActivity.class));
 		Button firstBtn = (Button)findViewById(R.id.firstBtn);
-		firstBtn.setText("用户");
+		firstBtn.setText("用户列表");
 		/*第二tab页*/
 		TabSpec secondSpec = tabHost.newTabSpec(SECOND_TAB).setIndicator(SECOND_TAB)
 				.setContent(new Intent(this,ExpressOrderListActivity.class));

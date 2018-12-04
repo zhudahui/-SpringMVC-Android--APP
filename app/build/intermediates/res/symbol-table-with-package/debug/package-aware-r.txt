@@ -14,6 +14,8 @@ anim design_bottom_sheet_slide_in
 anim design_bottom_sheet_slide_out
 anim design_snackbar_in
 anim design_snackbar_out
+anim fade_in
+anim fade_out
 anim tooltip_enter
 anim tooltip_exit
 animator design_appbar_state_list_animator
@@ -200,6 +202,15 @@ attr hintEnabled
 attr hintTextAppearance
 attr homeAsUpIndicator
 attr homeLayout
+attr iciv_angle
+attr iciv_bigimage
+attr iciv_border_color
+attr iciv_border_width
+attr iciv_hint_smallimageview
+attr iciv_isprogress
+attr iciv_progress_collor
+attr iciv_radiusscale
+attr iciv_smallimage
 attr icon
 attr iconTint
 attr iconTintMode
@@ -457,6 +468,7 @@ color colorBackground
 color colorDefault
 color colorPrimary
 color colorPrimaryDark
+color colorTest
 color colorText
 color contents_text
 color courseitem
@@ -977,6 +989,7 @@ drawable gridviewbg_presseda
 drawable gridviewbga
 drawable ground
 drawable grxx
+drawable guojia
 drawable gwc
 drawable haimian
 drawable history
@@ -1022,6 +1035,7 @@ drawable login
 drawable logo
 drawable main_bg
 drawable main_logo
+drawable main_tab_text_color
 drawable men
 drawable menu_bg
 drawable minus
@@ -1105,6 +1119,7 @@ drawable search_top_background
 drawable searchbtn
 drawable selector_bg_edit
 drawable shadow
+drawable shenhe
 drawable shouye
 drawable shouyeab
 drawable shouyecd
@@ -1148,6 +1163,7 @@ drawable tushuguan
 drawable txsj
 drawable typebox
 drawable user_login
+drawable v
 drawable w02
 drawable w04
 drawable w05
@@ -1171,6 +1187,8 @@ drawable xyfc_tushuguan
 drawable xyfc_zhulou
 drawable yellowman
 drawable yisheng
+drawable zhuyeone
+drawable zhuyetwo
 id ALT
 id BtnAdd
 id BtnUpdate
@@ -1187,6 +1205,7 @@ id ET_expressCompanyName
 id ET_gender
 id ET_giveMoney
 id ET_name
+id ET_nickName
 id ET_orderName
 id ET_orderPay
 id ET_orderStateName
@@ -1241,11 +1260,9 @@ id TV_Evaluate
 id TV_addTime
 id TV_addTime_Label
 id TV_address
-id TV_address_Label
 id TV_authFile
 id TV_authFile_Label
 id TV_birthDate
-id TV_birthDate_Label
 id TV_companyId
 id TV_companyId_Label
 id TV_companyName
@@ -1255,7 +1272,6 @@ id TV_companyObj_Label
 id TV_content
 id TV_content_Label
 id TV_email
-id TV_email_Label
 id TV_evaluate
 id TV_evaluate_Label
 id TV_expressCompanyAddress
@@ -1263,11 +1279,10 @@ id TV_expressCompanyName
 id TV_expressTakeObj
 id TV_expressTakeObj_Label
 id TV_gender
-id TV_gender_Label
 id TV_giveMoney
 id TV_giveMoney_Label
 id TV_name
-id TV_name_Label
+id TV_nickName
 id TV_noticeContent
 id TV_noticeFile
 id TV_noticeId
@@ -1285,7 +1300,6 @@ id TV_orderStateName_Label
 id TV_orderStateObj
 id TV_orderStateObj_Label
 id TV_password
-id TV_password_Label
 id TV_publishDate
 id TV_publishDate_Label
 id TV_receiveAddress
@@ -1299,12 +1313,11 @@ id TV_receiveState
 id TV_receiverName
 id TV_receiverName_Label
 id TV_regTime
-id TV_regTime_Label
 id TV_remark
 id TV_shenHeState
-id TV_shenHeState_Label
 id TV_ssdt
 id TV_ssdt_Label
+id TV_studentId
 id TV_takePlace
 id TV_takePlace_Label
 id TV_takeStateObj
@@ -1320,15 +1333,15 @@ id TV_title_Label
 id TV_userEmail
 id TV_userGender
 id TV_userId
+id TV_userMoney
 id TV_userName
 id TV_userObj
 id TV_userObj_Label
 id TV_userPhone
 id TV_userPhoto
-id TV_userPhoto_Label
 id TV_userPwd
+id TV_userReputation
 id TV_userType
-id TV_userType_Label
 id TV_user_name
 id TV_user_name_Label
 id TV_waybill
@@ -1336,6 +1349,8 @@ id TV_waybill_Label
 id TextView
 id TextView1
 id TextView2
+id ability_logout
+id about
 id action0
 id action_bar
 id action_bar_activity_content
@@ -1357,6 +1372,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id activity_ele_search
+id activity_main
 id add
 id addTime
 id add_btn
@@ -1379,8 +1395,14 @@ id beginning
 id blocking
 id bottom
 id bottom_layout
+id bt1
+id bt2
+id bt3
+id bt4
+id bt5
+id bt6
 id btnDelete
-id btnDownAuthFile
+id btnDown
 id btnEdit
 id btnEvaluate
 id btnGetOrder
@@ -1412,7 +1434,6 @@ id chazhi_tv
 id check_style
 id checkbox
 id chronometer
-id city
 id cityField
 id clip_horizontal
 id clip_vertical
@@ -1451,12 +1472,12 @@ id end
 id end_padder
 id enterAlways
 id enterAlwaysCollapsed
+id et_nickName
 id et_pwd
 id et_receiveAdressName
 id et_receiveName
 id et_receivePhone
 id et_search
-id et_userId
 id et_userPwd
 id et_username
 id exitButton
@@ -1495,6 +1516,8 @@ id ibtn_del
 id icon
 id icon_group
 id ifRoom
+id iiv
+id iiv_userPhoto
 id image
 id imageView1
 id imageView2
@@ -1507,7 +1530,10 @@ id imageView8
 id imageView9
 id info
 id italic
+id item_faxian
+id item_tongxunlu
 id item_touch_helper_previous_elevation
+id item_weixin
 id iv1
 id iv2
 id iv3
@@ -1528,6 +1554,8 @@ id list_view
 id location_errInfo_text
 id location_tv
 id loginButton
+id lv
+id mainViewPager
 id map
 id masked
 id media_actions
@@ -1543,6 +1571,7 @@ id name
 id navigation_header_container
 id navimap
 id never
+id nickName
 id nightmap
 id none
 id normal
@@ -1558,6 +1587,7 @@ id parent_matrix
 id phone
 id photo
 id pin
+id plus
 id progress_circular
 id progress_horizontal
 id pwd
@@ -1615,6 +1645,7 @@ id secondBtn
 id secondline
 id select_dialog_listview
 id setBackground
+id settings
 id shortcut
 id showCustom
 id showHome
@@ -1628,6 +1659,7 @@ id split_action_bar
 id src_atop
 id src_in
 id src_over
+id srl
 id start
 id status_bar_latest_event_content
 id submenuarrow
@@ -1671,9 +1703,9 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id tv
 id tvCurrentMonth
 id tv_addTime
-id tv_birthDate
 id tv_bname
 id tv_clear
 id tv_companyId
@@ -1681,10 +1713,10 @@ id tv_companyName
 id tv_companyObj
 id tv_evaluate
 id tv_expressTakeObj
-id tv_gender
 id tv_giveMoney
 id tv_hint
-id tv_name
+id tv_load
+id tv_nickName
 id tv_noticeTitle
 id tv_orderStateId
 id tv_orderStateName
@@ -1693,18 +1725,25 @@ id tv_publishDate
 id tv_receiveAddressName
 id tv_receiveMemo
 id tv_receiverName
+id tv_refresh
+id tv_regTime
 id tv_search
 id tv_search_rlt
-id tv_shenHeState
 id tv_ssdt
+id tv_studentId
 id tv_takePlace
 id tv_takeStateObj
 id tv_takeTime
 id tv_taskTitle
 id tv_telephone
+id tv_userEmail
+id tv_userGender
+id tv_userId
+id tv_userMoney
+id tv_userName
 id tv_userObj
-id tv_userType
-id tv_user_name
+id tv_userPhone
+id tv_userReputation
 id tv_waybill
 id uniform
 id unlogin
@@ -1716,6 +1755,7 @@ id userId
 id userName
 id userObj
 id userPhoto
+id userType
 id username
 id view_offset_helper
 id viewpager
@@ -1819,7 +1859,11 @@ layout expresstake_list
 layout expresstake_list_item
 layout expresstake_query
 layout expresstake_user_add
+layout fragment_fouth
 layout fragment_goods_list
+layout fragment_one
+layout fragment_three
+layout fragment_two
 layout gv_item
 layout home
 layout index
@@ -1833,6 +1877,8 @@ layout layout_list
 layout list
 layout list_item
 layout list_layout
+layout listview_foot_view
+layout listview_head_view
 layout login
 layout login_system
 layout main
@@ -1870,16 +1916,19 @@ layout orderstate_list
 layout orderstate_list_item
 layout orderstate_query
 layout photolist
+layout popup_window
 layout query
 layout receive_adress
 layout receiveaddress_edit
 layout receiveaddress_list
 layout receiveadress_list_item
+layout recyclerview_item
 layout register
 layout route_activity
 layout search_layout
 layout search_list_item
 layout second_hand
+layout secondauth
 layout secondexpressorder_detail
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
@@ -1907,6 +1956,7 @@ layout userinfo_list
 layout userinfo_list_item
 layout userinfo_query
 layout userinfo_register
+layout userstate
 layout xuan_layout
 menu activity_main
 mipmap back_icon
@@ -2275,6 +2325,7 @@ style Animation_AppCompat_Dialog
 style Animation_AppCompat_DropDownUp
 style Animation_AppCompat_Tooltip
 style Animation_Design_BottomSheetDialog
+style AnimationPreview
 style AppBaseTheme
 style AppTheme
 style Base_AlertDialog_AppCompat
@@ -2705,6 +2756,7 @@ styleable FloatingActionButton_Behavior_Layout behavior_autoHide
 styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchStrategy fontProviderFetchTimeout fontProviderPackage fontProviderQuery
 styleable FontFamilyFont font fontStyle fontWeight
 styleable ForegroundLinearLayout android_foreground android_foregroundGravity foregroundInsidePadding
+styleable IdentityImageView iciv_angle iciv_bigimage iciv_border_color iciv_border_width iciv_hint_smallimageview iciv_isprogress iciv_progress_collor iciv_radiusscale iciv_smallimage
 styleable LinearLayoutCompat android_gravity android_orientation android_baselineAligned android_baselineAlignedChildIndex android_weightSum divider dividerPadding measureWithLargestChild showDividers
 styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_width android_layout_height android_layout_weight
 styleable ListPopupWindow android_dropDownHorizontalOffset android_dropDownVerticalOffset

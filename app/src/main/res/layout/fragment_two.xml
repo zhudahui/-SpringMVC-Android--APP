@@ -1,0 +1,22 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.cc.testdemo.TwoFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TableLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white"
+    android:stretchColumns="1" >
+    <ListView
+        android:id="@+id/list_view"
+        android:divider="#00000000"
+        android:dividerHeight="5dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+</TableLayout>
+
+</FrameLayout>
+

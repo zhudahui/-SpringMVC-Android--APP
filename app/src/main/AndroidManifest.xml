@@ -77,7 +77,6 @@
         <activity android:name=".MoreActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".MainMenuActivity" />
-        <activity android:name=".UserInfoListActivity" />
         <activity android:name=".UserInfoQueryActivity" />
         <activity android:name=".UserInfoAddActivity" />
         <activity android:name=".UserInfoEditActivity" />
@@ -101,7 +100,6 @@
         <activity android:name=".NoticeDetailActivity" />
         <activity android:name=".RouteActivity" />
         <activity android:name=".photoListActivity" />
-        <activity android:name="com.xp.calendar.calendar.MainActivity" />
 
         <service android:name="com.amap.api.location.APSService" />
 
@@ -112,15 +110,14 @@
         <activity
             android:name=".TjpuActivity"
             android:label="@string/title_activity_tjpu" />
-        <activity
-            android:name="com.xp.calendar.calendar.SpecialActivity"
-            android:label="@string/title_activity_special" />
+
         <activity
             android:name=".AdminLoginActivity"
             android:label="@string/title_activity_admin_login" />
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/login">
+            android:name=".XuanActivity"
+            android:label="@string/login"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -137,6 +134,8 @@
         <activity android:name=".SecondAddressListActivity"/>
         <activity android:name=".SecondOrderDetailActivity"/>
         <activity android:name=".UserAuthActivity"/>
+        <activity android:name=".LoginActivity"/>
+        <activity android:name="com.cc.testdemo.MainActivity"/>
     </application>
 
 </manifest>

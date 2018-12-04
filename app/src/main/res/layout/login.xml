@@ -55,11 +55,11 @@
 
 
                     <EditText
-                        android:id="@+id/et_userId"
+                        android:id="@+id/et_nickName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/selector_bg_edit"
-                        android:hint="学号"
+                        android:hint="用户名"
 
                         android:paddingBottom="2dp"
                         android:textColor="#2fa881"

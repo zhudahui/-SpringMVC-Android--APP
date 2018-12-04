@@ -133,8 +133,15 @@ public class MoreActivity extends Activity {
 						startActivity(intent);
 					}
 					if(arg2 == 3){
-						Intent intent  = new Intent(MoreActivity.this, UserAuthActivity.class);
-						startActivity(intent);
+						String userAuthFile=declare.getUserAuthFile();
+						if(userAuthFile.equals("--")) {
+							Intent intent = new Intent(MoreActivity.this, UserAuthActivity.class);
+							startActivity(intent);
+						}else{
+							Intent intent = new Intent(MoreActivity.this, SecondAuthActivity.class);
+							startActivity(intent);
+						}
+
 					}
 					if(arg2 == 4){
 						Intent intent  = new Intent(MoreActivity.this, AboutActivity.class);

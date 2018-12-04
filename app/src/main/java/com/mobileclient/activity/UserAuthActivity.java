@@ -77,7 +77,7 @@ public class UserAuthActivity extends Activity {
     private Button btnUpload;
     // 声明用户名、密码输入框
     private EditText userName,userPassword,userType,userPhone,userGender,userEmail;
-    private EditText userId;
+    private EditText studentId;
     public static final int TO_SELECT_PHOTO = 3;
     User user1=new User();
     User user=new User();
@@ -107,7 +107,7 @@ public class UserAuthActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
         // 设置当前Activity界面布局
         setContentView(R.layout.userauth);
-        userId = findViewById(R.id.ET_userId);
+        studentId = findViewById(R.id.ET_userId);
         userName = findViewById(R.id.ET_userName);
         authFile=findViewById(R.id.authFile);
         //userType = findViewById(R.id.ET_userType);
@@ -116,7 +116,7 @@ public class UserAuthActivity extends Activity {
         back=findViewById(R.id.back_btn);
         title=findViewById(R.id.title);
         btnUpload=findViewById(R.id.btnUpload);
-        title.setText("个人信息");
+        title.setText("信息认证");
         declare = (Declare) getApplicationContext();
 
 
@@ -137,11 +137,11 @@ public class UserAuthActivity extends Activity {
         btnUpload.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(userId.getText().toString().equals(""))
+                if(studentId.getText().toString().equals(""))
                 {
                     Toast.makeText(UserAuthActivity.this, "学号输入不能为空!", Toast.LENGTH_LONG).show();
-                    userId.setFocusable(true);
-                    userId.requestFocus();
+                    studentId.setFocusable(true);
+                    studentId.requestFocus();
                     return;
                 }
 
@@ -160,9 +160,9 @@ public class UserAuthActivity extends Activity {
                         Message msg=new Message();
                         if(imagePath!=null){
                             upload();
-                            user.setUserId(Integer.parseInt(userId.getText().toString()));
+                           // user.setUserId(Integer.parseInt(studentId.getText().toString()));
                             user.setUserName(userName.getText().toString());
-                            user.setUserAuthFile(photo);
+                            user.setUserAuthFile(photo);            //认证
                             Log.i("ooooo",""+declare.getUserPhoto());
                             user.setUserPhoto(declare.getUserPhoto());
                             user.setUserMoney(declare.getUserMoney());
@@ -172,6 +172,10 @@ public class UserAuthActivity extends Activity {
                             user.setUserPhone(declare.getUserPhone());
                             user.setUserPassword(declare.getUserPassword());
                             user.setUserReputation(declare.getUserReputation());
+                            user.setUserType(declare.getUserType());
+                            user.setStudentId(Integer.parseInt(studentId.getText().toString()));
+                            user.setNickName(declare.getNickName());
+                            user.setUserId(declare.getUserId());
                             userService.UpdateUserInfo(user);
                             msg.what=0x123;
                         }

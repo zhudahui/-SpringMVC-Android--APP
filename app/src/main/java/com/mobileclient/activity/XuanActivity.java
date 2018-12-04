@@ -8,6 +8,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.cc.testdemo.MainActivity;
+
 public class XuanActivity extends Activity {
  private ImageView img1;
  private  ImageView img2;
@@ -30,7 +32,7 @@ public class XuanActivity extends Activity {
         img2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(XuanActivity.this,AdminLoginActivity.class);
+                Intent intent = new Intent(XuanActivity.this,MainActivity.class);
                 startActivity(intent);
             }
         });

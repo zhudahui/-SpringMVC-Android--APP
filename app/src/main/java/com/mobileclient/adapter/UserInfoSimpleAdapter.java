@@ -1,4 +1,4 @@
-package com.mobileclient.util;
+package com.mobileclient.adapter;
 
 import java.util.List;  
 import java.util.Map;
@@ -8,7 +8,8 @@ import com.mobileclient.imgCache.ImageLoadListener;
 import com.mobileclient.imgCache.ListViewOnScrollListener;
 import com.mobileclient.imgCache.SyncImageLoader;
 import android.content.Context;
-import android.view.LayoutInflater; 
+import android.graphics.Bitmap;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;  
 import android.widget.ImageView; 
@@ -52,37 +53,23 @@ public View getView(int position, View convertView, ViewGroup parent) {
 	  convertView.setTag("listViewTAG" + position);
 	  holder = new ViewHolder(); 
 	  /*绑定该view各个控件*/
-	  holder.tv_user_name = (TextView)convertView.findViewById(R.id.tv_user_name);
-	  holder.tv_userType = (TextView)convertView.findViewById(R.id.tv_userType);
-	  holder.tv_name = (TextView)convertView.findViewById(R.id.tv_name);
-	  holder.tv_gender = (TextView)convertView.findViewById(R.id.tv_gender);
-	  holder.tv_birthDate = (TextView)convertView.findViewById(R.id.tv_birthDate);
+	  holder.tv_nickName = (TextView)convertView.findViewById(R.id.nickName);
+	  holder.tv_userType = (TextView)convertView.findViewById(R.id.userType);
+
 	  holder.iv_userPhoto = (ImageView)convertView.findViewById(R.id.iv_userPhoto);
-	  holder.tv_telephone = (TextView)convertView.findViewById(R.id.tv_telephone);
-	  holder.tv_shenHeState = (TextView)convertView.findViewById(R.id.tv_shenHeState);
 	  /*设置各个控件的展示内容*/
-	  holder.tv_user_name.setText("学号：" + mData.get(position).get("user_name").toString());
+	  holder.tv_nickName.setText("用户名：" + mData.get(position).get("nickName").toString());
 	  holder.tv_userType.setText("用户类型：" + mData.get(position).get("userType").toString());
-	  holder.tv_name.setText("姓名：" + mData.get(position).get("name").toString());
-	  holder.tv_gender.setText("性别：" + mData.get(position).get("gender").toString());
-	  try {holder.tv_birthDate.setText("出生日期：" + mData.get(position).get("birthDate").toString().substring(0, 10));} catch(Exception ex){}
-	  holder.iv_userPhoto.setImageResource(R.drawable.default_photo);
-	  ImageLoadListener userPhotoLoadListener = new ImageLoadListener(mListView,R.id.iv_userPhoto);
-	  syncImageLoader.loadImage(position,(String)mData.get(position).get("userPhoto"),userPhotoLoadListener);  
-	  holder.tv_telephone.setText("联系电话：" + mData.get(position).get("telephone").toString());
-	  holder.tv_shenHeState.setText("审核状态：" + mData.get(position).get("shenHeState").toString());
+	  holder.iv_userPhoto.setImageBitmap((Bitmap) mData.get(position).get("userPhoto"));
+
 	  /*返回修改好的view*/
 	  return convertView; 
     } 
 
     static class ViewHolder{ 
-    	TextView tv_user_name;
+    	TextView tv_nickName;
     	TextView tv_userType;
-    	TextView tv_name;
-    	TextView tv_gender;
-    	TextView tv_birthDate;
     	ImageView iv_userPhoto;
-    	TextView tv_telephone;
-    	TextView tv_shenHeState;
+
     }
 } 

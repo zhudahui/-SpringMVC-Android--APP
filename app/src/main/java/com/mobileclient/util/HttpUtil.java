@@ -473,7 +473,7 @@ public class HttpUtil {
 			// 完毕，关闭所有链接
 			os.close();
 			is.close();
-			//openFile(file);
+			openFile(file);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
