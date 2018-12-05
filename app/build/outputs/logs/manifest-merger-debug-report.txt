@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-141:12
-INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-141:12
-INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-141:12
-INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-141:12
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-144:12
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-144:12
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-144:12
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-144:12
 MERGED from [com.android.support:design:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/4ff121265bc4715678f12795402d779f/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:appcompat-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/3d0f6e2556144088db93fa04b577105e/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:cardview-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.0.0.aar/1a2d79291c6fff7e217a65009680e3af/AndroidManifest.xml:17:1-28:12
@@ -20,9 +20,9 @@ MERGED from [com.android.support:support-media-compat:26.0.0] /Users/zhuhui/.gra
 MERGED from [com.android.support:support-core-utils:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.0.0.aar/f714a3a3c71abae28fcf1121a13d68b1/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-compat:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.0.aar/f6637adda0bba887c2e7dd64129248a2/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:multidex:1.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/multidex-1.0.1.aar/66bd4faa0f8603cd5f3bf9f194d314af/AndroidManifest.xml:16:1-19:12
-INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-141:12
-INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-141:12
-INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-141:12
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-144:12
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-144:12
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-144:12
 	package
 		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:4:5-40
 		INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
@@ -100,7 +100,7 @@ ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:5
 	android:name
 		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:51:22-66
 application
-ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:53:5-139:19
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:53:5-142:19
 MERGED from [com.android.support:design:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/4ff121265bc4715678f12795402d779f/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:design:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/4ff121265bc4715678f12795402d779f/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/3d0f6e2556144088db93fa04b577105e/AndroidManifest.xml:25:5-29:19
@@ -371,6 +371,18 @@ activity#com.cc.testdemo.MainActivity
 ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:138:9-64
 	android:name
 		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:138:19-62
+activity#com.mobileclient.activity.SecondUserDetailActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:139:9-61
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:139:19-59
+activity#com.mobileclient.activity.SecondAuthActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:140:9-55
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:140:19-53
+activity#com.mobileclient.activity.MyInfoActivtiy
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:141:9-51
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:141:19-49
 uses-sdk
 INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml

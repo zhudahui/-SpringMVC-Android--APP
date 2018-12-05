@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="black2">#ffeeeeee</color>
+    <color name="bar_color">#232325</color>
     <color name="colorTest">#edf265</color>
     <color name="title">#FFFFFF</color>
     <color name="btn_normal_color">#1ABC9C</color>

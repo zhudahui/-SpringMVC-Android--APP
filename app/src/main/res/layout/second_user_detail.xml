@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F5F5F5"
+    android:orientation="vertical">
+
+    <include  android:id="@+id/layout_bar" layout="@layout/layout_title"/>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white">
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:stretchColumns="1">
+                <TableRow android:layout_marginTop="5dp">
+                    <TextView
+                        android:text="头像："
+                        android:id="@+id/TV_userPhoto"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:textColor="@color/hint_color"/>
+
+                    <com.mobileclient.app.IdentityImageView
+                        android:id="@+id/iiv_userPhoto"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+
+                        />
+                </TableRow>
+                <TableRow android:layout_marginTop="8dp">
+                    <TextView
+                        android:text="用户Id："
+                        android:id="@+id/TV_userId"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/hint_color"
+                        android:layout_weight="1.5"
+                        />
+                    <TextView
+                        android:text=""
+                        android:id="@+id/tv_userId"
+                        android:layout_width="0dp"
+                        android:layout_weight="4"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dip"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/btn_item_medium_default"
+                        android:drawableLeft="@drawable/ic_user_info"
+                        android:drawablePadding="10dp"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4dp"
+                        android:singleLine="true"
+                        />
+                </TableRow>
+                <TableRow android:layout_marginTop="8dp">
+                    <TextView
+                        android:text="用户类型："
+                        android:id="@+id/TV_userType"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/hint_color"
+                        android:layout_weight="1.5"
+                        />
+                    <TextView
+                        android:text=""
+                        android:id="@+id/tv_userType"
+                        android:layout_width="0dp"
+                        android:layout_weight="4"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dip"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/btn_item_medium_default"
+                        android:drawableLeft="@drawable/ic_user_info"
+                        android:drawablePadding="10dp"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4dp"
+                        android:singleLine="true"
+                        />
+                </TableRow>
+                <TableRow android:layout_marginTop="8dp">
+                    <TextView
+                        android:text="学号："
+                        android:id="@+id/TV_studentId"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/hint_color"
+                        android:layout_weight="1.5"
+                        />
+                    <TextView
+                        android:text=""
+                        android:id="@+id/tv_studentId"
+                        android:layout_width="0dp"
+                        android:layout_weight="4"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dip"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/btn_item_medium_default"
+                        android:drawableLeft="@drawable/ic_user_info"
+                        android:drawablePadding="10dp"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4dp"
+                        android:singleLine="true"
+                        />
+                </TableRow>
+                <TableRow android:layout_marginTop="8dp">
+                    <TextView
+                        android:text="姓名："
+                        android:id="@+id/TV_userName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/hint_color"
+                        android:layout_weight="1.5"
+                        />
+                    <TextView
+                        android:text=""
+                        android:id="@+id/tv_userName"
+                        android:layout_width="0dp"
+                        android:layout_weight="4"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dip"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/btn_item_medium_default"
+                        android:drawableLeft="@drawable/ic_user_info"
+                        android:drawablePadding="10dp"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4dp"
+                        android:singleLine="true"
+                        />
+                </TableRow>
+
+                <TableRow android:layout_marginTop="8dp">
+                    <TextView
+                        android:text="密码："
+                        android:id="@+id/TV_userPassword"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/hint_color"
+                        android:layout_weight="1.5"
+                        />
+                    <TextView
+                        android:text=""
+                        android:id="@+id/tv_userPassword"
+                        android:layout_width="0dp"
+                        android:layout_weight="4"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dip"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/btn_item_medium_default"
+                        android:drawableLeft="@drawable/ic_user_info"
+                        android:drawablePadding="10dp"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4dp"
+                        android:singleLine="true"
+                        />
+                </TableRow>
+
+                <TableRow android:layout_marginTop="8dp">
+                    <TextView
+                        android:text="用户名："
+                        android:id="@+id/TV_nickName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/hint_color"
+                        android:layout_weight="1.5"/>
+                    <TextView
+                        android:text=""
+                        android:id="@+id/tv_nickName"
+                        android:layout_width="0dp"
+                        android:layout_weight="4"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dip"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/btn_item_medium_default"
+                        android:drawableLeft="@drawable/ic_user_info"
+                        android:drawablePadding="10dp"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4dp"
+                        android:singleLine="true"/>
+                </TableRow>
+                <TableRow android:layout_marginTop="8dp">
+                    <TextView
+                        android:text="信誉："
+                        android:id="@+id/TV_userReputation"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/hint_color"
+                        android:layout_weight="1.5"/>
+                    <TextView
+                        android:text=""
+                        android:id="@+id/tv_userReputation"
+                        android:layout_width="0dp"
+                        android:layout_weight="4"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dip"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/btn_item_medium_default"
+                        android:drawableLeft="@drawable/ic_user_info"
+                        android:drawablePadding="10dp"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4dp"
+                        android:singleLine="true"/>
+                </TableRow>
+
+                <TableRow android:layout_marginTop="8dp">
+                    <TextView
+                        android:text="余额："
+                        android:id="@+id/TV_userMoney"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/hint_color"
+                        android:layout_weight="1.5"/>
+                    <TextView
+                        android:text=""
+                        android:id="@+id/tv_userMoney"
+                        android:layout_width="0dp"
+                        android:layout_weight="4"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dip"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/btn_item_medium_default"
+                        android:drawableLeft="@drawable/ic_user_info"
+                        android:drawablePadding="10dp"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4dp"
+                        android:singleLine="true"/>
+                </TableRow>
+
+
+                <TableRow android:layout_marginTop="5dp">
+                    <TextView
+                        android:text="手机号码："
+                        android:id="@+id/TV_userPhone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:textColor="@color/hint_color" />
+                    <TextView
+                        android:text=""
+                        android:id="@+id/tv_userPhone"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="4"
+                        android:layout_marginTop="5dip"
+                        android:background="@drawable/btn_item_medium_default"
+                        android:drawableLeft="@drawable/ic_user_pwd"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4dp"
+                        android:layout_marginRight="5dp"
+                        android:singleLine="true" />
+                </TableRow>
+
+                <TableRow android:layout_marginTop="5dp">
+                    <TextView
+                        android:text="性别："
+                        android:id="@+id/TV_userGender"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:textColor="@color/hint_color" />
+                    <TextView
+                        android:text=""
+                        android:id="@+id/tv_userGender"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="4"
+                        android:layout_marginTop="5dip"
+                        android:background="@drawable/btn_item_medium_default"
+                        android:drawableLeft="@drawable/ic_user_pwd"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4dp"
+                        android:layout_marginRight="5dp"
+                        android:singleLine="true" />
+                </TableRow>
+
+                <TableRow android:layout_marginTop="5dp">
+                    <TextView
+                        android:text="邮箱："
+                        android:id="@+id/TV_userEmail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:textColor="@color/hint_color" />
+                    <TextView
+                        android:text=""
+                        android:id="@+id/tv_userEmail"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="4"
+                        android:layout_marginTop="5dip"
+                        android:background="@drawable/btn_item_medium_default"
+                        android:drawableLeft="@drawable/ic_user_pwd"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4dp"
+                        android:layout_marginRight="5dp"
+                        android:singleLine="true" />
+                </TableRow>
+                <TableRow android:layout_marginTop="5dp">
+                    <TextView
+                        android:text="注册时间："
+                        android:id="@+id/TV_regTime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:textColor="@color/hint_color" />
+                    <TextView
+                        android:text=""
+                        android:id="@+id/tv_regTime"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="4"
+                        android:layout_marginTop="5dip"
+                        android:background="@drawable/btn_item_medium_default"
+                        android:drawableLeft="@drawable/ic_user_pwd"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="4dp"
+                        android:layout_marginRight="5dp"
+                        android:singleLine="true" />
+                </TableRow>
+
+            </TableLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="80dp"
+                android:gravity="center">
+                <Button
+                    android:text="查看认证文件"
+                    android:id="@+id/btnDown"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:layout_marginTop="5dip"
+                    android:background="#D64F4D"
+                    android:textColor="@color/white"
+                    android:visibility="gone"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+

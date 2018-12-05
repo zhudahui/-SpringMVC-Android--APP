@@ -136,6 +136,9 @@
         <activity android:name=".UserAuthActivity"/>
         <activity android:name=".LoginActivity"/>
         <activity android:name="com.cc.testdemo.MainActivity"/>
+        <activity android:name=".SecondUserDetailActivity"/>
+        <activity android:name=".SecondAuthActivity"/>
+        <activity android:name=".MyInfoActivtiy"/>
     </application>
 
 </manifest>

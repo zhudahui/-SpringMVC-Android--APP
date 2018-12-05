@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff">
+    <FrameLayout
+        android:id="@+id/frame_bg"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="#D64F4D"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/location_tv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="北京市海淀区西二旗"
+            android:textColor="#fff"
+
+            android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/back_iv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center|left"
+            android:src="@mipmap/back_icon" />
+
+        <RelativeLayout
+            android:id="@+id/tv_search_rlt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/ele_search_bg"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp">
+
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/tv_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/search_icon"
+            android:hint="搜索订单"
+            android:textSize="13sp"
+            android:textColorHint="#535253"
+            android:background="@null" />
+
+        <TextView
+            android:id="@+id/tv_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:layout_marginRight="5dp"
+            android:text="搜索"
+            android:textColor="#fff" />
+
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/white"
+
+        >
+        <android.support.v4.view.ViewPager
+
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/r1"
+
+             />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white"
+        android:baselineAligned="false"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+
+        >
+
+        <TextView
+            android:id="@+id/item_weixin"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="未接单"
+            android:textColor="@drawable/main_tab_text_color"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/item_tongxunlu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="送单中"
+            android:textColor="@drawable/main_tab_text_color"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/item_faxian"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="已完成"
+            android:textColor="@drawable/main_tab_text_color"
+            android:textSize="15dp"/>
+    </LinearLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mainViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+</LinearLayout>

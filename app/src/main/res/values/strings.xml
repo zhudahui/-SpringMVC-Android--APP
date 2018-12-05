@@ -368,5 +368,13 @@
     <string name="afterTomorrow">后天</string>
     <string name="jinri">天气播报</string>
 
+    <string name="menu_groupchat">通过审核</string>
+    <string name="menu_addfriend">不通过</string>
+    <string name="menu_qrcode">用户更新</string>
+    <string name="menu_money">编辑</string>
 
+    <string name="menu_groupchat1">通过审核</string>
+    <string name="menu_addfriend1">不通过</string>
+    <string name="menu_qrcode1">用户更新</string>
+    <string name="menu_money1">编辑</string>
 </resources>

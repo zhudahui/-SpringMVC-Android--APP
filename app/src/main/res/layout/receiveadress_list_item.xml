@@ -27,7 +27,7 @@
         android:id="@+id/edit"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="180dp"
-        android:layout_toRightOf="@+id/receivePhone"
+        android:layout_alignParentEnd="true"
+
         android:src="@drawable/edit"/>
 </RelativeLayout>

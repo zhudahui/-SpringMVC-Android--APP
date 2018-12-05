@@ -58,31 +58,31 @@ public class ExpressOrderAdapter extends SimpleAdapter {
         holder = new com.mobileclient.adapter.ExpressOrderAdapter.ViewHolder();
         /*绑定该view各个控件*/
         holder.userPhoto=convertView.findViewById(R.id.userPhoto);
-        holder.userName=convertView.findViewById(R.id.userName);
+       // holder.userName=convertView.findViewById(R.id.userName);
         holder.orderName=convertView.findViewById(R.id.orderName);
         holder.expressCompanyName=convertView.findViewById(R.id.expressCompanyName);
         holder.expressCompanyAddress=convertView.findViewById(R.id.expressCompanyAddress);
        // holder.receiveAddressName=convertView.findViewById(R.id.receiveAddressName);
         holder.receiveAddressName=convertView.findViewById(R.id.tv_receiveAddressName);
         holder.addTime = (TextView)convertView.findViewById(R.id.addTime);
-        holder.orderState=convertView.findViewById(R.id.orderState);
+        //holder.orderState=convertView.findViewById(R.id.orderState);
         /*设置各个控件的展示内容*/
         /*设置各个控件的展示内容*/
         holder.userPhoto.setImageBitmap((Bitmap) mData.get(position).get("userPhoto"));
-        holder.userName.setText( mData.get(position).get("userName").toString());
+       // holder.userName.setText( mData.get(position).get("userName").toString());
         holder.orderName.setText( (mData.get(position).get("orderName").toString()));
         holder.expressCompanyName.setText( mData.get(position).get("expressCompanyName").toString());
         holder.expressCompanyAddress.setText( mData.get(position).get("expressCompanyAddress").toString());
         holder.receiveAddressName.setText( mData.get(position).get("receiveAddressName").toString());
         holder.addTime.setText(mData.get(position).get("addTime").toString());
-        holder.orderState.setText( mData.get(position).get("orderState").toString());
+       // holder.orderState.setText( mData.get(position).get("orderState").toString());
         /*返回修改好的view*/
         return convertView;
     }
 
     static class ViewHolder{
         CircleImageView userPhoto;
-        TextView userName;
+        //TextView userName;
         TextView orderName;
         TextView expressCompanyName;
         TextView expressCompanyAddress;

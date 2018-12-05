@@ -6,31 +6,7 @@
 	android:background="#F5F5F5"
 	android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dip"
-        android:background="#D64F4D">
-
-        <ImageView
-			android:id="@+id/back_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dip"
-            android:background="@drawable/btn_back" />
-        <ImageView
-            android:id="@+id/plus"
-            android:layout_width="48dip"
-            android:layout_height="48dip"
-            android:padding="10dip"
-            android:layout_alignParentRight="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/edit"
-            android:layout_centerVertical="true"
-            android:background="@drawable/buttons"
-            />
-
-    </RelativeLayout>
+	<include  android:id="@+id/layout_bar" layout="@layout/layout_title"/>
 
     <ScrollView
 		android:layout_width="fill_parent"
@@ -73,6 +49,32 @@
 					<EditText
 						android:text=""
 						android:id="@+id/tv_userId"
+						android:layout_width="0dp"
+						android:layout_weight="4"
+						android:layout_height="40dp"
+						android:layout_marginTop="5dip"
+						android:layout_marginRight="5dp"
+						android:background="@drawable/btn_item_medium_default"
+						android:drawableLeft="@drawable/ic_user_info"
+						android:drawablePadding="10dp"
+						android:ellipsize="end"
+						android:gravity="center_vertical"
+						android:paddingLeft="4dp"
+						android:singleLine="true"
+						/>
+				</TableRow>
+				<TableRow android:layout_marginTop="8dp">
+					<TextView
+						android:text="用户类型："
+						android:id="@+id/TV_userType"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:textColor="@color/hint_color"
+						android:layout_weight="1.5"
+						/>
+					<EditText
+						android:text=""
+						android:id="@+id/tv_userType"
 						android:layout_width="0dp"
 						android:layout_weight="4"
 						android:layout_height="40dp"
@@ -139,6 +141,33 @@
 						android:singleLine="true"
 						/>
 				</TableRow>
+
+				<TableRow android:layout_marginTop="8dp">
+				<TextView
+					android:text="密码："
+					android:id="@+id/TV_userPassword"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:textColor="@color/hint_color"
+					android:layout_weight="1.5"
+					/>
+				<EditText
+					android:text=""
+					android:id="@+id/tv_userPassword"
+					android:layout_width="0dp"
+					android:layout_weight="4"
+					android:layout_height="40dp"
+					android:layout_marginTop="5dip"
+					android:layout_marginRight="5dp"
+					android:background="@drawable/btn_item_medium_default"
+					android:drawableLeft="@drawable/ic_user_info"
+					android:drawablePadding="10dp"
+					android:ellipsize="end"
+					android:gravity="center_vertical"
+					android:paddingLeft="4dp"
+					android:singleLine="true"
+					/>
+			     </TableRow>
 
 				<TableRow android:layout_marginTop="8dp">
 					<TextView

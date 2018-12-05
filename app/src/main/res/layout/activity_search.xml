@@ -10,7 +10,7 @@
         android:id="@+id/frame_bg"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="#0096FF"
+        android:background="#D64F4D"
         android:padding="10dp">
         <TextView
             android:id="@+id/location_tv"

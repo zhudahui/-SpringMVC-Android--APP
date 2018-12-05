@@ -13,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -21,9 +22,12 @@ import android.widget.Toast;
 
 import com.mobileclient.activity.MyProgressDialog;
 import com.mobileclient.activity.R;
+import com.mobileclient.activity.SecondOrderDetailActivity;
+import com.mobileclient.activity.SecondUserDetailActivity;
 import com.mobileclient.activity.UserInfoDetailActivity;
 import com.mobileclient.activity.UserInfoListActivity;
 import com.mobileclient.adapter.UserInfoSimpleAdapter;
+import com.mobileclient.app.RefreshListView;
 import com.mobileclient.domain.User;
 import com.mobileclient.service.UserService;
 import com.mobileclient.util.HttpUtil;
@@ -37,13 +41,13 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class FouthFragment extends Fragment {
+public class FouthFragment extends Fragment implements RefreshListView.OnRefreshListener,RefreshListView.OnLoadMoreListener{
 
     UserInfoSimpleAdapter adapter;
     List<Map<String, Object>> list;
     private User queryConditionUser=null;
     // @BindView(R.id.id_recyclerview)
-    private ListView lv;
+    private RefreshListView lv;
     private List<String> stringList;
     private MyProgressDialog dialog; //进度条	@Override
     UserService userService=new UserService();
@@ -98,14 +102,15 @@ public class FouthFragment extends Fragment {
                 });
             }
         }.start();
-
+        lv.setOnRefreshListener(this);
+        lv.setOnLoadMoreListener(this);
         // 添加点击
         lv.setOnCreateContextMenuListener(UserListItemListener);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
                 Intent intent = new Intent();
-                intent.setClass(getActivity(), UserInfoDetailActivity.class);
+                intent.setClass(getActivity(), SecondUserDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("nickName", list.get(arg2).get("nickName").toString());
                 bundle.putString("userName", list.get(arg2).get("userName").toString());
@@ -117,10 +122,11 @@ public class FouthFragment extends Fragment {
                 bundle.putString("userGender", list.get(arg2).get("userGender").toString());
                 bundle.putString("userEmail", list.get(arg2).get("userEmail").toString());
                 bundle.putString("userMoney", list.get(arg2).get("userMoney").toString());
-                bundle.putString("userReputation", list.get(arg2).get("userReputation").toString());
+                bundle.putInt("userReputation", Integer.parseInt(list.get(arg2).get("userReputation").toString()));
                 bundle.putString("regTime", list.get(arg2).get("regTime").toString());
                 bundle.putString("userAuthFile", list.get(arg2).get("userAuthFile").toString());
                 bundle.putByteArray("photo", (byte[]) list.get(arg2).get("photo"));
+                bundle.putString("Photo", list.get(arg2).get("Photo").toString());
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -134,6 +140,45 @@ public class FouthFragment extends Fragment {
             menu.add(0, 1, 0, "删除用户信息");
         }
     };
+    // 长按菜单响应函数
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        if (item.getItemId() == 0) {  //编辑用户信息
+            ContextMenu.ContextMenuInfo info = item.getMenuInfo();
+            AdapterView.AdapterContextMenuInfo contextMenuInfo = (AdapterView.AdapterContextMenuInfo) info;
+            // 获取选中行位置
+            int arg2 = contextMenuInfo.position;
+            // 获取用户名
+            Intent intent = new Intent();
+            intent.setClass(getActivity(), UserInfoDetailActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("nickName", list.get(arg2).get("nickName").toString());
+            bundle.putString("userName", list.get(arg2).get("userName").toString());
+            bundle.putInt("userId", Integer.parseInt(list.get(arg2).get("userId").toString()));
+            bundle.putInt("studentId", Integer.parseInt(list.get(arg2).get("studentId").toString()));
+            bundle.putString("userPassword", list.get(arg2).get("userPassword").toString());
+            bundle.putString("userType", list.get(arg2).get("userType").toString());
+            bundle.putString("userPhone", list.get(arg2).get("userPhone").toString());
+            bundle.putString("userGender", list.get(arg2).get("userGender").toString());
+            bundle.putString("userEmail", list.get(arg2).get("userEmail").toString());
+            bundle.putString("userMoney", list.get(arg2).get("userMoney").toString());
+            bundle.putString("userReputation", list.get(arg2).get("userReputation").toString());
+            bundle.putString("regTime", list.get(arg2).get("regTime").toString());
+            bundle.putString("userAuthFile", list.get(arg2).get("userAuthFile").toString());
+            bundle.putByteArray("photo", (byte[]) list.get(arg2).get("photo"));
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } else if (item.getItemId() == 1) {// 删除用户信息
+//            ContextMenu.ContextMenuInfo info = item.getMenuInfo();
+//            AdapterView.AdapterContextMenuInfo contextMenuInfo = (AdapterView.AdapterContextMenuInfo) info;
+//            // 获取选中行位置
+//            int position = contextMenuInfo.position;
+//            // 获取用户名
+//            user_name = list.get(position).get("user_name").toString();
+//            dialog();
+        }
+        return super.onContextItemSelected(item);
+    }
 
 
 
@@ -179,6 +224,7 @@ public class FouthFragment extends Fragment {
                         map.put("userId", userList.get(i).getUserId());
                         map.put("userName", userList.get(i).getUserName());
                         map.put("userPassword", userList.get(i).getUserPassword());
+                        map.put("Photo",userList.get(i).getUserPhoto());
                         byte[] userPhoto_data = null;
                         // 获取图片数据
                         userPhoto_data = ImageService.getImage(HttpUtil.DOWNURL + userList.get(i).getUserPhoto());
@@ -218,7 +264,17 @@ public class FouthFragment extends Fragment {
         return list;
     }
 
+    @Override
+    public void onRefresh() {
+        setViews();
+        lv.setOnRefreshComplete();
+        adapter.notifyDataSetChanged();
+    }
 
+    @Override
+    public void onLoadMore() {
+
+    }
 
 
 

@@ -65,9 +65,18 @@ public class OrderService {
             urlString += "&orderName=" + queryConditionTakeOrder.getOrderName();
             urlString += "&useId=" + URLEncoder.encode(String.valueOf(queryConditionTakeOrder.getUserId()), "UTF-8") + "";
             urlString += "&expressCompanyName=" + URLEncoder.encode(queryConditionTakeOrder.getExpressCompanyName(), "UTF-8") + "";
+            urlString += "&expressCompanyAddress=" + URLEncoder.encode(queryConditionTakeOrder.getExpressCompanyAddress(),"UTF-8")+"";
+            urlString += "&receiveAddressId=" + URLEncoder.encode(String.valueOf(queryConditionTakeOrder.getReceiveAddressId()),"UTF-8")+"";
+            urlString += "&addTime=" + queryConditionTakeOrder.getAddTime();
             urlString += "&orderState=" + queryConditionTakeOrder.getOrderState();
             urlString += "&orderPay=" + queryConditionTakeOrder.getOrderPay();
+            urlString += "&remark=" + queryConditionTakeOrder.getRemark();
+            urlString += "&receiveCode=" + queryConditionTakeOrder.getReceiveCode();
+            urlString += "&userPhone=" + queryConditionTakeOrder.getUserPhone();
+            urlString += "&orderEvaluate=" + queryConditionTakeOrder.getOrderEvaluate();
+            urlString += "&takeUserId=" + queryConditionTakeOrder.getTakeUserId();
         }
+        Log.i("zhuhui",urlString);
         List<Order> orderList = new ArrayList<Order>();
         try {
             OkHttpClient client=new OkHttpClient();

@@ -133,7 +133,7 @@ public class UserInfoListActivity extends Activity {
             @Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
             	Intent intent = new Intent();
-            	intent.setClass(UserInfoListActivity.this, UserInfoDetailActivity.class);
+            	intent.setClass(UserInfoListActivity.this, SecondOrderDetailActivity.class);
             	Bundle bundle = new Bundle();
             	bundle.putString("nickName", list.get(arg2).get("nickName").toString());
 				bundle.putString("userName", list.get(arg2).get("userName").toString());
@@ -169,15 +169,27 @@ public class UserInfoListActivity extends Activity {
 			ContextMenuInfo info = item.getMenuInfo();
 			AdapterContextMenuInfo contextMenuInfo = (AdapterContextMenuInfo) info;
 			// 获取选中行位置
-			int position = contextMenuInfo.position;
+			int arg2 = contextMenuInfo.position;
 			// 获取用户名
-			user_name = list.get(position).get("user_name").toString();
 			Intent intent = new Intent();
-			intent.setClass(UserInfoListActivity.this, UserInfoEditActivity.class);
+			intent.setClass(UserInfoListActivity.this, UserInfoDetailActivity.class);
 			Bundle bundle = new Bundle();
-			bundle.putString("user_name", user_name);
+			bundle.putString("nickName", list.get(arg2).get("nickName").toString());
+			bundle.putString("userName", list.get(arg2).get("userName").toString());
+			bundle.putInt("userId", Integer.parseInt(list.get(arg2).get("userId").toString()));
+			bundle.putInt("studentId", Integer.parseInt(list.get(arg2).get("studentId").toString()));
+			bundle.putString("userPassword", list.get(arg2).get("userPassword").toString());
+			bundle.putString("userType", list.get(arg2).get("userType").toString());
+			bundle.putString("userPhone", list.get(arg2).get("userPhone").toString());
+			bundle.putString("userGender", list.get(arg2).get("userGender").toString());
+			bundle.putString("userEmail", list.get(arg2).get("userEmail").toString());
+			bundle.putString("userMoney", list.get(arg2).get("userMoney").toString());
+			bundle.putString("userReputation", list.get(arg2).get("userReputation").toString());
+			bundle.putString("regTime", list.get(arg2).get("regTime").toString());
+			bundle.putString("userAuthFile", list.get(arg2).get("userAuthFile").toString());
+			bundle.putByteArray("photo", (byte[]) list.get(arg2).get("photo"));
 			intent.putExtras(bundle);
-			startActivityForResult(intent,ActivityUtils.EDIT_CODE);
+			startActivity(intent);
 		} else if (item.getItemId() == 1) {// 删除用户信息
 			ContextMenuInfo info = item.getMenuInfo();
 			AdapterContextMenuInfo contextMenuInfo = (AdapterContextMenuInfo) info;

@@ -52,6 +52,7 @@
         android:debuggable="true"
         android:icon="@drawable/xiaohui"
         android:label="@string/app_name"
+        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.amap.api.v2.apikey"
@@ -134,6 +135,9 @@
         <activity android:name="com.mobileclient.activity.UserAuthActivity" />
         <activity android:name="com.mobileclient.activity.LoginActivity" />
         <activity android:name="com.cc.testdemo.MainActivity" />
+        <activity android:name="com.mobileclient.activity.SecondUserDetailActivity" />
+        <activity android:name="com.mobileclient.activity.SecondAuthActivity" />
+        <activity android:name="com.mobileclient.activity.MyInfoActivtiy" />
 
         <meta-data
             android:name="android.support.VERSION"

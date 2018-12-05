@@ -4,6 +4,8 @@ import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Bundle;
 import android.text.Editable;
@@ -22,7 +24,15 @@ import android.widget.TextView;
 
 import com.mobileclient.adapter.SearchAdapter;
 import com.mobileclient.domain.ExpressTake;
+import com.mobileclient.domain.Order;
+import com.mobileclient.domain.ReceiveAddress;
+import com.mobileclient.domain.User;
 import com.mobileclient.service.ExpressTakeService;
+import com.mobileclient.service.OrderService;
+import com.mobileclient.service.ReceiveAddressService;
+import com.mobileclient.service.UserService;
+import com.mobileclient.util.HttpUtil;
+import com.mobileclient.util.ImageService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,6 +56,13 @@ public class SearchActivity extends Activity {
     private MyProgressDialog dialog; //进度条	@Override
     List<Map<String, Object>> list;
     SearchAdapter adapter;
+    User user=new User();
+    UserService userService=new UserService();
+    Order order;
+    Order queryConditionExpressOrder=null;
+    OrderService orderService=new OrderService();
+    ReceiveAddress receiveAddress=new ReceiveAddress();
+    ReceiveAddressService receiveAddressService=new ReceiveAddressService();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,29 +78,15 @@ public class SearchActivity extends Activity {
         mSearchTxt =  findViewById(R.id.tv_search);
         mbackIv =  findViewById(R.id.back_iv);
         frameBg =   findViewById(R.id.frame_bg);
-       // recommandTv = findViewById(R.id.recommand_tv);
+
+        // recommandTv = findViewById(R.id.recommand_tv);
         locationTv =  findViewById(R.id.location_tv);
         tv_search=findViewById(R.id.tv_search);
-        mHintTxt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                  // init();
-            }
-        });
         //绑定数据
 
 
-            tv_search.setOnClickListener(new View.OnClickListener() {
+        tv_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //搜索
@@ -125,10 +128,12 @@ public class SearchActivity extends Activity {
         mbackIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 onBackPressed();
+
             }
         });
-
+       setViews();
     }
 
 
@@ -188,7 +193,7 @@ public class SearchActivity extends Activity {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 locationTv.setAlpha((Float) valueAnimator.getAnimatedValue());
-                recommandTv.setAlpha((Float) valueAnimator.getAnimatedValue());
+               // recommandTv.setAlpha((Float) valueAnimator.getAnimatedValue());
             }
         });
         //给以上动画设置持续时长并启动动画
@@ -276,7 +281,7 @@ public class SearchActivity extends Activity {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 locationTv.setAlpha((Float) valueAnimator.getAnimatedValue());
-                recommandTv.setAlpha((Float) valueAnimator.getAnimatedValue());
+               // recommandTv.setAlpha((Float) valueAnimator.getAnimatedValue());
             }
         });
 
@@ -303,42 +308,79 @@ public class SearchActivity extends Activity {
                     @Override
                     public void run() {
                         dialog.cancel();
-                        adapter = new SearchAdapter(SearchActivity.this, list,
-                                R.layout.search_list_item,
-                                new String[] { "userPhoto","userName","orderName","expressCompanyName","expressCompanyAdress","receiveAdress","addTime","orderState" },
-                                new int[] { R.id.userPhoto,R.id.userName,R.id.orderName,R.id.expressCompanyName,R.id.expressCompanyAdress,
-                                        R.id.addTime,R.id.orderState},lv);
+                        Log.i("ppppppp",""+list.get(0).get("nickName"));
+                        adapter = new SearchAdapter(SearchActivity.this,list);
                         lv.setAdapter(adapter);
+                        mHintTxt.addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                            }
+
+                            @Override
+                            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                                Log.i("ppppppp","333"+adapter);
+
+                                adapter.getFilter().filter(s);
+                            }
+
+                            @Override
+                            public void afterTextChanged(Editable s) {
+                                // init();
+                            }
+                        });
+
                     }
                 });
             }
         }.start();
 
     }
-    //查询数据
-    private List<Map<String, Object>> getDatas () {
-
+    private List<Map<String, Object>> getDatas() {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         try {
-            Log.i("zhu1010", "查询");
             /* 查询快递代拿信息 */
-            List<ExpressTake> expressTakeList = expressTakeService.QueryExpressTake(queryConditionExpressTake);
-            //Log.i("zhu1111","查询"+expressTakeList);
-            for (int i = 0; i < expressTakeList.size(); i++) {
+            ReceiveAddressService receiveAdressService=new ReceiveAddressService();
+            /* 查询快递代拿信息 */
+            List<Order> expressOrderList = orderService.QueryOrder(queryConditionExpressOrder);
+            for (int i = 0; i < expressOrderList.size(); i++) {
                 Map<String, Object> map = new HashMap<String, Object>();
-                map.put("photo", expressTakeList.get(i).getOrderId());
-                Log.i("aaaaaaaa", "" + expressTakeList.get(i).getOrderId());
-                map.put("userObj",""+expressTakeList.get(i).getUserObj());
-                map.put("taskTitle",""+expressTakeList.get(i).getTaskTitle());
-                map.put("companyObj",""+expressTakeList.get(i).getCompanyObj());
-                map.put("expressCompanyAdress",expressTakeList.get(i).getExpressCompanyAdress());
-                map.put("takePlace", expressTakeList.get(i).getTakePlace());
-                map.put("addTime", expressTakeList.get(i).getAddTime());
-                map.put("takeStateObj",expressTakeList.get(i).getTakeStateObj());
-                list.add(map);
+                if(expressOrderList.get(i).getOrderState().equals("待接单")) {
+                    map.put("orderId", expressOrderList.get(i).getOrderId());
+                    map.put("orderName", expressOrderList.get(i).getOrderName());
+                    map.put("userId", expressOrderList.get(i).getUserId());
+                    user = userService.GetUserInfo(expressOrderList.get(i).getUserId());
+                    map.put("userName", user.getUserName());
+                    map.put("nickName", user.getNickName());
+                    byte[] userPhoto_data = null;
+                    // 获取图片数据
+                    userPhoto_data = ImageService.getImage(HttpUtil.DOWNURL + user.getUserPhoto());
+                    map.put("photo", userPhoto_data);
+                    Bitmap userPhoto = BitmapFactory.decodeByteArray(userPhoto_data, 0, userPhoto_data.length);
+                    map.put("userPhoto", userPhoto);
+                    map.put("expressCompanyName", expressOrderList.get(i).getExpressCompanyName());
+                    map.put("expressCompanyAddress", expressOrderList.get(i).getExpressCompanyAddress());
+                    map.put("receiveAddressId", expressOrderList.get(i).getReceiveAddressId());
+                    // 根据获取到的地址Id，查询地址名以及收获人姓名
+                    receiveAddress = receiveAdressService.QueryReceiveAdress(expressOrderList.get(i).getReceiveAddressId());
+                    Log.i("zhu1111", "查询ttt" + receiveAddress.getReceiveAddressName());
+                    map.put("receiveAddressName", receiveAddress.getReceiveAddressName());
+                    map.put("receiveName", receiveAddress.getReceiveName());
+                    map.put("receivePhone", receiveAddress.getReceivePhone());
+                    map.put("addTime", expressOrderList.get(i).getAddTime());
+                    map.put("orderState", expressOrderList.get(i).getOrderState());
+                    map.put("orderPay", expressOrderList.get(i).getOrderPay());
+                    map.put("remark", expressOrderList.get(i).getRemark());
+                    map.put("receiveCode", expressOrderList.get(i).getReceiveCode());
+                    map.put("evaluate", expressOrderList.get(i).getOrderEvaluate());
+                    map.put("takeUserId", expressOrderList.get(i).getTakeUserId());
+                    //map.put("userPhone", expressOrderList.get(i).getAddTime());
+                    list.add(map);
+                }
             }
         } catch (Exception e) {
-            //Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         }
         return list;
     }

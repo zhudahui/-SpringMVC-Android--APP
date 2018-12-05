@@ -1,5 +1,9 @@
 package com.mobileclient.domain;
 
+
+
+import android.graphics.Bitmap;
+
 import java.io.Serializable;
 
 public class Order implements Serializable {
@@ -17,7 +21,10 @@ public class Order implements Serializable {
     private String userPhone;    //发布者手机号
     private String orderEvaluate; //订单评价
     private int takeUserId;     //代取者Id
-
+    private String nickName;//
+    private String receiveAddressName;
+    private Bitmap bitmap;
+    //多条件搜索
 
 
     public int getOrderId() {
@@ -131,5 +138,29 @@ public class Order implements Serializable {
 
     public void setTakeUserId(int takeUserId) {
         this.takeUserId = takeUserId;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getReceiveAddressName() {
+        return receiveAddressName;
+    }
+
+    public void setReceiveAddressName(String receiveAddressName) {
+        this.receiveAddressName = receiveAddressName;
+    }
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 }

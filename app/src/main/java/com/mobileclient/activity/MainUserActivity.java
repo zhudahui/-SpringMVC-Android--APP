@@ -56,9 +56,9 @@ public class MainUserActivity extends MyTabActivity {
 		thirdBtn.setText("我发布的代拿订单");
 		/*第四tab页*/
 		TabSpec fourthSpec = tabHost.newTabSpec(FOURTH_TAB).setIndicator(FOURTH_TAB)
-				.setContent(new Intent(this, MoreActivity.class));
+				.setContent(new Intent(this, MyInfoActivtiy.class));
 		Button fourthBtn = (Button)findViewById(R.id.fourthBtn);
-		fourthBtn.setText("更多");
+		fourthBtn.setText("我的");
 		tabHost.addTab(firstSpec);
 		tabHost.addTab(secondSpec);
 		tabHost.addTab(thirdSpec);

@@ -107,6 +107,7 @@ public class UserService {
     /* 更新用户 */
     public String UpdateUserInfo(User user) {
         try {
+            Log.i("ppppuserName",user.getUserName());
             OkHttpClient client=new OkHttpClient();
             RequestBody body=new FormBody.Builder()
                     .add("userId", String.valueOf(user.getUserId()))
@@ -126,7 +127,6 @@ public class UserService {
                     .add("nickName",user.getNickName())
                     .build();
 
-                     Log.i("ppppuserName",user.getUserName());
             Log.i("pppppuserPassword", user.getUserPassword());
             Log.i("ppppuserPhoto",user.getUserPhoto());
                     Log.i("userType", user.getUserType());
