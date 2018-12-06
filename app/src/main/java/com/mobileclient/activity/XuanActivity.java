@@ -3,12 +3,14 @@ package com.mobileclient.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.cc.testdemo.MainActivity;
+import com.mobileclient.util.ActivityUtils;
 
 public class XuanActivity extends Activity {
  private ImageView img1;
@@ -37,5 +39,15 @@ public class XuanActivity extends Activity {
             }
         });
     }
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN
+                && event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+            ActivityUtils.getInstance().ConfirmExit(this);
+
+        }
+
+        return super.dispatchKeyEvent(event);
+    };
 
 }

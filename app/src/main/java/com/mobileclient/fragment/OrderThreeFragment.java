@@ -58,7 +58,7 @@ import butterknife.ButterKnife;
 
 import static android.app.Activity.RESULT_OK;
 
-public class TakeMyTwoFragment extends Fragment implements RefreshListView.OnRefreshListener,RefreshListView.OnLoadMoreListener{
+public class OrderThreeFragment extends Fragment implements RefreshListView.OnRefreshListener,RefreshListView.OnLoadMoreListener{
     ExpressOrderAdapter adapter;
     RefreshListView lv;
     List<Map<String, Object>> list;
@@ -69,7 +69,6 @@ public class TakeMyTwoFragment extends Fragment implements RefreshListView.OnRef
     private Order queryConditionExpressOrder;
     private MyProgressDialog dialog; //进度条	@Override
     OrderService orderService=new OrderService();
-    Order  order=new Order();
     User user=new User();
     UserService userService=new UserService();
     ReceiveAddress receiveAddress=new ReceiveAddress();
@@ -81,7 +80,6 @@ public class TakeMyTwoFragment extends Fragment implements RefreshListView.OnRef
         lv=view.findViewById(R.id.list_view);
         dialog = MyProgressDialog.getInstance(getActivity());
         ButterKnife.bind(this, view);
-        queryConditionExpressOrder = new Order();
         queryConditionExpressOrder=null;
 
         setViews();
@@ -229,7 +227,7 @@ public class TakeMyTwoFragment extends Fragment implements RefreshListView.OnRef
             List<Order> expressOrderList = orderService.QueryOrder(queryConditionExpressOrder);
             for (int i = 0; i < expressOrderList.size(); i++) {
                 Map<String, Object> map = new HashMap<String, Object>();
-                if(expressOrderList.get(i).getOrderState().equals("")) {
+                if(expressOrderList.get(i).getOrderState().equals("已完成")) {
                     map.put("orderId", expressOrderList.get(i).getOrderId());
                     map.put("orderName", expressOrderList.get(i).getOrderName());
                     map.put("userId", expressOrderList.get(i).getUserId());

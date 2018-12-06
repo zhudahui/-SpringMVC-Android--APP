@@ -9,20 +9,15 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.cc.testdemo.FouthFragment;
-import com.cc.testdemo.ThreeFragment;
-import com.cc.testdemo.TwoFragment;
-import com.mobileclient.activity.R;
-import com.mobileclient.fragment.TakeMyOneFragment;
-import com.mobileclient.fragment.TakeMyThreeFragment;
-import com.mobileclient.fragment.TakeMyTwoFragment;
+import com.mobileclient.fragment.OrderOneFragment;
+import com.mobileclient.fragment.OrderThreeFragment;
+import com.mobileclient.fragment.OrderTwoFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +26,9 @@ public class ExpressOrderListActivity extends AppCompatActivity implements View.
     private TextView title, item_weixin, item_tongxunlu, item_faxian;
     private ViewPager vp;
     // private OneFragment oneFragment;
-    private TakeMyTwoFragment twoFragment;
-    private TakeMyThreeFragment threeFragment;
-    private TakeMyOneFragment oneFragment;
+    private OrderTwoFragment twoFragment;
+    private OrderThreeFragment threeFragment;
+    private OrderOneFragment oneFragment;
     private List<Fragment> mFragmentList = new ArrayList<Fragment>();
     private FragmentAdapter mFragmentAdapter;
 
@@ -170,9 +165,9 @@ private final static int REFRESH_COMPLETE = 0;
 
         vp = (ViewPager) findViewById(R.id.mainViewPager);
         // oneFragment = new OneFragment();
-        twoFragment = new TakeMyTwoFragment();
-        threeFragment = new TakeMyThreeFragment();
-        oneFragment = new TakeMyOneFragment();
+        twoFragment = new OrderTwoFragment();
+        threeFragment = new OrderThreeFragment();
+        oneFragment = new OrderOneFragment();
         //给FragmentList添加数据
         //  mFragmentList.add(oneFragment);
         mFragmentList.add(oneFragment);

@@ -21,6 +21,11 @@ android {
     productFlavors {
     }
 }
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
 
 dependencies {
     implementation 'com.android.support:appcompat-v7:26.0.0'
@@ -52,5 +57,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation 'com.jakewharton:butterknife:8.4.0'
     implementation 'com.android.support:recyclerview-v7:26.0.0'
+
+    implementation 'com.github.ozodrukh:CircularReveal:1.0.5@aar'
+    implementation 'com.squareup.picasso:picasso:2.5.0'
+    implementation 'com.nhaarman.listviewanimations:lib-core:3.1.0@aar'
+    implementation 'com.nineoldandroids:library:2.4.0'
 
 }

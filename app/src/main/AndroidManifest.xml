@@ -81,7 +81,6 @@
         <activity android:name=".UserInfoAddActivity" />
         <activity android:name=".UserInfoEditActivity" />
         <activity android:name=".UserInfoDetailActivity" />
-        <activity android:name=".ExpressTakeMyListActivity" />
         <activity android:name=".ExpressTakeQueryActivity" />
         <activity android:name=".ExpressTakeAddActivity" />
         <activity android:name=".ExpressTakeEditActivity" />
@@ -139,6 +138,8 @@
         <activity android:name=".SecondUserDetailActivity"/>
         <activity android:name=".SecondAuthActivity"/>
         <activity android:name=".MyInfoActivtiy"/>
+        <activity android:name=".myorder.ExpressTakeMyListActivity"/>
+        <activity android:name=".takeOrder.TakeOrderListActivity"/>
     </application>
 
 </manifest>

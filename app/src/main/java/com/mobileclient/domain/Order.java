@@ -7,20 +7,29 @@ import android.graphics.Bitmap;
 import java.io.Serializable;
 
 public class Order implements Serializable {
-    private int orderId;       //订单Id
-    private String orderName;   //订单名
-    private int userId;          //发布者
-    private String expressCompanyName;//快递公司
-    private String expressCompanyAddress;//取货地址
-    private int receiveAddressId;//收货地址
-    private String addTime;     //创建事件
-    private String orderState;  //订单状态
-    private String orderPay;    //订单酬金
-    private String remark;      //备注
-    private int receiveCode;    //取货码
-    private String userPhone;    //发布者手机号
-    private String orderEvaluate; //订单评价
-    private int takeUserId;     //代取者Id
+    private int orderId;          //订单Id
+    private String orderName;     //订单名
+    private int userId;            //发布者
+    private String expressCompanyName;  //快递公司
+    private String expressCompanyAddress; //取货地址
+    private int receiveAddressId;  //收货地址
+    private String addTime;       //创建事件
+    private String orderState;    //订单状态
+    private String orderPay;      //订单酬金
+    private String remark;        //备注
+    private String receiveCode;     //取货码
+    private String userPhone;     //发布者手机号
+    private String orderEvaluate;  //订单评价
+    private int takeUserId;        //代取者Id
+    private String score;          //订单评星
+    private String orderType;      //订单类型  分为普通类型、悬赏类型，加急类型
+
+
+
+
+
+
+
     private String nickName;//
     private String receiveAddressName;
     private Bitmap bitmap;
@@ -107,13 +116,7 @@ public class Order implements Serializable {
         this.remark = remark;
     }
 
-    public int getReceiveCode() {
-        return receiveCode;
-    }
 
-    public void setReceiveCode(int receiveCode) {
-        this.receiveCode = receiveCode;
-    }
 
     public String getUserPhone() {
         return userPhone;
@@ -162,5 +165,29 @@ public class Order implements Serializable {
 
     public void setBitmap(Bitmap bitmap) {
         this.bitmap = bitmap;
+    }
+
+    public String getReceiveCode() {
+        return receiveCode;
+    }
+
+    public void setReceiveCode(String receiveCode) {
+        this.receiveCode = receiveCode;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
+
+    public String getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(String orderType) {
+        this.orderType = orderType;
     }
 }

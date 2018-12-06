@@ -35,7 +35,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -58,7 +57,7 @@ import butterknife.ButterKnife;
 
 import static android.app.Activity.RESULT_OK;
 
-public class TakeMyThreeFragment extends Fragment implements RefreshListView.OnRefreshListener,RefreshListView.OnLoadMoreListener{
+public class OrderOneFragment extends Fragment implements RefreshListView.OnRefreshListener,RefreshListView.OnLoadMoreListener{
     ExpressOrderAdapter adapter;
     RefreshListView lv;
     List<Map<String, Object>> list;
@@ -69,6 +68,7 @@ public class TakeMyThreeFragment extends Fragment implements RefreshListView.OnR
     private Order queryConditionExpressOrder;
     private MyProgressDialog dialog; //进度条	@Override
     OrderService orderService=new OrderService();
+    Order  order=new Order();
     User user=new User();
     UserService userService=new UserService();
     ReceiveAddress receiveAddress=new ReceiveAddress();
@@ -80,6 +80,7 @@ public class TakeMyThreeFragment extends Fragment implements RefreshListView.OnR
         lv=view.findViewById(R.id.list_view);
         dialog = MyProgressDialog.getInstance(getActivity());
         ButterKnife.bind(this, view);
+        queryConditionExpressOrder = new Order();
         queryConditionExpressOrder=null;
 
         setViews();
@@ -98,7 +99,7 @@ public class TakeMyThreeFragment extends Fragment implements RefreshListView.OnR
 //                    setViews();
 //            }
 //        }
-    // }
+   // }
 
     private void setViews() {
         dialog.show();
@@ -227,7 +228,7 @@ public class TakeMyThreeFragment extends Fragment implements RefreshListView.OnR
             List<Order> expressOrderList = orderService.QueryOrder(queryConditionExpressOrder);
             for (int i = 0; i < expressOrderList.size(); i++) {
                 Map<String, Object> map = new HashMap<String, Object>();
-                if(expressOrderList.get(i).getOrderState().equals("送单中")) {
+                if(expressOrderList.get(i).getOrderState().equals("待接单")) {
                     map.put("orderId", expressOrderList.get(i).getOrderId());
                     map.put("orderName", expressOrderList.get(i).getOrderName());
                     map.put("userId", expressOrderList.get(i).getUserId());

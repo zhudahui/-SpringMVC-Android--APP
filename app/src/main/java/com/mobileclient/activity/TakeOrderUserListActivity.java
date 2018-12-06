@@ -84,7 +84,7 @@ public class TakeOrderUserListActivity extends Activity {
 			}
 		});
 		TextView title = (TextView) this.findViewById(R.id.title);
-		title.setText("我发布的快递代拿");
+		title.setText("我的发布");
 
 		if(declare.getUserType().equals("普通用户"))
 		{

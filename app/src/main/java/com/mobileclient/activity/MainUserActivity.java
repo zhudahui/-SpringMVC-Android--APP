@@ -4,7 +4,6 @@ package com.mobileclient.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -13,9 +12,8 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
-import com.mobileclient.domain.TakeOrder;
-import com.mobileclient.util.ActivityUtils;
- 
+import com.mobileclient.activity.myorder.ExpressTakeMyListActivity;
+
 
 public class MainUserActivity extends MyTabActivity {
 
@@ -46,9 +44,9 @@ public class MainUserActivity extends MyTabActivity {
 		firstBtn.setText("快递代拿订单");
 		/*第二tab页*/
 		TabSpec secondSpec = tabHost.newTabSpec(SECOND_TAB).setIndicator(SECOND_TAB)
-				.setContent(new Intent(this,TakeOrderUserListActivity.class));
+				.setContent(new Intent(this,MainActivity.class));
 		Button secondBtn = (Button)findViewById(R.id.secondBtn);
-		secondBtn.setText("我抢的代拿订单");
+		secondBtn.setText("悬赏");
 		/*第三tab页*/
 		TabSpec thirdSpec = tabHost.newTabSpec(THIRD_TAB).setIndicator(THIRD_TAB)
 				.setContent(new Intent(this,ExpressTakeMyListActivity.class));
@@ -100,15 +98,5 @@ public class MainUserActivity extends MyTabActivity {
 
  
     
-    @Override
-	public boolean dispatchKeyEvent(KeyEvent event) {
-    	if (event.getAction() == KeyEvent.ACTION_DOWN
-    			&& event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
-    		ActivityUtils.getInstance().ConfirmExit(this);
-            
-    	}
-    	
-    	return super.dispatchKeyEvent(event);
-    };
 
 }

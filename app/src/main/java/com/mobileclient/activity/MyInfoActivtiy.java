@@ -12,8 +12,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cc.testdemo.Activity;
+import com.mobileclient.activity.takeOrder.TakeOrderListActivity;
 import com.mobileclient.app.Declare;
 import com.mobileclient.app.IdentityImageView;
 import com.mobileclient.util.ActivityUtils;
@@ -32,6 +34,7 @@ public class MyInfoActivtiy extends Activity implements View.OnClickListener {
     private TextView express;//快递通，根据快递单号查找快递
     private TextView notice; //通知
     private TextView setting; //设置
+    private TextView takeorder; //我的代取
     Declare declare;
 
 
@@ -57,10 +60,12 @@ public class MyInfoActivtiy extends Activity implements View.OnClickListener {
         express=findViewById(R.id.txt_express);
         notice=findViewById(R.id.txt_notice);
         setting=findViewById(R.id.txt_setting);
+        takeorder=findViewById(R.id.txt_takeOrder);
         //============
         init();
 
         //============
+        right.setOnClickListener(this);
         userId.setOnClickListener(this);
         reward.setOnClickListener(this);
         auth.setOnClickListener(this);
@@ -68,6 +73,7 @@ public class MyInfoActivtiy extends Activity implements View.OnClickListener {
         express.setOnClickListener(this);
         notice.setOnClickListener(this);
         setting.setOnClickListener(this);
+        takeorder.setOnClickListener(this);
 
     }
 
@@ -79,12 +85,20 @@ public class MyInfoActivtiy extends Activity implements View.OnClickListener {
                 // 获取用户名
                 String user_name = declare.getUserName();
                 intent.setClass(MyInfoActivtiy.this, UserInfoEditActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("user_name", user_name);
-                intent.putExtras(bundle);
+//                Bundle bundle = new Bundle();
+//                bundle.putString("user_name", user_name);
+                //intent.putExtras(bundle);
                 startActivityForResult(intent,ActivityUtils.EDIT_CODE);
                 break;
             case R.id.txt_reward:
+                break;
+            case R.id.txt_takeOrder:
+                if(declare.getUserType().equals("快递员")){
+                    intent = new Intent(MyInfoActivtiy.this, TakeOrderListActivity.class);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(MyInfoActivtiy.this,"请先进行认证",Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.txt_auth:
                 String userAuthFile=declare.getUserAuthFile();

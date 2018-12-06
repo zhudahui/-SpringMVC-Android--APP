@@ -172,7 +172,7 @@ public class ExpressOrderDetailActivity extends Activity {
             order.setOrderState(extras.getString("orderState"));
             order.setOrderPay(extras.getString("orderPay"));
             order.setRemark(extras.getString("remark"));
-            order.setReceiveCode(Integer.parseInt(extras.getString("receiveCode")));
+            order.setReceiveCode(extras.getString("receiveCode"));
             order.setOrderEvaluate(extras.getString("evaluate"));
 
 
@@ -220,7 +220,7 @@ public class ExpressOrderDetailActivity extends Activity {
                     flag = 4;
 
                 }
-                if (takeUserId == declare.getUserId()) {  //接单者
+                else if (takeUserId == declare.getUserId()) {  //接单者
                     btnGetOrder.setVisibility(View.GONE);
                     btnViewOrder.setVisibility(View.VISIBLE);
                     btnViewOrder.setText("等待对方评价");

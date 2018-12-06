@@ -17,6 +17,7 @@ public class User implements Serializable {
     private String regTime;              //创建时间
     private String nickName;             //昵称
     private int studentId;               //学号
+    private String userAuthState;     //用户认证状态     未认证       待认证     已认证
 
 
     public int getUserId() {

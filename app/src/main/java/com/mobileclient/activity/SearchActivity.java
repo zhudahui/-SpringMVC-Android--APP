@@ -346,7 +346,6 @@ public class SearchActivity extends Activity {
             List<Order> expressOrderList = orderService.QueryOrder(queryConditionExpressOrder);
             for (int i = 0; i < expressOrderList.size(); i++) {
                 Map<String, Object> map = new HashMap<String, Object>();
-                if(expressOrderList.get(i).getOrderState().equals("待接单")) {
                     map.put("orderId", expressOrderList.get(i).getOrderId());
                     map.put("orderName", expressOrderList.get(i).getOrderName());
                     map.put("userId", expressOrderList.get(i).getUserId());
@@ -377,7 +376,6 @@ public class SearchActivity extends Activity {
                     map.put("takeUserId", expressOrderList.get(i).getTakeUserId());
                     //map.put("userPhone", expressOrderList.get(i).getAddTime());
                     list.add(map);
-                }
             }
         } catch (Exception e) {
             e.printStackTrace();

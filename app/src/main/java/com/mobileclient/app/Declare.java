@@ -1,6 +1,8 @@
 package com.mobileclient.app;
  
 import java.io.File;
+import java.util.List;
+import java.util.Map;
 
 import android.app.Application;
 import android.content.Context;
@@ -26,7 +28,7 @@ public class Declare extends Application {
 	private int userId;//用户Id
     private String userName;
 
-
+    private List<Map<String, Object>> list;
 	public String getUserType() {
 		return userType;
 	}
@@ -177,5 +179,13 @@ public class Declare extends Application {
 
 	public void setStudentId(int studentId) {
 		this.studentId = studentId;
+	}
+
+	public List<Map<String, Object>> getList() {
+		return list;
+	}
+
+	public void setList(List<Map<String, Object>> list) {
+		this.list = list;
 	}
 }

@@ -57,7 +57,7 @@ import butterknife.ButterKnife;
 
 import static android.app.Activity.RESULT_OK;
 
-public class TakeMyOneFragment extends Fragment implements RefreshListView.OnRefreshListener,RefreshListView.OnLoadMoreListener{
+public class MyOrderOneFragment extends Fragment implements RefreshListView.OnRefreshListener,RefreshListView.OnLoadMoreListener{
     ExpressOrderAdapter adapter;
     RefreshListView lv;
     List<Map<String, Object>> list;
@@ -82,7 +82,8 @@ public class TakeMyOneFragment extends Fragment implements RefreshListView.OnRef
         ButterKnife.bind(this, view);
         queryConditionExpressOrder = new Order();
         queryConditionExpressOrder=null;
-
+        Declare declare = (Declare) getActivity().getApplicationContext();
+        userId=declare.getUserId();
         setViews();
         return view;
     }
@@ -99,7 +100,7 @@ public class TakeMyOneFragment extends Fragment implements RefreshListView.OnRef
 //                    setViews();
 //            }
 //        }
-   // }
+    // }
 
     private void setViews() {
         dialog.show();
@@ -225,7 +226,7 @@ public class TakeMyOneFragment extends Fragment implements RefreshListView.OnRef
             /* 查询快递代拿信息 */
             ReceiveAddressService receiveAdressService=new ReceiveAddressService();
             /* 查询快递代拿信息 */
-            List<Order> expressOrderList = orderService.QueryOrder(queryConditionExpressOrder);
+            List<Order> expressOrderList = orderService.UserQuery(userId);
             for (int i = 0; i < expressOrderList.size(); i++) {
                 Map<String, Object> map = new HashMap<String, Object>();
                 if(expressOrderList.get(i).getOrderState().equals("待接单")) {

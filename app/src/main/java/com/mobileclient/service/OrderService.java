@@ -99,7 +99,7 @@ public class OrderService {
                 order.setOrderState(object.getString("orderState"));
                 order.setOrderPay(object.getString("orderPay"));
                 order.setRemark(object.getString("remark"));
-                order.setReceiveCode(object.getInt("receiveCode"));
+                order.setReceiveCode(object.getString("receiveCode"));
                 order.setOrderEvaluate(object.getString("orderEvaluate"));
                 order.setTakeUserId(object.getInt("takeUserId"));
 
@@ -138,7 +138,7 @@ public class OrderService {
                 order.setOrderState(object.getString("orderState"));
                 order.setOrderPay(object.getString("orderPay"));
                 order.setRemark(object.getString("remark"));
-                order.setReceiveCode(object.getInt("receiveCode"));
+                order.setReceiveCode(object.getString("receiveCode"));
                 order.setOrderEvaluate(object.getString("orderEvaluate"));
                 order.setTakeUserId(object.getInt("takeUserId"));
                 //order.set
@@ -175,7 +175,7 @@ public class OrderService {
                 order.setOrderState(object.getString("orderState"));
                 order.setOrderPay(object.getString("orderPay"));
                 order.setRemark(object.getString("remark"));
-                order.setReceiveCode(object.getInt("receiveCode"));
+                order.setReceiveCode(object.getString("receiveCode"));
                 order.setOrderEvaluate(object.getString("orderEvaluate"));
                 order.setTakeUserId(object.getInt("takeUserId"));
                 //order.set
@@ -211,7 +211,7 @@ public class OrderService {
                 order.setOrderState(object.getString("orderState"));
                 order.setOrderPay(object.getString("orderPay"));
                 order.setRemark(object.getString("remark"));
-                order.setReceiveCode(object.getInt("receiveCode"));
+                order.setReceiveCode(object.getString("receiveCode"));
                 order.setOrderEvaluate(object.getString("orderEvaluate"));
                 order.setTakeUserId(object.getInt("takeUserId"));
                 orderList.add(order);

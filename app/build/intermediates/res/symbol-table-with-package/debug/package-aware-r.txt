@@ -19,9 +19,11 @@ anim fade_out
 anim head_in
 anim head_out
 anim hold
+anim profile_button_scale
 anim tooltip_enter
 anim tooltip_exit
 animator design_appbar_state_list_animator
+array array_names
 array layers_array
 array tabs_data_type_array
 array tabs_title_array
@@ -665,6 +667,7 @@ dimen compat_button_inset_vertical_material
 dimen compat_button_padding_horizontal_material
 dimen compat_button_padding_vertical_material
 dimen compat_control_corner_material
+dimen corner_radius_oval
 dimen design_appbar_elevation
 dimen design_bottom_navigation_active_item_max_width
 dimen design_bottom_navigation_active_text_size
@@ -708,6 +711,9 @@ dimen disabled_alpha_material_light
 dimen fastscroll_default_thickness
 dimen fastscroll_margin
 dimen fastscroll_minimum_range
+dimen height_profile_image
+dimen height_profile_picture_with_toolbar
+dimen height_toolbar
 dimen highlight_alpha_material_colored
 dimen highlight_alpha_material_dark
 dimen highlight_alpha_material_light
@@ -718,6 +724,7 @@ dimen hint_pressed_alpha_material_light
 dimen item_touch_helper_max_drag_scroll_per_frame
 dimen item_touch_helper_swipe_escape_max_velocity
 dimen item_touch_helper_swipe_escape_velocity
+dimen margin_top_button_message
 dimen notification_action_icon_size
 dimen notification_action_text_size
 dimen notification_big_circle_margin
@@ -733,6 +740,9 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+dimen size_button_message
+dimen text_size_profile_toolbar_title
+dimen text_size_toolbar_title
 dimen tooltip_corner_radius
 dimen tooltip_horizontal_padding
 dimen tooltip_margin
@@ -861,11 +871,14 @@ drawable banner_dian_focus
 drawable bar_bg
 drawable bar_text
 drawable beijing
+drawable bg_black_oval
 drawable bg_bottom_bar
 drawable bg_edittext
 drawable bg_edittext_focused
 drawable bg_edittext_normal
 drawable bg_input_cursor
+drawable bg_orange_circle
+drawable bg_orange_oval
 drawable bg_select_city
 drawable bg_select_city_top
 drawable bg_title_bar
@@ -1005,6 +1018,7 @@ drawable homea
 drawable homeb
 drawable hu
 drawable ic_action_search
+drawable ic_arrow_left
 drawable ic_beijing
 drawable ic_biaoti
 drawable ic_book
@@ -1013,6 +1027,7 @@ drawable ic_launcher
 drawable ic_sex_female
 drawable ic_sex_male
 drawable ic_sport
+drawable ic_text
 drawable ic_user_del
 drawable ic_user_info
 drawable ic_user_pwd
@@ -1044,6 +1059,7 @@ drawable kuaidi_beijing
 drawable library
 drawable line
 drawable list_bg
+drawable list_divider
 drawable list_item_btn
 drawable list_item_btn_normal
 drawable list_item_btn_pressed
@@ -1081,6 +1097,7 @@ drawable naozhong
 drawable navigation_empty_icon
 drawable newslogo
 drawable newstitle
+drawable nicolas_cage
 drawable night
 drawable noimage
 drawable notification_action_background
@@ -1117,6 +1134,7 @@ drawable popup_middle
 drawable popup_right
 drawable popup_side
 drawable popupa
+drawable qiang
 drawable querya
 drawable queryb
 drawable qwjs
@@ -1453,7 +1471,6 @@ id bus_result
 id bus_result_list
 id buttonPanel
 id cancel
-id cancelButton
 id cancel_action
 id cardview
 id cb_birthDate
@@ -1510,7 +1527,6 @@ id et_receivePhone
 id et_search
 id et_userPwd
 id et_username
-id exitButton
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -1557,11 +1573,16 @@ id imageView6
 id imageView7
 id imageView8
 id imageView9
+id image_view_reveal_avatar
 id img_back
 id img_right
 id info
 id italic
 id item_faxian
+id item_jiedan
+id item_pingjia
+id item_shouhuo
+id item_songdan
 id item_tongxunlu
 id item_touch_helper_previous_elevation
 id item_weixin
@@ -1586,7 +1607,6 @@ id list_item
 id list_view
 id location_errInfo_text
 id location_tv
-id loginButton
 id mainViewPager
 id map
 id masked
@@ -1622,7 +1642,6 @@ id pin
 id progress_circular
 id progress_horizontal
 id pwd
-id pwdEditText
 id r1
 id radio
 id re1
@@ -1636,11 +1655,11 @@ id receivePhone
 id receiveState
 id recycler_view
 id register
-id registerButton
 id registerButton1
 id registerButton2
 id remark
 id repeatingCheck
+id rewardPic
 id rg_main_btns
 id right
 id right_icon
@@ -1787,13 +1806,13 @@ id txt_notice
 id txt_reward
 id txt_right
 id txt_setting
+id txt_takeOrder
 id txt_title
 id uniform
 id unlogin
 id up
 id useLogo
 id user
-id userEditText
 id userId
 id userName
 id userObj
@@ -1816,6 +1835,9 @@ id wind02
 id wind03
 id withText
 id wrap_content
+id wrapper
+id wrapper_list_item
+id wrapper_list_item_reveal
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
 integer app_bar_elevation_anim_duration
@@ -1869,6 +1891,7 @@ layout activity_xuan
 layout back
 layout basicmap_activity
 layout brand_item
+layout button_round_msg
 layout city_item
 layout company_add
 layout company_detail
@@ -1924,12 +1947,12 @@ layout list_layout
 layout listview_foot_view
 layout listview_head_view
 layout login
-layout login_system
 layout main
 layout main_menu
 layout map
 layout message_list
 layout more
+layout my_order
 layout night_item
 layout notice_add
 layout notice_detail
@@ -1960,6 +1983,7 @@ layout orderstate_edit
 layout orderstate_list
 layout orderstate_list_item
 layout orderstate_query
+layout overlay_list_item
 layout photolist
 layout popup_window
 layout profile
@@ -1970,6 +1994,8 @@ layout receiveaddress_list
 layout receiveadress_list_item
 layout recyclerview_item
 layout register
+layout reward_order
+layout rewared_order_item
 layout route_activity
 layout search_layout
 layout search_list_item
@@ -2184,6 +2210,8 @@ string login
 string login_success
 string logo
 string logo_position
+string lorem_ipsum_long
+string lorem_ipsum_short
 string mapOption_demo
 string mapOption_description
 string map_create
@@ -2660,6 +2688,7 @@ style TextAppearance_Design_Tab
 style TextAppearance_Widget_AppCompat_ExpandedMenu_Item
 style TextAppearance_Widget_AppCompat_Toolbar_Subtitle
 style TextAppearance_Widget_AppCompat_Toolbar_Title
+style TextViewProfileToolbarTitle
 style Theme_AppCompat
 style Theme_AppCompat_CompactMenu
 style Theme_AppCompat_DayNight
