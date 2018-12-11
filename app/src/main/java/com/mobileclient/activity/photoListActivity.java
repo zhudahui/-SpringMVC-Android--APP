@@ -153,8 +153,7 @@ public class photoListActivity extends Activity {
 					
 					BitmapFactory.Options opts = new BitmapFactory.Options();  
 					opts.inJustDecodeBounds = true;  
-					BitmapFactory.decodeFile(imagePath, opts);  
-					  
+					BitmapFactory.decodeFile(imagePath, opts);
 					opts.inSampleSize = computeSampleSize(opts, -1, 128*128);  
 					opts.inJustDecodeBounds = false;  
 					try {  

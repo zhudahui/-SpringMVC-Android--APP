@@ -8,7 +8,7 @@ import com.mobileclient.util.HttpUtil;
 import java.sql.Timestamp;
 import java.util.Date;
 import com.mobileclient.domain.UserInfo;
-import com.mobileclient.service.UserInfoService;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -65,7 +65,7 @@ public class UserInfoAddActivity extends Activity {
 	/*要保存的用户信息*/
 	UserInfo userInfo = new UserInfo();
 	/*用户管理业务逻辑层*/
-	private UserInfoService userInfoService = new UserInfoService();
+	//private UserInfoService userInfoService = new UserInfoService();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -218,7 +218,7 @@ public class UserInfoAddActivity extends Activity {
 						UserInfoAddActivity.this.setTitle("文件上传完毕！");
 						userInfo.setAuthFile(authFile); 
 					} else {
-						Toast.makeText(getApplicationContext(), "请先选择认证文件", 1).show();
+						Toast.makeText(getApplicationContext(), "请先选择认证文件", Toast.LENGTH_SHORT).show();
 						return;
 					}
 					/*验证获取审核状态*/ 
@@ -239,8 +239,8 @@ public class UserInfoAddActivity extends Activity {
 					userInfo.setRegTime(ET_regTime.getText().toString());
 					/*调用业务逻辑层上传用户信息*/
 					UserInfoAddActivity.this.setTitle("正在上传用户信息，稍等...");
-					String result = userInfoService.AddUserInfo(userInfo);
-					Toast.makeText(getApplicationContext(), result, 1).show(); 
+					//String result = userInfoService.AddUserInfo(userInfo);
+					//Toast.makeText(getApplicationContext(), result, 1).show();
 					Intent intent = getIntent();
 					setResult(RESULT_OK,intent);
 					finish();

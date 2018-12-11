@@ -9,6 +9,7 @@ import android.content.Context;
 
 import com.mobileclient.util.HttpUtil;
 
+
 public class Declare extends Application {
 
 	
@@ -51,7 +52,16 @@ public class Declare extends Application {
 	private String userAuthFile;        //认证文件
 	private String regTime;             //创建时间
 	private String nickName;           //登录名
-	private int studentId;         //学号
+	private int studentId;             //学号
+	private String userAuthState;       //认证状态
+	//记载默认地址信息
+	private int receiveId;   //地址Id
+	private String receiveAddressName;  //地址名
+	private int receiveUserId;  //  地址用户Id
+	private String receiveName;
+	private String receivePhone;
+    private int receiveAddressId;
+    private int adminUserId;  //管理员管理用户ID；
     public String getUserName() {
 		return userName;
 	}
@@ -187,5 +197,80 @@ public class Declare extends Application {
 
 	public void setList(List<Map<String, Object>> list) {
 		this.list = list;
+	}
+
+	public String getUserAuthState() {
+		return userAuthState;
+	}
+
+	public void setUserAuthState(String userAuthState) {
+		this.userAuthState = userAuthState;
+	}
+
+
+
+
+	//退出
+	@Override
+	public void onLowMemory() {
+		super.onLowMemory();
+		System.gc();
+	}
+
+
+	public int getReceiveId() {
+		return receiveId;
+	}
+
+	public void setReceiveId(int receiveId) {
+		this.receiveId = receiveId;
+	}
+
+	public String getReceiveAddressName() {
+		return receiveAddressName;
+	}
+
+	public void setReceiveAddressName(String receiveAddressName) {
+		this.receiveAddressName = receiveAddressName;
+	}
+
+	public int getReceiveUserId() {
+		return receiveUserId;
+	}
+
+	public void setReceiveUserId(int receiveUserId) {
+		this.receiveUserId = receiveUserId;
+	}
+
+	public String getReceiveName() {
+		return receiveName;
+	}
+
+	public void setReceiveName(String receiveName) {
+		this.receiveName = receiveName;
+	}
+
+	public String getReceivePhone() {
+		return receivePhone;
+	}
+
+	public void setReceivePhone(String receivePhone) {
+		this.receivePhone = receivePhone;
+	}
+
+	public int getReceiveAddressId() {
+		return receiveAddressId;
+	}
+
+	public void setReceiveAddressId(int receiveAddressId) {
+		this.receiveAddressId = receiveAddressId;
+	}
+
+	public int getAdminUserId() {
+		return adminUserId;
+	}
+
+	public void setAdminUserId(int adminUserId) {
+		this.adminUserId = adminUserId;
 	}
 }

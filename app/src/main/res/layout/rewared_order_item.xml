@@ -1,21 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/wrapper_list_item"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
-    android:background="@color/gray">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white" >
 
-    <ImageView
-        android:id="@+id/rewardPic"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:src="@drawable/ooopicb"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userPhoto"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ooopicb"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="4dp" >
+
+            <LinearLayout
+                android:id="@+id/rl"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/orderName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="傲风电竞椅"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/expressCompanyName"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="3dp"
+                android:text="快递公司"
+                android:layout_below="@+id/rl"/>
 
 
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true"
 
 
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/order_dai" />
+
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expressCompanyName">
+
+                <TextView
+                    android:id="@+id/expressCompanyAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+                    android:paddingTop="2dp"
+                    android:background="@drawable/textview_border"
+                    android:text="北邮 北门"
+                    android:textColor="#fd4f28"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+                    android:paddingTop="2dp"
+                    android:text="->"
+                    android:textColor="#fd4f28"/>
+                <TextView
+                    android:id="@+id/tv_receiveAddressName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+                    android:paddingTop="2dp"
+                    android:background="@drawable/textview_border"
+                    android:text="北邮 学十"
+                    android:textColor="#fd4f28"/>
+
+                <TextView
+                    android:id="@+id/addTime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:layout_alignParentEnd="true"
+                    android:text="发布时间" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

@@ -30,6 +30,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -41,10 +42,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.mobileclient.app.Declare;
 import com.mobileclient.domain.User;
 import com.mobileclient.service.UserService;
+import com.mobileclient.util.BitmapUtil;
 import com.mobileclient.util.HttpUtil;
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.MediaType;
@@ -76,6 +81,9 @@ public class RegisterActivity extends Activity {
 	String imagePath=null;//存储路径
 	 String reuslt;
 	 String photo=null;
+	 private ImageView back,search;
+	private RadioGroup rg;
+	Declare declare;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -93,7 +101,33 @@ public class RegisterActivity extends Activity {
 		userGender = findViewById(R.id.ET_userGender);
 		userEmail = findViewById(R.id.ET_userEmail);
 		btnRegister = findViewById(R.id.btnRegister);
+        back=findViewById(R.id.back_btn);
+        search=findViewById(R.id.search);
+        search.setVisibility(View.GONE);
+		rg = (RadioGroup) findViewById(R.id.rg);
+		 declare = (Declare)getApplication();
+		 declare.setUserGender("男");
+		rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+				//在这里同时可以根据小组定义数据传递到服务器；
+				if(checkedId==R.id.male){
+                 declare.setUserGender("男");
+				}else {
+					declare.setUserGender("女");
+				}
+			}
+		});
 
+
+
+
+        back.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
         userPhoto.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -123,12 +157,6 @@ public class RegisterActivity extends Activity {
 					Toast.makeText(RegisterActivity.this, "手机号输入不能为空!", Toast.LENGTH_LONG).show();
 					userPhone.setFocusable(true);
 					userPhone.requestFocus();
-					return;
-				}if(userGender.getText().toString().equals(""))
-				{
-					Toast.makeText(RegisterActivity.this, "性别输入不能为空!", Toast.LENGTH_LONG).show();
-					userGender.setFocusable(true);
-					userGender.requestFocus();
 					return;
 				}if(userEmail.getText().toString().equals(""))
 				{
@@ -171,6 +199,9 @@ public class RegisterActivity extends Activity {
 	 *
 	 * */
 	public void register() {
+
+
+
 		final Handler myhandler = new Handler() {
 			@Override
 			public void handleMessage(Message msg) {
@@ -213,7 +244,8 @@ public class RegisterActivity extends Activity {
 							user.setUserPassword(userPassword.getText().toString());
 							user.setUserType("普通用户");
 							user.setUserPhone(userPhone.getText().toString());
-							user.setUserGender(userGender.getText().toString());
+                            user.setUserGender(declare.getUserGender());
+                            Log.i("ccccc",""+declare.getUserGender());
 							user.setUserEmail(userEmail.getText().toString());
 							user.setUserReputation(100);   //用户初始信誉为100
 							user.setUserMoney("" + 6);   //用户初始余额为6元
@@ -222,6 +254,7 @@ public class RegisterActivity extends Activity {
 							user.setUserAuthFile("--");
 							user.setStudentId(-1);     //未认证用户学生号默认为-1
 							user.setNickName(nickName.getText().toString());
+							user.setUserAuthState("未认证");
 							userService.AddUserInfo(user);
 							msg.what = 0x123;
 						}
@@ -424,10 +457,6 @@ public class RegisterActivity extends Activity {
 			Toast.makeText(this, "图片获取失败", Toast.LENGTH_LONG).show();
 		}
 	}
-
-
-
-
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -620,7 +649,8 @@ public class RegisterActivity extends Activity {
 //		final ProgressDialog progressDialog = new ProgressDialog(this);
 		//progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		//progressDialog.show();
-		File file = new File(imagePath);
+		File file = new File(BitmapUtil.compressImage(imagePath));    //图片压缩
+		//File file = new File(imagePath);
 		//构造一个请求体
 		FileNameMap fileNameMap = URLConnection.getFileNameMap();
 		String contentTypeFor = fileNameMap.getContentTypeFor(file.getAbsolutePath());

@@ -6,6 +6,7 @@
     android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#F5F5F5">
+    <include layout="@layout/title_list"/>
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -84,7 +85,7 @@
 
 
             <TextView
-                android:id="@+id/txt_reward"
+                android:id="@+id/txt_myorder"
                 style="@style/TxtTitle"
                 android:textSize="16sp"
                 android:gravity="center_vertical"
@@ -97,7 +98,7 @@
                 android:drawablePadding="10dp"
                 android:drawableLeft="@drawable/icon_me_photo"
                 android:drawableRight="@drawable/right"
-                android:text="悬赏" />
+                android:text="我的发布" />
             <View
                 android:background="@color/black2"
                 android:layout_width="fill_parent"
@@ -141,7 +142,7 @@
                 android:layout_height="1.0dip" />
 
             <TextView
-                android:id="@+id/txt_money"
+                android:id="@+id/txt_address"
                 style="@style/TxtTitle"
                 android:textSize="16sp"
                 android:gravity="center_vertical"
@@ -153,7 +154,7 @@
                 android:drawablePadding="10dp"
                 android:drawableLeft="@drawable/icon_me_money"
                 android:drawableRight="@drawable/right"
-                android:text="消费情况" />
+                android:text="地址管理" />
             <View
                 android:background="@color/black2"
                 android:layout_width="fill_parent"

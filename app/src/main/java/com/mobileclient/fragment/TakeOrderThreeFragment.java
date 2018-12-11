@@ -6,18 +6,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.mobileclient.activity.ExpressOrderAddActivity;
 import com.mobileclient.activity.ExpressOrderDetailActivity;
 import com.mobileclient.activity.MyProgressDialog;
 import com.mobileclient.activity.R;
 import com.mobileclient.activity.SecondOrderDetailActivity;
 import com.mobileclient.adapter.ExpressOrderAdapter;
+import com.mobileclient.adapter.MyOrderAdapter;
 import com.mobileclient.app.Declare;
 import com.mobileclient.app.RefreshListView;
 import com.mobileclient.domain.Order;
 import com.mobileclient.domain.ReceiveAddress;
 import com.mobileclient.domain.User;
-import com.mobileclient.service.ExpressTakeService;
 import com.mobileclient.service.OrderService;
 import com.mobileclient.service.ReceiveAddressService;
 import com.mobileclient.service.UserService;
@@ -25,8 +24,9 @@ import com.mobileclient.util.ActivityUtils;
 import com.mobileclient.util.HttpUtil;
 import com.mobileclient.util.ImageService;
 
-import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -43,27 +43,19 @@ import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 
 import butterknife.ButterKnife;
 
-import static android.app.Activity.RESULT_OK;
-
-public class TakeOrderThreeFragment extends Fragment implements RefreshListView.OnRefreshListener,RefreshListView.OnLoadMoreListener{
-    ExpressOrderAdapter adapter;
+public class TakeOrderThreeFragment extends Fragment {
+    MyOrderAdapter adapter;
     RefreshListView lv;
     List<Map<String, Object>> list;
     int orderId;
-    /* 快递代拿操作业务逻辑层对象 */
-    ExpressTakeService expressTakeService = new ExpressTakeService();
+
     /*保存查询参数条件*/
     private Order queryConditionExpressOrder;
     private MyProgressDialog dialog; //进度条	@Override
@@ -76,7 +68,7 @@ public class TakeOrderThreeFragment extends Fragment implements RefreshListView.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_three, container, false);
+        View view = inflater.inflate(R.layout.fragment_one, container, false);
         lv=view.findViewById(R.id.list_view);
         dialog = MyProgressDialog.getInstance(getActivity());
         ButterKnife.bind(this, view);
@@ -115,18 +107,29 @@ public class TakeOrderThreeFragment extends Fragment implements RefreshListView.
                     @Override
                     public void run() {
                         dialog.cancel();
-                        adapter = new ExpressOrderAdapter(getActivity(), list,
-                                R.layout.order_list_item,
-                                new String[] { "userPhoto","orderName","expressCompanyName","expressCompanyAddress","receiveAddressName","addTime","orderState" },
-                                new int[] { R.id.userPhoto,R.id.orderName,R.id.expressCompanyName,R.id.expressCompanyAdress,R.id.receiveAddressName,
-                                        R.id.addTime,R.id.orderState},lv);
+                        adapter = new MyOrderAdapter(getActivity(), list,
+                                R.layout.my_order_two_item,
+                                new String[] { "orderPic","orderName","orderPay","orderState","addTime"},
+                                new int[] { R.id.img_takeUserPhoto,R.id.tv_orderName,R.id.tv_orderPay,R.id.tv_orderState,R.id.tv_addTime,
+                                },lv);
                         lv.setAdapter(adapter);
+
                     }
                 });
+
             }
         }.start();
-        lv.setOnRefreshListener(this);
-        lv.setOnLoadMoreListener(this);
+        //=================
+        lv.setonRefreshListener(new RefreshListView.OnRefreshListener() {
+
+            @Override
+            public void onRefresh() {
+                setViews();
+                adapter.notifyDataSetChanged();
+                lv.onRefreshComplete();
+
+            }
+        });
         // 添加长按点击
         lv.setOnCreateContextMenuListener(expressTakeListItemListener);
         lv.setOnItemClickListener(new OnItemClickListener(){
@@ -156,7 +159,7 @@ public class TakeOrderThreeFragment extends Fragment implements RefreshListView.
                 bundle.putInt("receiveAddressId",Integer.parseInt(list.get(arg2).get("receiveAddressId").toString()));
                 bundle.putString("evaluate",list.get(arg2).get("evaluate").toString());
                 bundle.putInt("takeUserId", Integer.parseInt(list.get(arg2).get("takeUserId").toString()));
-                if (list.get(arg2).get("evaluate").toString().equals("--")||list.get(arg2).get("evaluate").toString().equals("请评价")) {//若评价为空
+                if (list.get(arg2).get("evaluate").toString().equals("-+-")||list.get(arg2).get("evaluate").toString().equals("请评价")) {//若评价为空
                     intent.putExtras(bundle);
                     intent.setClass(getActivity(), ExpressOrderDetailActivity.class);   //已评价
                     startActivityForResult(intent, ActivityUtils.UPDATE_CODE);
@@ -205,8 +208,8 @@ public class TakeOrderThreeFragment extends Fragment implements RefreshListView.
         builder.setPositiveButton("确认", new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String result = expressTakeService.DeleteExpressTake(orderId);
-                Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
+                // String result = expressTakeService.DeleteExpressTake(orderId);
+                //Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
                 setViews();
                 dialog.dismiss();
             }
@@ -257,6 +260,13 @@ public class TakeOrderThreeFragment extends Fragment implements RefreshListView.
                     map.put("receiveCode", expressOrderList.get(i).getReceiveCode());
                     map.put("evaluate", expressOrderList.get(i).getOrderEvaluate());
                     map.put("takeUserId", expressOrderList.get(i).getTakeUserId());
+                    map.put("orderType", expressOrderList.get(i).getOrderType());
+                    byte[] orderpic = null;
+                    // 获取图片数据
+                    orderpic = ImageService.getImage(HttpUtil.DOWNURL + expressOrderList.get(i).getOrderPic());
+                    Bitmap pic = BitmapFactory.decodeByteArray(orderpic, 0, orderpic.length);
+                    map.put("orderPic", pic);
+                    map.put("score", expressOrderList.get(i).getScore());
                     //map.put("userPhone", expressOrderList.get(i).getAddTime());
                     list.add(map);
                 }
@@ -266,15 +276,21 @@ public class TakeOrderThreeFragment extends Fragment implements RefreshListView.
         }
         return list;
     }
-    @Override
-    public void onRefresh() {
-        setViews();
-        lv.setOnRefreshComplete();
-        adapter.notifyDataSetChanged();
-    }
+    /**
+     * 定义一个handler处理请求返回来的信息
+     */
+    Handler mHandler = new Handler() {
 
-    @Override
-    public void onLoadMore() {
+        @Override
+        public void handleMessage(Message msg) {
+            // TODO Auto-generated method stub
+            super.handleMessage(msg);
+            System.out.println("这是刷新返回来的信息");
+            adapter.notifyDataSetChanged();
+            lv.onRefreshComplete();
+        }
 
-    }
+    };
+
+
 }

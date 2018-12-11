@@ -5,9 +5,6 @@ import com.mobileclient.domain.ReceiveAddress;
 import com.mobileclient.domain.User;
 import com.mobileclient.service.OrderService;
 import com.mobileclient.service.ReceiveAddressService;
-import com.mobileclient.service.TakeOrderService;
-import com.mobileclient.service.CompanyService;
-import com.mobileclient.service.UserInfoService;
 import com.mobileclient.service.UserService;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -18,7 +15,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,6 +23,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -83,6 +80,8 @@ public class ExpressOrderDetailActivity extends Activity {
     private int  flag;
     private int  p=0; //判断是否发生数据更新，1发生。0否
     private int q=0;//异步抢单
+    private  RatingBar mRatingBar;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,7 +94,7 @@ public class ExpressOrderDetailActivity extends Activity {
         ImageView search = (ImageView) this.findViewById(R.id.search);
         search.setVisibility(View.GONE);
         TextView title = (TextView) this.findViewById(R.id.title);
-        title.setText("查看快递代拿详情");
+        title.setText("快递信息");
         ImageView back = (ImageView) this.findViewById(R.id.back_btn);
 
         // 通过findViewById方法实例化组件
@@ -117,23 +116,38 @@ public class ExpressOrderDetailActivity extends Activity {
         tx_receiveCode = (TextView) findViewById(R.id.receiveCode);
         tx_addTime = (TextView) findViewById(R.id.addTime);
         btnGetOrder = (Button) findViewById(R.id.btnGetOrder);
+        mRatingBar = (RatingBar) findViewById(R.id.ratingbar);
+
+        mRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                Toast.makeText(ExpressOrderDetailActivity.this, "评分星级=" + rating, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
+
         back.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                if(p==1){
-                    Intent intent = new Intent();
-                    Bundle bundle =new Bundle();
-                    //传输的内容仍然是键值对的形式
-                    bundle.putInt("p",p);
-                    intent.putExtras(bundle);
-                    setResult(RESULT_OK,intent);
-                    Log.i("zhu34566", "123" );
-                    finish();
-                }
-                else {
-                    Log.i("zhu34566", "456" );
-                    finish();
-                }
+//                if(p==1){
+//                    Intent intent = new Intent();
+//                    Bundle bundle =new Bundle();
+//                    //传输的内容仍然是键值对的形式
+//                    bundle.putInt("p",p);
+//                    intent.putExtras(bundle);
+//                    setResult(RESULT_OK,intent);
+//                    Log.i("zhu34566", "123" );
+//                    finish();
+//                }
+//                else {
+//                    Log.i("zhu34566", "456" );
+//                    finish();
+//                }
+                finish();
 
             }
         });
@@ -215,6 +229,7 @@ public class ExpressOrderDetailActivity extends Activity {
             } else if (extras.getString("orderState").equals("交易结束")) {
                 if (extras.getString("userName").equals(declare.getUserName())) {  //如果是本人
                     btnGetOrder.setVisibility(View.VISIBLE);
+                    mRatingBar.setVisibility(View.VISIBLE);
                     evaluate.setVisibility(View.VISIBLE);
                     btnGetOrder.setText("评价");
                     flag = 4;
@@ -245,6 +260,7 @@ public class ExpressOrderDetailActivity extends Activity {
                 if (extras.getString("userName").equals(declare.getUserName())) {  //如果是本人
                         btnGetOrder.setVisibility(View.VISIBLE);
                         evaluate.setVisibility(View.VISIBLE);
+                        mRatingBar.setVisibility(View.VISIBLE);
                         btnGetOrder.setText("评价");
                         flag = 4;
 
@@ -340,7 +356,24 @@ public class ExpressOrderDetailActivity extends Activity {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                if (flag==0) {
+                   double m= Double.parseDouble(order.getScore());
+
+                    Log.i("nnnnnnnn",""+m);
+
+                        if (m >= 4) {
+                            user = userService.GetUserInfo(order.getTakeUserId());
+                            user.setUserReputation(user.getUserReputation() + 1);
+                            userService.UpdateUserInfo(user);
+                        } else {
+                            user = userService.GetUserInfo(order.getTakeUserId());
+                            user.setUserReputation(user.getUserReputation() - 1);
+                            userService.UpdateUserInfo(user);
+                        }
+
+                }
                 orderService.UpdateOrder(order);
+
             }
         }).start();
         }
@@ -357,7 +390,7 @@ public class ExpressOrderDetailActivity extends Activity {
 
                             order.setTakeUserId(userId);
                             order.setOrderState("送单中");
-                            order.setOrderEvaluate("--");
+                            order.setOrderEvaluate("-+-");
                             Toast.makeText(ExpressOrderDetailActivity.this, "恭喜您抢到订单！", Toast.LENGTH_SHORT).show();
                             btnGetOrder.setText("确认送达");
                             flag=2;
@@ -365,19 +398,21 @@ public class ExpressOrderDetailActivity extends Activity {
                             //更新订单，把快递代取者添加到订单中
                         }else if(flag==2){//确认送达后，订单状态修改，等待用户确认送达
                             order.setOrderState("已送达");
-                            order.setOrderEvaluate("--");
+                            order.setOrderEvaluate("-+-");
                             btnGetOrder.setText("等待确认收货");
 
                         }else if(flag==3){ //送达后，确认收货，可以评价
 
                             order.setOrderState("交易结束");
-                            order.setOrderEvaluate("--");
+                            order.setOrderEvaluate("-+-");
+                            mRatingBar.setVisibility(View.VISIBLE);
                             evaluate.setVisibility(View.VISIBLE);  //出现评价框
                             btnGetOrder.setText("评价");
                             flag=4;
                         }else if(flag==4){
                             if(evaluate.getText().toString().equals(""))
                                 return;
+                            order.setScore(""+mRatingBar.getRating());
                             order.setOrderEvaluate(evaluate.getText().toString());
                             flag=0;
                         }

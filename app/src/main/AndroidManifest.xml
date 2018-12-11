@@ -50,10 +50,12 @@
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
+
+
     <application
         android:name="com.mobileclient.app.Declare"
         android:allowBackup="true"
-        android:icon="@drawable/xiaohui"
+        android:icon="@drawable/appname"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <meta-data
@@ -74,24 +76,13 @@
         <activity android:name=".IndexActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".MainUserActivity" />
-        <activity android:name=".MoreActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".MainMenuActivity" />
         <activity android:name=".UserInfoQueryActivity" />
         <activity android:name=".UserInfoAddActivity" />
         <activity android:name=".UserInfoEditActivity" />
         <activity android:name=".UserInfoDetailActivity" />
-        <activity android:name=".ExpressTakeQueryActivity" />
-        <activity android:name=".ExpressTakeAddActivity" />
-        <activity android:name=".ExpressTakeEditActivity" />
-        <activity android:name=".ExpressTakeDetailActivity" android:configChanges="keyboard|keyboardHidden" />
-        <activity android:name=".OrderStateListActivity" />
         <activity android:name=".OrderStateQueryActivity" />
-        <activity android:name=".OrderStateAddActivity" />
-        <activity android:name=".OrderStateEditActivity" />
-        <activity android:name=".OrderStateDetailActivity" />
-        <activity android:name=".TakeOrderUserListActivity" android:configChanges="keyboard|keyboardHidden"/>
-        <activity android:name=".TakeOrderUserEditActivity" />
         <activity android:name=".NoticeListActivity" />
         <activity android:name=".NoticeQueryActivity" />
         <activity android:name=".NoticeAddActivity" />
@@ -112,9 +103,9 @@
 
         <activity
             android:name=".AdminLoginActivity"
-            android:label="@string/title_activity_admin_login" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".XuanActivity"
+            android:name=".LoginActivity"
             android:label="@string/login"
             >
             <intent-filter>
@@ -133,13 +124,14 @@
         <activity android:name=".SecondAddressListActivity"/>
         <activity android:name=".SecondOrderDetailActivity"/>
         <activity android:name=".UserAuthActivity"/>
-        <activity android:name=".LoginActivity"/>
-        <activity android:name="com.cc.testdemo.MainActivity"/>
         <activity android:name=".SecondUserDetailActivity"/>
         <activity android:name=".SecondAuthActivity"/>
-        <activity android:name=".MyInfoActivtiy"/>
+        <activity android:name=".MyInfoActivtiy" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".myorder.ExpressTakeMyListActivity"/>
         <activity android:name=".takeOrder.TakeOrderListActivity"/>
+        <activity android:name=".rewardOrder.RewardActivity"/>
+        <activity android:name="com.cc.testdemo.UserInfoListActivity"/>
+
     </application>
 
 </manifest>

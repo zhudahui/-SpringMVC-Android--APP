@@ -22,6 +22,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.cc.testdemo.UserInfoListActivity;
 import com.mobileclient.adapter.ExpressOrderAdapter;
 import com.mobileclient.domain.ReceiveAddress;
 
@@ -112,18 +113,18 @@ public class MainMenuActivity extends Activity {
 					// 物流公司管理监听器
 					view.setOnClickListener(companyLinstener);
 					break;
-				case 3:
-					// 订单状态管理监听器
-					view.setOnClickListener(orderStateLinstener);
-					break;
-				case 4:
-					// 代拿订单管理监听器
-					view.setOnClickListener(takeOrderLinstener);
-					break;
-				case 5:
-					// 新闻公告管理监听器
-					view.setOnClickListener(noticeLinstener);
-					break;
+//				case 3:
+//					// 订单状态管理监听器
+//					view.setOnClickListener(orderStateLinstener);
+//					break;
+//				case 4:
+//					// 代拿订单管理监听器
+//					view.setOnClickListener(takeOrderLinstener);
+//					break;
+//				case 5:
+//					// 新闻公告管理监听器
+//					view.setOnClickListener(noticeLinstener);
+//					break;
 
 			 
 				default:
@@ -161,33 +162,33 @@ public class MainMenuActivity extends Activity {
 			startActivity(intent);
 		}
 	};
-    OnClickListener orderStateLinstener = new OnClickListener() {
-		@Override
-		public void onClick(View v) {
-			Intent intent = new Intent();
-			// 启动订单状态管理Activity
-			intent.setClass(MainMenuActivity.this, OrderStateListActivity.class);
-			startActivity(intent);
-		}
-	};
-    OnClickListener takeOrderLinstener = new OnClickListener() {
-		@Override
-		public void onClick(View v) {
-			Intent intent = new Intent();
-			// 启动代拿订单管理Activity
-			intent.setClass(MainMenuActivity.this, TakeOrderUserListActivity.class);
-			startActivity(intent);
-		}
-	};
-    OnClickListener noticeLinstener = new OnClickListener() {
-		@Override
-		public void onClick(View v) {
-			Intent intent = new Intent();
-			// 启动新闻公告管理Activity
-			intent.setClass(MainMenuActivity.this, NoticeListActivity.class);
-			startActivity(intent);
-		}
-	};
+//    OnClickListener orderStateLinstener = new OnClickListener() {
+//		@Override
+//		public void onClick(View v) {
+//			Intent intent = new Intent();
+//			// 启动订单状态管理Activity
+//			intent.setClass(MainMenuActivity.this, OrderStateListActivity.class);
+//			startActivity(intent);
+//		}
+//	};
+//    OnClickListener takeOrderLinstener = new OnClickListener() {
+//		@Override
+//		public void onClick(View v) {
+//			Intent intent = new Intent();
+//			// 启动代拿订单管理Activity
+//			intent.setClass(MainMenuActivity.this, TakeOrderUserListActivity.class);
+//			startActivity(intent);
+//		}
+//	};
+//    OnClickListener noticeLinstener = new OnClickListener() {
+//		@Override
+//		public void onClick(View v) {
+//			Intent intent = new Intent();
+//			// 启动新闻公告管理Activity
+//			intent.setClass(MainMenuActivity.this, NoticeListActivity.class);
+//			startActivity(intent);
+//		}
+//	};
 
 
 	

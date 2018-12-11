@@ -1,18 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tabquery"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/tabbg"
-        android:drawablePadding="1dp"
-        android:drawableTop="@drawable/tabquery"
-        android:gravity="center"
-        android:paddingBottom="1dp"
-        android:paddingTop="5dp" />
+        android:id="@+id/receiveAddressName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="收货人地址" />
+    <TextView
+        android:id="@+id/receiveName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="收货人姓名"
+        android:layout_below="@id/receiveAddressName"
+        />
+    <TextView
+        android:id="@+id/receivePhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="收货人电话"
+        android:layout_below="@id/receiveAddressName"
+        android:layout_toRightOf="@id/receiveName"
+        android:layout_marginLeft="30dp"/>
+    <ImageView
+        android:id="@+id/edit"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
 
-</LinearLayout>
+        android:src="@drawable/edit"/>
+</RelativeLayout>

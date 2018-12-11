@@ -21,7 +21,7 @@
                 android:stretchColumns="1">
                 <TableRow android:layout_marginTop="5dp">
                     <TextView
-                        android:text="代拿任务："
+                        android:text="物品名："
                         android:id="@+id/TV_orderName"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -42,7 +42,24 @@
                         android:layout_marginRight="5dp"
                         android:singleLine="true" />
                 </TableRow>
+                <TableRow android:layout_marginTop="5dp">
+                    <TextView
+                        android:text="物品图"
+                        android:id="@+id/TV_orderPic"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:textColor="@color/hint_color" />
+                    <ImageView
+                        android:src="@drawable/jiahao"
+                        android:id="@+id/orderPic"
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_weight="4"
+                        android:layout_marginTop="5dip"
 
+                        />
+                </TableRow>
                 <TableRow android:layout_marginTop="5dp">
                     <TextView
                         android:text="物流公司："
@@ -166,7 +183,7 @@
                 </TableRow>
                 <TableRow android:layout_marginTop="5dp">
                     <TextView
-                        android:text="代拿报酬："
+                        android:text="报酬：(元)"
                         android:id="@+id/TV_orderPay"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"

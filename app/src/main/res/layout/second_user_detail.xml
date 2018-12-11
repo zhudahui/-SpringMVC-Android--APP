@@ -29,6 +29,7 @@
                         android:layout_weight="1.5"
                         android:textColor="@color/hint_color"/>
 
+
                     <com.mobileclient.app.IdentityImageView
                         android:id="@+id/iiv_userPhoto"
                         android:layout_width="50dp"

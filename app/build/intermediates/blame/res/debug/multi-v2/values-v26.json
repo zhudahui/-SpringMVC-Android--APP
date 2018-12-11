@@ -4,7 +4,7 @@
             "outputFile": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v26/values-v26.xml",
             "map": [
                 {
-                    "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/3d0f6e2556144088db93fa04b577105e/res/values-v26/values-v26.xml",
+                    "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/values-v26/values-v26.xml",
                     "from": {
                         "startLines": "2,3,4,8,12,16",
                         "startColumns": "4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/4ff121265bc4715678f12795402d779f/res/values-v26/values-v26.xml",
+                    "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/cf3361910aa1a1332725c02fe6e0cf3a/res/values-v26/values-v26.xml",
                     "from": {
                         "startLines": "2,6",
                         "startColumns": "4,4",

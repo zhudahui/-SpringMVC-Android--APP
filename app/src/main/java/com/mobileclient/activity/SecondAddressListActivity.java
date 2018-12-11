@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.mobileclient.adapter.AddressAdapter;
 import com.mobileclient.adapter.ReceiveAddressAdapter;
 import com.mobileclient.app.Declare;
 import com.mobileclient.domain.ReceiveAddress;
@@ -33,7 +34,7 @@ import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 
 public class SecondAddressListActivity extends Activity  {
-    ReceiveAddressAdapter adapter;
+    AddressAdapter adapter;
     ListView lv;
     List<Map<String, Object>> list;
     private ReceiveAddress queryConditionReceiveAddress;
@@ -64,7 +65,7 @@ public class SecondAddressListActivity extends Activity  {
                 finish();
             }
         });
-       // Log.i("pppppppppppppppp", "11111" + declare.getUserId());
+        // Log.i("pppppppppppppppp", "11111" + declare.getUserId());
         //ListView item 中的删除按钮的点击事件
         setViews();
 
@@ -103,14 +104,14 @@ public class SecondAddressListActivity extends Activity  {
                     @Override
                     public void run() {
                         dialog.cancel();
-                        adapter = new ReceiveAddressAdapter(SecondAddressListActivity.this, list,
-                                R.layout.receiveadress_list_item,
+                        adapter = new AddressAdapter(SecondAddressListActivity.this, list,
+                                R.layout.query,
                                 new String[]{"receiveAddressName", "receiveName", "receivePhone"},
                                 new int[]{R.id.receiveAddressName, R.id.receiveName, R.id.receivePhone,}, lv);
                         lv.setAdapter(adapter);
-                        adapter.setOnItemEditClickListener(new ReceiveAddressAdapter.onItemEditListener() {
+                        adapter.setOnItemEditClickListener(new AddressAdapter.onItemEditListener() {
                             @Override
-                            public void onDeleteClick(int i) {
+                            public void onEditClick(int i) {
                                 Intent intent = new Intent();
                                 Bundle bundle = new Bundle();
                                 // bundle.putInt("noticeId", noticeId);
@@ -132,7 +133,7 @@ public class SecondAddressListActivity extends Activity  {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-               // int orderId = Integer.parseInt(list.get(arg2).get("orderId").toString());
+                // int orderId = Integer.parseInt(list.get(arg2).get("orderId").toString());
                 Intent intent = new Intent();  //点击返回地址名和地址Id
                 Bundle bundle = new Bundle();
                 bundle.putInt("receiveId",Integer.parseInt(list.get(position).get("receiveId").toString()));
@@ -140,7 +141,7 @@ public class SecondAddressListActivity extends Activity  {
                 intent.putExtras(bundle);
                 setResult(RESULT_OK,intent);
                 finish();
-               // finish();
+                // finish();
 
             }
         });
@@ -207,10 +208,10 @@ public class SecondAddressListActivity extends Activity  {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         try {
             /* 查询新闻公告信息 */
-          //  Log.i("Address", "11111" + declare.getUserId());
+            //  Log.i("Address", "11111" + declare.getUserId());
 
             List<ReceiveAddress> receiveAddressList = receiveAddressService.QueryReceiveAdressList(declare.getUserId());
-           // Log.i("Address", "11111" + receiveAddressList);
+            // Log.i("Address", "11111" + receiveAddressList);
             for (int i = 0; i < receiveAddressList.size(); i++) {
                 Map<String, Object> map = new HashMap<String, Object>();
                 map.put("receiveId", receiveAddressList.get(i).getReceiveId());

@@ -1,5 +1,8 @@
 package com.mobileclient.activity;
 
+import com.mobileclient.activity.myorder.ExpressTakeMyListActivity;
+import com.mobileclient.app.BuilderManager;
+import com.mobileclient.app.Declare;
 import com.mobileclient.app.IdentityImageView;
 import com.mobileclient.dialog.ActionItem;
 import com.mobileclient.dialog.TitlePopup;
@@ -19,6 +22,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.Uri;
@@ -45,6 +49,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.mobileclient.dialog.TitlePopup.OnItemOnClickListener;
 import com.mobileclient.util.ImageService;
+import com.nightonke.boommenu.BoomButtons.BoomButton;
+import com.nightonke.boommenu.BoomButtons.HamButton;
+import com.nightonke.boommenu.BoomMenuButton;
+import com.nightonke.boommenu.OnBoomListenerAdapter;
 
 import android.widget.Toast;
 
@@ -86,6 +94,8 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 	private File outputImagepath;//存储拍完照后的图片
 	String imagePath=null;//存储路径
 	String photoPath=null;
+	private BoomMenuButton bmb;
+	Declare declare;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -95,19 +105,7 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 		getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
 		// 设置当前Activity界面布局
 		setContentView(R.layout.userinfo_detail);
-//		ImageView search = (ImageView) this.findViewById(R.id.search);
-//		search.setVisibility(View.GONE);
-	//	TextView title = (TextView) this.findViewById(R.id.title);
-	//	title.setText("查看用户详情");
-		//ImageView back = (ImageView) this.findViewById(R.id.back_btn);
-//		back.setOnClickListener(new OnClickListener(){
-//			@Override
-//			public void onClick(View arg0) {
-//				finish();
-//			}
-//		});
-       // plus=findViewById(R.id.plus);
-       // plus.setOnClickListener(this);
+		declare = (Declare) getApplicationContext();
 		userId=findViewById(R.id.tv_userId);
 		studentId = findViewById(R.id.tv_studentId);
 		userName = findViewById(R.id.tv_userName);
@@ -142,7 +140,33 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 //		title=findViewById(R.id.title);
 //		title.setText("个人信息");
 
+		bmb = (BoomMenuButton) findViewById(R.id.bmb);
+		assert bmb != null;
+		bmb.addBuilder(BuilderManager.getHamButtonBuilder("用户发布订单管理", "...")
+		.normalColorRes(R.color.black));
+		bmb.addBuilder(BuilderManager.getHamButtonBuilder("用户代取订单管理", "...")
+				.normalColorRes(R.color.black)
+				.normalImageRes(R.drawable.elephant));
+		bmb.addBuilder(BuilderManager.getHamButtonBuilder("用户收货地址管理", "...")
+				.normalColorRes(R.color.black));
+		bmb.addBuilder(BuilderManager.getHamButtonBuilder("用户认证管理", "...")
+				.normalColorRes(R.color.black));
+		bmb.addBuilder(BuilderManager.getHamButtonBuilder("更多", "...")
+				.normalColorRes(R.color.black)
+				.unableImageRes(R.drawable.butterfly)
+				.unableText("Unable!"));
 
+		bmb.setOnBoomListener(new OnBoomListenerAdapter() {
+			@Override
+			public void onClicked(int index, BoomButton boomButton) {
+				super.onClicked(index, boomButton);
+				changeBoomButton(index);
+			}
+		});
+
+
+
+		//=========
 		initPopWindow();
 		//titlePopup.show(findViewById(R.id.layout_bar));
 		//====================
@@ -164,7 +188,7 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 //				//xiangceClick();
 //			}
 //		});
-        btnDown = (Button)findViewById(R.id.btnDown);
+       // btnDown = (Button)findViewById(R.id.btnDown);
 		 extras = this.getIntent().getExtras();
 //======================================================
 		userType=extras.getString("userType");
@@ -208,19 +232,19 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 		//userType = findViewById(R.id.ET_userType);
 
 
-		btnDown.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				new Thread(new Runnable() {
-					@Override
-					public void run() {
-						HttpUtil.downloadFile(extras.get("userAuthFile").toString());
-					}
-				}).start();
-				UserInfoDetailActivity.this.setTitle("正在开始下载认证文件....");
-				Toast.makeText(getApplicationContext(), "下载成功，你也可以在mobileclient/upload目录查看！", Toast.LENGTH_SHORT).show();
-			}
-		});
+//		btnDown.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				new Thread(new Runnable() {
+//					@Override
+//					public void run() {
+//						HttpUtil.downloadFile(extras.get("userAuthFile").toString());
+//					}
+//				}).start();
+//				UserInfoDetailActivity.this.setTitle("正在开始下载认证文件....");
+//				Toast.makeText(getApplicationContext(), "下载成功，你也可以在mobileclient/upload目录查看！", Toast.LENGTH_SHORT).show();
+//			}
+//		});
 
 	}
 
@@ -278,11 +302,10 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 					}).start();
 					break;
 				case 1:// 不通过审核
-//					Utils.start_Activity(MainActivity.this, PublicActivity.class,
-//							new BasicNameValuePair(Constants.NAME, "添加朋友"));
+//
 					break;
 				case 2:// 查看订单
-//					Utils.start_Activity(MainActivity.this, CaptureActivity.class);
+//
 					break;
 				case 3://编辑
 					new Thread(new Runnable() {
@@ -359,7 +382,38 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 				break;
 		}
 	}
+//============
 
+	private void changeBoomButton(int index) {
+		// From version 2.0.9, BMB supports a new feature to change contents in boom-button
+		// by changing contents in the corresponding builder.
+		// Please notice that not every method supports this feature. Only the method whose comment
+		// contains the "Synchronicity" tag supports.
+		// For more details, check:
+		// https://github.com/Nightonke/BoomMenu/wiki/Change-Boom-Buttons-Dynamically
+		Intent intent=new Intent();
+		HamButton.Builder builder = (HamButton.Builder) bmb.getBuilder(index);
+		if (index == 0) { //跳转到用户发布订单页面
+//			builder.normalText("Changed!");
+////			builder.highlightedText("Highlighted, changed!");
+////			builder.subNormalText("Sub-text, changed!");
+			declare.setAdminUserId(Integer.parseInt(userId.getText().toString()));
+			intent.setClass(UserInfoDetailActivity.this,ExpressTakeMyListActivity.class);
+			startActivity(intent);
+			builder.normalTextColor(Color.YELLOW);
+			builder.highlightedTextColorRes(R.color.colorPrimary);
+			builder.subNormalTextColor(Color.BLACK);
+		} else if (index == 1) {    //跳转到用户代取订单管理页面
+			builder.normalImageRes(R.drawable.bat);
+			builder.highlightedImageRes(R.drawable.bear);
+		} else if (index == 2) {    //跳转到用户收货地址管理
+			builder.normalColorRes(R.color.colorAccent);
+		} else if (index == 3) {    //用户认证信息管理
+			builder.pieceColor(Color.WHITE);
+		} else if (index == 4) {
+			builder.unable(true);
+		}
+	}
 	//=====================
 
 	Handler handler=new Handler(){

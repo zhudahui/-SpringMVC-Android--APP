@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.mobileclient.activity.ExpressOrderAddActivity;
 import com.mobileclient.activity.ExpressOrderDetailActivity;
 import com.mobileclient.activity.MyProgressDialog;
 import com.mobileclient.activity.R;
@@ -17,7 +16,6 @@ import com.mobileclient.app.RefreshListView;
 import com.mobileclient.domain.Order;
 import com.mobileclient.domain.ReceiveAddress;
 import com.mobileclient.domain.User;
-import com.mobileclient.service.ExpressTakeService;
 import com.mobileclient.service.OrderService;
 import com.mobileclient.service.ReceiveAddressService;
 import com.mobileclient.service.UserService;
@@ -25,8 +23,8 @@ import com.mobileclient.util.ActivityUtils;
 import com.mobileclient.util.HttpUtil;
 import com.mobileclient.util.ImageService;
 
-import android.app.Activity;
 import android.app.AlertDialog.Builder;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -35,6 +33,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -43,27 +42,20 @@ import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 
 import butterknife.ButterKnife;
 
-import static android.app.Activity.RESULT_OK;
-
-public class OrderOneFragment extends Fragment implements RefreshListView.OnRefreshListener,RefreshListView.OnLoadMoreListener{
+public class OrderOneFragment extends Fragment {
     ExpressOrderAdapter adapter;
     RefreshListView lv;
     List<Map<String, Object>> list;
     int orderId;
     /* 快递代拿操作业务逻辑层对象 */
-    ExpressTakeService expressTakeService = new ExpressTakeService();
+   // ExpressTakeService expressTakeService = new ExpressTakeService();
     /*保存查询参数条件*/
     private Order queryConditionExpressOrder;
     private MyProgressDialog dialog; //进度条	@Override
@@ -73,16 +65,17 @@ public class OrderOneFragment extends Fragment implements RefreshListView.OnRefr
     UserService userService=new UserService();
     ReceiveAddress receiveAddress=new ReceiveAddress();
     private int userId;
+    private Declare declare;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_one, container, false);
-        lv=view.findViewById(R.id.list_view);
+        View view = inflater.inflate(R.layout.fragment_order_one, container, false);
+        lv=view.findViewById(R.id.lv1);
         dialog = MyProgressDialog.getInstance(getActivity());
         ButterKnife.bind(this, view);
         queryConditionExpressOrder = new Order();
         queryConditionExpressOrder=null;
-
+        declare = (Declare)getActivity().getApplication();
         setViews();
         return view;
     }
@@ -124,10 +117,56 @@ public class OrderOneFragment extends Fragment implements RefreshListView.OnRefr
                 });
             }
         }.start();
-        lv.setOnRefreshListener(this);
-        lv.setOnLoadMoreListener(this);
+        //=================
+        lv.setonRefreshListener(new RefreshListView.OnRefreshListener() {
+
+            @Override
+            public void onRefresh() {
+                            setViews();
+                    adapter.notifyDataSetChanged();
+                lv.onRefreshComplete();
+
+            }
+        });
         // 添加长按点击
-        lv.setOnCreateContextMenuListener(expressTakeListItemListener);
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                final int i=position-1;
+                if(declare.getIdentify().equals("admin")) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setMessage("确认删除？");
+                    builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //删掉长按的item
+                            //  list.remove(position);
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    orderService.DeleteOrder((Integer) list.get(i).get("orderId"));
+                                }
+                            }).start();
+                            //  动态更新listview
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
+                    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.setCanceledOnTouchOutside(false);
+                    dialog.show();
+                }
+
+                return true;
+            }
+
+        });
         lv.setOnItemClickListener(new OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
@@ -155,7 +194,7 @@ public class OrderOneFragment extends Fragment implements RefreshListView.OnRefr
                 bundle.putInt("receiveAddressId",Integer.parseInt(list.get(arg2).get("receiveAddressId").toString()));
                 bundle.putString("evaluate",list.get(arg2).get("evaluate").toString());
                 bundle.putInt("takeUserId", Integer.parseInt(list.get(arg2).get("takeUserId").toString()));
-                if (list.get(arg2).get("evaluate").toString().equals("--")||list.get(arg2).get("evaluate").toString().equals("请评价")) {//若评价为空
+                if (list.get(arg2).get("evaluate").toString().equals("-+-")||list.get(arg2).get("evaluate").toString().equals("请评价")) {//若评价为空
                     intent.putExtras(bundle);
                     intent.setClass(getActivity(), ExpressOrderDetailActivity.class);   //已评价
                     startActivityForResult(intent, ActivityUtils.UPDATE_CODE);
@@ -177,20 +216,36 @@ public class OrderOneFragment extends Fragment implements RefreshListView.OnRefr
             //menu.add(0, 0, 0, "编辑快递代拿信息");
             //menu.add(0, 1, 0, "删除快递代拿信息");
 
-            menu.add(0, 0, 0, "取消快递代拿订单");
+            if (declare.getIdentify().equals("user")) {
+                menu.add(0, 0, 0, "取消快递订单");
+            }else {
+                menu.add(0, 1, 0, "编辑快递信息");
+                menu.add(0, 2, 0, "删除快递信息");
+            }
         }
     };
 
     // 长按菜单响应函数
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        if (item.getItemId() == 0) {// 删除快递代拿信息
+        if (item.getItemId() == 1) {// 编辑快递信息
             ContextMenuInfo info = item.getMenuInfo();
             AdapterContextMenuInfo contextMenuInfo = (AdapterContextMenuInfo) info;
             // 获取选中行位置
             int position = contextMenuInfo.position;
             // 获取订单id
             orderId = Integer.parseInt(list.get(position).get("orderId").toString());
+            dialog();
+        }
+        if (item.getItemId() == 2) {// 删除快递信息
+            ContextMenuInfo info = item.getMenuInfo();
+            AdapterContextMenuInfo contextMenuInfo = (AdapterContextMenuInfo) info;
+            // 获取选中行位置
+            int position = contextMenuInfo.position;
+
+            int i=position-1;
+            // 获取订单id
+            orderId = Integer.parseInt(list.get(i).get("orderId").toString());
             dialog();
         }
         return super.onContextItemSelected(item);
@@ -204,8 +259,8 @@ public class OrderOneFragment extends Fragment implements RefreshListView.OnRefr
         builder.setPositiveButton("确认", new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String result = expressTakeService.DeleteExpressTake(orderId);
-                Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
+               // String result = expressTakeService.DeleteExpressTake(orderId);
+                //Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
                 setViews();
                 dialog.dismiss();
             }
@@ -225,10 +280,9 @@ public class OrderOneFragment extends Fragment implements RefreshListView.OnRefr
             /* 查询快递代拿信息 */
             ReceiveAddressService receiveAdressService=new ReceiveAddressService();
             /* 查询快递代拿信息 */
-            List<Order> expressOrderList = orderService.QueryOrder(queryConditionExpressOrder);
+            List<Order> expressOrderList = orderService.OrderStateQuery("待接单");
             for (int i = 0; i < expressOrderList.size(); i++) {
                 Map<String, Object> map = new HashMap<String, Object>();
-                if(expressOrderList.get(i).getOrderState().equals("待接单")) {
                     map.put("orderId", expressOrderList.get(i).getOrderId());
                     map.put("orderName", expressOrderList.get(i).getOrderName());
                     map.put("userId", expressOrderList.get(i).getUserId());
@@ -259,21 +313,25 @@ public class OrderOneFragment extends Fragment implements RefreshListView.OnRefr
                     //map.put("userPhone", expressOrderList.get(i).getAddTime());
                     list.add(map);
                 }
-            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         return list;
     }
-    @Override
-    public void onRefresh() {
-        setViews();
-        lv.setOnRefreshComplete();
-        adapter.notifyDataSetChanged();
-    }
+    /**
+     * 定义一个handler处理请求返回来的信息
+     */
+    Handler mHandler = new Handler() {
 
-    @Override
-    public void onLoadMore() {
+        @Override
+        public void handleMessage(Message msg) {
+            // TODO Auto-generated method stub
+            super.handleMessage(msg);
+            System.out.println("这是刷新返回来的信息");
+            adapter.notifyDataSetChanged();
+            lv.onRefreshComplete();
+        }
 
-    }
+    };
 }

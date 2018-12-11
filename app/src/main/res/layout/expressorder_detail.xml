@@ -209,7 +209,20 @@
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center">
+                android:gravity="center"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+                <RatingBar
+                    android:id="@+id/ratingbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:rating="0"
+                    android:progressTint="@android:color/holo_orange_dark"
+                    android:stepSize="1"
+                    android:visibility="gone"
+                    />
                 <EditText
                     android:text=""
                     android:id="@+id/ET_Evaluate"
@@ -226,7 +239,8 @@
                     android:singleLine="false"
                     android:scrollHorizontally="false"
                     android:layout_marginRight="5dp"
-                    android:visibility="gone"/>
+                    android:visibility="gone"
+                    />
                 <Button
                     android:text="我要抢单"
                     android:id="@+id/btnGetOrder"

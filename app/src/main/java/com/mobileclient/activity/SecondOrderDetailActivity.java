@@ -5,27 +5,19 @@ import com.mobileclient.domain.ReceiveAddress;
 import com.mobileclient.domain.User;
 import com.mobileclient.service.OrderService;
 import com.mobileclient.service.ReceiveAddressService;
-import com.mobileclient.service.TakeOrderService;
-import com.mobileclient.service.CompanyService;
-import com.mobileclient.service.UserInfoService;
 import com.mobileclient.service.UserService;
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.File;
 

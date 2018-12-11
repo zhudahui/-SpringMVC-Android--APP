@@ -6,10 +6,11 @@ android {
     buildToolsVersion "28.0.3"
     defaultConfig {
         applicationId "com.mobileclient.activity"
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 26
         packagingOptions {
             exclude 'META-INF/DEPENDENCIES'
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
         }
     }
     buildTypes {
@@ -55,12 +56,10 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation files('libs/gson-2.7-javadoc.jar')
     testImplementation 'junit:junit:4.12'
-    implementation 'com.jakewharton:butterknife:8.4.0'
     implementation 'com.android.support:recyclerview-v7:26.0.0'
-
-    implementation 'com.github.ozodrukh:CircularReveal:1.0.5@aar'
-    implementation 'com.squareup.picasso:picasso:2.5.0'
-    implementation 'com.nhaarman.listviewanimations:lib-core:3.1.0@aar'
-    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.github.ozodrukh:CircularReveal:1.0.4'
+    implementation files('libs/butterknife-7.0.1.jar')
+    implementation files('libs/alipaySdk-20180601.jar')
+    implementation project(':boommenu')
 
 }

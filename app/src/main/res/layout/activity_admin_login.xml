@@ -4,152 +4,120 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/beijing"
-    >
+    tools:context="com.mobileclient.activity.LoginActivity"
+    android:background="@drawable/beijing">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardview"
-        android:layout_width="match_parent"
-        android:layout_height="320dp"
+    <FrameLayout
         android:layout_centerInParent="true"
-        android:layout_margin="20dp"
-        app:cardCornerRadius="6dp"
-        app:cardElevation="3dp"
-        app:cardUseCompatPadding="true">
-
-        <LinearLayout
+        android:paddingTop="70dp"
+        android:layout_width="320dp"
+        android:layout_height="403dp">
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv_add"
+            app:cardBackgroundColor="#2ea67f"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="300dp"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="true"
+            >
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="10dp">
-
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
-                    android:background="#2fa881" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
                     android:layout_marginStart="50dp"
-                    android:text="@string/login"
-                    android:textColor="#FFCC00"
-                    android:textSize="18sp"
+                    android:layout_marginTop="50dp"
+                    android:text="管理员登录"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
-            </RelativeLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:paddingEnd="30dp"
-                android:paddingStart="50dp">
-
-
-
-                <EditText
-                    android:id="@+id/et_username"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/selector_bg_edit"
-                    android:hint="管理员账号"
-
-                    android:paddingBottom="2dp"
-                    android:textColor="#2fa881"
-                    android:textCursorDrawable="@drawable/bg_input_cursor"
-                    android:textSize="15sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal"
-                android:paddingEnd="30dp"
-                android:paddingStart="50dp">
-
-
-                <EditText
-                    android:id="@+id/et_pwd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/selector_bg_edit"
-                    android:hint="@string/Password"
-                    android:inputType="textPassword"
-                    android:paddingBottom="2dp"
-                    android:textColor="#2fa881"
-                    android:textCursorDrawable="@drawable/bg_input_cursor"
-                    android:textSize="15sp" />
-
-            </LinearLayout>
-            <Spinner
-                android:id="@+id/Spinner_identify"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_below="@id/et_pwd"
-                android:layout_alignLeft="@id/et_pwd"
-                android:visibility="gone"
-                android:layout_marginTop="5dip"
-                android:background="@drawable/background_button_div"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="25dp"
-                android:gravity="center"
-                android:paddingEnd="30dp"
-                android:paddingStart="50dp">
-
-                <Button
-                    android:id="@+id/btn_login"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@drawable/bt_shape"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="30dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="#f0f7f4"
+                        android:theme="@style/TextLabel">
+
+                        <EditText
+                            android:id="@+id/et_adminName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/selector_bg_edit_2"
+                            android:hint="账号"
+                            android:inputType="textPersonName"
+                            android:paddingBottom="2dp"
+                            android:textColor="#f0f7f4"
+                            android:textCursorDrawable="@drawable/bg_input_cursor_2"
+                            android:textSize="13sp" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="30dp">
+
+                    <android.support.design.widget.TextInputLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="#f0f7f4"
+                        android:theme="@style/TextLabel">
+
+                        <EditText
+                            android:id="@+id/et_adminPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/selector_bg_edit_2"
+                            android:hint="@string/Password"
+                            android:inputType="textPassword"
+                            android:paddingBottom="2dp"
+                            android:textColor="#f0f7f4"
+                            android:textCursorDrawable="@drawable/bg_input_cursor_2"
+                            android:textSize="13sp" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+
+
+
+                <Button
+                    android:id="@+id/bt_go"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bt_shape_2"
                     android:stateListAnimator="@drawable/state_list_animator_z"
-                    android:text="登陆"
-                    android:textColor="#2fa881" />
-            </RelativeLayout>
+                    android:text="登录"
+                    android:textColor="#2fa881"></Button>
 
-            <TextView
-                android:id="@+id/register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dp"
-                android:text="@string/forgot_your_password"
-                android:textColor="#9a9a9a"
-                android:textSize="12sp" />
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="normal"
+            android:src="@drawable/plus_x"
+            android:transitionName="loginFab"
+            android:layout_gravity="center_horizontal|top" />
+    </FrameLayout>
 
-
-    <!--<com.github.glomadrian.grav.GravView-->
-    <!--android:id="@+id/grav"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_centerInParent="true"-->
-    <!--app:colorGenerator="com.github.glomadrian.grav.generator.paint.ArrayColorGenerator"-->
-    <!--app:array_colors="@array/Spectral"-->
-    <!--app:pointGenerator="com.github.glomadrian.grav.generator.point.RegularPointGenerator"-->
-    <!--app:regular_cell_size="300"-->
-    <!--app:regular_variance="200"-->
-    <!--app:gravGenerator="com.github.glomadrian.grav.generator.grav.BallGenerator"-->
-    <!--app:ball_from_size="10dp"-->
-    <!--app:ball_to_size="20dp"-->
-    <!--app:animationGenerators="@array/BubbleAnimations"-->
-    <!--app:side_to_side_min_duration="10000"-->
-    <!--app:side_to_side_max_duration="10000"-->
-    <!--app:side_to_side_direction="leftToRight"-->
-    <!--app:shake_direction="vertical"-->
-    <!--app:shake_min_duration="10000"-->
-    <!--app:shake_max_duration="20000"-->
-    <!--app:shake_variance="500dp" />-->
 
 </RelativeLayout>

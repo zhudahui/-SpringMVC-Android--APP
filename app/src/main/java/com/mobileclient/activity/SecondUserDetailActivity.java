@@ -278,11 +278,11 @@ public class SecondUserDetailActivity extends Activity implements View.OnClickLi
                     }).start();
                     break;
                 case 1:// 不通过审核
-//					Utils.start_Activity(MainActivity.this, PublicActivity.class,
+//
 //							new BasicNameValuePair(Constants.NAME, "添加朋友"));
                     break;
                 case 2:// 查看订单
-//					Utils.start_Activity(MainActivity.this, CaptureActivity.class);
+//
                     break;
                 case 3://编辑
 //

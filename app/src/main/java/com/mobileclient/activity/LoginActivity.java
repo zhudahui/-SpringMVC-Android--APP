@@ -5,10 +5,15 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.transition.Explode;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -30,20 +35,24 @@ import com.mobileclient.domain.User;
 import com.mobileclient.service.UserService;
 import com.mobileclient.util.HttpUtil;
 
+import butterknife.OnClick;
+
 
 /**
  *
  * @author
  *登录
  */
-public class LoginActivity extends Activity {
+public class LoginActivity extends Activity implements View.OnClickListener{
     private TextView register;
     private Button btn_login;
     private EditText et_nickName;
     private EditText et_userPwd;
     private MyProgressDialog dialog;
+    private Button btnGo;
     UserService userService=new UserService();
     User user=new User();
+    private FloatingActionButton fab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +65,8 @@ public class LoginActivity extends Activity {
         et_nickName= findViewById(R.id.et_nickName);    //用户学号
         et_userPwd = findViewById(R.id.et_userPwd);  //用户密码
         register = (TextView)findViewById(R.id.register);
+
+        fab=findViewById(R.id.fab);
         register.setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View arg0) {
@@ -66,10 +77,9 @@ public class LoginActivity extends Activity {
         Declare declare = (Declare)LoginActivity.this.getApplication();
 
          declare.setIdentify("user");
+         fab.setOnClickListener(this);
 
-
-
-        btn_login = (Button) findViewById(R.id.btn_login);
+        btn_login = (Button) findViewById(R.id.bt_go);
         btn_login.setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View arg0) {
@@ -110,6 +120,15 @@ public class LoginActivity extends Activity {
                                     declare.setUserPassword(user.getUserPassword());
                                     declare.setNickName(user.getNickName());
                                     declare.setStudentId(user.getStudentId());
+                                    declare.setUserAuthState(user.getUserAuthState());
+
+
+                                    declare.setReceiveId(-1);
+                                    declare.setReceiveName("--");
+                                    declare.setReceiveAddressName("--");
+                                    declare.setReceiveUserId(-1);
+                                    declare.setReceivePhone("--");
+
                                     handler.sendEmptyMessage(1);
                                 }
                                 else{
@@ -156,7 +175,30 @@ public class LoginActivity extends Activity {
         }
     };
 
-
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.fab:
+                getWindow().setExitTransition(null);
+                getWindow().setEnterTransition(null);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    ActivityOptions options =
+                            ActivityOptions.makeSceneTransitionAnimation(this, fab, fab.getTransitionName());
+                    startActivity(new Intent(this, AdminLoginActivity.class), options.toBundle());
+                } else {
+                    startActivity(new Intent(this, AdminLoginActivity.class));
+                }
+                break;
+            case R.id.bt_go:
+                Explode explode = new Explode();
+                explode.setDuration(500);
+                getWindow().setExitTransition(explode);
+                getWindow().setEnterTransition(explode);
+                ActivityOptionsCompat oc2 = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+                //Intent i2 = new Intent(this,LoginSuccessActivity.class);
+                //startActivity(i2, oc2.toBundle());
+                break;
+        }
+    }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {// 捕捉返回键

@@ -43,12 +43,13 @@ public class UserService {
                     .add("regTime", user.getRegTime())
                     .add("nickName",user.getNickName())
                     .add("studentId", String.valueOf(user.getStudentId()))
+                    .add("userAuthState",user.getUserAuthState())
                     .add("action", "add")
                     .build();
             Request request=new Request.Builder().url(HttpUtil.BASE_URL + "user/add?").post(body).build();
             Response reponse=client.newCall(request).execute();
             String result=reponse.body().string();
-            Log.i("fffffffff",""+result);
+            Log.i("uuuuuuuu",""+result);
             return result;
         } catch (Exception e) {
             e.printStackTrace();
@@ -96,6 +97,7 @@ public class UserService {
                 user.setRegTime(object.getString("regTime"));
                 user.setNickName(object.getString("nickName"));
                 user.setStudentId(object.getInt("studentId"));
+                user.setUserAuthState(object.getString("userAuthState"));
                 userInfoList.add(user);
             }
         } catch (Exception e) {
@@ -125,6 +127,7 @@ public class UserService {
                     .add("action", "update")
                     .add("studentId", String.valueOf(user.getStudentId()))
                     .add("nickName",user.getNickName())
+                    .add("userAuthState",user.getUserAuthState())
                     .build();
 
             Log.i("pppppuserPassword", user.getUserPassword());
@@ -163,7 +166,7 @@ public class UserService {
                     .add("userId", String.valueOf(userId))
                     .add("action", "delete")
                     .build();
-            Request request=new Request.Builder().url(HttpUtil.BASE_URL + "UserInfoServlet?").post(body).build();
+            Request request=new Request.Builder().url(HttpUtil.BASE_URL + "user/delete?").post(body).build();
             Response response=client.newCall(request).execute();
             String result=response.body().string();
             return result;
@@ -205,6 +208,7 @@ public class UserService {
                 user.setRegTime(object.getString("regTime"));
                 user.setNickName(object.getString("nickName"));
                 user.setStudentId(object.getInt("studentId"));
+                user.setUserAuthState(object.getString("userAuthState"));
                 userList.add(user);
                 Log.i("qqqqqqqq",""+userList.size());
             }
@@ -249,6 +253,7 @@ public class UserService {
                 user.setRegTime(object.getString("regTime"));
                 user.setNickName(object.getString("nickName"));
                 user.setStudentId(object.getInt("studentId"));
+                user.setUserAuthState(object.getString("userAuthState"));
                 userList.add(user);
                 Log.i("qqqqqqqq",""+userList.size());
             }

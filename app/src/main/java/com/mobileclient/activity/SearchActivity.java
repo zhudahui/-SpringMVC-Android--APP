@@ -27,7 +27,6 @@ import com.mobileclient.domain.ExpressTake;
 import com.mobileclient.domain.Order;
 import com.mobileclient.domain.ReceiveAddress;
 import com.mobileclient.domain.User;
-import com.mobileclient.service.ExpressTakeService;
 import com.mobileclient.service.OrderService;
 import com.mobileclient.service.ReceiveAddressService;
 import com.mobileclient.service.UserService;
@@ -51,7 +50,6 @@ public class SearchActivity extends Activity {
     float searchBgHeight = 0;
     /*查询过滤条件保存到这个对象中*/
     private ExpressTake queryConditionExpressTake = new ExpressTake();
-    ExpressTakeService expressTakeService=new ExpressTakeService();
     private ListView lv;
     private MyProgressDialog dialog; //进度条	@Override
     List<Map<String, Object>> list;

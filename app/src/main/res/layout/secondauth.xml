@@ -39,14 +39,14 @@
                 <TableRow android:layout_marginTop="8dp">
                     <TextView
                         android:text="学号："
-                        android:id="@+id/userId"
+                        android:id="@+id/studentId"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textColor="@color/hint_color"
                         android:layout_weight="1.5"/>
 
                     <TextView
-                        android:id="@+id/TV_userId"
+                        android:id="@+id/tv_studentId"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_marginTop="5dip"
@@ -71,7 +71,7 @@
                         android:layout_weight="1.5"/>
                     <TextView
                         android:text=""
-                        android:id="@+id/TV_userName"
+                        android:id="@+id/tv_userName"
                         android:layout_width="0dp"
                         android:layout_weight="4"
                         android:layout_height="40dp"

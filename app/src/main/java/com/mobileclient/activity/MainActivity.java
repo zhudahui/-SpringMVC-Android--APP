@@ -13,6 +13,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
+import com.cc.testdemo.UserInfoListActivity;
 import com.mobileclient.adapter.ExpressOrderAdapter;
 import com.mobileclient.util.ActivityUtils;
  
@@ -56,7 +57,7 @@ public class MainActivity extends MyTabActivity {
 		thirdBtn.setText("物流公司");
 		/*第四tab页*/
 		TabSpec fourthSpec = tabHost.newTabSpec(FOURTH_TAB).setIndicator(FOURTH_TAB)
-				.setContent(new Intent(this, MoreActivity.class));
+				.setContent(new Intent(this, MyInfoActivtiy.class));
 		Button fourthBtn = (Button)findViewById(R.id.fourthBtn);
 		fourthBtn.setText("更多");
 		tabHost.addTab(firstSpec);

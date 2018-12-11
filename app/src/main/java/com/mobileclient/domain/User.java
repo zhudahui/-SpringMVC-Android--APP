@@ -135,4 +135,12 @@ public class User implements Serializable {
     public void setNickName(String nickName) {
         this.nickName = nickName;
     }
+
+    public String getUserAuthState() {
+        return userAuthState;
+    }
+
+    public void setUserAuthState(String userAuthState) {
+        this.userAuthState = userAuthState;
+    }
 }

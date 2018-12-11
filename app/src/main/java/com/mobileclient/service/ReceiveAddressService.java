@@ -112,22 +112,26 @@ public class ReceiveAddressService {
         return receiveAddressesList;
     }
     /* 更新代拿订单 */
-    public String UpdateTakeOrder(TakeOrder takeOrder) {
+    public String UpdateReceiveAddress(ReceiveAddress receiveAddress) {
         try {
             OkHttpClient client = new OkHttpClient();
             RequestBody body = new FormBody.Builder()
-                    .add("orderId", takeOrder.getOrderId() + "")
-                    .add("expressTakeObj", takeOrder.getExpressTakeObj() + "")
-                    .add("userObj", takeOrder.getUserObj())
-                    .add("takeTime", takeOrder.getTakeTime())
-                    .add("orderStateObj", takeOrder.getOrderStateObj() + "")
-                    .add("ssdt", takeOrder.getSsdt())
-                    .add("evaluate", takeOrder.getEvaluate())
+                    .add("receiveId", receiveAddress.getReceiveId() + "")
+                    .add("userId", receiveAddress.getUserId() + "")
+                    .add("receiveName", receiveAddress.getReceiveName() + "")
+                    .add("receivePhone", receiveAddress.getReceivePhone())
+                    .add("receiveState", receiveAddress.getReceiveState())
+                    .add("receiveAddressName",receiveAddress.getReceiveAddressName())
                     .add("action", "update")
                     .build();
-            Request request = new Request.Builder().url(HttpUtil.BASE_URL + "TakeOrderServlet?").post(body).build();
+
+
+            Log.i("pppppppp","ccc"+receiveAddress.getReceiveId());
+
+            Request request = new Request.Builder().url(HttpUtil.BASE_URL + "receive-address/update?").post(body).build();
             Response response = client.newCall(request).execute();
             String result = response.body().string();
+            Log.i("pppppppp",""+result);
             //resultByte = HttpUtil.SendPostRequest(HttpUtil.BASE_URL + "TakeOrderServlet?", params, "UTF-8");
             //String result = new String(resultByte, "UTF-8");
             return result;
@@ -138,14 +142,14 @@ public class ReceiveAddressService {
     }
 
     /* 删除代拿订单 */
-    public String DeleteTakeOrder(int orderId) {
+    public String DeleteReceiveAddress(int receiveId) {
         try {
             OkHttpClient client = new OkHttpClient();
             RequestBody body = new FormBody.Builder()
-                    .add("orderId", orderId + "")
+                    .add("receiveId", receiveId + "")
                     .add("action", "delete")
                     .build();
-            Request request = new Request.Builder().url(HttpUtil.BASE_URL + "TakeOrderServlet?").post(body).build();
+            Request request = new Request.Builder().url(HttpUtil.BASE_URL + "receive-address/delete?").post(body).build();
             Response response = client.newCall(request).execute();
             String result = response.body().string();
             //resultByte = HttpUtil.SendPostRequest(HttpUtil.BASE_URL + "TakeOrderServlet?", params, "UTF-8");

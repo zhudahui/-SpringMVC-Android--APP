@@ -126,27 +126,27 @@ public class IndexActivity extends Activity {
 				startActivity(intent);
 			}
 		});
-		imageView6.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(IndexActivity.this, TakeOrderUserListActivity.class);
-				startActivity(intent);
-			}
-		});
-		imageView7.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(IndexActivity.this, ExpressTakeMyListActivity.class);
-				startActivity(intent);
-			}
-		});
-		imageView8.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(IndexActivity.this,MoreActivity.class);
-				startActivity(intent);
-			}
-		});
+//		imageView6.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				Intent intent = new Intent(IndexActivity.this, TakeOrderUserListActivity.class);
+//				startActivity(intent);
+//			}
+//		});
+//		imageView7.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				Intent intent = new Intent(IndexActivity.this, ExpressTakeMyListActivity.class);
+//				startActivity(intent);
+//			}
+//		});
+//		imageView8.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				Intent intent = new Intent(IndexActivity.this,MoreActivity.class);
+//				startActivity(intent);
+//			}
+//		});
 		iv1.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {

@@ -66,31 +66,31 @@ public class NoticeListActivity extends Activity {
 		});
 		TextView title = (TextView) this.findViewById(R.id.title);
 		title.setText("通知公告");
-		ImageView add_btn = (ImageView) this.findViewById(R.id.add_btn);
-		if (declare.getIdentify().equals("user"))
-			add_btn.setImageResource(R.drawable.back);
-		add_btn.setOnClickListener(new android.view.View.OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				Intent intent = new Intent();
-				if (declare.getIdentify().equals("user"))
-					finish();
-				else {
-					intent.setClass(NoticeListActivity.this, NoticeAddActivity.class);
-					startActivityForResult(intent, ActivityUtils.ADD_CODE);
-				}
-			}
-		});
-
-		if(declare.getIdentify().equals("user")) {
-			add_btn.setImageResource(R.drawable.btn_left_normal);
-			add_btn.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					finish();
-				}
-			});
-		}
+//		//ImageView add_btn = (ImageView) this.findViewById(R.id.add_btn);
+//		if (declare.getIdentify().equals("user"))
+//			add_btn.setImageResource(R.drawable.back);
+//		add_btn.setOnClickListener(new android.view.View.OnClickListener() {
+//			@Override
+//			public void onClick(View arg0) {
+//				Intent intent = new Intent();
+//				if (declare.getIdentify().equals("user"))
+//					finish();
+//				else {
+//					intent.setClass(NoticeListActivity.this, NoticeAddActivity.class);
+//					startActivityForResult(intent, ActivityUtils.ADD_CODE);
+//				}
+//			}
+//		});
+//
+//		if(declare.getIdentify().equals("user")) {
+//			add_btn.setImageResource(R.drawable.btn_left_normal);
+//			add_btn.setOnClickListener(new View.OnClickListener() {
+//				@Override
+//				public void onClick(View v) {
+//					finish();
+//				}
+//			});
+//		}
 		setViews();
 	}
 

@@ -8,9 +8,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -20,13 +22,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.mobileclient.activity.LoginActivity;
 import com.mobileclient.activity.MyProgressDialog;
 import com.mobileclient.activity.R;
 import com.mobileclient.activity.SecondOrderDetailActivity;
 import com.mobileclient.activity.SecondUserDetailActivity;
 import com.mobileclient.activity.UserInfoDetailActivity;
-import com.mobileclient.activity.UserInfoListActivity;
+
 import com.mobileclient.adapter.UserInfoSimpleAdapter;
+import com.mobileclient.app.Declare;
 import com.mobileclient.app.RefreshListView;
 import com.mobileclient.domain.User;
 import com.mobileclient.domain.UserInfo;
@@ -39,10 +43,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.BindView;
+
 import butterknife.ButterKnife;
 
-public class TwoFragment extends Fragment implements RefreshListView.OnRefreshListener,RefreshListView.OnLoadMoreListener{
+public class TwoFragment extends Fragment {
 
     UserInfoSimpleAdapter adapter;
     List<Map<String, Object>> list;
@@ -52,12 +56,15 @@ public class TwoFragment extends Fragment implements RefreshListView.OnRefreshLi
     private List<String> stringList;
     private MyProgressDialog dialog; //进度条	@Override
     UserService userService=new UserService();
+    private int userId;
+    private Declare declare;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_two, container, false);
         lv=view.findViewById(R.id.list_view);
         dialog = MyProgressDialog.getInstance(getContext());
+        declare = (Declare)getActivity().getApplication();
         ButterKnife.bind(this, view);
         setViews();
         return view;
@@ -103,10 +110,56 @@ public class TwoFragment extends Fragment implements RefreshListView.OnRefreshLi
                 });
             }
         }.start();
-        lv.setOnRefreshListener(this);
-        lv.setOnLoadMoreListener(this);
+        //=================
+        lv.setonRefreshListener(new RefreshListView.OnRefreshListener() {
+
+            @Override
+            public void onRefresh() {
+                setViews();
+                adapter.notifyDataSetChanged();
+                lv.onRefreshComplete();
+
+            }
+        });
         // 添加点击
-        lv.setOnCreateContextMenuListener(UserListItemListener);
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                final int i=position-1;
+                if(declare.getIdentify().equals("admin")) {
+                    android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(getActivity());
+                    builder.setMessage("确认删除？");
+                    builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //删掉长按的item
+                            //  list.remove(position);
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    userService.DeleteUserInfo((Integer) list.get(i).get("userId"));
+                                }
+                            }).start();
+                            //  动态更新listview
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
+                    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    android.support.v7.app.AlertDialog dialog = builder.create();
+                    dialog.setCanceledOnTouchOutside(false);
+                    dialog.show();
+                }
+
+                return true;
+            }
+
+        });
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
@@ -134,13 +187,17 @@ public class TwoFragment extends Fragment implements RefreshListView.OnRefreshLi
         });
     }
 
+
     private View.OnCreateContextMenuListener UserListItemListener = new View.OnCreateContextMenuListener() {
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-            menu.add(0, 0, 0, "编辑用户信息");
-            menu.add(0, 1, 0, "删除用户信息");
+            if(declare.getIdentify().equals("admin")) {
+                menu.add(0, 0, 0, "编辑用户信息");
+                menu.add(0, 1, 0, "删除用户信息");
+            }
         }
     };
+
 
 
     // 长按菜单响应函数
@@ -153,7 +210,7 @@ public class TwoFragment extends Fragment implements RefreshListView.OnRefreshLi
             int arg2 = contextMenuInfo.position;
             // 获取用户名
             Intent intent = new Intent();
-            intent.setClass(getActivity(),UserInfoDetailActivity.class);
+            intent.setClass(getActivity(), SecondUserDetailActivity.class);
             Bundle bundle = new Bundle();
             bundle.putString("nickName", list.get(arg2).get("nickName").toString());
             bundle.putString("userName", list.get(arg2).get("userName").toString());
@@ -173,17 +230,18 @@ public class TwoFragment extends Fragment implements RefreshListView.OnRefreshLi
             intent.putExtras(bundle);
             startActivity(intent);
         } else if (item.getItemId() == 1) {// 删除用户信息
-//            ContextMenu.ContextMenuInfo info = item.getMenuInfo();
-//            AdapterView.AdapterContextMenuInfo contextMenuInfo = (AdapterView.AdapterContextMenuInfo) info;
-//            // 获取选中行位置
-//            int position = contextMenuInfo.position;
-//            // 获取用户名
-//            user_name = list.get(position).get("user_name").toString();
-//            dialog();
+            ContextMenu.ContextMenuInfo info = item.getMenuInfo();
+            AdapterView.AdapterContextMenuInfo contextMenuInfo = (AdapterView.AdapterContextMenuInfo) info;
+            // 获取选中行位置
+            int position = contextMenuInfo.position;
+            Log.i("ppp","tt"+getActivity());
+            // 获取用户Id
+            position=position-1;
+            userId = Integer.parseInt(list.get(position).get("userId").toString());
+            dialog();
         }
         return super.onContextItemSelected(item);
     }
-
 
 
 
@@ -197,6 +255,12 @@ public class TwoFragment extends Fragment implements RefreshListView.OnRefreshLi
         builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        userService.DeleteUserInfo(userId);
+                    }
+                }).start();
                 //String result = UserService.DeleteUser(user_name);
                 //Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                 setViews();
@@ -211,6 +275,7 @@ public class TwoFragment extends Fragment implements RefreshListView.OnRefreshLi
         });
         builder.create().show();
     }
+
 
     private List<Map<String, Object>> getDatas() {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
@@ -262,17 +327,21 @@ public class TwoFragment extends Fragment implements RefreshListView.OnRefreshLi
         return list;
     }
 
-    @Override
-    public void onRefresh() {
-        setViews();
-        lv.setOnRefreshComplete();
-        adapter.notifyDataSetChanged();
-    }
+    /**
+     * 定义一个handler处理请求返回来的信息
+     */
+    Handler mHandler = new Handler() {
 
-    @Override
-    public void onLoadMore() {
+        @Override
+        public void handleMessage(Message msg) {
+            // TODO Auto-generated method stub
+            super.handleMessage(msg);
+            System.out.println("这是刷新返回来的信息");
+            adapter.notifyDataSetChanged();
+            lv.onRefreshComplete();
+        }
 
-    }
+    };
 
 
 

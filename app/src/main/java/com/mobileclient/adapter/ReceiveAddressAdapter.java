@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
@@ -57,20 +58,33 @@ public class ReceiveAddressAdapter extends SimpleAdapter {
         convertView.setTag("listViewTAG" + position);
         holder = new ReceiveAddressAdapter.ViewHolder();
         /*绑定该view各个控件*/
+        holder.isCheck = convertView.findViewById(R.id.radio_selected);
         holder.receiveAddressName = (TextView)convertView.findViewById(R.id.receiveAddressName);
         holder.receiveName = (TextView)convertView.findViewById(R.id.receiveName);
         holder.receivePhone = (TextView)convertView.findViewById(R.id.receivePhone);
+        //holder.moren=convertView.findViewById(R.id.tv_moren);
         holder.edit=convertView.findViewById(R.id.edit);
+        holder.delete_address=convertView.findViewById(R.id.delete_address);
+        holder.delete_address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnItemDeleteListener.onDeleteClick(position);
+            }
+        });
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mOnItemEditListener.onDeleteClick(position);
+                mOnItemEditListener.onEditClick(position);
             }
         });
+
         /*设置各个控件的展示内容*/
         holder.receiveAddressName.setText( mData.get(position).get("receiveAddressName").toString());
         holder.receiveName.setText(mData.get(position).get("receiveName").toString());
         holder.receivePhone.setText(mData.get(position).get("receivePhone").toString());
+        if(mData.get(position).get("receiveState").equals("1")){
+            holder.isCheck.setChecked(true);
+        }
         /*返回修改好的view*/
         return convertView;
     }
@@ -80,7 +94,7 @@ public class ReceiveAddressAdapter extends SimpleAdapter {
      * 编辑按钮的监听接口
      */
     public interface onItemEditListener {
-        void onDeleteClick(int i);
+        void onEditClick(int i);
     }
     private onItemEditListener mOnItemEditListener;
 
@@ -88,11 +102,28 @@ public class ReceiveAddressAdapter extends SimpleAdapter {
         this.mOnItemEditListener = mOnItemEditListener;
     }
 
+    /***
+     * 删除按钮
+     *
+     *
+     */
+    public interface onItemDeleteListener {
+        void onDeleteClick(int i);
+    }
+    private onItemDeleteListener mOnItemDeleteListener;
+
+    public void setOnItemDeleteClickListener(onItemDeleteListener mOnItemDeleteListener) {
+        this.mOnItemDeleteListener = mOnItemDeleteListener;
+    }
+
+
 
     static class ViewHolder{
         TextView receiveAddressName;
         TextView receiveName;
         TextView receivePhone;
-        ImageView edit;
+        TextView edit;
+        TextView delete_address;
+        private RadioButton isCheck ;
     }
 }

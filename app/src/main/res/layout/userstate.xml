@@ -30,7 +30,7 @@
         android:paddingTop="5dp">
 
         <TextView
-            android:id="@+id/item_weixin"
+            android:id="@+id/item_kuaidiyuan"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -40,7 +40,7 @@
             android:textSize="15dp"/>
 
         <TextView
-            android:id="@+id/item_tongxunlu"
+            android:id="@+id/item_putongyonghu"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -50,7 +50,7 @@
             android:textSize="15dp"/>
 
         <TextView
-            android:id="@+id/item_faxian"
+            android:id="@+id/item_dairenzheng"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

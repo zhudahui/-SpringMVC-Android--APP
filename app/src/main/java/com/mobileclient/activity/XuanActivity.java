@@ -9,7 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.cc.testdemo.MainActivity;
+import com.mobileclient.activity.rewardOrder.RewardActivity;
 import com.mobileclient.util.ActivityUtils;
 
 public class XuanActivity extends Activity {
@@ -34,7 +34,7 @@ public class XuanActivity extends Activity {
         img2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(XuanActivity.this,MainActivity.class);
+                Intent intent = new Intent(XuanActivity.this,RewardActivity.class);
                 startActivity(intent);
             }
         });

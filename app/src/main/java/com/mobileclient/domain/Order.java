@@ -23,7 +23,7 @@ public class Order implements Serializable {
     private int takeUserId;        //代取者Id
     private String score;          //订单评星
     private String orderType;      //订单类型  分为普通类型、悬赏类型，加急类型
-
+    private String orderPic;    //    代取物品实图
 
 
 
@@ -189,5 +189,13 @@ public class Order implements Serializable {
 
     public void setOrderType(String orderType) {
         this.orderType = orderType;
+    }
+
+    public String getOrderPic() {
+        return orderPic;
+    }
+
+    public void setOrderPic(String orderPic) {
+        this.orderPic = orderPic;
     }
 }

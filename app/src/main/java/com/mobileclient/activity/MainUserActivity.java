@@ -13,6 +13,8 @@ import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
 import com.mobileclient.activity.myorder.ExpressTakeMyListActivity;
+import com.mobileclient.activity.rewardOrder.RewardActivity;
+import com.mobileclient.activity.takeOrder.TakeOrderListActivity;
 
 
 public class MainUserActivity extends MyTabActivity {
@@ -41,17 +43,17 @@ public class MainUserActivity extends MyTabActivity {
 		TabSpec firstSpec = tabHost.newTabSpec(FIRST_TAB).setIndicator(FIRST_TAB)
 				.setContent(new Intent(this, ExpressOrderListActivity.class));
 		Button firstBtn = (Button)findViewById(R.id.firstBtn);
-		firstBtn.setText("快递代拿订单");
+		firstBtn.setText("订单");
 		/*第二tab页*/
 		TabSpec secondSpec = tabHost.newTabSpec(SECOND_TAB).setIndicator(SECOND_TAB)
-				.setContent(new Intent(this,MainActivity.class));
+				.setContent(new Intent(this,TakeOrderListActivity.class));
 		Button secondBtn = (Button)findViewById(R.id.secondBtn);
-		secondBtn.setText("悬赏");
+		secondBtn.setText("我的代取");
 		/*第三tab页*/
 		TabSpec thirdSpec = tabHost.newTabSpec(THIRD_TAB).setIndicator(THIRD_TAB)
 				.setContent(new Intent(this,ExpressTakeMyListActivity.class));
 		Button thirdBtn = (Button)findViewById(R.id.thirdBtn);
-		thirdBtn.setText("我发布的代拿订单");
+		thirdBtn.setText("我的发布");
 		/*第四tab页*/
 		TabSpec fourthSpec = tabHost.newTabSpec(FOURTH_TAB).setIndicator(FOURTH_TAB)
 				.setContent(new Intent(this, MyInfoActivtiy.class));

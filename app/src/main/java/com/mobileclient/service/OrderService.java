@@ -42,6 +42,9 @@ public class OrderService {
                     .add("userPhone",order.getUserPhone())
                     .add("orderEvaluate",order.getOrderEvaluate())
                     .add("takeUserId",String.valueOf(order.getTakeUserId()))
+                    .add("score",order.getScore())
+                    .add("orderType",order.getOrderType())
+                    .add("orderPic",order.getOrderPic())
                     .add("action", "add")
                     .build();
             Log.i("order","body"+body);
@@ -102,6 +105,10 @@ public class OrderService {
                 order.setReceiveCode(object.getString("receiveCode"));
                 order.setOrderEvaluate(object.getString("orderEvaluate"));
                 order.setTakeUserId(object.getInt("takeUserId"));
+                order.setOrderType(object.getString("orderType"));
+                order.setOrderPic(object.getString("orderPic"));
+                order.setScore(object.getString("score"));
+                order.setOrderState("orderState");
 
                 //order.set
                 orderList.add(order);
@@ -112,7 +119,7 @@ public class OrderService {
         Log.i("zhuhui",orderList.size()+"result");
         return orderList;
     }
-    //根据订单名、用户名，发布者、快递公司、酬金  订单状态进行查询
+    //根据用户Id查询
     public List<Order> UserQuery(int userId) throws Exception {
         String urlString = HttpUtil.BASE_URL + "order/user?userId="+userId;
 
@@ -141,6 +148,10 @@ public class OrderService {
                 order.setReceiveCode(object.getString("receiveCode"));
                 order.setOrderEvaluate(object.getString("orderEvaluate"));
                 order.setTakeUserId(object.getInt("takeUserId"));
+                order.setOrderType(object.getString("orderType"));
+                order.setOrderPic(object.getString("orderPic"));
+                order.setScore(object.getString("score"));
+
                 //order.set
                 orderList.add(order);
             }
@@ -149,7 +160,7 @@ public class OrderService {
         }
         return orderList;
     }
-    //
+    //根据代取用户Id查询
     public List<Order> takeUserQuery(int takeUserId) throws Exception {
         String urlString = HttpUtil.BASE_URL + "order/takeUserId?takeUserId="+takeUserId;
 
@@ -178,6 +189,9 @@ public class OrderService {
                 order.setReceiveCode(object.getString("receiveCode"));
                 order.setOrderEvaluate(object.getString("orderEvaluate"));
                 order.setTakeUserId(object.getInt("takeUserId"));
+                order.setOrderType(object.getString("orderType"));
+                order.setOrderPic(object.getString("orderPic"));
+                order.setScore(object.getString("score"));
                 //order.set
                 orderList.add(order);
             }
@@ -186,7 +200,7 @@ public class OrderService {
         }
         return orderList;
     }
-    //根据代取者Id查询
+    //根据订单Id查询
     public Order QueryTake(int orderId) throws Exception {
         String urlString = HttpUtil.BASE_URL + "order?orderId="+orderId;
         Log.i("zhuhui",""+urlString);
@@ -214,6 +228,10 @@ public class OrderService {
                 order.setReceiveCode(object.getString("receiveCode"));
                 order.setOrderEvaluate(object.getString("orderEvaluate"));
                 order.setTakeUserId(object.getInt("takeUserId"));
+                order.setOrderType(object.getString("orderType"));
+                order.setOrderPic(object.getString("orderPic"));
+                order.setScore(object.getString("score"));
+
                 orderList.add(order);
             }
         } catch (Exception e) {
@@ -241,6 +259,7 @@ public class OrderService {
                     .add("receiveCode", String.valueOf(order.getReceiveCode()))
                     .add("orderEvaluate", order.getOrderEvaluate())
                     .add("takeUserId", String.valueOf(order.getTakeUserId()))
+                    .add("score",order.getScore())
                     .add("action", "update")
                     .build();
             Request request = new Request.Builder().url(HttpUtil.BASE_URL + "order/update?").post(body).build();
@@ -263,7 +282,7 @@ public class OrderService {
                     .add("orderId", orderId + "")
                     .add("action", "delete")
                     .build();
-            Request request = new Request.Builder().url(HttpUtil.BASE_URL + "TakeOrderServlet?").post(body).build();
+            Request request = new Request.Builder().url(HttpUtil.BASE_URL + "order/delete?").post(body).build();
             Response response = client.newCall(request).execute();
             String result = response.body().string();
             //resultByte = HttpUtil.SendPostRequest(HttpUtil.BASE_URL + "TakeOrderServlet?", params, "UTF-8");
@@ -274,44 +293,87 @@ public class OrderService {
             return "代拿订单信息删除失败!";
         }
     }
+//根据订单类型查询
+public List<Order> OrderTypeQuery(String orderType) throws Exception {
+    String urlString = HttpUtil.BASE_URL + "order/orderType?orderType="+orderType;
 
-//    /* 根据订单id获取代拿订单对象 */
-//    public Order GetOrder(int orderId) {
-//        List<Order> orderList = new ArrayList<Order>();
-//        try {
-//            OkHttpClient client = new OkHttpClient();
-//            RequestBody body = new FormBody.Builder()
-//                    .add("orderId", orderId + "")
-//                    .add("action", "updateQuery")
-//                    .build();
-//            Request request = new Request.Builder().url(HttpUtil.BASE_URL + "TakeOrderServlet?").post(body).build();
-//            Response response = client.newCall(request).execute();
-//            String result = response.body().string();
-//            //resultByte = HttpUtil.SendPostRequest(HttpUtil.BASE_URL + "TakeOrderServlet?", params, "UTF-8");
-//            //String result = new String(resultByte, "UTF-8");
-//            JSONArray array = new JSONArray(result);
-//            int length = array.length();
-//            for (int i = 0; i < length; i++) {
-//                JSONObject object = array.getJSONObject(i);
-//                Order order = new Order();
-//                order.setOrderId(object.getInt("orderId"));
-//                order.setOrderName(object.getString("orderName"));
-//                order.setUserId(object.getInt("userId"));
-//                order.setExpressCompanyName(object.getString("expressCompanyName"));
-//                order.setExpressCompanyAdress(object.getString("expressCompanyAddress"));
-//                order.setReceiveAdressId(object.getInt("receiveAddressId"));
-//                order.setAddTime(object.getString("addTime"));
-//                order.setOrderState(object.getString("orderState"));
-//                order.setOrderPay(object.getString("orderPay"));
-//                order.setRemark(object.getString("remark"));
-//                order.setReceiveCode(object.getInt("receiveCode"));
-//                orderList.add(order);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        int size = orderList.size();
-//        if (size > 0) return orderList.get(0);
-//        else return null;
-//    }
+    Log.i("zhuhui",""+urlString);
+    List<Order> orderList = new ArrayList<Order>();
+    try {
+        OkHttpClient client=new OkHttpClient();
+        Request request=new Request.Builder().url(urlString).build();
+        Response response=client.newCall(request).execute();
+        String result =response.body().string();
+        JSONArray array = new JSONArray(result);
+        int length = array.length();
+        for (int i = 0; i < length; i++) {
+            JSONObject object = array.getJSONObject(i);
+            Order order = new Order();
+            order.setOrderId(object.getInt("orderId"));
+            order.setOrderName(object.getString("orderName"));
+            order.setUserId(object.getInt("userId"));
+            order.setExpressCompanyName(object.getString("expressCompanyName"));
+            order.setExpressCompanyAdress(object.getString("expressCompanyAddress"));
+            order.setReceiveAdressId(object.getInt("receiveAddressId"));
+            order.setAddTime(object.getString("addTime"));
+            order.setOrderState(object.getString("orderState"));
+            order.setOrderPay(object.getString("orderPay"));
+            order.setRemark(object.getString("remark"));
+            order.setReceiveCode(object.getString("receiveCode"));
+            order.setOrderEvaluate(object.getString("orderEvaluate"));
+            order.setTakeUserId(object.getInt("takeUserId"));
+            order.setOrderType(object.getString("orderType"));
+            order.setOrderPic(object.getString("orderPic"));
+            order.setScore(object.getString("score"));
+            Log.i("pppppp","orderState"+  order.getOrderState());
+            //order.set
+            orderList.add(order);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return orderList;
+}
+    //根据订单状态查询
+    public List<Order> OrderStateQuery(String orderState) throws Exception {
+        String urlString = HttpUtil.BASE_URL + "order/orderState?orderState="+orderState;
+
+        Log.i("zhuhui",""+urlString);
+        List<Order> orderList = new ArrayList<Order>();
+        try {
+            OkHttpClient client=new OkHttpClient();
+            Request request=new Request.Builder().url(urlString).build();
+            Response response=client.newCall(request).execute();
+            String result =response.body().string();
+            JSONArray array = new JSONArray(result);
+            int length = array.length();
+            for (int i = 0; i < length; i++) {
+                JSONObject object = array.getJSONObject(i);
+                Order order = new Order();
+                order.setOrderId(object.getInt("orderId"));
+                order.setOrderName(object.getString("orderName"));
+                order.setUserId(object.getInt("userId"));
+                order.setExpressCompanyName(object.getString("expressCompanyName"));
+                order.setExpressCompanyAdress(object.getString("expressCompanyAddress"));
+                order.setReceiveAdressId(object.getInt("receiveAddressId"));
+                order.setAddTime(object.getString("addTime"));
+                order.setOrderState(object.getString("orderState"));
+                order.setOrderPay(object.getString("orderPay"));
+                order.setRemark(object.getString("remark"));
+                order.setReceiveCode(object.getString("receiveCode"));
+                order.setOrderEvaluate(object.getString("orderEvaluate"));
+                order.setTakeUserId(object.getInt("takeUserId"));
+                order.setOrderType(object.getString("orderType"));
+                order.setOrderPic(object.getString("orderPic"));
+                order.setScore(object.getString("score"));
+                order.setOrderState(object.getString("orderState"));
+                //order.set
+                orderList.add(order);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return orderList;
+    }
+
 }

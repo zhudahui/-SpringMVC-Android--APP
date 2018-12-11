@@ -3,13 +3,11 @@ package com.mobileclient.activity;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 
 import java.io.IOException;
 import java.net.FileNameMap;
 import java.net.URLConnection;
-import java.sql.Timestamp;
+import java.nio.BufferUnderflowException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
@@ -19,10 +17,6 @@ import com.mobileclient.app.Declare;
 import com.mobileclient.domain.User;
 import com.mobileclient.service.UserService;
 import com.mobileclient.util.HttpUtil;
-import com.mobileclient.util.ImageService;
-import com.mobileclient.domain.UserInfo;
-import com.mobileclient.service.UserInfoService;
-import com.sun.jna.platform.win32.Netapi32Util;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -56,14 +50,11 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.Toast;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -176,7 +167,13 @@ public class UserAuthActivity extends Activity {
                             user.setStudentId(Integer.parseInt(studentId.getText().toString()));
                             user.setNickName(declare.getNickName());
                             user.setUserId(declare.getUserId());
+                            user.setUserAuthState("待认证");         //认证状态由未认证改为待认证
                             userService.UpdateUserInfo(user);
+                            Bundle bundle=new Bundle();
+                            bundle.putString("userName",userName.getText().toString());
+                            bundle.putInt("studentId",Integer.parseInt(studentId.getText().toString()));
+                            bundle.putString("userAuthFile",photo);
+                            msg.setData(bundle);
                             msg.what=0x123;
                         }
                        else{
@@ -185,7 +182,7 @@ public class UserAuthActivity extends Activity {
                         handler.sendMessage(msg);
                     }
                 });
-
+                  finish();
             }
 
 
@@ -199,7 +196,12 @@ public class UserAuthActivity extends Activity {
             // TODO Auto-generated method stub
             super.handleMessage(msg);
             if (msg.what==0x123){
-                Toast.makeText(UserAuthActivity.this, "已上传!", Toast.LENGTH_LONG).show();
+                declare.setStudentId(msg.getData().getInt("studentId"));
+                declare.setUserAuthFile(msg.getData().getString("userAuthFile"));
+                declare.setUserName(msg.getData().getString("userName"));
+                declare.setUserAuthState("待认证");
+                Toast.makeText(UserAuthActivity.this, "已上传!请等待认证", Toast.LENGTH_LONG).show();
+
 
             }
             if (msg.what==0x122){

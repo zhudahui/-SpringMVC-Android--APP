@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -21,6 +21,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <!-- 标题1样式 -->
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
     <style name="txt_titleStyle1">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -87,5 +91,21 @@
     <item name="android:layout_width">100dp</item>
     <item name="android:gravity">center</item>
     <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="mRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar</item>
+        <item name="android:minHeight">38dp</item>
+        <item name="android:maxHeight">38dp</item>
+    </style>
+    <style name="TextLabel" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorControlActivated">#FFCC00</item>
+    </style>
+    <style name="RadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/show_rediobutton_background</item>
+    </style>
+    <style name="line_vertical" parent="line_vertical" tools:ignore="ResourceCycle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
     </style>
 </resources>

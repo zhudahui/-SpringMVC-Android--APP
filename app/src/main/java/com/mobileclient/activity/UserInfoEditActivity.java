@@ -3,25 +3,19 @@ package com.mobileclient.activity;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 
 import java.io.IOException;
 import java.net.FileNameMap;
 import java.net.URLConnection;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
+import com.mobileclient.activity.rewardOrder.RewardActivity;
 import com.mobileclient.app.Declare;
 import com.mobileclient.domain.User;
 import com.mobileclient.service.UserService;
 import com.mobileclient.util.HttpUtil;
 import com.mobileclient.util.ImageService;
-import com.mobileclient.domain.UserInfo;
-import com.mobileclient.service.UserInfoService;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -43,6 +37,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.ContactsContract;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -55,11 +50,9 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.Toast;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -97,6 +90,7 @@ public class UserInfoEditActivity extends Activity {
 	private User userInfo;
 	private ImageView back,search;
 	private TextView title;
+	private int flag=0;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -126,7 +120,13 @@ public class UserInfoEditActivity extends Activity {
 		back.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				finish();
+				if(flag==1){
+                    Intent intent = getIntent();
+                    setResult(RESULT_OK,intent);
+					finish();
+				}
+				else
+					finish();
 			}
 		});
 		userPhoto.setOnClickListener(new OnClickListener() {
@@ -220,13 +220,13 @@ public class UserInfoEditActivity extends Activity {
 							user.setUserPassword(declare.getUserPassword());
 							user.setUserMoney(declare.getUserMoney());
 							user.setRegTime(declare.getRegTime());
-							user.setUserEmail(declare.getUserEmail());
-							user.setUserGender(declare.getUserGender());
-							user.setUserPhone(declare.getUserPhone());
+							user.setUserEmail(userEmail.getText().toString());
+							user.setUserGender(userGender.getText().toString());
+							user.setUserPhone(userPhone.getText().toString());
 							user.setUserPassword(declare.getUserPassword());
 							user.setUserReputation(declare.getUserReputation());
 							user.setUserType(declare.getUserType());
-							user.setNickName(declare.getNickName());
+							user.setNickName(nickName.getText().toString());
 							user.setStudentId(declare.getStudentId());
 							userService.UpdateUserInfo(user);
 							user=userService.GetUserInfo(declare.getUserId());
@@ -244,14 +244,13 @@ public class UserInfoEditActivity extends Activity {
 							user.setUserPassword(declare.getUserPassword());
 							user.setUserMoney(declare.getUserMoney());
 							user.setRegTime(declare.getRegTime());
-							user.setUserEmail(declare.getUserEmail());
-							user.setUserGender(declare.getUserGender());
-							user.setUserPhone(declare.getUserPhone());
-							user.setUserPassword(declare.getUserPassword());
+							user.setUserEmail(userEmail.getText().toString());
+							user.setUserGender(userGender.getText().toString());
+							user.setUserPhone(userPhone.getText().toString());
 							user.setUserReputation(declare.getUserReputation());
 							user.setUserType(declare.getUserType());
+							user.setNickName(nickName.getText().toString());
 							userService.UpdateUserInfo(user);
-							user.setNickName(declare.getNickName());
 							user=userService.GetUserInfo(declare.getUserId());
 							Bundle bundle=new Bundle();
 							bundle.putSerializable("user", user);
@@ -287,9 +286,11 @@ public class UserInfoEditActivity extends Activity {
 				declare.setUserPassword(userInfo.getUserPassword());
 				declare.setNickName(userInfo.getNickName());
 				declare.setStudentId(userInfo.getStudentId());
+				flag=1;
 				Toast.makeText(UserInfoEditActivity.this, "更新成功!", Toast.LENGTH_LONG).show();
 			}
-			if(msg.what==0x124){
+			if(msg.what==0x125){
+				flag=1;
 				userInfo= (User) msg.getData().getSerializable("user");
 				declare.setUserId(userInfo.getUserId());
 				declare.setUserName(userInfo.getUserName());

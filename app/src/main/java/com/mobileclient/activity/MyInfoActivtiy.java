@@ -1,5 +1,6 @@
 package com.mobileclient.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,13 +12,16 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cc.testdemo.Activity;
+
+import com.mobileclient.activity.myorder.ExpressTakeMyListActivity;
 import com.mobileclient.activity.takeOrder.TakeOrderListActivity;
 import com.mobileclient.app.Declare;
 import com.mobileclient.app.IdentityImageView;
+import com.mobileclient.domain.Notice;
 import com.mobileclient.util.ActivityUtils;
 import com.mobileclient.util.HttpUtil;
 import com.mobileclient.util.ImageService;
@@ -28,52 +32,57 @@ public class MyInfoActivtiy extends Activity implements View.OnClickListener {
     private TextView tv_NickName;  //用户名
     private ImageView sex;   //性别
     private TextView userId;  //用户Id
-    private TextView reward;   //悬赏
+    private TextView myorder;   //悬赏
     private TextView auth; //认证
-    private TextView money;//消费情况
+    private TextView address;//地址管理
     private TextView express;//快递通，根据快递单号查找快递
     private TextView notice; //通知
     private TextView setting; //设置
     private TextView takeorder; //我的代取
+    private TextView title;
     Declare declare;
-
+    private RelativeLayout view_user1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // 设置当前Activity界面布局
         //去除title
-       // requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //去掉Activity上面的状态栏
-       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        //去掉Activity上面的状态栏
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         // 设置当前Activity界面布局
         setContentView(R.layout.profile);
         declare = (Declare)getApplication();
+        title=findViewById(R.id.title);
+        title.setText("我的");
         userPhoto=findViewById(R.id.iiv_userPhoto);
         right=findViewById(R.id.iv_right);
         tv_NickName=findViewById(R.id.tvname);
         sex=findViewById(R.id.iv_sex);
         userId=findViewById(R.id.tv_userId);
-        reward=findViewById(R.id.txt_reward);
+        myorder=findViewById(R.id.txt_myorder);
         auth=findViewById(R.id.txt_auth);
-        money=findViewById(R.id.txt_money);
+        address=findViewById(R.id.txt_address);
         express=findViewById(R.id.txt_express);
         notice=findViewById(R.id.txt_notice);
         setting=findViewById(R.id.txt_setting);
         takeorder=findViewById(R.id.txt_takeOrder);
+        view_user1=findViewById(R.id.view_user);
         //============
         init();
 
         //============
         right.setOnClickListener(this);
         userId.setOnClickListener(this);
-        reward.setOnClickListener(this);
+        myorder.setOnClickListener(this);
         auth.setOnClickListener(this);
-        money.setOnClickListener(this);
+        address.setOnClickListener(this);
         express.setOnClickListener(this);
         notice.setOnClickListener(this);
         setting.setOnClickListener(this);
         takeorder.setOnClickListener(this);
+        view_user1.setOnClickListener(this);
 
     }
 
@@ -81,7 +90,7 @@ public class MyInfoActivtiy extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         Intent intent=new Intent();
         switch (v.getId()){
-            case R.id.iv_right:
+            case R.id.view_user:
                 // 获取用户名
                 String user_name = declare.getUserName();
                 intent.setClass(MyInfoActivtiy.this, UserInfoEditActivity.class);
@@ -90,7 +99,9 @@ public class MyInfoActivtiy extends Activity implements View.OnClickListener {
                 //intent.putExtras(bundle);
                 startActivityForResult(intent,ActivityUtils.EDIT_CODE);
                 break;
-            case R.id.txt_reward:
+            case R.id.txt_myorder:
+                intent = new Intent(MyInfoActivtiy.this, ExpressTakeMyListActivity.class);
+                startActivity(intent);
                 break;
             case R.id.txt_takeOrder:
                 if(declare.getUserType().equals("快递员")){
@@ -101,16 +112,24 @@ public class MyInfoActivtiy extends Activity implements View.OnClickListener {
                 }
                 break;
             case R.id.txt_auth:
-                String userAuthFile=declare.getUserAuthFile();
-                if(userAuthFile.equals("--")) {
+                String userAuthState=declare.getUserAuthState();
+                if(userAuthState.equals("未认证")) {
+
                     intent = new Intent(MyInfoActivtiy.this, UserAuthActivity.class);
-                    startActivity(intent);
-                }else{
+                    startActivityForResult(intent,ActivityUtils.UPDATE_CODE);
+
+
+                }else if(userAuthState.equals("待认证")){
                     intent = new Intent(MyInfoActivtiy.this, SecondAuthActivity.class);
                     startActivity(intent);
                 }
+                else{   //已认证
+                    Toast.makeText(MyInfoActivtiy.this,"您已认证",Toast.LENGTH_SHORT).show();
+                }
                 break;
-            case R.id.txt_money:
+            case R.id.txt_address:
+                intent = new Intent(MyInfoActivtiy.this, ReceiveAddressListActivity.class);
+                startActivity(intent);
                 break;
             case R.id.txt_express:
                 break;
@@ -123,12 +142,18 @@ public class MyInfoActivtiy extends Activity implements View.OnClickListener {
         }
     }
     private void init(){
+
+
+        userId.setText(String.valueOf(declare.getUserId()));
+        tv_NickName.setText(declare.getNickName());
         if(declare.getUserType().equals("快递员")){   //快递员头像+V
             userPhoto.getSmallCircleImageView().setImageResource(R.drawable.v);
         }
         if(declare.getUserGender().equals("男")){
             sex.setImageResource(R.drawable.ic_sex_male);
         }
+        else
+            sex.setImageResource(R.drawable.ic_sex_female);
 
         final Handler handler=new Handler(){
             @Override
@@ -162,6 +187,24 @@ public class MyInfoActivtiy extends Activity implements View.OnClickListener {
                 }
             }
         }).start();
+    }
+
+    //结果处理函数，当从secondActivity中返回时调用此函数
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==ActivityUtils.QUERY_CODE && resultCode==RESULT_OK){
+
+        }
+        if(requestCode==ActivityUtils.EDIT_CODE && resultCode==RESULT_OK){
+            Log.i("mmmmm",""+requestCode+resultCode);
+           init();
+        }
+        if(requestCode == ActivityUtils.UPDATE_CODE && resultCode == RESULT_OK) {
+
+
+        }
     }
 
 }

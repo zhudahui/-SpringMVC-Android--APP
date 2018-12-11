@@ -1,5 +1,6 @@
 package com.mobileclient.activity.myorder;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,22 +9,27 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cc.testdemo.FouthFragment;
 import com.cc.testdemo.ThreeFragment;
 import com.cc.testdemo.TwoFragment;
+import com.mobileclient.activity.ExpressOrderAddActivity;
+import com.mobileclient.activity.MyInfoActivtiy;
 import com.mobileclient.activity.R;
+import com.mobileclient.activity.UserInfoEditActivity;
 import com.mobileclient.fragment.MyOrderFourFragment;
 import com.mobileclient.fragment.MyOrderOneFragment;
 import com.mobileclient.fragment.MyOrderThreeFragment;
 import com.mobileclient.fragment.MyOrderTwoFragment;
+import com.mobileclient.util.ActivityUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ExpressTakeMyListActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView title, item_jiedan, item_songdan, item_shouhuo,item_pingjia;
+    private TextView title, item_quanbu, item_jiedan, item_shouhuo,item_pingjia;
     private ViewPager vp;
     private MyOrderOneFragment oneFragment;
     private MyOrderTwoFragment twoFragment;
@@ -31,9 +37,9 @@ public class ExpressTakeMyListActivity extends AppCompatActivity implements View
     private MyOrderFourFragment fouthFragment;
     private List<Fragment> mFragmentList = new ArrayList<Fragment>();
     private FragmentAdapter mFragmentAdapter;
-
-    String[] titles = new String[]{"待接单", "送单中", "待收获","待评价"};
-
+    private ImageView add;
+   // String[] titles = new String[]{"待接单", "送单中", "待收获","待评价"};
+    Intent intent=new Intent();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,13 +47,26 @@ public class ExpressTakeMyListActivity extends AppCompatActivity implements View
         getSupportActionBar().hide();
         setContentView(R.layout.my_order);
         initViews();
+        title=findViewById(R.id.title);
+        title.setText("我的发布");
+        ImageView back = (ImageView) this.findViewById(R.id.back_btn);
 
+        back.setVisibility(View.GONE);
         mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(), mFragmentList);
         vp.setOffscreenPageLimit(4);//ViewPager的缓存为4帧
         vp.setAdapter(mFragmentAdapter);
         vp.setCurrentItem(0);//初始设置ViewPager选中第一帧
-        item_jiedan.setTextColor(Color.parseColor("#66CDAA"));
-
+        item_quanbu.setTextColor(Color.parseColor("#66CDAA"));
+        //=====add==
+        add=findViewById(R.id.search);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent.setClass(ExpressTakeMyListActivity.this, ExpressOrderAddActivity.class);
+                startActivityForResult(intent,ActivityUtils.ADD_CODE);
+            }
+        });
+        //=======
         //ViewPager的监听事件
         vp.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -58,7 +77,7 @@ public class ExpressTakeMyListActivity extends AppCompatActivity implements View
             @Override
             public void onPageSelected(int position) {
                 /*此方法在页面被选中时调用*/
-                title.setText(titles[position]);
+                //title.setText(titles[position]);
                 changeTextColor(position);
             }
 
@@ -77,13 +96,13 @@ public class ExpressTakeMyListActivity extends AppCompatActivity implements View
      */
     private void initViews() {
         title = (TextView) findViewById(R.id.title);
+        item_quanbu = (TextView) findViewById(R.id.item_quanbu);
         item_jiedan = (TextView) findViewById(R.id.item_jiedan);
-        item_songdan = (TextView) findViewById(R.id.item_songdan);
         item_shouhuo = (TextView) findViewById(R.id.item_shouhuo);
         item_pingjia = (TextView) findViewById(R.id.item_pingjia);
 
+        item_quanbu.setOnClickListener(this);
         item_jiedan.setOnClickListener(this);
-        item_songdan.setOnClickListener(this);
         item_shouhuo.setOnClickListener(this);
         item_pingjia.setOnClickListener(this);
 
@@ -105,18 +124,18 @@ public class ExpressTakeMyListActivity extends AppCompatActivity implements View
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.item_weixin:
+            case R.id.item_quanbu:
                 vp.setCurrentItem(0, true);
                 break;
-            case R.id.item_tongxunlu:
+            case R.id.item_jiedan:
                 vp.setCurrentItem(1, true);
                 break;
-            case R.id.item_faxian:
+            case R.id.item_shouhuo:
                 vp.setCurrentItem(2, true);
                 break;
-//            case R.id.item_me:
-//                vp.setCurrentItem(3, true);
-//                break;
+            case R.id.item_pingjia:
+                vp.setCurrentItem(3, true);
+                break;
         }
     }
 
@@ -147,24 +166,24 @@ public class ExpressTakeMyListActivity extends AppCompatActivity implements View
      */
     private void changeTextColor(int position) {
         if (position == 0) {
-            item_jiedan.setTextColor(Color.parseColor("#66CDAA"));
-            item_songdan.setTextColor(Color.parseColor("#000000"));
+            item_quanbu.setTextColor(Color.parseColor("#66CDAA"));
+            item_jiedan.setTextColor(Color.parseColor("#000000"));
             item_shouhuo.setTextColor(Color.parseColor("#000000"));
             item_pingjia.setTextColor(Color.parseColor("#000000"));
         } else if (position == 1) {
-            item_jiedan.setTextColor(Color.parseColor("#000000"));
-            item_songdan.setTextColor(Color.parseColor("#66CDAA"));
+            item_quanbu.setTextColor(Color.parseColor("#000000"));
+            item_jiedan.setTextColor(Color.parseColor("#66CDAA"));
             item_shouhuo.setTextColor(Color.parseColor("#000000"));
             item_pingjia.setTextColor(Color.parseColor("#000000"));
         } else if (position == 2) {
+            item_quanbu.setTextColor(Color.parseColor("#000000"));
             item_jiedan.setTextColor(Color.parseColor("#000000"));
-            item_songdan.setTextColor(Color.parseColor("#000000"));
             item_shouhuo.setTextColor(Color.parseColor("#66CDAA"));
             item_pingjia.setTextColor(Color.parseColor("#000000"));
         } else if (position == 3) {
             item_pingjia.setTextColor(Color.parseColor("#66CDAA"));
             item_jiedan.setTextColor(Color.parseColor("#000000"));
-            item_songdan.setTextColor(Color.parseColor("#000000"));
+            item_quanbu.setTextColor(Color.parseColor("#000000"));
             item_shouhuo.setTextColor(Color.parseColor("#000000"));
         }
     }
