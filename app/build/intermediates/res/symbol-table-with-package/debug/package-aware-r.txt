@@ -10,6 +10,8 @@ anim abc_slide_in_top
 anim abc_slide_out_bottom
 anim abc_slide_out_top
 anim alpha
+anim anim_dialog_enter
+anim anim_dialog_exit
 anim design_bottom_sheet_slide_in
 anim design_bottom_sheet_slide_out
 anim design_snackbar_in
@@ -288,6 +290,8 @@ attr iconTintMode
 attr iconifiedByDefault
 attr imageButtonStyle
 attr indeterminateProgressStyle
+attr indexTextColor
+attr indexTextSize
 attr initialActivityCount
 attr insetForeground
 attr isLightTheme
@@ -359,6 +363,13 @@ attr ratingBarStyleIndicator
 attr ratingBarStyleSmall
 attr reverseLayout
 attr rippleColor
+attr riv_border_color
+attr riv_border_width
+attr riv_corner_radius
+attr riv_corner_radius_bottom_left
+attr riv_corner_radius_bottom_right
+attr riv_corner_radius_top_left
+attr riv_corner_radius_top_right
 attr scrimAnimationDuration
 attr scrimVisibleHeightTrigger
 attr searchBlockColor
@@ -647,6 +658,8 @@ color material_grey_600
 color material_grey_800
 color material_grey_850
 color material_grey_900
+color myInputPwdBase_blue
+color myInputPwdBase_gray
 color my_profit_grey_color
 color notification_action_color_filter
 color notification_icon_bg_color
@@ -691,6 +704,7 @@ color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
 color secondary_text_disabled_material_light
+color select_color
 color setting_blue
 color share_text
 color share_view
@@ -807,6 +821,7 @@ dimen cardview_compat_inset_shadow
 dimen cardview_default_elevation
 dimen cardview_default_radius
 dimen common_circle_width
+dimen company_logo_length
 dimen compat_button_inset_horizontal_material
 dimen compat_button_inset_vertical_material
 dimen compat_button_padding_horizontal_material
@@ -890,6 +905,7 @@ dimen design_tab_text_size
 dimen design_tab_text_size_2line
 dimen disabled_alpha_material_dark
 dimen disabled_alpha_material_light
+dimen divider_height
 dimen fastscroll_default_thickness
 dimen fastscroll_margin
 dimen fastscroll_minimum_range
@@ -946,6 +962,7 @@ dimen size_button_message
 dimen sliding_menu_width
 dimen space_size
 dimen text_size_bigest
+dimen text_size_common
 dimen text_size_large
 dimen text_size_larger
 dimen text_size_middle
@@ -1129,6 +1146,7 @@ drawable btn_backgroundd
 drawable btn_backgrounde
 drawable btn_backgroundjia
 drawable btn_backgroundjian
+drawable btn_common_bg_selector
 drawable btn_default
 drawable btn_default_pressed
 drawable btn_item_medium_default
@@ -1170,6 +1188,7 @@ drawable damen
 drawable deer
 drawable default_photo
 drawable delete
+drawable delete_myinput
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
 drawable design_ic_visibility
@@ -1207,6 +1226,7 @@ drawable dsbj
 drawable duola
 drawable eagle
 drawable edit
+drawable edit_bg
 drawable edit_bga
 drawable ele_search_bg
 drawable elephant
@@ -1251,7 +1271,16 @@ drawable ic_beijing
 drawable ic_biaoti
 drawable ic_book
 drawable ic_damen
+drawable ic_default_logo
+drawable ic_edit_text_clear
+drawable ic_error
 drawable ic_launcher
+drawable ic_logistics_blue
+drawable ic_logistics_grey
+drawable ic_logistics_selector
+drawable ic_no_exist
+drawable ic_scan
+drawable ic_searching
 drawable ic_sex_female
 drawable ic_sex_male
 drawable ic_sport
@@ -1272,6 +1301,7 @@ drawable icn_close
 drawable icon
 drawable icon_add
 drawable icon_back
+drawable icon_cancel_128
 drawable icon_check_false
 drawable icon_check_true
 drawable icon_edit_32
@@ -1286,8 +1316,10 @@ drawable icon_me_smail
 drawable icon_menu_addfriend
 drawable icon_menu_group
 drawable icon_menu_sao
+drawable icon_success_128
 drawable icon_trash_32
 drawable image_bg
+drawable index_bar_indicator_bg
 drawable jiahao
 drawable jiesuan
 drawable jisuanqi
@@ -1306,6 +1338,7 @@ drawable list_item_btn_normal
 drawable list_item_btn_pressed
 drawable list_item_default
 drawable list_item_pressed
+drawable list_item_selector
 drawable list_load_error
 drawable list_selector
 drawable listbg
@@ -1336,6 +1369,7 @@ drawable movie_n
 drawable movie_p
 drawable multiply
 drawable multiply_down
+drawable nan
 drawable naozhong
 drawable navigation_empty_icon
 drawable newslogo
@@ -1355,6 +1389,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable nv
 drawable offlinearrow_tab2_pressed
 drawable ooopica
 drawable ooopicb
@@ -1413,6 +1448,7 @@ drawable search_input
 drawable search_input_bg
 drawable search_top_background
 drawable searchbtn
+drawable select_btn_myinputpwd
 drawable selector_bg_edit
 drawable selector_bg_edit_2
 drawable setting_item_selector
@@ -1420,6 +1456,7 @@ drawable shadow
 drawable shape_oval_normal
 drawable shape_rectangle_normal
 drawable shenhe
+drawable shoudan
 drawable shouye
 drawable shouyeab
 drawable shouyecd
@@ -1484,6 +1521,7 @@ drawable xiaohuangren
 drawable xiaohui
 drawable xiaowanzi
 drawable xinwenzixun
+drawable xueli
 drawable xueshimao
 drawable xuwei
 drawable xwzx
@@ -1493,6 +1531,7 @@ drawable xyfc_tushuguan
 drawable xyfc_zhulou
 drawable yellowman
 drawable yisheng
+drawable zhuye
 drawable zhuyeone
 drawable zhuyetwo
 drawable zx
@@ -1543,6 +1582,10 @@ id FUNCTION
 id ItemImage
 id ItemText
 id META
+id MyPwdInput_close
+id MyPwdInput_forgetpwd
+id MyPwdInput_inputpwd
+id MyPwdInput_list
 id Re_butt1
 id Re_butt2
 id Re_butt3
@@ -1582,10 +1625,8 @@ id TV_giveMoney_Label
 id TV_name
 id TV_nickName
 id TV_noticeContent
-id TV_noticeFile
-id TV_noticeId
-id TV_noticeId_Label
 id TV_noticeTitle
+id TV_noticeTitlee
 id TV_orderId
 id TV_orderId_Label
 id TV_orderName
@@ -1724,6 +1765,8 @@ id btnViewOrder
 id btn_authFile
 id btn_cancel
 id btn_pick_photo
+id btn_remark
+id btn_retry
 id btn_save
 id btn_search
 id btn_take_photo
@@ -1839,9 +1882,11 @@ id enterAlwaysCollapsed
 id et_adminName
 id et_adminPassword
 id et_nickName
+id et_post_id
 id et_receiveAdressName
 id et_receiveName
 id et_receivePhone
+id et_remark
 id et_search
 id et_userPwd
 id exitUntilCollapsed
@@ -1884,8 +1929,12 @@ id head_title
 id header
 id home
 id homeAsUp
+id ib_indicator
 id icon
 id icon_group
+id id_confirm_et
+id id_new_et
+id id_orgin_et
 id ifRoom
 id iiv
 id iiv_userPhoto
@@ -1947,7 +1996,11 @@ id iv4
 id ivArrow
 id ivSuccess
 id iv_bimage
+id iv_clear
+id iv_logistics
+id iv_logo
 id iv_right
+id iv_scan
 id iv_sex
 id iv_userPhoto
 id largeLabel
@@ -1955,6 +2008,7 @@ id layout
 id layout1
 id layout_bar
 id left
+id line
 id line1
 id line3
 id linear
@@ -1964,11 +2018,16 @@ id listView
 id list_item
 id list_view
 id ll3
+id ll_error
+id ll_fragment_container
 id ll_head
+id ll_no_exist
+id ll_result
 id location_errInfo_text
 id location_tv
 id lv
 id lv1
+id ly
 id mainViewPager
 id male
 id map
@@ -1981,7 +2040,11 @@ id mini
 id ml_icon
 id ml_short_content
 id ml_title
+id moren
 id multiply
+id myInputPwdListItem_delete
+id myInputPwdListItem_fl
+id myInputPwdListItem_tv
 id name
 id navigation_header_container
 id navimap
@@ -2065,14 +2128,15 @@ id piecePlace_ham_5
 id piecePlace_ham_6
 id piecePlace_share
 id pin
+id ppe_pwd1
+id ppe_pwd2
+id ppe_pwd3
 id progress_circular
 id progress_horizontal
 id progressbar
 id pwd
 id r1
 id radio
-id radio_selected
-id radio_selectedText
 id ratingbar
 id re1
 id re2
@@ -2089,6 +2153,8 @@ id registerButton1
 id registerButton2
 id remark
 id repeatingCheck
+id resultImg
+id resultText
 id rg
 id rg_main_btns
 id right
@@ -2101,6 +2167,9 @@ id route_map
 id routemap_choose
 id routemap_header
 id rsmap
+id rv_company
+id rv_result_list
+id rv_suggestion
 id save
 id save_image_matrix
 id save_non_transition_alpha
@@ -2193,6 +2262,9 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id tv
+id tv1
+id tv2
+id tv3
 id tvLoadMore
 id tvRefresh
 id tv_addTime
@@ -2200,17 +2272,21 @@ id tv_bname
 id tv_button
 id tv_clear
 id tv_companyObj
+id tv_detail
 id tv_empty
 id tv_evaluate
 id tv_expressTakeObj
 id tv_giveMoney
 id tv_hint
+id tv_index
+id tv_indicator
 id tv_left
 id tv_load
 id tv_merchandise_button
 id tv_merchandise_name
 id tv_merchandise_price
 id tv_msg_text
+id tv_name
 id tv_nickName
 id tv_noticeTitle
 id tv_orderName
@@ -2219,6 +2295,7 @@ id tv_orderState
 id tv_orderStateId
 id tv_orderStateName
 id tv_orderStateObj
+id tv_post_id
 id tv_publishDate
 id tv_receiveAddressName
 id tv_receiveMemo
@@ -2228,9 +2305,11 @@ id tv_regTime
 id tv_right
 id tv_search
 id tv_search_rlt
+id tv_searching
 id tv_ssdt
 id tv_state
 id tv_studentId
+id tv_suggestion
 id tv_takePlace
 id tv_takeStateObj
 id tv_takeTime
@@ -2253,11 +2332,11 @@ id txt_address
 id txt_auth
 id txt_express
 id txt_left
-id txt_myorder
+id txt_modPwd
 id txt_notice
+id txt_payPwd
 id txt_right
 id txt_setting
-id txt_takeOrder
 id txt_title
 id uniform
 id unlogin
@@ -2273,6 +2352,9 @@ id userObj
 id userPhoto
 id userType
 id username
+id v
+id v2
+id v3
 id view_offset_helper
 id view_user
 id viewpager
@@ -2347,15 +2429,18 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout about
+layout activity_about
 layout activity_admin_login
 layout activity_basde_adapter
 layout activity_change_boom_button
+layout activity_company
 layout activity_express_route
 layout activity_grid
 layout activity_kechengbiao
 layout activity_merchandise_list
 layout activity_orc
 layout activity_register
+layout activity_result
 layout activity_search
 layout activity_special
 layout activity_tjpu
@@ -2386,6 +2471,7 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
+layout dialog_result
 layout empty_view
 layout expressmyorder_detail
 layout expressorder_add
@@ -2410,6 +2496,7 @@ layout head
 layout home
 layout index
 layout index1
+layout inputpwd_layout
 layout item_base
 layout item_merchandise
 layout layout
@@ -2433,10 +2520,12 @@ layout main
 layout main_menu
 layout map
 layout message_list
+layout modify_pwd
 layout more
 layout my_order
 layout my_order_two
 layout my_order_two_item
+layout myinputviewlist_item
 layout night_item
 layout notice_add
 layout notice_detail
@@ -2468,6 +2557,8 @@ layout orderstate_list
 layout orderstate_list_item
 layout orderstate_query
 layout overlay_list_item
+layout pay_pwd
+layout pay_result_activity
 layout photolist
 layout popup_window
 layout profile
@@ -2481,6 +2572,7 @@ layout register
 layout reward_order
 layout rewared_order_item
 layout route_activity
+layout search
 layout search_layout
 layout search_list_item
 layout second_hand
@@ -2514,16 +2606,22 @@ layout userinfo_list
 layout userinfo_list_item
 layout userinfo_query
 layout userstate
+layout view_holder_company
+layout view_holder_company_index
+layout view_holder_search_result
+layout view_holder_suggestion
 layout xuan_layout
 menu activity_main
 mipmap back_icon
 mipmap default_error
+mipmap download
 mipmap ele_bg
 mipmap ic_launcher
 mipmap ic_launcher_round
 mipmap icon_success
 mipmap img_down_arrow
 mipmap list_load_error
+mipmap myinput_close
 mipmap search_icon
 raw music
 string Password
@@ -2559,12 +2657,18 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string about
+string about_github
+string about_jianshu
+string about_project_url
+string about_weibo
 string action_settings
 string action_sign_in
 string action_sign_in_short
 string actionbar_example
 string afterTomorrow
 string all_offline
+string analyze_fail
 string animate
 string animate_demo
 string animate_description
@@ -2598,6 +2702,7 @@ string camera_demo
 string camera_description
 string camera_permission_content_tips
 string camera_permission_title_tips
+string cancel
 string center_right
 string change_boom_button_example
 string character_counter_pattern
@@ -2608,6 +2713,7 @@ string city_name
 string city_size
 string clean_finished_overlay_status
 string clear_map
+string click2exit
 string cloud_demo
 string cloud_description
 string colourline_demo
@@ -2683,8 +2789,10 @@ string indoormap_demo
 string indoormap_description
 string infowindow_demo
 string input_city
+string input_post_id
 string inputtips_demo
 string inputtips_description
+string ischeck
 string jinri
 string layers_demo
 string layers_description
@@ -2694,6 +2802,7 @@ string limit_bounds_description
 string list_example
 string list_map
 string listener_example
+string loading
 string location
 string locationGPS_demo
 string locationGPS_description
@@ -2741,6 +2850,7 @@ string menu_qrcode
 string menu_qrcode1
 string menu_settings
 string monday
+string more
 string move_the_camera
 string multi_inst
 string multipoint_demo
@@ -2755,6 +2865,7 @@ string navigatearrow_description
 string next
 string night_mode
 string no_demos
+string no_history
 string no_result
 string normal
 string offlinemap_demo
@@ -2785,6 +2896,7 @@ string polygon_demo
 string polygon_description
 string polyline_demo
 string polyline_description
+string post_id
 string prompt_email
 string prompt_password
 string properties_circle
@@ -2792,6 +2904,12 @@ string properties_polygon
 string properties_polyline
 string province
 string qing
+string qrcode_file_name
+string qrcode_input
+string qrcode_no_sdcard
+string qrcode_save_failure
+string qrcode_save_success
+string qrcode_save_tips
 string radiobutton_baidu
 string radiobutton_gaode
 string radiobutton_gps
@@ -2800,6 +2918,7 @@ string recycler_view_example
 string regeocoder_demo
 string regeocoder_description
 string register
+string remark
 string remove
 string repeat_password
 string report_time
@@ -2818,6 +2937,7 @@ string route_walk
 string routepoisearch_demo
 string satellite
 string saturday
+string save
 string say
 string scale
 string screenshot_demo
@@ -2831,6 +2951,8 @@ string search_title
 string section_format
 string set_min_max_zoomlevel
 string set_min_max_zoomlevel_description
+string share
+string share_content
 string share_demo
 string share_description
 string share_example
@@ -2854,6 +2976,8 @@ string style_custom_on
 string subpoi_demo
 string subpoi_description
 string sunday
+string sure
+string sure_delete_history
 string tap_instructions
 string temperature
 string terrain
@@ -2879,17 +3003,24 @@ string tileoverlay_demo
 string tilt
 string time
 string time1
+string tips
 string title_activity_admin_login
 string title_activity_base
+string title_activity_choose_com
+string title_activity_deliver
 string title_activity_express_route
 string title_activity_geo
 string title_activity_grid
+string title_activity_history
 string title_activity_kechengbiao
 string title_activity_launch
 string title_activity_login
 string title_activity_main2
 string title_activity_main3
 string title_activity_main_bottom_navi
+string title_activity_qrcode
+string title_activity_result
+string title_activity_search
 string title_activity_special
 string title_activity_tabs
 string title_activity_tjpu
@@ -2911,6 +3042,7 @@ string traffic
 string transparency
 string uisettings_demo
 string uisettings_description
+string uncheck
 string up_arrow
 string update
 string viewpager_map
@@ -2938,6 +3070,7 @@ style Animation_Design_BottomSheetDialog
 style AnimationPreview
 style AppBaseTheme
 style AppTheme
+style AppTheme_Divider
 style AppTheme_NoActionBar
 style Base_AlertDialog_AppCompat
 style Base_AlertDialog_AppCompat_Light
@@ -3336,11 +3469,14 @@ style Widget_Design_ScrimInsetsFrameLayout
 style Widget_Design_Snackbar
 style Widget_Design_TabLayout
 style Widget_Design_TextInputLayout
+style actionActivity
 style dateStyle
+style dialog_anim
 style img_Style
 style line_vertical
 style mRatingBar
 style main_radio_botton
+style myinputpwd_dialog
 style txt_ContextStyle1
 style txt_titleStyle1
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
@@ -3378,6 +3514,7 @@ styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchSt
 styleable FontFamilyFont font fontStyle fontWeight
 styleable ForegroundLinearLayout android_foreground android_foregroundGravity foregroundInsidePadding
 styleable IdentityImageView iciv_angle iciv_bigimage iciv_border_color iciv_border_width iciv_hint_smallimageview iciv_isprogress iciv_progress_collor iciv_radiusscale iciv_smallimage
+styleable IndexBar indexTextColor indexTextSize
 styleable LinearLayoutCompat android_gravity android_orientation android_baselineAligned android_baselineAlignedChildIndex android_weightSum divider dividerPadding measureWithLargestChild showDividers
 styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_width android_layout_height android_layout_weight
 styleable ListPopupWindow android_dropDownHorizontalOffset android_dropDownVerticalOffset
@@ -3389,6 +3526,7 @@ styleable PopupWindow android_popupBackground android_popupAnimationStyle overla
 styleable PopupWindowBackgroundState state_above_anchor
 styleable RecycleListView paddingBottomNoButtons paddingTopNoTitle
 styleable RecyclerView android_orientation android_descendantFocusability fastScrollEnabled fastScrollHorizontalThumbDrawable fastScrollHorizontalTrackDrawable fastScrollVerticalThumbDrawable fastScrollVerticalTrackDrawable layoutManager reverseLayout spanCount stackFromEnd
+styleable RoundImageView riv_border_color riv_border_width riv_corner_radius riv_corner_radius_bottom_left riv_corner_radius_bottom_right riv_corner_radius_top_left riv_corner_radius_top_right
 styleable ScrimInsetsFrameLayout insetForeground
 styleable ScrollingViewBehavior_Layout behavior_overlapTop
 styleable SearchView android_focusable android_maxWidth android_inputType android_imeOptions closeIcon commitIcon defaultQueryHint goIcon iconifiedByDefault layout queryBackground queryHint searchHintIcon searchIcon submitBackground suggestionRowLayout voiceIcon
@@ -3406,3 +3544,5 @@ styleable ViewBackgroundHelper android_background backgroundTint backgroundTintM
 styleable ViewStubCompat android_id android_layout android_inflatedId
 transition fabtransition
 xml file_paths
+xml preference_about
+xml web_files_paths

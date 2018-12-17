@@ -138,6 +138,9 @@ public class SecondAddressListActivity extends Activity  {
                 Bundle bundle = new Bundle();
                 bundle.putInt("receiveId",Integer.parseInt(list.get(position).get("receiveId").toString()));
                 bundle.putString("receiveAddressName",list.get(position).get("receiveAddressName").toString());
+                bundle.putString("receiveName",list.get(position).get("receiveAddressName").toString());
+                bundle.putString("receivePhone",list.get(position).get("receivePhone").toString());
+                bundle.putString("receiveState",list.get(position).get("receiveState").toString());
                 intent.putExtras(bundle);
                 setResult(RESULT_OK,intent);
                 finish();

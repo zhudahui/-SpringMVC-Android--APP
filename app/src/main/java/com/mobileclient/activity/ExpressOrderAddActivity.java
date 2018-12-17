@@ -206,7 +206,7 @@ public class ExpressOrderAddActivity extends Activity {
                         return;
                     }
                     order.setOrderPay(ET_orderPay.getText().toString());
-//                    if(Integer.parseInt(order.getOrderPay())>Integer.parseInt(pay)){
+//                    if(Integer.parseInt(order.getOrderPay())>Integer.parseInt()){
 //                        Toast.makeText(ExpressOrderAddActivity.this, "你的余额不足，请充值!", Toast.LENGTH_LONG).show();
 //                        return;
 //                    }
@@ -227,7 +227,7 @@ public class ExpressOrderAddActivity extends Activity {
                     Log.i("vvv", "vvvv");
 
                     initAdd();
-                    //String money=String.valueOf(Integer.parseInt(pay)-Integer.parseInt(order.getOrderPay()));
+                    //String money=String.valueOf(Integer.parseInt()-Integer.parseInt(order.getOrderPay()));
                     //declare.setUserMoney(money);//  扣除订单金额
                     Intent intent = getIntent();
                     //intent.putExtras(bundle);
@@ -254,6 +254,7 @@ public class ExpressOrderAddActivity extends Activity {
                 if (msg.what == 0x123) {
                     Log.i("ppppppppp","state"+msg.getData().getString("receiveAddressName"));
                     declare.setReceiveAddressId(msg.getData().getInt("receiveId"));
+
                     ET_receiveAddressName.setText(msg.getData().getString("receiveAddressName"));   //绑定默认地址
                 }
 
@@ -277,6 +278,10 @@ public class ExpressOrderAddActivity extends Activity {
                             if (receiveAddressesrList.get(i).getReceiveState().equals("1")) {
                                 flag = 1;   //有默认地址
                                 bundle.putString("receiveAddressName", receiveAddressesrList.get(i).getReceiveAddressName());//获得默认地址
+                                bundle.putString("receiveName",receiveAddressesrList.get(i).getReceiveName());
+                                bundle.putString("receivePhone",receiveAddressesrList.get(i).getReceivePhone());
+                                bundle.putString("receiveState",receiveAddressesrList.get(i).getReceiveState());
+                               // bundle.putString("receiveName",receiveAddressesrList.get(i).getReceiveName());
                                  bundle.putInt("receiveId", receiveAddressesrList.get(i).getReceiveId());
                                 Log.i("ppppppppp","address"+receiveAddressesrList.get(i).getReceiveAddressName());
                             }
@@ -549,6 +554,10 @@ public class ExpressOrderAddActivity extends Activity {
                 Bundle extras = data.getExtras();
                 ET_receiveAddressName.setText(extras.getString("receiveAddressName"));
                 order.setReceiveAdressId(extras.getInt("receiveId"));
+                order.setReceiveName(extras.getString("receiveName"));
+                order.setReceivePhone(extras.getString("receivePhone"));
+                order.setReceiveState(extras.getString("receiveState"));
+                order.setReceiveAddressName(extras.getString("receiveAddressName"));
                 break;
             default:
                 break;

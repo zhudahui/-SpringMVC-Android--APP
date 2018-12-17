@@ -90,7 +90,7 @@ public class TakeOrderOneFragment extends Fragment {
 //    //结果处理函数，当从secondActivity中返回时调用此函数
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
+//        super.onActivityResult(equestCode, resultCode, data);
 //        if(requestCode==ActivityUtils.UPDATE_CODE&&resultCode==RESULT_OK) {    //从Detail页面回来
 //            Bundle extras = data.getExtras();
 //            if (extras != null) {
@@ -141,6 +141,10 @@ public class TakeOrderOneFragment extends Fragment {
                                     order.setScore(list.get(i).get("score").toString());
                                     order.setOrderType(list.get(i).get("orderType").toString());
                                     order.setOrderPic(list.get(i).get("orderPic").toString());
+                                    order.setReceiveName(list.get(i).get("receiveName").toString());
+                                    order.setReceivePhone(list.get(i).get("receivePhone").toString());
+                                    order.setReceiveState(list.get(i).get("receiveState").toString());
+                                    order.setReceiveAddressName(list.get(i).get("receiveAddressName").toString());
                                     flag=1;
                                     showDialog();
                                 }
@@ -157,8 +161,8 @@ public class TakeOrderOneFragment extends Fragment {
                                     Bundle bundle = new Bundle();
                                     bundle.putInt("orderId", orderId);
                                     bundle.putInt("userId",Integer.parseInt(list.get(i).get("userId").toString()));
+                                    bundle.putString("nickName",list.get(i).get("nickName").toString());
                                     bundle.putString("orderName",list.get(i).get("orderName").toString());
-                                    bundle.putString("userName",list.get(i).get("userName").toString());
                                     bundle.putByteArray("photo", (byte[]) list.get(i).get("photo"));
                                     bundle.putString("expressCompanyName",list.get(i).get("expressCompanyName").toString());
                                     bundle.putString("expressCompanyAddress",list.get(i).get("expressCompanyAddress").toString());
@@ -174,6 +178,7 @@ public class TakeOrderOneFragment extends Fragment {
                                     bundle.putInt("receiveAddressId",Integer.parseInt(list.get(i).get("receiveAddressId").toString()));
                                     bundle.putString("evaluate",list.get(i).get("evaluate").toString());
                                     bundle.putInt("takeUserId", Integer.parseInt(list.get(i).get("takeUserId").toString()));
+                                    bundle.putString("score",list.get(i).get("score").toString());
                                     if (list.get(i).get("evaluate").toString().equals("-+-")||list.get(i).get("evaluate").toString().equals("请评价")) {//若评价为空
                                         intent.putExtras(bundle);
                                         intent.setClass(getActivity(), ExpressOrderDetailActivity.class);   //已评价
@@ -223,13 +228,14 @@ public class TakeOrderOneFragment extends Fragment {
                 bundle.putInt("orderId", orderId);
                 bundle.putInt("userId",Integer.parseInt(list.get(arg2).get("userId").toString()));
                 bundle.putString("orderName",list.get(arg2).get("orderName").toString());
-                bundle.putString("userName",list.get(arg2).get("userName").toString());
+                bundle.putString("nickName",list.get(arg2).get("nickName").toString());
                 bundle.putByteArray("photo", (byte[]) list.get(arg2).get("photo"));
                 bundle.putString("expressCompanyName",list.get(arg2).get("expressCompanyName").toString());
                 bundle.putString("expressCompanyAddress",list.get(arg2).get("expressCompanyAddress").toString());
                 bundle.putString("receiveAddressName",list.get(arg2).get("receiveAddressName").toString());
                 bundle.putString("receiveName",list.get(arg2).get("receiveName").toString());
                 bundle.putString("receivePhone",list.get(arg2).get("receivePhone").toString());
+                bundle.putString("receiveState",list.get(arg2).get("receiveState").toString());
                 bundle.putString("remark",list.get(arg2).get("remark").toString());
                 bundle.putString("receiveCode",list.get(arg2).get("receiveCode").toString());
                 bundle.putString("receiveName",list.get(arg2).get("receiveName").toString());
@@ -239,6 +245,7 @@ public class TakeOrderOneFragment extends Fragment {
                 bundle.putInt("receiveAddressId",Integer.parseInt(list.get(arg2).get("receiveAddressId").toString()));
                 bundle.putString("evaluate",list.get(arg2).get("evaluate").toString());
                 bundle.putInt("takeUserId", Integer.parseInt(list.get(arg2).get("takeUserId").toString()));
+                bundle.putString("score",list.get(arg2).get("score").toString());
                 if (list.get(arg2).get("evaluate").toString().equals("-+-")||list.get(arg2).get("evaluate").toString().equals("请评价")) {//若评价为空
                     intent.putExtras(bundle);
                     intent.setClass(getActivity(), ExpressOrderDetailActivity.class);   //已评价
@@ -317,6 +324,7 @@ public class TakeOrderOneFragment extends Fragment {
                 map.put("orderName", expressOrderList.get(i).getOrderName());
                 map.put("userId", expressOrderList.get(i).getUserId());
                 user = userService.GetUserInfo(expressOrderList.get(i).getUserId());
+                map.put("nickName", user.getNickName());
                 map.put("userName", user.getUserName());
                 byte[] userPhoto_data = null;
                 // 获取图片数据
@@ -328,11 +336,12 @@ public class TakeOrderOneFragment extends Fragment {
                 map.put("expressCompanyAddress", expressOrderList.get(i).getExpressCompanyAddress());
                 map.put("receiveAddressId", expressOrderList.get(i).getReceiveAddressId());
                 // 根据获取到z的地址Id，查询地址名以及收获人姓名
-                receiveAddress = receiveAdressService.QueryReceiveAdress(expressOrderList.get(i).getReceiveAddressId());
-                Log.i("zhu1111", "查询ttt" + receiveAddress.getReceiveAddressName());
-                map.put("receiveAddressName", receiveAddress.getReceiveAddressName());
-                map.put("receiveName", receiveAddress.getReceiveName());
-                map.put("receivePhone", receiveAddress.getReceivePhone());
+                //receiveAddress = receiveAdressService.QueryReceiveAdress(expressOrderList.get(i).getReceiveAddressId());
+                Log.i("zhu1111", "查询ttt" +expressOrderList.get(i).getReceiveAddressName());
+                map.put("receiveAddressName", expressOrderList.get(i).getReceiveAddressName());
+                map.put("receiveName", expressOrderList.get(i).getReceiveName());
+                map.put("receivePhone", expressOrderList.get(i).getReceivePhone());
+                map.put("receiveState", expressOrderList.get(i).getReceiveState());
                 map.put("addTime", expressOrderList.get(i).getAddTime());
                 map.put("orderState", expressOrderList.get(i).getOrderState());
                 map.put("orderPay", expressOrderList.get(i).getOrderPay());
@@ -344,9 +353,13 @@ public class TakeOrderOneFragment extends Fragment {
                 map.put("orderType", expressOrderList.get(i).getOrderType());
                 byte[] orderpic = null;
                 // 获取图片数据
-                orderpic = ImageService.getImage(HttpUtil.DOWNURL + expressOrderList.get(i).getOrderPic());
-                Bitmap pic = BitmapFactory.decodeByteArray(orderpic, 0, orderpic.length);
-                map.put("orderPic", pic);
+                if(expressOrderList.get(i).getOrderPic().equals("--")){
+                    map.put("orderPic", expressOrderList.get(i).getOrderPic());
+                }else {
+                    orderpic = ImageService.getImage(HttpUtil.DOWNURL + expressOrderList.get(i).getOrderPic());
+                    Bitmap pic = BitmapFactory.decodeByteArray(orderpic, 0, orderpic.length);
+                    map.put("orderPic", pic);
+                }
                 map.put("score", expressOrderList.get(i).getScore());
                 //map.put("userPhone", expressOrderList.get(i).getAddTime());
                 list.add(map);

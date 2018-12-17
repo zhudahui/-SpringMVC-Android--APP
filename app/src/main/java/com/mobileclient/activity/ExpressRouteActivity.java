@@ -1,16 +1,21 @@
 package com.mobileclient.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -56,8 +61,8 @@ import overlay.WalkRouteOverlay;
 /**
  * Route路径规划: 驾车规划、公交规划、步行规划
  */
-public class ExpressRouteActivity extends Activity implements OnMapClickListener,GeocodeSearch.OnGeocodeSearchListener, OnClickListener,
-        OnMarkerClickListener, OnInfoWindowClickListener, InfoWindowAdapter, OnRouteSearchListener,LocationSource,AMapLocationListener,RadioGroup.OnCheckedChangeListener {
+public class ExpressRouteActivity extends Activity implements OnMapClickListener, GeocodeSearch.OnGeocodeSearchListener, OnClickListener,
+        OnMarkerClickListener, OnInfoWindowClickListener, InfoWindowAdapter, OnRouteSearchListener, LocationSource, AMapLocationListener, RadioGroup.OnCheckedChangeListener {
     private AMap aMap;
     private MapView mapView;
     private Context mContext;
@@ -68,16 +73,17 @@ public class ExpressRouteActivity extends Activity implements OnMapClickListener
     private LatLonPoint mStartPoint = new LatLonPoint(39.071833, 117.116767);//起点，116.335891,39.942295
     private LatLonPoint mEndPoint = new LatLonPoint(39.071833, 117.116767);//终点，116.481288,39.995576
     private LatLonPoint mStartPoint_bus = new LatLonPoint(39.071833, 117.116767);//起点，111.670801,40.818311
-    private LatLonPoint mEndPoint_bus = new LatLonPoint(39.071833, 117.116767);;//终点，
+    private LatLonPoint mEndPoint_bus = new LatLonPoint(39.071833, 117.116767);
+    ;//终点，
     private LatLonPoint mEnd;
     private String mCurrentCityName = "北京";
     private final int ROUTE_TYPE_BUS = 1;
     private final int ROUTE_TYPE_DRIVE = 2;
     private final int ROUTE_TYPE_WALK = 3;
     private final int ROUTE_TYPE_CROSSTOWN = 4;
-    private double lat ;
+    private double lat;
     private double lon;
-    private int i=0 ;
+    private int i = 0;
     private LinearLayout mBusResultLayout;
     private RelativeLayout mBottomLayout;
     private TextView mRotueTimeDes, mRouteDetailDes;
@@ -100,8 +106,12 @@ public class ExpressRouteActivity extends Activity implements OnMapClickListener
     private Marker geoMarker;
     private TextView btn_search;
     private EditText edt;
-    private double lat1,lon1;
+    private double lat1, lon1;
     private String value;
+    private String tel;
+    private ImageView telphone;
+    private ImageView ems;
+    private TextView receiveCode;
 
     //===================================地理编码===============================================================
     @Override
@@ -110,12 +120,16 @@ public class ExpressRouteActivity extends Activity implements OnMapClickListener
         //去除title
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //去掉Activity上面的状态栏
-        getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_express_route);
 
         mContext = this.getApplicationContext();
         mapView = (MapView) findViewById(R.id.route_map);
         mapView.onCreate(bundle);// 此方法必须重写
+        telphone = findViewById(R.id.telphone);
+        ems = findViewById(R.id.ems);
+        receiveCode=findViewById(R.id.receiveCode);
+
         init();
 //		getIntentData();
         setfromandtoMarker();
@@ -124,11 +138,38 @@ public class ExpressRouteActivity extends Activity implements OnMapClickListener
 
 
             value =  intent .getStringExtra("point");
-
+            tel=intent .getStringExtra("tel");
+            receiveCode.setText("取货码"+intent .getStringExtra("receiveCode"));
             Log.i("22222222222222222222", String.valueOf(value));
 
             getLatlon(value);
         }
+        telphone.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("tel:" + tel);
+                Intent intent = new Intent(Intent.ACTION_CALL, uri);
+                if (ActivityCompat.checkSelfPermission(ExpressRouteActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+                startActivity(intent);
+            }
+        });
+        ems.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri2 = Uri.parse("smsto:"+tel);
+                Intent intentMessage = new Intent(Intent.ACTION_VIEW,uri2);
+                startActivity(intentMessage);
+            }
+        });
         /***
          *
          *
@@ -410,6 +451,7 @@ public class ExpressRouteActivity extends Activity implements OnMapClickListener
                     mBottomLayout.setVisibility(View.VISIBLE);
                     int dis = (int) walkPath.getDistance();
                     int dur = (int) walkPath.getDuration();
+                    //时间+距离
                     String des = AMapUtil.getFriendlyTime(dur)+"("+AMapUtil.getFriendlyLength(dis)+")";
                     mRotueTimeDes.setText(des);
                     mRouteDetailDes.setVisibility(View.GONE);
@@ -664,7 +706,7 @@ public class ExpressRouteActivity extends Activity implements OnMapClickListener
                     mapView.setVisibility(View.VISIBLE);
                     mBusResultLayout.setVisibility(View.GONE);
                     //i=1;
-                    Log.i("11", "aaaaaaaaaaaaaaaaaaaaa");
+                    Log.i("111111111111111", "aaaaaaaaaaaaaaaaaaaaa");
 
                 }
             } else {

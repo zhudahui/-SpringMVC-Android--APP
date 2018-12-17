@@ -4,17 +4,18 @@
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:orientation="vertical" >
-    <include layout="@layout/title_list" />
+    <include layout="@layout/title" />
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="@android:color/white"
         android:stretchColumns="1" >
-         <ListView
-            android:id="@+id/h_list_view"
-            android:divider="#00000000"
-            android:dividerHeight="5dp"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" /> 
-    </TableLayout>  
+    <com.mobileclient.app.RefreshListView
+        android:id="@+id/h_list_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:divider="#DEDEDE"
+        android:dividerHeight="1dp"
+    />
+    </TableLayout>
 </LinearLayout>

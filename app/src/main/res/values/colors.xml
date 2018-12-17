@@ -151,4 +151,6 @@
     <color name="login_transparent_white">#30ffffff</color>
     <color name="white_with_80_transparent">#C4ffffff</color>
     <color name="white">#ffffff</color>
+    <color name="myInputPwdBase_blue">#0887ee</color>
+    <color name="myInputPwdBase_gray">#f0f0f6</color>
     </resources>

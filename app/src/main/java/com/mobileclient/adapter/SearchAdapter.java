@@ -99,7 +99,11 @@ public class SearchAdapter extends BaseAdapter implements Filterable {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.userPhoto.setImageBitmap((Bitmap) mData.get(position).get("userPhoto"));
+        if(mData.get(position).get("orderPic").toString().equals("--")) {
+            holder.userPhoto.setImageBitmap((Bitmap) mData.get(position).get("userPhoto"));
+        }
+        else
+            holder.userPhoto.setImageBitmap((Bitmap) mData.get(position).get("orderPic"));
         // holder.userName.setText( mData.get(position).get("userName").toString());
         holder.orderName.setText( (mData.get(position).get("orderName").toString()));
         holder.expressCompanyName.setText( mData.get(position).get("expressCompanyName").toString());

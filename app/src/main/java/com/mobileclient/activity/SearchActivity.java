@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -30,6 +31,7 @@ import com.mobileclient.domain.User;
 import com.mobileclient.service.OrderService;
 import com.mobileclient.service.ReceiveAddressService;
 import com.mobileclient.service.UserService;
+import com.mobileclient.util.ActivityUtils;
 import com.mobileclient.util.HttpUtil;
 import com.mobileclient.util.ImageService;
 
@@ -68,7 +70,7 @@ public class SearchActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //去掉Activity上面的状态栏
         getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.search);
         dialog = MyProgressDialog.getInstance(this);
         mSearchBGTxt = findViewById(R.id.tv_search_rlt);
         mHintTxt =  findViewById(R.id.tv_hint);
@@ -309,6 +311,9 @@ public class SearchActivity extends Activity {
                         Log.i("ppppppp",""+list.get(0).get("nickName"));
                         adapter = new SearchAdapter(SearchActivity.this,list);
                         lv.setAdapter(adapter);
+
+
+
                         mHintTxt.addTextChangedListener(new TextWatcher() {
                             @Override
                             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -331,9 +336,56 @@ public class SearchActivity extends Activity {
 
                     }
                 });
-            }
-        }.start();
 
+            }
+
+
+        }.start();
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
+                Log.i("pppppppp","arg"+arg2);
+                Intent intent = new Intent();
+                //intent.setClass(ExpressTakeMyListActivity.this, ExpressTakeDetailActivity.class);
+                Bundle bundle = new Bundle();
+                int orderId = Integer.parseInt(list.get(arg2).get("orderId").toString());
+                arg2= Integer.parseInt(list.get(arg2).get("position").toString());
+                bundle.putInt("orderId", orderId);
+                bundle.putInt("userId",Integer.parseInt(list.get(arg2).get("userId").toString()));
+                bundle.putString("orderName",list.get(arg2).get("orderName").toString());
+                bundle.putString("nickName",list.get(arg2).get("nickName").toString());
+                bundle.putByteArray("photo", (byte[]) list.get(arg2).get("photo"));
+                bundle.putString("expressCompanyName",list.get(arg2).get("expressCompanyName").toString());
+                bundle.putString("expressCompanyAddress",list.get(arg2).get("expressCompanyAddress").toString());
+                bundle.putString("receiveAddressName",list.get(arg2).get("receiveAddressName").toString());
+                bundle.putString("receiveName",list.get(arg2).get("receiveName").toString());
+                bundle.putString("receivePhone",list.get(arg2).get("receivePhone").toString());
+                bundle.putString("receiveState",list.get(arg2).get("receiveState").toString());
+                bundle.putString("remark",list.get(arg2).get("remark").toString());
+                bundle.putString("receiveCode",list.get(arg2).get("receiveCode").toString());
+                bundle.putString("receiveName",list.get(arg2).get("receiveName").toString());
+                bundle.putString("orderPay",list.get(arg2).get("orderPay").toString());
+                bundle.putString("orderState",list.get(arg2).get("orderState").toString());
+                bundle.putString("addTime",list.get(arg2).get("addTime").toString());
+                bundle.putInt("receiveAddressId",Integer.parseInt(list.get(arg2).get("receiveAddressId").toString()));
+                bundle.putString("evaluate",list.get(arg2).get("evaluate").toString());
+                bundle.putInt("takeUserId", Integer.parseInt(list.get(arg2).get("takeUserId").toString()));
+                //bundle.putString("score",list.get(arg2).get("score").toString());
+                if (list.get(arg2).get("evaluate").toString().equals("-+-")||list.get(arg2).get("evaluate").toString().equals("请评价")) {//若评价为空
+                    intent.putExtras(bundle);
+                    intent.setClass(SearchActivity.this, ExpressOrderDetailActivity.class);   //已评价
+                    startActivityForResult(intent, ActivityUtils.UPDATE_CODE);
+                }
+                else {
+                    Log.i("zhu111", "已评价");
+                    intent.setClass(SearchActivity.this, SecondOrderDetailActivity.class);   //已评价
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+
+
+            }
+        });
     }
     private List<Map<String, Object>> getDatas() {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
@@ -341,9 +393,10 @@ public class SearchActivity extends Activity {
             /* 查询快递代拿信息 */
             ReceiveAddressService receiveAdressService=new ReceiveAddressService();
             /* 查询快递代拿信息 */
-            List<Order> expressOrderList = orderService.QueryOrder(queryConditionExpressOrder);
+            List<Order> expressOrderList = orderService.OrderStateQuery("待接单");
             for (int i = 0; i < expressOrderList.size(); i++) {
                 Map<String, Object> map = new HashMap<String, Object>();
+                    map.put("position",i);
                     map.put("orderId", expressOrderList.get(i).getOrderId());
                     map.put("orderName", expressOrderList.get(i).getOrderName());
                     map.put("userId", expressOrderList.get(i).getUserId());
@@ -360,11 +413,12 @@ public class SearchActivity extends Activity {
                     map.put("expressCompanyAddress", expressOrderList.get(i).getExpressCompanyAddress());
                     map.put("receiveAddressId", expressOrderList.get(i).getReceiveAddressId());
                     // 根据获取到的地址Id，查询地址名以及收获人姓名
-                    receiveAddress = receiveAdressService.QueryReceiveAdress(expressOrderList.get(i).getReceiveAddressId());
-                    Log.i("zhu1111", "查询ttt" + receiveAddress.getReceiveAddressName());
-                    map.put("receiveAddressName", receiveAddress.getReceiveAddressName());
-                    map.put("receiveName", receiveAddress.getReceiveName());
-                    map.put("receivePhone", receiveAddress.getReceivePhone());
+                   //receiveAddress = receiveAdressService.QueryReceiveAdress(expressOrderList.get(i).getReceiveAddressId());
+                    Log.i("zhu1111", "查询ttt" + expressOrderList.get(i).getReceiveAddressName());
+                    map.put("receiveAddressName", expressOrderList.get(i).getReceiveAddressName());
+                    map.put("receiveName", expressOrderList.get(i).getReceiveName());
+                    map.put("receivePhone", expressOrderList.get(i).getReceivePhone());
+                    map.put("receiveState", expressOrderList.get(i).getReceiveState());
                     map.put("addTime", expressOrderList.get(i).getAddTime());
                     map.put("orderState", expressOrderList.get(i).getOrderState());
                     map.put("orderPay", expressOrderList.get(i).getOrderPay());
@@ -372,6 +426,17 @@ public class SearchActivity extends Activity {
                     map.put("receiveCode", expressOrderList.get(i).getReceiveCode());
                     map.put("evaluate", expressOrderList.get(i).getOrderEvaluate());
                     map.put("takeUserId", expressOrderList.get(i).getTakeUserId());
+                    map.put("orderType", expressOrderList.get(i).getOrderType());
+                    byte[] orderpic = null;
+                    // 获取图片数据
+                    if(expressOrderList.get(i).getOrderPic().equals("--")){
+                        map.put("orderPic", expressOrderList.get(i).getOrderPic());
+                    }else {
+                       orderpic = ImageService.getImage(HttpUtil.DOWNURL + expressOrderList.get(i).getOrderPic());
+                       Bitmap pic = BitmapFactory.decodeByteArray(orderpic, 0, orderpic.length);
+                       map.put("orderPic", pic);
+                    }
+                map.put("score", expressOrderList.get(i).getScore());
                     //map.put("userPhone", expressOrderList.get(i).getAddTime());
                     list.add(map);
             }

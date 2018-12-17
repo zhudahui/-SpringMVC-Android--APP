@@ -23,4 +23,18 @@
         <attr name="iciv_border_width" format="integer"></attr><!--边框宽度-->
         <attr name="iciv_hint_smallimageview" format="boolean"></attr><!--是否隐藏小图片-->
     </declare-styleable>
+    <declare-styleable name="IndexBar">
+        <attr name="indexTextSize" format="dimension" />
+        <attr name="indexTextColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundImageView">
+        <attr name="riv_corner_radius" format="dimension" />
+        <attr name="riv_corner_radius_top_left" format="dimension" />
+        <attr name="riv_corner_radius_top_right" format="dimension" />
+        <attr name="riv_corner_radius_bottom_right" format="dimension" />
+        <attr name="riv_corner_radius_bottom_left" format="dimension" />
+        <attr name="riv_border_width" format="dimension" />
+        <attr name="riv_border_color" format="color" />
+    </declare-styleable>
 </resources>

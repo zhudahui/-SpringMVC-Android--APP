@@ -32,7 +32,7 @@ public class ExpressOrderListActivity extends AppCompatActivity implements View.
     private List<Fragment> mFragmentList = new ArrayList<Fragment>();
     private FragmentAdapter mFragmentAdapter;
 
-    String[] titles = new String[]{"快递员", "普通用户", "待审核"};
+
 //==============
 //================下拉刷新==============================
 private final static int REFRESH_COMPLETE = 0;

@@ -49,21 +49,16 @@ public class MainActivity extends MyTabActivity {
 		TabSpec secondSpec = tabHost.newTabSpec(SECOND_TAB).setIndicator(SECOND_TAB)
 				.setContent(new Intent(this,ExpressOrderListActivity.class));
 		Button secondBtn = (Button)findViewById(R.id.secondBtn);
-		secondBtn.setText("快递代拿");
+		secondBtn.setText("主页管理");
 		/*第三tab页*/
 		TabSpec thirdSpec = tabHost.newTabSpec(THIRD_TAB).setIndicator(THIRD_TAB)
-				.setContent(new Intent(this,ReceiveAddressListActivity.class));
+				.setContent(new Intent(this,NoticeListActivity.class));
 		Button thirdBtn = (Button)findViewById(R.id.thirdBtn);
-		thirdBtn.setText("物流公司");
-		/*第四tab页*/
-		TabSpec fourthSpec = tabHost.newTabSpec(FOURTH_TAB).setIndicator(FOURTH_TAB)
-				.setContent(new Intent(this, MyInfoActivtiy.class));
-		Button fourthBtn = (Button)findViewById(R.id.fourthBtn);
-		fourthBtn.setText("更多");
+		thirdBtn.setText("公告信息管理");
 		tabHost.addTab(firstSpec);
 		tabHost.addTab(secondSpec);
 		tabHost.addTab(thirdSpec);
-		tabHost.addTab(fourthSpec);
+		//tabHost.addTab(fourthSpec);
 
 		RadioGroup radioGroup = (RadioGroup) this
 				.findViewById(R.id.rg_main_btns);
@@ -86,9 +81,9 @@ public class MainActivity extends MyTabActivity {
 					tabHost.setCurrentTabByTag(THIRD_TAB);
 					break;
 
-				case R.id.fourthBtn:
-					tabHost.setCurrentTabByTag(FOURTH_TAB);
-					break;
+//				case R.id.fourthBtn:
+//					tabHost.setCurrentTabByTag(FOURTH_TAB);
+//					break;
 
 				default:
 					break;

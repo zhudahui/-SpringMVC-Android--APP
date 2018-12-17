@@ -58,7 +58,7 @@ public class ReceiveAddressListActivity extends Activity  {
         dialog = MyProgressDialog.getInstance(this);
         declare = (Declare) getApplicationContext();
        // extras = this.getIntent().getExtras();
-        String username = declare.getUserName();
+        //String username = declare.getUserName();
         TextView title = (TextView) this.findViewById(R.id.title);
         title.setText("收货地址");
         add=findViewById(R.id.save); //地址添加
@@ -76,7 +76,6 @@ public class ReceiveAddressListActivity extends Activity  {
                     finish();       //从地址列表过来
             }
         });
-        Log.i("pppppppppppppppp", "11111" + declare.getUserId());
         //ListView item 中的删除按钮的点击事件
         setViews();
 
@@ -98,13 +97,6 @@ public class ReceiveAddressListActivity extends Activity  {
     }
 
     private void setViews() {
-
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.i("3333","33333");
-            }
-        });
         dialog.show();
         final Handler handler = new Handler();
         new Thread() {
@@ -122,12 +114,6 @@ public class ReceiveAddressListActivity extends Activity  {
                                 new String[]{"receiveAddressName", "receiveName", "receivePhone"},
                                 new int[]{R.id.receiveAddressName, R.id.receiveName, R.id.receivePhone,}, lv);
                         lv.setAdapter(adapter);
-                        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                Log.i("222","222");
-                            }
-                        });
                         adapter.setOnItemEditClickListener(new ReceiveAddressAdapter.onItemEditListener() {
                             @Override
                             public void onEditClick(int i) {
@@ -157,12 +143,6 @@ public class ReceiveAddressListActivity extends Activity  {
                 });
             }
         }.start();
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.i("11111","1111");
-            }
-        });
 
     }
 
@@ -225,7 +205,6 @@ public class ReceiveAddressListActivity extends Activity  {
             Log.i("Address", "11111" + declare.getUserId());
 
             List<ReceiveAddress> receiveAddressList = receiveAddressService.QueryReceiveAdressList(declare.getUserId());
-            Log.i("Address", "11111" + receiveAddressList);
             for (int i = 0; i < receiveAddressList.size(); i++) {
                 Map<String, Object> map = new HashMap<String, Object>();
                 map.put("receiveId", receiveAddressList.get(i).getReceiveId());
@@ -234,6 +213,7 @@ public class ReceiveAddressListActivity extends Activity  {
                 map.put("receiveName", receiveAddressList.get(i).getReceiveName());
                 map.put("receivePhone", receiveAddressList.get(i).getReceivePhone());
                 map.put("receiveState", receiveAddressList.get(i).getReceiveState());
+                Log.i("check","check"+receiveAddressList.get(i).getReceiveState());
                 if(receiveAddressList.get(i).getReceiveState().equals("1")){
 
                     declare.setReceiveId(receiveAddressList.get(i).getReceiveId());
@@ -257,13 +237,26 @@ public class ReceiveAddressListActivity extends Activity  {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface,final int i) {
-                        new Thread(new Runnable() {
+
+
+                        final Handler handler = new Handler();
+                        new Thread() {
                             @Override
                             public void run() {
+                                //在子线程中进行数据操作
                                 receiveAddressService.DeleteReceiveAddress(Integer.parseInt(list.get(j).get("receiveId").toString()));
-
+                                //发送消失到handler，通知主线程下载完成
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        list.remove(j);//选择行的位置
+                                        adapter.notifyDataSetChanged();
+                                        lv.invalidate();
+                                    }
+                                });
                             }
-                        }).start();
+                        }.start();
+
 
                     }
                 });

@@ -69,29 +69,7 @@
 				android:layout_marginRight="5dp" />
 		</TableRow>
 
-		<TableRow android:layout_marginTop="5dp">
-			<TextView 
-				android:text="发布时间：" 
-				android:id="@+id/TV_publishDate"
-				android:layout_width="0dp" 
-				android:layout_height="wrap_content"
-				android:layout_weight="1.5"
-				android:textColor="@color/hint_color" />
-			<EditText 
-				android:text="" 
-				android:id="@+id/ET_publishDate" 
-				android:layout_width="0dp"
-				android:layout_height="40dp"
-				android:layout_weight="4"
-				android:layout_marginTop="5dip"
-				android:background="@drawable/btn_item_medium_default"
-				android:drawableLeft="@drawable/ic_user_pwd"
-				android:drawablePadding="10dp"
-				android:gravity="center_vertical"
-				android:paddingLeft="4dp"
-				android:layout_marginRight="5dp"
-				android:singleLine="true" />
-		</TableRow>
+		<TableRow android:layout_marginTop="5dp"></TableRow>
 
 	</TableLayout>
 	<LinearLayout 

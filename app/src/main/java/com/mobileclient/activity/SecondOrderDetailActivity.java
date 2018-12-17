@@ -17,6 +17,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.io.File;
@@ -29,7 +30,7 @@ public class SecondOrderDetailActivity extends Activity {
     // 声明订单名
     private TextView tx_orderName;
     // 声明发布者
-    private TextView tx_userName;
+    private TextView tx_nickName;
     // 声明物流公司
     private TextView tx_expressCompanyName;
     // 声明取货地址
@@ -60,7 +61,7 @@ public class SecondOrderDetailActivity extends Activity {
     private int Id;//获取用户Id
     private Button btnGetOrder;
     private Button btnViewOrder;
-    private CircleImageView ci_userPhoto;
+    private ImageView ci_userPhoto;
     UserService userService = new UserService();
     ReceiveAddress receiveAddress = new ReceiveAddress();
     ReceiveAddressService receiveAdressService = new ReceiveAddressService();
@@ -68,6 +69,7 @@ public class SecondOrderDetailActivity extends Activity {
     private File file;
     private int userId;
     private TextView evaluate;
+    private RatingBar ratingBar;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,7 +97,7 @@ public class SecondOrderDetailActivity extends Activity {
         //orderId = (TextView) findViewById(R.id.orderId);
         tx_orderName = (TextView) findViewById(R.id.orderName);
         ci_userPhoto=findViewById(R.id.userPhoto);
-        tx_userName = (TextView) findViewById(R.id.userName);
+        tx_nickName = (TextView) findViewById(R.id.nickName);
         tx_expressCompanyName = (TextView) findViewById(R.id.expressCompanyName);
         tx_expressCompanyAddress = (TextView) findViewById(R.id.expressCompanyAddress);
         tx_receiveAddressName = (TextView) findViewById(R.id.receiveAddress);
@@ -107,6 +109,8 @@ public class SecondOrderDetailActivity extends Activity {
         tx_addTime = (TextView) findViewById(R.id.addTime);
         btnGetOrder = (Button) findViewById(R.id.btnGetOrder);
         evaluate=findViewById(R.id.TV_Evaluate);
+        ratingBar=findViewById(R.id.ratingbar);
+
         btnViewOrder = (Button) findViewById(R.id.btnViewOrder);
         Bundle extras = this.getIntent().getExtras();
         if(extras!=null) {
@@ -117,7 +121,7 @@ public class SecondOrderDetailActivity extends Activity {
             byte[] photo=extras.getByteArray("photo");
             Bitmap userPhoto = BitmapFactory.decodeByteArray(photo, 0,photo.length);
             ci_userPhoto.setImageBitmap(userPhoto);
-            tx_userName.setText(extras.getString("userName"));
+            tx_nickName.setText(extras.getString("nickName"));
             tx_expressCompanyName.setText(extras.getString("expressCompanyName"));
             tx_expressCompanyAddress.setText(extras.getString("expressCompanyAddress"));
             tx_receiveAddressName.setText(extras.getString("receiveAddressName"));
@@ -129,6 +133,8 @@ public class SecondOrderDetailActivity extends Activity {
             tx_addTime.setText(extras.getString("addTime"));
             evaluate.setVisibility(View.VISIBLE);
             evaluate.setText(extras.getString("evaluate"));
+            ratingBar.setVisibility(View.VISIBLE);
+            ratingBar.setRating(Float.parseFloat(extras.getString("score")));
         }
 
         }

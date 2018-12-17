@@ -50,7 +50,7 @@ public class AdminLoginActivity extends AppCompatActivity {
                 if(adminName.getText().toString().equals("a")&&adminPassword.getText().toString().equals("a")){
                     declare.setIdentify("admin");
                     Intent intent=new Intent();
-                    intent.setClass(AdminLoginActivity.this,UserInfoListActivity.class);
+                    intent.setClass(AdminLoginActivity.this,MainActivity.class);
                     startActivity(intent);
                 }
             }

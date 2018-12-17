@@ -44,6 +44,7 @@ public class UserService {
                     .add("nickName",user.getNickName())
                     .add("studentId", String.valueOf(user.getStudentId()))
                     .add("userAuthState",user.getUserAuthState())
+                    .add("payPwd",user.getPayPwd())
                     .add("action", "add")
                     .build();
             Request request=new Request.Builder().url(HttpUtil.BASE_URL + "user/add?").post(body).build();
@@ -98,6 +99,7 @@ public class UserService {
                 user.setNickName(object.getString("nickName"));
                 user.setStudentId(object.getInt("studentId"));
                 user.setUserAuthState(object.getString("userAuthState"));
+                user.setPayPwd(object.getString("payPwd"));
                 userInfoList.add(user);
             }
         } catch (Exception e) {
@@ -128,6 +130,7 @@ public class UserService {
                     .add("studentId", String.valueOf(user.getStudentId()))
                     .add("nickName",user.getNickName())
                     .add("userAuthState",user.getUserAuthState())
+                    .add("payPwd",user.getPayPwd())
                     .build();
 
             Log.i("pppppuserPassword", user.getUserPassword());
@@ -209,6 +212,7 @@ public class UserService {
                 user.setNickName(object.getString("nickName"));
                 user.setStudentId(object.getInt("studentId"));
                 user.setUserAuthState(object.getString("userAuthState"));
+                user.setPayPwd(object.getString("payPwd"));
                 userList.add(user);
                 Log.i("qqqqqqqq",""+userList.size());
             }
@@ -254,6 +258,7 @@ public class UserService {
                 user.setNickName(object.getString("nickName"));
                 user.setStudentId(object.getInt("studentId"));
                 user.setUserAuthState(object.getString("userAuthState"));
+                user.setPayPwd(object.getString("payPwd"));
                 userList.add(user);
                 Log.i("qqqqqqqq",""+userList.size());
             }

@@ -68,7 +68,11 @@ public class ExpressOrderAdapter extends SimpleAdapter {
         //holder.orderState=convertView.findViewById(R.id.orderState);
         /*设置各个控件的展示内容*/
         /*设置各个控件的展示内容*/
-        holder.userPhoto.setImageBitmap((Bitmap) mData.get(position).get("userPhoto"));
+        if(mData.get(position).get("orderPic").toString().equals("--")) {
+            holder.userPhoto.setImageBitmap((Bitmap) mData.get(position).get("userPhoto"));
+        }
+        else
+            holder.userPhoto.setImageBitmap((Bitmap) mData.get(position).get("orderPic"));
        // holder.userName.setText( mData.get(position).get("userName").toString());
         holder.orderName.setText( (mData.get(position).get("orderName").toString()));
         holder.expressCompanyName.setText( mData.get(position).get("expressCompanyName").toString());

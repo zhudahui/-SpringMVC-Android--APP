@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.mobileclient.app.Declare;
+import com.mobileclient.app.RefreshListView;
 import com.mobileclient.domain.Notice;
 import com.mobileclient.service.NoticeService;
 import com.mobileclient.util.ActivityUtils;import com.mobileclient.adapter.NoticeSimpleAdapter;
@@ -16,6 +17,7 @@ import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,7 +35,7 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 
 public class NoticeListActivity extends Activity {
 	NoticeSimpleAdapter adapter;
-	ListView lv; 
+	RefreshListView lv;
 	List<Map<String, Object>> list;
 	int noticeId;
 	/* 新闻公告操作业务逻辑层对象 */
@@ -56,41 +58,24 @@ public class NoticeListActivity extends Activity {
 		String username = declare.getUserName();
 		//标题栏控件
 		ImageView search = (ImageView) this.findViewById(R.id.search);
+		search.setImageResource(R.drawable.btn_add);
 		search.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				Intent intent = new Intent();
-				intent.setClass(NoticeListActivity.this, NoticeQueryActivity.class);
+				intent.setClass(NoticeListActivity.this, NoticeAddActivity.class);
 				startActivityForResult(intent, ActivityUtils.QUERY_CODE);//此处的requestCode应与下面结果处理函中调用的requestCode一致
+			}
+		});
+		ImageView back=findViewById(R.id.back_btn);
+		back.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
 			}
 		});
 		TextView title = (TextView) this.findViewById(R.id.title);
 		title.setText("通知公告");
-//		//ImageView add_btn = (ImageView) this.findViewById(R.id.add_btn);
-//		if (declare.getIdentify().equals("user"))
-//			add_btn.setImageResource(R.drawable.back);
-//		add_btn.setOnClickListener(new android.view.View.OnClickListener() {
-//			@Override
-//			public void onClick(View arg0) {
-//				Intent intent = new Intent();
-//				if (declare.getIdentify().equals("user"))
-//					finish();
-//				else {
-//					intent.setClass(NoticeListActivity.this, NoticeAddActivity.class);
-//					startActivityForResult(intent, ActivityUtils.ADD_CODE);
-//				}
-//			}
-//		});
-//
-//		if(declare.getIdentify().equals("user")) {
-//			add_btn.setImageResource(R.drawable.btn_left_normal);
-//			add_btn.setOnClickListener(new View.OnClickListener() {
-//				@Override
-//				public void onClick(View v) {
-//					finish();
-//				}
-//			});
-//		}
 		setViews();
 	}
 
@@ -114,7 +99,7 @@ public class NoticeListActivity extends Activity {
     }
 
 	private void setViews() {
-		lv = (ListView) findViewById(R.id.h_list_view);
+		lv =  findViewById(R.id.h_list_view);
 		dialog.show();
 		final Handler handler = new Handler();
 		new Thread(){
@@ -135,13 +120,22 @@ public class NoticeListActivity extends Activity {
 					}
 				});
 			}
-		}.start(); 
+		}.start();
+		lv.setonRefreshListener(new RefreshListView.OnRefreshListener() {
+			@Override
+			public void onRefresh() {
+				setViews();
+				adapter.notifyDataSetChanged();
+				lv.onRefreshComplete();
 
+			}
+		});
 		// 添加长按点击
 		lv.setOnCreateContextMenuListener(noticeListItemListener);
 		lv.setOnItemClickListener(new OnItemClickListener(){
             @Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
+            	arg2=arg2-1;
             	int noticeId = Integer.parseInt(list.get(arg2).get("noticeId").toString());
             	Intent intent = new Intent();
             	intent.setClass(NoticeListActivity.this, NoticeDetailActivity.class);
@@ -178,11 +172,17 @@ public class NoticeListActivity extends Activity {
 			// 获取选中行位置
 			int position = contextMenuInfo.position;
 			// 获取公告id
+			position=position-1;
 			noticeId = Integer.parseInt(list.get(position).get("noticeId").toString());
 			Intent intent = new Intent();
 			intent.setClass(NoticeListActivity.this, NoticeEditActivity.class);
 			Bundle bundle = new Bundle();
 			bundle.putInt("noticeId", noticeId);
+			bundle.putString("noticeTitle",list.get(position).get("noticeTitle").toString());
+			bundle.putString("noticeContent",list.get(position).get("noticeContent").toString());
+			bundle.putString("noticeTitle",list.get(position).get("noticeTitle").toString());
+			bundle.putString("publishDate",list.get(position).get("publishDate").toString());
+			//bundle.putString("noticeFile",list.get(position).get("noticeFile").toString());
 			intent.putExtras(bundle);
 			startActivityForResult(intent,ActivityUtils.EDIT_CODE);
 		} else if (item.getItemId() == 1) {// 删除新闻公告信息
@@ -192,6 +192,7 @@ public class NoticeListActivity extends Activity {
 			int position = contextMenuInfo.position;
 			// 获取公告id
 			noticeId = Integer.parseInt(list.get(position).get("noticeId").toString());
+
 			dialog();
 		}
 		return super.onContextItemSelected(item);
@@ -204,11 +205,25 @@ public class NoticeListActivity extends Activity {
 		builder.setTitle("提示");
 		builder.setPositiveButton("确认", new OnClickListener() {
 			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				String result = noticeService.DeleteNotice(noticeId);
-				Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-				setViews();
-				dialog.dismiss();
+			public void onClick(final DialogInterface dialog, int which) {
+				final Handler handler=new Handler()
+				{
+					@Override
+					public void handleMessage(Message msg) {
+						super.handleMessage(msg);
+						Toast.makeText(getApplicationContext(), "删除成功", Toast.LENGTH_SHORT).show();
+						setViews();
+						dialog.dismiss();
+					}
+				};
+				new Thread(new Runnable() {
+					@Override
+					public void run() {
+						noticeService.DeleteNotice(noticeId);
+					}
+				}).start();
+
+
 			}
 		});
 		builder.setNegativeButton("取消", new OnClickListener() {

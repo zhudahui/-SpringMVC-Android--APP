@@ -56,11 +56,11 @@ public class NoticeDetailActivity extends Activity {
         TV_noticeTitle=findViewById(R.id.TV_noticeTitle);
         TV_noticeContent=findViewById(R.id.TV_noticeContent);
         TV_publishDate=findViewById(R.id.TV_publishDate);
-        TV_noticeFile=findViewById(R.id.TV_noticeFile);
+
         TV_noticeTitle.setText(extras.getString("noticeTitle"));
-        TV_noticeContent.setText("noticeContent");
-        TV_publishDate.setText("publishDate");
-        TV_noticeFile.setText("noticeFile");
+        TV_noticeContent.setText(extras.getString("noticeContent"));
+        TV_publishDate.setText(extras.getString("publishDate"));
+
         btnReturn=findViewById(R.id.back_btn);
 		btnReturn.setOnClickListener(new OnClickListener() {
 			@Override

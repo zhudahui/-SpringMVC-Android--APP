@@ -127,10 +127,40 @@
         <activity android:name="com.mobileclient.activity.takeOrder.TakeOrderListActivity" />
         <activity android:name="com.mobileclient.activity.rewardOrder.RewardActivity" />
         <activity android:name="com.cc.testdemo.UserInfoListActivity" />
+        <activity android:name="me.wcy.express.activity.ResultActivity" />
+        <activity
+            android:name="me.wcy.express.activity.CompanyActivity"
+            android:label="@string/title_activity_choose_com"
+            android:screenOrientation="portrait" />
+        <activity android:name="me.wcy.express.activity.SearchActivity" />
+        <activity android:name="com.mobileclient.activity.myorder.AdminUserOrderDetailActivity" />
+        <activity android:name="com.mobileclient.activity.PayPwdActivity" />
+        <activity android:name="com.mobileclient.activity.ModifyPwdActivity" />
+        <activity android:name="com.mobileclient.activity.PayResultActivity" />
 
         <meta-data
             android:name="android.support.VERSION"
             android:value="26.0.0" />
+
+        <provider
+            android:name="com.just.library.AgentWebFileProvider"
+            android:authorities="com.mobileclient.activity.AgentWebFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/web_files_paths" />
+        </provider>
+
+        <activity
+            android:name="com.just.library.ActionActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:theme="@style/actionActivity"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+
+        <receiver android:name="com.just.library.RealDownLoader$NotificationBroadcastReceiver" />
     </application>
 
 </manifest>

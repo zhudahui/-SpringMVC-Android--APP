@@ -18,7 +18,7 @@ public class User implements Serializable {
     private String nickName;             //昵称
     private int studentId;               //学号
     private String userAuthState;     //用户认证状态     未认证       待认证     已认证
-
+    private String payPwd;  //支付密码
 
     public int getUserId() {
         return userId;
@@ -142,5 +142,13 @@ public class User implements Serializable {
 
     public void setUserAuthState(String userAuthState) {
         this.userAuthState = userAuthState;
+    }
+
+    public String getPayPwd() {
+        return payPwd;
+    }
+
+    public void setPayPwd(String payPwd) {
+        this.payPwd = payPwd;
     }
 }

@@ -5,6 +5,8 @@ import com.mobileclient.service.NoticeService;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -14,6 +16,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class NoticeAddActivity extends Activity {
 	// 声明确定添加按钮
 	private Button btnAdd;
@@ -51,7 +57,7 @@ public class NoticeAddActivity extends Activity {
 		});
 		ET_title = (EditText) findViewById(R.id.ET_title);
 		ET_content = (EditText) findViewById(R.id.ET_content);
-		ET_publishDate = (EditText) findViewById(R.id.ET_publishDate);
+		//ET_publishDate = (EditText) findViewById(R.id.ET_publishDate);
 		btnAdd = (Button) findViewById(R.id.BtnAdd);
 		/*单击添加新闻公告按钮*/
 		btnAdd.setOnClickListener(new OnClickListener() {
@@ -74,21 +80,38 @@ public class NoticeAddActivity extends Activity {
 						return;	
 					}
 					notice.setNoticeContent(ET_content.getText().toString());
-					/*验证获取发布时间*/ 
-					if(ET_publishDate.getText().toString().equals("")) {
-						Toast.makeText(NoticeAddActivity.this, "发布时间输入不能为空!", Toast.LENGTH_LONG).show();
-						ET_publishDate.setFocusable(true);
-						ET_publishDate.requestFocus();
-						return;	
-					}
-					notice.setPublishDate(ET_publishDate.getText().toString());
+//					/*验证获取发布时间*/
+//					if(ET_publishDate.getText().toString().equals("")) {
+//						Toast.makeText(NoticeAddActivity.this, "发布时间输入不能为空!", Toast.LENGTH_LONG).show();
+//						ET_publishDate.setFocusable(true);
+//						ET_publishDate.requestFocus();
+//						return;
+//					}
+					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+					//添加发布时间
+
+					notice.setPublishDate(df.format(new Date()));
 					/*调用业务逻辑层上传新闻公告信息*/
 					NoticeAddActivity.this.setTitle("正在上传新闻公告信息，稍等...");
-					String result = noticeService.AddNotice(notice);
-					Toast.makeText(getApplicationContext(), result, 1).show(); 
-					Intent intent = getIntent();
-					setResult(RESULT_OK,intent);
-					finish();
+					final Handler handler=new Handler()
+					{
+						@Override
+						public void handleMessage(Message msg) {
+							super.handleMessage(msg);
+							Toast.makeText(getApplicationContext(), "添加成功", Toast.LENGTH_SHORT).show();
+							Intent intent = getIntent();
+							setResult(RESULT_OK,intent);
+							finish();
+						}
+					};
+					new Thread(new Runnable() {
+						@Override
+						public void run() {
+							noticeService.AddNotice(notice);
+							Message msg=new Message();
+							handler.sendMessage(msg);
+						}
+					}).start();
 				} catch (Exception e) {}
 			}
 		});

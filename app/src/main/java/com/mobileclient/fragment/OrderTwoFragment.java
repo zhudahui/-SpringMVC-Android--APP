@@ -2,11 +2,13 @@ package com.mobileclient.fragment;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.mobileclient.activity.ExpressOrderDetailActivity;
+import com.mobileclient.activity.LoginActivity;
 import com.mobileclient.activity.MyProgressDialog;
 import com.mobileclient.activity.R;
 import com.mobileclient.activity.SecondOrderDetailActivity;
@@ -177,13 +179,14 @@ public class OrderTwoFragment extends Fragment  {
                 bundle.putInt("orderId", orderId);
                 bundle.putInt("userId",Integer.parseInt(list.get(arg2).get("userId").toString()));
                 bundle.putString("orderName",list.get(arg2).get("orderName").toString());
-                bundle.putString("userName",list.get(arg2).get("userName").toString());
+                bundle.putString("nickName",list.get(arg2).get("nickName").toString());
                 bundle.putByteArray("photo", (byte[]) list.get(arg2).get("photo"));
                 bundle.putString("expressCompanyName",list.get(arg2).get("expressCompanyName").toString());
                 bundle.putString("expressCompanyAddress",list.get(arg2).get("expressCompanyAddress").toString());
                 bundle.putString("receiveAddressName",list.get(arg2).get("receiveAddressName").toString());
                 bundle.putString("receiveName",list.get(arg2).get("receiveName").toString());
                 bundle.putString("receivePhone",list.get(arg2).get("receivePhone").toString());
+                bundle.putString("receiveState",list.get(arg2).get("receiveState").toString());
                 bundle.putString("remark",list.get(arg2).get("remark").toString());
                 bundle.putString("receiveCode",list.get(arg2).get("receiveCode").toString());
                 bundle.putString("receiveName",list.get(arg2).get("receiveName").toString());
@@ -296,14 +299,14 @@ public class OrderTwoFragment extends Fragment  {
             /* 查询快递代拿信息 */
             ReceiveAddressService receiveAdressService=new ReceiveAddressService();
             /* 查询快递代拿信息 */
-            List<Order> expressOrderList = orderService.OrderStateQuery("送单中");
+            List<Order> expressOrderList = orderService.OrderStateQuery("待接单");
             for (int i = 0; i < expressOrderList.size(); i++) {
                 Map<String, Object> map = new HashMap<String, Object>();
                     map.put("orderId", expressOrderList.get(i).getOrderId());
                     map.put("orderName", expressOrderList.get(i).getOrderName());
                     map.put("userId", expressOrderList.get(i).getUserId());
                     user = userService.GetUserInfo(expressOrderList.get(i).getUserId());
-                    map.put("userName", user.getUserName());
+                    map.put("nickName", user.getNickName());
                     byte[] userPhoto_data = null;
                     // 获取图片数据
                     userPhoto_data = ImageService.getImage(HttpUtil.DOWNURL + user.getUserPhoto());
@@ -314,11 +317,12 @@ public class OrderTwoFragment extends Fragment  {
                     map.put("expressCompanyAddress", expressOrderList.get(i).getExpressCompanyAddress());
                     map.put("receiveAddressId", expressOrderList.get(i).getReceiveAddressId());
                     // 根据获取到的地址Id，查询地址名以及收获人姓名
-                    receiveAddress = receiveAdressService.QueryReceiveAdress(expressOrderList.get(i).getReceiveAddressId());
-                    Log.i("zhu1111", "查询ttt" + receiveAddress.getReceiveAddressName());
-                    map.put("receiveAddressName", receiveAddress.getReceiveAddressName());
-                    map.put("receiveName", receiveAddress.getReceiveName());
-                    map.put("receivePhone", receiveAddress.getReceivePhone());
+                   // receiveAddress = receiveAdressService.QueryReceiveAdress(expressOrderList.get(i).getReceiveAddressId());
+                    Log.i("zhu1111", "查询ttt" + expressOrderList.get(i).getReceiveAddressName());
+                    map.put("receiveAddressName", expressOrderList.get(i).getReceiveAddressName());
+                    map.put("receiveName", expressOrderList.get(i).getReceiveName());
+                    map.put("receivePhone", expressOrderList.get(i).getReceivePhone());
+                    map.put("receiveState", expressOrderList.get(i).getReceiveState());
                     map.put("addTime", expressOrderList.get(i).getAddTime());
                     map.put("orderState", expressOrderList.get(i).getOrderState());
                     map.put("orderPay", expressOrderList.get(i).getOrderPay());
@@ -326,9 +330,23 @@ public class OrderTwoFragment extends Fragment  {
                     map.put("receiveCode", expressOrderList.get(i).getReceiveCode());
                     map.put("evaluate", expressOrderList.get(i).getOrderEvaluate());
                     map.put("takeUserId", expressOrderList.get(i).getTakeUserId());
+                    map.put("orderType", expressOrderList.get(i).getOrderType());
+                byte[] orderpic = null;
+                // 获取图片数据
+                if(expressOrderList.get(i).getOrderPic().equals("--")){
+                    map.put("orderPic", expressOrderList.get(i).getOrderPic());
+                }else {
+                    orderpic = ImageService.getImage(HttpUtil.DOWNURL + expressOrderList.get(i).getOrderPic());
+                    Bitmap pic = BitmapFactory.decodeByteArray(orderpic, 0, orderpic.length);
+                    map.put("orderPic", pic);
+                }
+                    map.put("score", expressOrderList.get(i).getScore());
                     //map.put("userPhone", expressOrderList.get(i).getAddTime());
                     list.add(map);
                 }
+            Log.i("rrrrrrrrr",""+list);
+            Collections.sort(list,new Order.OrderPayComparator());
+            Log.i("rrrrrrrrr",""+list);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -349,6 +367,7 @@ public class OrderTwoFragment extends Fragment  {
         }
 
     };
+
 
 
 }

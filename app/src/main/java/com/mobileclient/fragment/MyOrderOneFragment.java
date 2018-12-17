@@ -5,11 +5,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import com.mobileclient.activity.ExpressOrderDetailActivity;
 import com.mobileclient.activity.MyProgressDialog;
+import com.mobileclient.activity.PayResultActivity;
 import com.mobileclient.activity.R;
 import com.mobileclient.activity.SecondOrderDetailActivity;
+import com.mobileclient.activity.myorder.AdminUserOrderDetailActivity;
 import com.mobileclient.adapter.ExpressOrderAdapter;
 import com.mobileclient.adapter.MyOrderAdapter;
 import com.mobileclient.app.Declare;
@@ -17,6 +21,8 @@ import com.mobileclient.app.RefreshListView;
 import com.mobileclient.domain.Order;
 import com.mobileclient.domain.ReceiveAddress;
 import com.mobileclient.domain.User;
+import com.mobileclient.pay.InputPwdView;
+import com.mobileclient.pay.MyInputPwdUtil;
 import com.mobileclient.service.OrderService;
 import com.mobileclient.service.ReceiveAddressService;
 import com.mobileclient.service.UserService;
@@ -65,6 +71,12 @@ public class MyOrderOneFragment extends Fragment {
     ReceiveAddress receiveAddress=new ReceiveAddress();
     private int userId;
     private int flag=0;
+    Declare declare;
+    private int j;
+    /**
+     * 模拟支付
+     */
+    private MyInputPwdUtil myInputPwdUtil;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -74,7 +86,7 @@ public class MyOrderOneFragment extends Fragment {
         ButterKnife.bind(this, view);
         queryConditionExpressOrder = new Order();
         queryConditionExpressOrder=null;
-        Declare declare = (Declare) getActivity().getApplicationContext();
+         declare = (Declare) getActivity().getApplicationContext();
         if (declare.getIdentify().equals("user")){
             userId=declare.getUserId();
         }
@@ -82,6 +94,73 @@ public class MyOrderOneFragment extends Fragment {
         {
             userId=declare.getAdminUserId();
         }
+        /***
+         *
+         *
+         * 模拟支付
+         */
+        myInputPwdUtil = new MyInputPwdUtil(getActivity());
+        myInputPwdUtil.getMyInputDialogBuilder().setAnimStyle(R.style.dialog_anim);
+        myInputPwdUtil.setListener(new InputPwdView.InputPwdListener() {
+            @Override
+            public void hide() {
+                myInputPwdUtil.hide();
+            }
+
+            @Override
+            public void forgetPwd() {
+                Toast.makeText(getActivity(), "忘记密码", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void finishPwd(String pwd) {
+
+                final Intent intent=new Intent();
+                if(declare.getPayPwd().equals(pwd)) {
+                    dialog.show();
+//                    order.setOrderState("交易结束");
+//                    order.setOrderEvaluate("-+-");
+//                    order.setScore("--");
+
+//                    mRatingBar.setVisibility(View.VISIBLE);
+////                    evaluate.setVisibility(View.VISIBLE);  //出现评价框
+////                    btnGetOrder.setText("评价");
+////                    flag=4;
+                    final Handler myHandler=new Handler(){
+                        @Override
+                        public void handleMessage(Message msg) {
+                            super.handleMessage(msg);
+                            if(msg.what==0x122){
+                                dialog.cancel();
+                                // flag=4;
+                                intent.setClass(getActivity(), PayResultActivity.class);
+                                startActivity(intent);
+                                myInputPwdUtil.hide();
+                            }
+                        }
+                    };
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            orderService.UpdateOrder(order);
+                            Message msg=new Message();
+                            msg.what=0x122;
+                            myHandler.sendMessage(msg);
+                        }
+                    }).start();
+
+
+
+                }
+                else{
+                    Toast.makeText(getActivity(),"密码错误！", Toast.LENGTH_SHORT).show();
+                }
+
+                //Toast.makeText(ExpressOrderDetailActivity.this, pwd, Toast.LENGTH_SHORT).show();
+
+            }
+        });
         setViews();
         return view;
     }
@@ -145,7 +224,8 @@ public class MyOrderOneFragment extends Fragment {
                                 }
                                 else if(list.get(i).get("orderState").equals("待接单")){
                                     //取消订单
-                                    order.setUserId(Integer.parseInt(list.get(i).get("userId").toString()));
+                                    order.setOrderId(Integer.parseInt(list.get(i).get("orderId").toString()));
+                                    j=i;
                                     flag=2;
                                     showDialog();
                                 }
@@ -158,12 +238,14 @@ public class MyOrderOneFragment extends Fragment {
                                     bundle.putInt("userId",Integer.parseInt(list.get(i).get("userId").toString()));
                                     bundle.putString("orderName",list.get(i).get("orderName").toString());
                                     bundle.putString("userName",list.get(i).get("userName").toString());
+                                    bundle.putString("nickName",list.get(i).get("nickName").toString());
                                     bundle.putByteArray("photo", (byte[]) list.get(i).get("photo"));
                                     bundle.putString("expressCompanyName",list.get(i).get("expressCompanyName").toString());
                                     bundle.putString("expressCompanyAddress",list.get(i).get("expressCompanyAddress").toString());
                                     bundle.putString("receiveAddressName",list.get(i).get("receiveAddressName").toString());
                                     bundle.putString("receiveName",list.get(i).get("receiveName").toString());
                                     bundle.putString("receivePhone",list.get(i).get("receivePhone").toString());
+                                    bundle.putString("receiveState",list.get(i).get("receiveState").toString());
                                     bundle.putString("remark",list.get(i).get("remark").toString());
                                     bundle.putString("receiveCode",list.get(i).get("receiveCode").toString());
                                     bundle.putString("receiveName",list.get(i).get("receiveName").toString());
@@ -173,6 +255,7 @@ public class MyOrderOneFragment extends Fragment {
                                     bundle.putInt("receiveAddressId",Integer.parseInt(list.get(i).get("receiveAddressId").toString()));
                                     bundle.putString("evaluate",list.get(i).get("evaluate").toString());
                                     bundle.putInt("takeUserId", Integer.parseInt(list.get(i).get("takeUserId").toString()));
+                                    bundle.putString("score",list.get(i).get("score").toString());
                                     if (list.get(i).get("evaluate").toString().equals("-+-")||list.get(i).get("evaluate").toString().equals("请评价")) {//若评价为空
                                         intent.putExtras(bundle);
                                         intent.setClass(getActivity(), ExpressOrderDetailActivity.class);   //已评价
@@ -222,13 +305,14 @@ public class MyOrderOneFragment extends Fragment {
                 bundle.putInt("orderId", orderId);
                 bundle.putInt("userId",Integer.parseInt(list.get(arg2).get("userId").toString()));
                 bundle.putString("orderName",list.get(arg2).get("orderName").toString());
-                bundle.putString("userName",list.get(arg2).get("userName").toString());
+                bundle.putString("nickName",list.get(arg2).get("nickName").toString());
                 bundle.putByteArray("photo", (byte[]) list.get(arg2).get("photo"));
                 bundle.putString("expressCompanyName",list.get(arg2).get("expressCompanyName").toString());
                 bundle.putString("expressCompanyAddress",list.get(arg2).get("expressCompanyAddress").toString());
                 bundle.putString("receiveAddressName",list.get(arg2).get("receiveAddressName").toString());
                 bundle.putString("receiveName",list.get(arg2).get("receiveName").toString());
                 bundle.putString("receivePhone",list.get(arg2).get("receivePhone").toString());
+                bundle.putString("receiveState",list.get(arg2).get("receiveState").toString());
                 bundle.putString("remark",list.get(arg2).get("remark").toString());
                 bundle.putString("receiveCode",list.get(arg2).get("receiveCode").toString());
                 bundle.putString("receiveName",list.get(arg2).get("receiveName").toString());
@@ -238,9 +322,15 @@ public class MyOrderOneFragment extends Fragment {
                 bundle.putInt("receiveAddressId",Integer.parseInt(list.get(arg2).get("receiveAddressId").toString()));
                 bundle.putString("evaluate",list.get(arg2).get("evaluate").toString());
                 bundle.putInt("takeUserId", Integer.parseInt(list.get(arg2).get("takeUserId").toString()));
+
+                bundle.putString("score",list.get(arg2).get("score").toString());
+
                 if (list.get(arg2).get("evaluate").toString().equals("-+-")||list.get(arg2).get("evaluate").toString().equals("请评价")) {//若评价为空
                     intent.putExtras(bundle);
-                    intent.setClass(getActivity(), ExpressOrderDetailActivity.class);   //已评价
+                    if(declare.getIdentify().equals("user"))
+                        intent.setClass(getActivity(), ExpressOrderDetailActivity.class);   //已评价
+                    else
+                        intent.setClass(getActivity(), AdminUserOrderDetailActivity.class);
                     startActivityForResult(intent, ActivityUtils.UPDATE_CODE);
                 }
                 else {
@@ -317,6 +407,7 @@ public class MyOrderOneFragment extends Fragment {
                     map.put("userId", expressOrderList.get(i).getUserId());
                     user = userService.GetUserInfo(expressOrderList.get(i).getUserId());
                     map.put("userName", user.getUserName());
+                    map.put("nickName", user.getNickName());
                     byte[] userPhoto_data = null;
                     // 获取图片数据
                     userPhoto_data = ImageService.getImage(HttpUtil.DOWNURL + user.getUserPhoto());
@@ -327,11 +418,12 @@ public class MyOrderOneFragment extends Fragment {
                     map.put("expressCompanyAddress", expressOrderList.get(i).getExpressCompanyAddress());
                     map.put("receiveAddressId", expressOrderList.get(i).getReceiveAddressId());
                     // 根据获取到z的地址Id，查询地址名以及收获人姓名
-                    receiveAddress = receiveAdressService.QueryReceiveAdress(expressOrderList.get(i).getReceiveAddressId());
-                    Log.i("zhu1111", "查询ttt" + receiveAddress.getReceiveAddressName());
-                    map.put("receiveAddressName", receiveAddress.getReceiveAddressName());
-                    map.put("receiveName", receiveAddress.getReceiveName());
-                    map.put("receivePhone", receiveAddress.getReceivePhone());
+                   // receiveAddress = receiveAdressService.QueryReceiveAdress(expressOrderList.get(i).getReceiveAddressId());
+                    Log.i("zhu1111", "查询ttt" + expressOrderList.get(i).getReceiveAddressName());
+                    map.put("receiveAddressName", expressOrderList.get(i).getReceiveAddressName());
+                    map.put("receiveName", expressOrderList.get(i).getReceiveName());
+                    map.put("receivePhone", expressOrderList.get(i).getReceivePhone());
+                    map.put("receiveState", expressOrderList.get(i).getReceiveState());
                     map.put("addTime", expressOrderList.get(i).getAddTime());
                     map.put("orderState", expressOrderList.get(i).getOrderState());
                     map.put("orderPay", expressOrderList.get(i).getOrderPay());
@@ -339,14 +431,18 @@ public class MyOrderOneFragment extends Fragment {
                     map.put("receiveCode", expressOrderList.get(i).getReceiveCode());
                     map.put("evaluate", expressOrderList.get(i).getOrderEvaluate());
                     map.put("takeUserId", expressOrderList.get(i).getTakeUserId());
-
+                   // map.put("nickName",expressOrderList.get(i).);
                     map.put("orderType", expressOrderList.get(i).getOrderType());
-                    byte[] orderpic = null;
-                    // 获取图片数据
+                byte[] orderpic = null;
+                // 获取图片数据
+                if(expressOrderList.get(i).getOrderPic().equals("--")){
+                    map.put("orderPic", expressOrderList.get(i).getOrderPic());
+                }else {
                     orderpic = ImageService.getImage(HttpUtil.DOWNURL + expressOrderList.get(i).getOrderPic());
                     Bitmap pic = BitmapFactory.decodeByteArray(orderpic, 0, orderpic.length);
                     map.put("orderPic", pic);
-                    map.put("score", expressOrderList.get(i).getScore());
+                }
+                map.put("score", expressOrderList.get(i).getScore());
                     //map.put("userPhone", expressOrderList.get(i).getAddTime());
                     list.add(map);
                 }
@@ -368,8 +464,10 @@ public class MyOrderOneFragment extends Fragment {
             // TODO Auto-generated method stub
             super.handleMessage(msg);
             System.out.println("这是刷新返回来的信息");
+            list.remove(j);//选择行的位置
             adapter.notifyDataSetChanged();
-            lv.onRefreshComplete();
+            lv.invalidate();
+
         }
 
     };
@@ -383,14 +481,7 @@ public class MyOrderOneFragment extends Fragment {
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            new Thread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    orderService.UpdateOrder(order);
-                                    Message msg = new Message();
-                                    mHandler.sendMessage(msg);
-                                }
-                            }).start();
+                            myInputPwdUtil.show();
 
                         }
                     });

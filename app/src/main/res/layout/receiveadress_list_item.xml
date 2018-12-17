@@ -54,24 +54,12 @@
         android:paddingTop="5dp"
         android:paddingBottom="10dp">
 
-        <RadioButton
-            android:id="@+id/radio_selected"
-            style="@style/RadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="0dp"
-            android:clickable="true" />
-
-        <TextView
-            android:id="@+id/radio_selectedText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/radio_selected"
-            android:paddingLeft="10dp"
-            android:text="设为默认"
-            android:textSize="14sp" />
+        <ImageView
+            android:id="@+id/moren"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/icon_check_false"
+            />
 
         <TextView
             android:id="@+id/delete_address"

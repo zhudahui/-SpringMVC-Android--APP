@@ -5,6 +5,8 @@ package com.mobileclient.domain;
 import android.graphics.Bitmap;
 
 import java.io.Serializable;
+import java.util.Comparator;
+import java.util.Map;
 
 public class Order implements Serializable {
     private int orderId;          //订单Id
@@ -24,10 +26,9 @@ public class Order implements Serializable {
     private String score;          //订单评星
     private String orderType;      //订单类型  分为普通类型、悬赏类型，加急类型
     private String orderPic;    //    代取物品实图
-
-
-
-
+    private String receiveName;
+    private String receivePhone;
+    private String receiveState;
 
 
     private String nickName;//
@@ -197,5 +198,36 @@ public class Order implements Serializable {
 
     public void setOrderPic(String orderPic) {
         this.orderPic = orderPic;
+    }
+
+    public String getReceiveState() {
+        return receiveState;
+    }
+
+    public void setReceiveState(String receiveState) {
+        this.receiveState = receiveState;
+    }
+
+    public String getReceivePhone() {
+        return receivePhone;
+    }
+
+    public void setReceivePhone(String receivePhone) {
+        this.receivePhone = receivePhone;
+    }
+
+    public String getReceiveName() {
+        return receiveName;
+    }
+
+    public void setReceiveName(String receiveName) {
+        this.receiveName = receiveName;
+    }
+
+    public static class OrderPayComparator implements Comparator<Map<String, Object>> {
+        public int compare(Map<String, Object> object1, Map<String, Object> object2) {// 实现接口中的方法
+            return new Integer(object2.get("orderPay").toString()).compareTo(Integer.valueOf(object1.get("orderPay").toString()));
+        }
+
     }
 }

@@ -2,9 +2,13 @@ package com.mobileclient.activity;
 
 import com.mobileclient.domain.Notice;
 import com.mobileclient.service.NoticeService;
+import com.sun.jna.platform.win32.WinNT;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -14,6 +18,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class NoticeEditActivity extends Activity {
 	// 声明确定添加按钮
@@ -53,13 +60,16 @@ public class NoticeEditActivity extends Activity {
 				finish();
 			}
 		});
-		TV_noticeId = (TextView) findViewById(R.id.TV_noticeId);
+		//TV_noticeId = (TextView) findViewById(R.id.TV_noticeId);
 		ET_title = (EditText) findViewById(R.id.ET_title);
 		ET_content = (EditText) findViewById(R.id.ET_content);
-		ET_publishDate = (EditText) findViewById(R.id.ET_publishDate);
+		//ET_publishDate = (EditText) findViewById(R.id.ET_publishDate);
 		btnUpdate = (Button) findViewById(R.id.BtnUpdate);
 		Bundle extras = this.getIntent().getExtras();
 		noticeId = extras.getInt("noticeId");
+		ET_title.setText(extras.getString("noticeTitle"));
+		ET_content.setText(extras.getString("noticeContent"));
+		ET_publishDate.setText(extras.getString("publishDate"));
 		/*单击修改新闻公告按钮*/
 		btnUpdate.setOnClickListener(new OnClickListener() {
 			@Override
@@ -82,20 +92,38 @@ public class NoticeEditActivity extends Activity {
 					}
 					notice.setNoticeContent(ET_content.getText().toString());
 					/*验证获取发布时间*/ 
-					if(ET_publishDate.getText().toString().equals("")) {
-						Toast.makeText(NoticeEditActivity.this, "发布时间输入不能为空!", Toast.LENGTH_LONG).show();
-						ET_publishDate.setFocusable(true);
-						ET_publishDate.requestFocus();
-						return;	
-					}
-					notice.setPublishDate(ET_publishDate.getText().toString());
+//					if(ET_publishDate.getText().toString().equals("")) {
+//						Toast.makeText(NoticeEditActivity.this, "发布时间输入不能为空!", Toast.LENGTH_LONG).show();
+//						ET_publishDate.setFocusable(true);
+//						ET_publishDate.requestFocus();
+//						return;
+//					}
+					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+					//添加发布时间
+
+					notice.setPublishDate(df.format(new Date()));
 					/*调用业务逻辑层上传新闻公告信息*/
-					NoticeEditActivity.this.setTitle("正在更新新闻公告信息，稍等...");
-					String result = noticeService.UpdateNotice(notice);
-					Toast.makeText(getApplicationContext(), result, 1).show(); 
-					Intent intent = getIntent();
-					setResult(RESULT_OK,intent);
-					finish();
+					NoticeEditActivity.this.setTitle("正在更新公告信息，稍等...");
+					final Handler handler=new Handler()
+					{
+						@Override
+						public void handleMessage(Message msg) {
+							super.handleMessage(msg);
+							Toast.makeText(getApplicationContext(), "更新成功", Toast.LENGTH_SHORT).show();
+							Intent intent = getIntent();
+							setResult(RESULT_OK,intent);
+							finish();
+						}
+					};
+					new Thread(new Runnable() {
+						@Override
+						public void run() {
+							noticeService.UpdateNotice(notice);
+							Message msg=new Message();
+							handler.sendMessage(msg);
+						}
+					}).start();
+
 				} catch (Exception e) {}
 			}
 		});

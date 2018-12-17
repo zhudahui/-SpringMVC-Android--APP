@@ -5,7 +5,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F4F4F4"
+        android:background="#ffff"
         android:padding="10dip" >
         <LinearLayout
             android:layout_width="wrap_content"
@@ -16,23 +16,22 @@
                 android:id="@+id/tv_noticeTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ssss"
+                android:text="公告标题"
                 android:maxEms="18"
                 android:singleLine="true"
                 android:ellipsize="end"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
             <TextView
                 android:id="@+id/tv_publishDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ssss"
+                android:text="发布时间"
                 android:maxEms="18"
                 android:singleLine="true"
                 android:ellipsize="end"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
-            android:textSize="16sp" />
 
         </LinearLayout>
     </RelativeLayout>

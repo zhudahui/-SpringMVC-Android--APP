@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-137:12
-INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-137:12
-INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-137:12
-INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-137:12
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-148:12
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-148:12
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-148:12
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-148:12
 MERGED from [com.android.support:design:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/cf3361910aa1a1332725c02fe6e0cf3a/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:appcompat-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:cardview-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.0.0.aar/ef0fe358ca6bdec5e375d607ba9bd576/AndroidManifest.xml:17:1-28:12
@@ -11,6 +11,7 @@ MERGED from [de.hdodenhof:circleimageview:2.1.0] /Users/zhuhui/.gradle/caches/tr
 MERGED from [com.android.support:recyclerview-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.0.0.aar/d29dd0283fd042aac76aef397eb53123/AndroidManifest.xml:17:1-28:12
 MERGED from [com.github.ozodrukh:CircularReveal:1.0.4] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/CircularReveal-1.0.4.aar/80bc0e4efbcefb6051257d741b9ffb18/AndroidManifest.xml:2:1-12:12
 MERGED from [:boommenu] /Users/zhuhui/Desktop/demowork/aaa/boommenu/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-16:12
+MERGED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:2:1-36:12
 MERGED from [com.android.support:animated-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.0.0.aar/dc0401cf8764458d209f953b7629d841/AndroidManifest.xml:17:1-28:12
 MERGED from [com.android.support:support-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.0.0.aar/e4d9a1988f763e0086ccf1c021c1400a/AndroidManifest.xml:17:1-28:12
 MERGED from [com.android.support:transition:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/transition-26.0.0.aar/0081104f4e46a72af823678af7a2fd63/AndroidManifest.xml:17:1-28:12
@@ -21,9 +22,9 @@ MERGED from [com.android.support:support-media-compat:26.0.0] /Users/zhuhui/.gra
 MERGED from [com.android.support:support-core-utils:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.0.0.aar/32dfde26a6a917b9027dc600b07caf71/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-compat:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.0.aar/f7dfa5efd342d556ffcd75addb2bbd63/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:multidex:1.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/multidex-1.0.1.aar/4688d8300cc9f5ba81c2b1956e0f9df4/AndroidManifest.xml:16:1-19:12
-INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-137:12
-INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-137:12
-INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-137:12
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-148:12
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-148:12
+INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:2:1-148:12
 	package
 		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:4:5-40
 		INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
@@ -101,7 +102,7 @@ ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:5
 	android:name
 		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:51:22-66
 application
-ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:55:5-135:19
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:55:5-146:19
 MERGED from [com.android.support:design:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/cf3361910aa1a1332725c02fe6e0cf3a/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:design:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/cf3361910aa1a1332725c02fe6e0cf3a/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/AndroidManifest.xml:25:5-29:19
@@ -116,6 +117,8 @@ MERGED from [com.github.ozodrukh:CircularReveal:1.0.4] /Users/zhuhui/.gradle/cac
 MERGED from [com.github.ozodrukh:CircularReveal:1.0.4] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/CircularReveal-1.0.4.aar/80bc0e4efbcefb6051257d741b9ffb18/AndroidManifest.xml:10:5-20
 MERGED from [:boommenu] /Users/zhuhui/Desktop/demowork/aaa/boommenu/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:11:5-14:19
 MERGED from [:boommenu] /Users/zhuhui/Desktop/demowork/aaa/boommenu/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:11:5-14:19
+MERGED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:11:5-34:19
+MERGED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:11:5-34:19
 MERGED from [com.android.support:animated-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.0.0.aar/dc0401cf8764458d209f953b7629d841/AndroidManifest.xml:22:5-26:19
 MERGED from [com.android.support:animated-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.0.0.aar/dc0401cf8764458d209f953b7629d841/AndroidManifest.xml:22:5-26:19
 MERGED from [com.android.support:support-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.0.0.aar/e4d9a1988f763e0086ccf1c021c1400a/AndroidManifest.xml:22:5-26:19
@@ -348,6 +351,38 @@ activity#com.cc.testdemo.UserInfoListActivity
 ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:133:9-72
 	android:name
 		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:133:19-70
+activity#me.wcy.express.activity.ResultActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:135:9-74
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:135:19-72
+activity#me.wcy.express.activity.CompanyActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:136:9-139:52
+	android:screenOrientation
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:139:13-49
+	android:label
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:138:13-62
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:137:13-67
+activity#me.wcy.express.activity.SearchActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:140:9-74
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:140:19-72
+activity#com.mobileclient.activity.myorder.AdminUserOrderDetailActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:141:9-73
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:141:19-71
+activity#com.mobileclient.activity.PayPwdActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:142:9-51
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:142:19-49
+activity#com.mobileclient.activity.ModifyPwdActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:143:9-54
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:143:19-52
+activity#com.mobileclient.activity.PayResultActivity
+ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:144:9-54
+	android:name
+		ADDED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml:144:19-52
 uses-sdk
 INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/zhuhui/Desktop/demowork/aaa/app/src/main/AndroidManifest.xml
@@ -366,6 +401,8 @@ MERGED from [com.github.ozodrukh:CircularReveal:1.0.4] /Users/zhuhui/.gradle/cac
 MERGED from [com.github.ozodrukh:CircularReveal:1.0.4] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/CircularReveal-1.0.4.aar/80bc0e4efbcefb6051257d741b9ffb18/AndroidManifest.xml:6:5-8:41
 MERGED from [:boommenu] /Users/zhuhui/Desktop/demowork/aaa/boommenu/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
 MERGED from [:boommenu] /Users/zhuhui/Desktop/demowork/aaa/boommenu/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
+MERGED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:7:5-9:41
+MERGED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:animated-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.0.0.aar/dc0401cf8764458d209f953b7629d841/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:animated-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.0.0.aar/dc0401cf8764458d209f953b7629d841/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.0.0.aar/e4d9a1988f763e0086ccf1c021c1400a/AndroidManifest.xml:20:5-44
@@ -428,3 +465,31 @@ MERGED from [com.android.support:support-compat:26.0.0] /Users/zhuhui/.gradle/ca
 		ADDED from [com.android.support:design:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/cf3361910aa1a1332725c02fe6e0cf3a/AndroidManifest.xml:28:13-35
 	android:name
 		ADDED from [com.android.support:design:26.0.0] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/cf3361910aa1a1332725c02fe6e0cf3a/AndroidManifest.xml:27:13-51
+provider#com.just.library.AgentWebFileProvider
+ADDED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:15:9-23:20
+	android:grantUriPermissions
+		ADDED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:19:13-47
+	android:authorities
+		ADDED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:17:13-72
+	android:exported
+		ADDED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:18:13-37
+	android:name
+		ADDED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:16:13-65
+activity#com.just.library.ActionActivity
+ADDED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:25:9-31:75
+	android:screenOrientation
+		ADDED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:29:13-49
+	android:launchMode
+		ADDED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:28:13-42
+	android:windowSoftInputMode
+		ADDED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:31:13-72
+	android:configChanges
+		ADDED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:27:13-74
+	android:theme
+		ADDED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:30:13-50
+	android:name
+		ADDED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:26:13-59
+receiver#com.just.library.RealDownLoader$NotificationBroadcastReceiver
+ADDED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:33:9-98
+	android:name
+		ADDED from [com.just.agentweb:agentweb:2.0.1] /Users/zhuhui/.gradle/caches/transforms-1/files-1.1/agentweb-2.0.1.aar/686f1fdf3a59e476c39a11109f5bb0ce/AndroidManifest.xml:33:19-95

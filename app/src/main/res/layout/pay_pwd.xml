@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/myInputPwdBase_gray"
+    android:orientation="vertical">
+<include android:id="@+id/ly" layout="@layout/title_layout"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="输入密码"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:textSize="16dp"
+        android:id="@+id/tv1"
+        android:layout_below="@id/ly"
+        />
+    <View
+
+        android:id="@+id/v"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ccc"
+        android:layout_below="@id/tv1"
+
+        />
+
+    <com.mobileclient.app.PsdEditText
+        android:layout_below="@id/v"
+        android:id="@+id/ppe_pwd1"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginTop="5dp">
+    </com.mobileclient.app.PsdEditText>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请再次输入密码"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="135dp"
+        android:textSize="16dp"
+        android:id="@+id/tv2"
+        android:layout_below="@id/ppe_pwd1"
+        />
+    <View
+
+        android:id="@+id/v2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ccc"
+        android:layout_below="@id/tv2"
+
+        />
+    <com.mobileclient.app.PsdEditText
+        android:layout_below="@id/tv2"
+        android:id="@+id/ppe_pwd2"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginTop="5dp">
+    </com.mobileclient.app.PsdEditText>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请再次输入新密码"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="220dp"
+        android:textSize="16dp"
+        android:id="@+id/tv3"
+        android:layout_below="@id/ppe_pwd2"
+        android:visibility="gone"
+        />
+    <View
+
+        android:id="@+id/v3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ccc"
+        android:layout_below="@id/tv3"
+        android:visibility="gone"
+
+        />
+    <com.mobileclient.app.PsdEditText
+        android:layout_below="@id/tv3"
+        android:id="@+id/ppe_pwd3"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+    </com.mobileclient.app.PsdEditText>
+
+    <TextView
+        android:id="@+id/MyPwdInput_forgetpwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="12dp"
+        android:text="忘记密码?"
+        android:textColor="@color/myInputPwdBase_blue"
+        android:layout_below="@id/tv3"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+
+        />
+</RelativeLayout>

@@ -132,6 +132,17 @@
         <activity android:name=".rewardOrder.RewardActivity"/>
         <activity android:name="com.cc.testdemo.UserInfoListActivity"/>
 
+        <activity android:name="me.wcy.express.activity.ResultActivity"/>
+        <activity
+            android:name="me.wcy.express.activity.CompanyActivity"
+            android:label="@string/title_activity_choose_com"
+            android:screenOrientation="portrait" />
+        <activity android:name="me.wcy.express.activity.SearchActivity"/>
+        <activity android:name=".myorder.AdminUserOrderDetailActivity"/>
+        <activity android:name=".PayPwdActivity"/>
+        <activity android:name=".ModifyPwdActivity"/>
+        <activity android:name=".PayResultActivity"/>
+
     </application>
 
 </manifest>

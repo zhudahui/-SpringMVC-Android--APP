@@ -9,8 +9,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,10 +19,11 @@ import com.mobileclient.activity.myorder.ExpressTakeMyListActivity;
 import com.mobileclient.activity.takeOrder.TakeOrderListActivity;
 import com.mobileclient.app.Declare;
 import com.mobileclient.app.IdentityImageView;
-import com.mobileclient.domain.Notice;
 import com.mobileclient.util.ActivityUtils;
 import com.mobileclient.util.HttpUtil;
 import com.mobileclient.util.ImageService;
+
+import me.wcy.express.activity.SearchActivity;
 
 public class MyInfoActivtiy extends Activity implements View.OnClickListener {
     private IdentityImageView userPhoto; //头像
@@ -38,7 +37,7 @@ public class MyInfoActivtiy extends Activity implements View.OnClickListener {
     private TextView express;//快递通，根据快递单号查找快递
     private TextView notice; //通知
     private TextView setting; //设置
-    private TextView takeorder; //我的代取
+    private TextView payPwd; //我的代取
     private TextView title;
     Declare declare;
     private RelativeLayout view_user1;
@@ -61,13 +60,13 @@ public class MyInfoActivtiy extends Activity implements View.OnClickListener {
         tv_NickName=findViewById(R.id.tvname);
         sex=findViewById(R.id.iv_sex);
         userId=findViewById(R.id.tv_userId);
-        myorder=findViewById(R.id.txt_myorder);
+        myorder=findViewById(R.id.txt_modPwd);
         auth=findViewById(R.id.txt_auth);
         address=findViewById(R.id.txt_address);
         express=findViewById(R.id.txt_express);
         notice=findViewById(R.id.txt_notice);
         setting=findViewById(R.id.txt_setting);
-        takeorder=findViewById(R.id.txt_takeOrder);
+        payPwd=findViewById(R.id.txt_payPwd);
         view_user1=findViewById(R.id.view_user);
         //============
         init();
@@ -81,7 +80,7 @@ public class MyInfoActivtiy extends Activity implements View.OnClickListener {
         express.setOnClickListener(this);
         notice.setOnClickListener(this);
         setting.setOnClickListener(this);
-        takeorder.setOnClickListener(this);
+        payPwd.setOnClickListener(this);
         view_user1.setOnClickListener(this);
 
     }
@@ -99,17 +98,14 @@ public class MyInfoActivtiy extends Activity implements View.OnClickListener {
                 //intent.putExtras(bundle);
                 startActivityForResult(intent,ActivityUtils.EDIT_CODE);
                 break;
-            case R.id.txt_myorder:
-                intent = new Intent(MyInfoActivtiy.this, ExpressTakeMyListActivity.class);
+            case R.id.txt_modPwd:
+                intent = new Intent(MyInfoActivtiy.this, ModifyPwdActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.txt_takeOrder:
-                if(declare.getUserType().equals("快递员")){
-                    intent = new Intent(MyInfoActivtiy.this, TakeOrderListActivity.class);
+            case R.id.txt_payPwd:
+                    intent = new Intent(MyInfoActivtiy.this, PayPwdActivity.class);
                     startActivity(intent);
-                }else{
-                    Toast.makeText(MyInfoActivtiy.this,"请先进行认证",Toast.LENGTH_SHORT).show();
-                }
+
                 break;
             case R.id.txt_auth:
                 String userAuthState=declare.getUserAuthState();
@@ -132,6 +128,8 @@ public class MyInfoActivtiy extends Activity implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.txt_express:
+                intent = new Intent(MyInfoActivtiy.this,SearchActivity.class);
+                startActivity(intent);
                 break;
             case R.id.txt_notice:
                 intent  = new Intent(MyInfoActivtiy.this, NoticeListActivity.class);
@@ -147,13 +145,13 @@ public class MyInfoActivtiy extends Activity implements View.OnClickListener {
         userId.setText(String.valueOf(declare.getUserId()));
         tv_NickName.setText(declare.getNickName());
         if(declare.getUserType().equals("快递员")){   //快递员头像+V
-            userPhoto.getSmallCircleImageView().setImageResource(R.drawable.v);
+            userPhoto.getSmallCircleImageView().setImageResource(R.drawable.xueli);
         }
         if(declare.getUserGender().equals("男")){
-            sex.setImageResource(R.drawable.ic_sex_male);
+            sex.setImageResource(R.drawable.nan);
         }
         else
-            sex.setImageResource(R.drawable.ic_sex_female);
+            sex.setImageResource(R.drawable.nv);
 
         final Handler handler=new Handler(){
             @Override

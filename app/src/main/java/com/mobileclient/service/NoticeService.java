@@ -79,12 +79,12 @@ public class NoticeService {
 			OkHttpClient client=new OkHttpClient();
 			RequestBody body=new FormBody.Builder()
 					.add("noticeId", notice.getNoticeId() + "")
-					.add("title", notice.getNoticeTitle())
-					.add("content", notice.getNoticeContent())
+					.add("noticeTitle", notice.getNoticeTitle())
+					.add("noticeContent", notice.getNoticeContent())
 					.add("publishDate", notice.getPublishDate())
 					.add("action", "update")
 					.build();
-			Request request=new Request.Builder().url(HttpUtil.BASE_URL + "NoticeServlet?").post(body).build();
+			Request request=new Request.Builder().url(HttpUtil.BASE_URL + "notice/update?").post(body).build();
 			Response response=client.newCall(request).execute();
 			String result=response.body().string();
 			//resultByte = HttpUtil.SendPostRequest(HttpUtil.BASE_URL + "NoticeServlet?", params, "UTF-8");
@@ -104,7 +104,7 @@ public class NoticeService {
 					.add("noticeId", noticeId + "")
 					.add("action", "delete")
 					.build();
-			Request request=new Request.Builder().url(HttpUtil.BASE_URL + "NoticeServlet?").post(body).build();
+			Request request=new Request.Builder().url(HttpUtil.BASE_URL + "notice/delete?").post(body).build();
 			Response response=client.newCall(request).execute();
 			String result=response.body().string();
 			//resultByte = HttpUtil.SendPostRequest(HttpUtil.BASE_URL + "NoticeServlet?", params, "UTF-8");

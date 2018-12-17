@@ -45,10 +45,11 @@
             android:gravity="center_vertical">
 
             <TextView
+                android:id="@+id/receiveCode"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:text="详情"
+                android:text="取货码"
                 android:textColor="@color/blue"
                 android:textSize="14sp" />
 
@@ -82,6 +83,21 @@
         android:visibility="gone"/>
 
 
+    <ImageView
+        android:id="@+id/telphone"
+        android:layout_marginTop="300dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/phone"
+        android:layout_alignParentEnd="true"/>
+
+    <ImageView
+        android:id="@+id/ems"
+        android:layout_width="83dp"
+        android:layout_height="83dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/smst" />
     <LinearLayout
         android:id="@+id/bus_result"
         android:layout_width="match_parent"

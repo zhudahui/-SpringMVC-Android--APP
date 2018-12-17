@@ -137,6 +137,10 @@ public class TakeOrderTwoFragment extends Fragment {
                                 order.setScore(list.get(i).get("score").toString());
                                 order.setOrderType(list.get(i).get("orderType").toString());
                                 order.setOrderPic(list.get(i).get("orderPic").toString());
+                                order.setReceiveName(list.get(i).get("receiveName").toString());
+                                order.setReceivePhone(list.get(i).get("receivePhone").toString());
+                                order.setReceiveState(list.get(i).get("receiveState").toString());
+                                order.setReceiveAddressName(list.get(i).get("receiveAddressName").toString());
                                 showDialog();
 
 
@@ -171,7 +175,7 @@ public class TakeOrderTwoFragment extends Fragment {
                 bundle.putInt("orderId", orderId);
                 bundle.putInt("userId",Integer.parseInt(list.get(arg2).get("userId").toString()));
                 bundle.putString("orderName",list.get(arg2).get("orderName").toString());
-                bundle.putString("userName",list.get(arg2).get("userName").toString());
+                bundle.putString("nickName",list.get(arg2).get("nickName").toString());
                 bundle.putByteArray("photo", (byte[]) list.get(arg2).get("photo"));
                 bundle.putString("expressCompanyName",list.get(arg2).get("expressCompanyName").toString());
                 bundle.putString("expressCompanyAddress",list.get(arg2).get("expressCompanyAddress").toString());
@@ -181,6 +185,7 @@ public class TakeOrderTwoFragment extends Fragment {
                 bundle.putString("remark",list.get(arg2).get("remark").toString());
                 bundle.putString("receiveCode",list.get(arg2).get("receiveCode").toString());
                 bundle.putString("receiveName",list.get(arg2).get("receiveName").toString());
+                bundle.putString("receiveState",list.get(arg2).get("receiveState").toString());
                 bundle.putString("orderPay",list.get(arg2).get("orderPay").toString());
                 bundle.putString("orderState",list.get(arg2).get("orderState").toString());
                 bundle.putString("addTime",list.get(arg2).get("addTime").toString());
@@ -265,6 +270,7 @@ public class TakeOrderTwoFragment extends Fragment {
                     map.put("orderName", expressOrderList.get(i).getOrderName());
                     map.put("userId", expressOrderList.get(i).getUserId());
                     user = userService.GetUserInfo(expressOrderList.get(i).getUserId());
+                    map.put("nickName", user.getNickName());
                     map.put("userName", user.getUserName());
                     byte[] userPhoto_data = null;
                     // 获取图片数据
@@ -276,11 +282,11 @@ public class TakeOrderTwoFragment extends Fragment {
                     map.put("expressCompanyAddress", expressOrderList.get(i).getExpressCompanyAddress());
                     map.put("receiveAddressId", expressOrderList.get(i).getReceiveAddressId());
                     // 根据获取到z的地址Id，查询地址名以及收获人姓名
-                    receiveAddress = receiveAdressService.QueryReceiveAdress(expressOrderList.get(i).getReceiveAddressId());
-                    Log.i("zhu1111", "查询ttt" + receiveAddress.getReceiveAddressName());
-                    map.put("receiveAddressName", receiveAddress.getReceiveAddressName());
-                    map.put("receiveName", receiveAddress.getReceiveName());
-                    map.put("receivePhone", receiveAddress.getReceivePhone());
+                    //receiveAddress = receiveAdressService.QueryReceiveAdress(expressOrderList.get(i).getReceiveAddressId());
+                    Log.i("zhu1111", "查询ttt" + expressOrderList.get(i).getReceiveAddressName());
+                    map.put("receiveAddressName", expressOrderList.get(i).getReceiveAddressName());
+                    map.put("receiveName", expressOrderList.get(i).getReceiveName());
+                    map.put("receivePhone", expressOrderList.get(i).getReceivePhone());
                     map.put("addTime", expressOrderList.get(i).getAddTime());
                     map.put("orderState", expressOrderList.get(i).getOrderState());
                     map.put("orderPay", expressOrderList.get(i).getOrderPay());
@@ -292,9 +298,13 @@ public class TakeOrderTwoFragment extends Fragment {
                     map.put("orderType", expressOrderList.get(i).getOrderType());
                     byte[] orderpic = null;
                     // 获取图片数据
-                    orderpic = ImageService.getImage(HttpUtil.DOWNURL + expressOrderList.get(i).getOrderPic());
-                    Bitmap pic = BitmapFactory.decodeByteArray(orderpic, 0, orderpic.length);
-                    map.put("orderPic", pic);
+                    if(expressOrderList.get(i).getOrderPic().equals("--")){
+                        map.put("orderPic", expressOrderList.get(i).getOrderPic());
+                    }else {
+                        orderpic = ImageService.getImage(HttpUtil.DOWNURL + expressOrderList.get(i).getOrderPic());
+                        Bitmap pic = BitmapFactory.decodeByteArray(orderpic, 0, orderpic.length);
+                        map.put("orderPic", pic);
+                    }
                     map.put("score", expressOrderList.get(i).getScore());
                     //map.put("userPhone", expressOrderList.get(i).getAddTime());
                     list.add(map);

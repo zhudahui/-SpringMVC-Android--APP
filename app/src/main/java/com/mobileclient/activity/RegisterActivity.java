@@ -250,11 +250,14 @@ public class RegisterActivity extends Activity {
 							user.setUserReputation(100);   //用户初始信誉为100
 							user.setUserMoney("" + 6);   //用户初始余额为6元
 							user.setUserAuthFile("");
-							user.setRegTime("" + 100);
+							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+							//添加发布时间
+							user.setRegTime(df.format(new Date()));
 							user.setUserAuthFile("--");
 							user.setStudentId(-1);     //未认证用户学生号默认为-1
 							user.setNickName(nickName.getText().toString());
 							user.setUserAuthState("未认证");
+							user.setPayPwd("--");
 							userService.AddUserInfo(user);
 							msg.what = 0x123;
 						}

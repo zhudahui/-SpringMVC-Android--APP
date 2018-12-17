@@ -9,10 +9,13 @@ import com.mobileclient.activity.R;
 import com.mobileclient.imgCache.ListViewOnScrollListener;
 import com.mobileclient.imgCache.SyncImageLoader;
 import android.content.Context;
+import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.SimpleAdapter;
@@ -58,7 +61,7 @@ public class ReceiveAddressAdapter extends SimpleAdapter {
         convertView.setTag("listViewTAG" + position);
         holder = new ReceiveAddressAdapter.ViewHolder();
         /*绑定该view各个控件*/
-        holder.isCheck = convertView.findViewById(R.id.radio_selected);
+        holder.moren = convertView.findViewById(R.id.moren);
         holder.receiveAddressName = (TextView)convertView.findViewById(R.id.receiveAddressName);
         holder.receiveName = (TextView)convertView.findViewById(R.id.receiveName);
         holder.receivePhone = (TextView)convertView.findViewById(R.id.receivePhone);
@@ -83,7 +86,11 @@ public class ReceiveAddressAdapter extends SimpleAdapter {
         holder.receiveName.setText(mData.get(position).get("receiveName").toString());
         holder.receivePhone.setText(mData.get(position).get("receivePhone").toString());
         if(mData.get(position).get("receiveState").equals("1")){
-            holder.isCheck.setChecked(true);
+            holder.moren.setImageResource(R.drawable.icon_check_true);
+        }
+        else
+        {
+            holder.moren.setImageResource(R.drawable.icon_check_false);
         }
         /*返回修改好的view*/
         return convertView;
@@ -116,6 +123,19 @@ public class ReceiveAddressAdapter extends SimpleAdapter {
         this.mOnItemDeleteListener = mOnItemDeleteListener;
     }
 
+    /***
+     * 删除按钮
+     *
+     *
+     */
+    public interface onItemMorenListener {
+        void onMorenClick(int i);
+    }
+    private onItemMorenListener mOnItemMorenListener;
+
+    public void setOnItemMorenClickListener(onItemMorenListener mOnItemMorenListener) {
+        this.mOnItemMorenListener = mOnItemMorenListener;
+    }
 
 
     static class ViewHolder{
@@ -124,6 +144,6 @@ public class ReceiveAddressAdapter extends SimpleAdapter {
         TextView receivePhone;
         TextView edit;
         TextView delete_address;
-        private RadioButton isCheck ;
+        private ImageView moren;
     }
 }

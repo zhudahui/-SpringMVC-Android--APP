@@ -85,7 +85,7 @@
 
 
             <TextView
-                android:id="@+id/txt_myorder"
+                android:id="@+id/txt_modPwd"
                 style="@style/TxtTitle"
                 android:textSize="16sp"
                 android:gravity="center_vertical"
@@ -98,13 +98,13 @@
                 android:drawablePadding="10dp"
                 android:drawableLeft="@drawable/icon_me_photo"
                 android:drawableRight="@drawable/right"
-                android:text="我的发布" />
+                android:text="修改密码" />
             <View
                 android:background="@color/black2"
                 android:layout_width="fill_parent"
                 android:layout_height="1.0dip" />
             <TextView
-                android:id="@+id/txt_takeOrder"
+                android:id="@+id/txt_payPwd"
                 style="@style/TxtTitle"
                 android:textSize="16sp"
                 android:gravity="center_vertical"
@@ -117,7 +117,7 @@
                 android:drawablePadding="10dp"
                 android:drawableLeft="@drawable/icon_me_photo"
                 android:drawableRight="@drawable/right"
-                android:text="我的代取" />
+                android:text="支付密码" />
             <View
                 android:background="@color/black2"
                 android:layout_width="fill_parent"

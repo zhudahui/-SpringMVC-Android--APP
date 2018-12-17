@@ -35,6 +35,7 @@
         android:scaleType="fitXY"
         android:layout_centerVertical="true"
         android:background="@drawable/buttons"
+        android:textColor="#ffffff"
         android:text="保存"
 
         />

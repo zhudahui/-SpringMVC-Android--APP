@@ -12,17 +12,21 @@ import com.mobileclient.util.HttpUtil;
 
 public class Declare extends Application {
 
-	
+	private static Declare sInstance;
 	@Override
 	public void onCreate() {
-		super.onCreate(); 
+		super.onCreate();
+		sInstance = this;
 		CrashHandler crashHandler = CrashHandler.getInstance();    
 	    crashHandler.init(getApplicationContext()); 
 	    context = this.getApplicationContext(); 
 	    File path = new File(HttpUtil.FILE_PATH);
+
 	    if(!path.exists()) path.mkdirs();
 	}
-	 
+	public static Declare getInstance() {
+		return sInstance;
+	}
 	public static Context context;
 	 
 	
@@ -54,6 +58,7 @@ public class Declare extends Application {
 	private String nickName;           //登录名
 	private int studentId;             //学号
 	private String userAuthState;       //认证状态
+	private String payPwd;  //
 	//记载默认地址信息
 	private int receiveId;   //地址Id
 	private String receiveAddressName;  //地址名
@@ -61,7 +66,13 @@ public class Declare extends Application {
 	private String receiveName;
 	private String receivePhone;
     private int receiveAddressId;
+
+
     private int adminUserId;  //管理员管理用户ID；
+	private String adminNickName;//管理员管理用户
+
+
+
     public String getUserName() {
 		return userName;
 	}
@@ -272,5 +283,21 @@ public class Declare extends Application {
 
 	public void setAdminUserId(int adminUserId) {
 		this.adminUserId = adminUserId;
+	}
+
+	public String getAdminNickName() {
+		return adminNickName;
+	}
+
+	public void setAdminNickName(String adminNickName) {
+		this.adminNickName = adminNickName;
+	}
+
+	public String getPayPwd() {
+		return payPwd;
+	}
+
+	public void setPayPwd(String payPwd) {
+		this.payPwd = payPwd;
 	}
 }

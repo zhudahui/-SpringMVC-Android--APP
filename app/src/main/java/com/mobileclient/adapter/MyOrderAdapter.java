@@ -73,7 +73,12 @@ public class MyOrderAdapter extends SimpleAdapter {
         //holder.orderState=convertView.findViewById(R.id.orderState);
         /*设置各个控件的展示内容*/
         /*设置各个控件的展示内容*/
-        holder.orderPic.setImageBitmap((Bitmap) mData.get(position).get("orderPic"));
+        if(mData.get(position).get("orderPic").toString().equals("--")) {
+            holder.orderPic.setImageBitmap((Bitmap) mData.get(position).get("userPhoto"));
+        }
+        else
+            holder.orderPic.setImageBitmap((Bitmap) mData.get(position).get("orderPic"));
+        //holder.orderPic.setImageBitmap((Bitmap) mData.get(position).get("orderPic"));
         // holder.userName.setText( mData.get(position).get("userName").toString());
         holder.tv_orderName.setText("代取物品："+(mData.get(position).get("orderName").toString()));
         holder.tv_orderState.setText( mData.get(position).get("orderState").toString());
@@ -92,7 +97,7 @@ public class MyOrderAdapter extends SimpleAdapter {
         }
         else if(mData.get(position).get("orderState").toString().equals("已送达")){
             holder.tv_button.setText("确认收货");
-        }else if(mData.get(position).get("orderState").toString().equals("交易结束")){
+        }else if(mData.get(position).get("orderState").toString().equals("交易结束")&&mData.get(position).get("evaluate").toString().equals("-+-")){
             holder.tv_button.setText("评价");
         }else
             holder.tv_button.setVisibility(View.GONE);

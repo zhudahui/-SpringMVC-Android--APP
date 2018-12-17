@@ -1,6 +1,7 @@
 package com.mobileclient.activity;
 
 import com.mobileclient.activity.myorder.ExpressTakeMyListActivity;
+import com.mobileclient.activity.takeOrder.TakeOrderListActivity;
 import com.mobileclient.app.BuilderManager;
 import com.mobileclient.app.Declare;
 import com.mobileclient.app.IdentityImageView;
@@ -397,16 +398,28 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 //			builder.normalText("Changed!");
 ////			builder.highlightedText("Highlighted, changed!");
 ////			builder.subNormalText("Sub-text, changed!");
-			declare.setAdminUserId(Integer.parseInt(userId.getText().toString()));
+			declare.setUserId(Integer.parseInt(userId.getText().toString()));
+			//declare.setAdminUserId(Integer.parseInt(userId.getText().toString()));    //记住当前用户Id
+            //declare.setAdminNickName(nickName.getText().toString());
+			declare.setNickName(nickName.getText().toString());
 			intent.setClass(UserInfoDetailActivity.this,ExpressTakeMyListActivity.class);
 			startActivity(intent);
 			builder.normalTextColor(Color.YELLOW);
 			builder.highlightedTextColorRes(R.color.colorPrimary);
 			builder.subNormalTextColor(Color.BLACK);
 		} else if (index == 1) {    //跳转到用户代取订单管理页面
+			declare.setUserId(Integer.parseInt(userId.getText().toString()));
+			//declare.setAdminUserId(Integer.parseInt(userId.getText().toString()));    //记住当前用户Id
+			declare.setNickName(nickName.getText().toString());
+			intent.setClass(UserInfoDetailActivity.this,TakeOrderListActivity.class);
+			startActivity(intent);
 			builder.normalImageRes(R.drawable.bat);
 			builder.highlightedImageRes(R.drawable.bear);
-		} else if (index == 2) {    //跳转到用户收货地址管理
+		} else if (index == 2) {//跳转到用户收货地址管理
+			declare.setUserId(Integer.parseInt(userId.getText().toString()));    //记住当前用户Id
+			declare.setNickName(nickName.getText().toString());
+			intent.setClass(UserInfoDetailActivity.this,ReceiveAddressListActivity.class);
+			startActivity(intent);
 			builder.normalColorRes(R.color.colorAccent);
 		} else if (index == 3) {    //用户认证信息管理
 			builder.pieceColor(Color.WHITE);

@@ -3,6 +3,8 @@ package com.mobileclient.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -93,6 +95,15 @@ public class ReceiveAddressEditActivity extends Activity {
                 }
             }
         });
+        final Handler handler=new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Intent intent = new Intent();  //点击返回地址名和地址Id
+                setResult(RESULT_OK,intent);
+                finish();
+            }
+        };
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,7 +119,8 @@ public class ReceiveAddressEditActivity extends Activity {
                         public void run() {
                             receiveAddressService.UpdateReceiveAddress(receiveAddress1);
                             receiveAddressService.UpdateReceiveAddress(receiveAddress);
-
+                            Message msg=new Message();
+                            handler.sendMessage(msg);
                         }
                     }).start();
                 }
@@ -122,9 +134,14 @@ public class ReceiveAddressEditActivity extends Activity {
                         @Override
                         public void run() {
                             receiveAddressService.UpdateReceiveAddress(receiveAddress);
+                            Message msg=new Message();
+                            handler.sendMessage(msg);
                         }
                     }).start();
                 }
+
+
+
             }
 
         });

@@ -45,6 +45,10 @@ public class OrderService {
                     .add("score",order.getScore())
                     .add("orderType",order.getOrderType())
                     .add("orderPic",order.getOrderPic())
+                    .add("receiveName",order.getReceiveName())
+                    .add("receivePhone",order.getReceivePhone())
+                    .add("receiveState",order.getReceiveState())
+                    .add("receiveAddressName",order.getReceiveAddressName())
                     .add("action", "add")
                     .build();
             Log.i("order","body"+body);
@@ -98,6 +102,10 @@ public class OrderService {
                 order.setExpressCompanyName(object.getString("expressCompanyName"));
                 order.setExpressCompanyAdress(object.getString("expressCompanyAddress"));
                 order.setReceiveAdressId(object.getInt("receiveAddressId"));
+                order.setReceiveName(object.getString("receiveName"));
+                order.setReceivePhone(object.getString("receivePhone"));
+                order.setReceiveState(object.getString("receiveState"));
+                order.setReceiveAddressName(object.getString("receiveAddressName"));
                 order.setAddTime(object.getString("addTime"));
                 order.setOrderState(object.getString("orderState"));
                 order.setOrderPay(object.getString("orderPay"));
@@ -109,6 +117,7 @@ public class OrderService {
                 order.setOrderPic(object.getString("orderPic"));
                 order.setScore(object.getString("score"));
                 order.setOrderState("orderState");
+
 
                 //order.set
                 orderList.add(order);
@@ -141,6 +150,10 @@ public class OrderService {
                 order.setExpressCompanyName(object.getString("expressCompanyName"));
                 order.setExpressCompanyAdress(object.getString("expressCompanyAddress"));
                 order.setReceiveAdressId(object.getInt("receiveAddressId"));
+                order.setReceiveName(object.getString("receiveName"));
+                order.setReceivePhone(object.getString("receivePhone"));
+                order.setReceiveState(object.getString("receiveState"));
+                order.setReceiveAddressName(object.getString("receiveAddressName"));
                 order.setAddTime(object.getString("addTime"));
                 order.setOrderState(object.getString("orderState"));
                 order.setOrderPay(object.getString("orderPay"));
@@ -182,6 +195,10 @@ public class OrderService {
                 order.setExpressCompanyName(object.getString("expressCompanyName"));
                 order.setExpressCompanyAdress(object.getString("expressCompanyAddress"));
                 order.setReceiveAdressId(object.getInt("receiveAddressId"));
+                order.setReceiveName(object.getString("receiveName"));
+                order.setReceivePhone(object.getString("receivePhone"));
+                order.setReceiveState(object.getString("receiveState"));
+                order.setReceiveAddressName(object.getString("receiveAddressName"));
                 order.setAddTime(object.getString("addTime"));
                 order.setOrderState(object.getString("orderState"));
                 order.setOrderPay(object.getString("orderPay"));
@@ -221,6 +238,10 @@ public class OrderService {
                 order.setExpressCompanyName(object.getString("expressCompanyName"));
                 order.setExpressCompanyAdress(object.getString("expressCompanyAddress"));
                 order.setReceiveAdressId(object.getInt("receiveAddressId"));
+                order.setReceiveName(object.getString("receiveName"));
+                order.setReceivePhone(object.getString("receivePhone"));
+                order.setReceiveState(object.getString("receiveState"));
+                order.setReceiveAddressName(object.getString("receiveAddressName"));
                 order.setAddTime(object.getString("addTime"));
                 order.setOrderState(object.getString("orderState"));
                 order.setOrderPay(object.getString("orderPay"));
@@ -260,6 +281,10 @@ public class OrderService {
                     .add("orderEvaluate", order.getOrderEvaluate())
                     .add("takeUserId", String.valueOf(order.getTakeUserId()))
                     .add("score",order.getScore())
+                    .add("receiveName",order.getReceiveName())
+                    .add("receivePhone",order.getReceivePhone())
+                    .add("receiveState",order.getReceiveState())
+                    .add("receiveAddressName",order.getReceiveAddressName())
                     .add("action", "update")
                     .build();
             Request request = new Request.Builder().url(HttpUtil.BASE_URL + "order/update?").post(body).build();
@@ -315,6 +340,10 @@ public List<Order> OrderTypeQuery(String orderType) throws Exception {
             order.setExpressCompanyName(object.getString("expressCompanyName"));
             order.setExpressCompanyAdress(object.getString("expressCompanyAddress"));
             order.setReceiveAdressId(object.getInt("receiveAddressId"));
+            order.setReceiveName(object.getString("receiveName"));
+            order.setReceivePhone(object.getString("receivePhone"));
+            order.setReceiveState(object.getString("receiveState"));
+            order.setReceiveAddressName(object.getString("receiveAddressName"));
             order.setAddTime(object.getString("addTime"));
             order.setOrderState(object.getString("orderState"));
             order.setOrderPay(object.getString("orderPay"));
@@ -356,6 +385,10 @@ public List<Order> OrderTypeQuery(String orderType) throws Exception {
                 order.setExpressCompanyName(object.getString("expressCompanyName"));
                 order.setExpressCompanyAdress(object.getString("expressCompanyAddress"));
                 order.setReceiveAdressId(object.getInt("receiveAddressId"));
+                order.setReceiveName(object.getString("receiveName"));
+                order.setReceivePhone(object.getString("receivePhone"));
+                order.setReceiveState(object.getString("receiveState"));
+                order.setReceiveAddressName(object.getString("receiveAddressName"));
                 order.setAddTime(object.getString("addTime"));
                 order.setOrderState(object.getString("orderState"));
                 order.setOrderPay(object.getString("orderPay"));
@@ -365,6 +398,7 @@ public List<Order> OrderTypeQuery(String orderType) throws Exception {
                 order.setTakeUserId(object.getInt("takeUserId"));
                 order.setOrderType(object.getString("orderType"));
                 order.setOrderPic(object.getString("orderPic"));
+                Log.i("pppppp","orderPic"+  order.getOrderPic());
                 order.setScore(object.getString("score"));
                 order.setOrderState(object.getString("orderState"));
                 //order.set

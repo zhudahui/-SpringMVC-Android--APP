@@ -68,9 +68,9 @@ public class MainMenuActivity extends Activity {
         
         // 图片资源数组
         private Integer[] mThumbIds = {
-                R.drawable.operateicon,R.drawable.operateicon,R.drawable.operateicon,R.drawable.operateicon,R.drawable.operateicon,R.drawable.operateicon
+                R.drawable.operateicon,R.drawable.operateicon,R.drawable.operateicon
         };
-        private String[] menuString = {"用户管理","快递代拿管理","物流公司管理","订单状态管理","代拿订单管理","新闻公告管理"};
+        private String[] menuString = {"用户管理","代拿订单管理","新闻公告管理"};
 
         // 构造方法
         public ImageAdapter(Context c) {
@@ -106,12 +106,12 @@ public class MainMenuActivity extends Activity {
 					view.setOnClickListener(userInfoLinstener);
 					break;
 				case 1:
-					// 快递代拿管理监听器
+					// 信息pagerView监听器
 					view.setOnClickListener(expressTakeLinstener);
 					break;
 				case 2:
-					// 物流公司管理监听器
-					view.setOnClickListener(companyLinstener);
+					// 物流信息管理监听器
+					view.setOnClickListener(noticeLinstener);
 					break;
 //				case 3:
 //					// 订单状态管理监听器
@@ -153,12 +153,12 @@ public class MainMenuActivity extends Activity {
 			startActivity(intent);
 		}
 	};
-    OnClickListener companyLinstener = new OnClickListener() {
+    OnClickListener noticeLinstener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			Intent intent = new Intent();
 			// 启动物流公司管理Activity
-			intent.setClass(MainMenuActivity.this, ReceiveAddressListActivity.class);
+			intent.setClass(MainMenuActivity.this, NoticeListActivity.class);
 			startActivity(intent);
 		}
 	};

@@ -165,6 +165,7 @@ public class TwoFragment extends Fragment {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), SecondUserDetailActivity.class);
+                arg2=arg2-1;
                 Bundle bundle = new Bundle();
                 bundle.putString("nickName", list.get(arg2).get("nickName").toString());
                 bundle.putString("userName", list.get(arg2).get("userName").toString());
@@ -209,6 +210,7 @@ public class TwoFragment extends Fragment {
             // 获取选中行位置
             int arg2 = contextMenuInfo.position;
             // 获取用户名
+            arg2=arg2-1;
             Intent intent = new Intent();
             intent.setClass(getActivity(), SecondUserDetailActivity.class);
             Bundle bundle = new Bundle();

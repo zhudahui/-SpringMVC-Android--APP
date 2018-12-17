@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
-                    android:text="@string/login"
+                    android:text="用户登录"
                     android:textColor="#FFCC00"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -102,7 +102,7 @@
                     android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:text="@string/go"
-                    android:textColor="#d3d3d3"
+                    android:textColor="#ff4b4b4b"
                     >
                 </Button>
             </RelativeLayout>
