@@ -132,7 +132,7 @@
         android:layout_width="match_parent"
         android:layout_height="53dp"
         android:layout_marginTop="340dp"
-        android:background="#00CD8C"
+        android:background="#F3CE5C"
         android:text="确定"
         android:textColor="@color/white"
         android:textSize="16sp" />

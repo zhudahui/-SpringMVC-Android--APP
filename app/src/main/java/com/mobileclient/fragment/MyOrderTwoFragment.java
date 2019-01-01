@@ -6,22 +6,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.mobileclient.activity.AdminExpressDetailActivity;
+import com.mobileclient.activity.AdminLoginActivity;
 import com.mobileclient.activity.ExpressOrderDetailActivity;
 import com.mobileclient.activity.MyProgressDialog;
 import com.mobileclient.activity.R;
-import com.mobileclient.activity.ReceiveAddressEditActivity;
-import com.mobileclient.activity.SecondAddressListActivity;
 import com.mobileclient.activity.SecondOrderDetailActivity;
-import com.mobileclient.adapter.ExpressOrderAdapter;
 import com.mobileclient.adapter.MyOrderAdapter;
-import com.mobileclient.adapter.ReceiveAddressAdapter;
 import com.mobileclient.app.Declare;
 import com.mobileclient.app.RefreshListView;
 import com.mobileclient.domain.Order;
 import com.mobileclient.domain.ReceiveAddress;
 import com.mobileclient.domain.User;
 import com.mobileclient.service.OrderService;
-import com.mobileclient.service.ReceiveAddressService;
 import com.mobileclient.service.UserService;
 import com.mobileclient.util.ActivityUtils;
 import com.mobileclient.util.HttpUtil;
@@ -70,6 +67,7 @@ public class MyOrderTwoFragment extends Fragment {
     ReceiveAddress receiveAddress=new ReceiveAddress();
     private int userId;
     private int j;
+    Declare declare;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -79,7 +77,7 @@ public class MyOrderTwoFragment extends Fragment {
         ButterKnife.bind(this, view);
         queryConditionExpressOrder = new Order();
         queryConditionExpressOrder=null;
-        Declare declare = (Declare) getActivity().getApplicationContext();
+        declare = (Declare) getActivity().getApplicationContext();
         userId=declare.getUserId();
         setViews();
         return view;
@@ -129,7 +127,7 @@ public class MyOrderTwoFragment extends Fragment {
                                 order.setExpressCompanyAdress(list.get(i).get("expressCompanyAddress").toString());
                                 order.setReceiveAdressId(Integer.parseInt(list.get(i).get("receiveAddressId").toString()));
                                 order.setAddTime(list.get(i).get("addTime").toString());
-                                order.setOrderState("交易结束");
+                                order.setOrderState("--");
                                 order.setOrderPay(list.get(i).get("orderPay").toString());
                                 order.setRemark(list.get(i).get("remark").toString());
                                 order.setReceiveCode(list.get(i).get("receiveCode").toString());
@@ -141,6 +139,22 @@ public class MyOrderTwoFragment extends Fragment {
                                 order.setReceivePhone(list.get(i).get("receivePhone").toString());
                                 order.setReceiveState(list.get(i).get("receiveState").toString());
                                 order.setReceiveAddressName(list.get(i).get("receiveAddressName").toString());
+                                user.setUserId(declare.getUserId());
+                                user.setUserName(declare.getUserName());
+                                user.setUserAuthFile(declare.getUserAuthFile());
+                                user.setUserPhoto(declare.getUserPhoto());
+                                user.setUserPassword(declare.getUserPassword());
+                                user.setPayPwd(declare.getPayPwd());
+                                user.setRegTime(declare.getRegTime());
+                                user.setUserEmail(declare.getUserEmail());
+                                user.setUserGender(declare.getUserGender());
+                                user.setUserPhone(declare.getUserPhone());
+                                user.setUserPassword(declare.getUserPassword());
+                                user.setUserReputation(declare.getUserReputation());
+                                user.setUserType(declare.getUserType());
+                                user.setNickName(declare.getNickName());
+                                user.setStudentId(declare.getStudentId());
+                                user.setUserAuthState(declare.getUserAuthState());
                                 showDialog();
 
 
@@ -192,14 +206,27 @@ public class MyOrderTwoFragment extends Fragment {
                 bundle.putInt("receiveAddressId",Integer.parseInt(list.get(arg2).get("receiveAddressId").toString()));
                 bundle.putString("evaluate",list.get(arg2).get("evaluate").toString());
                 bundle.putInt("takeUserId", Integer.parseInt(list.get(arg2).get("takeUserId").toString()));
+                bundle.putString("orderPic", list.get(arg2).get("orderPic").toString());
+                bundle.putString("score",list.get(arg2).get("score").toString());
+
+                if(declare.getIdentify().equals("user")){
+
                 if (list.get(arg2).get("evaluate").toString().equals("-+-")||list.get(arg2).get("evaluate").toString().equals("请评价")) {//若评价为空
                     intent.putExtras(bundle);
-                    intent.setClass(getActivity(), ExpressOrderDetailActivity.class);   //已评价
+                    if(declare.getIdentify().equals("user"))
+                        intent.setClass(getActivity(), ExpressOrderDetailActivity.class);   //已评价
+                    else
+                        intent.setClass(getActivity(), AdminExpressDetailActivity.class);
                     startActivityForResult(intent, ActivityUtils.UPDATE_CODE);
                 }
                 else {
                     Log.i("zhu111", "已评价");
                     intent.setClass(getActivity(), SecondOrderDetailActivity.class);   //已评价
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }}
+                else{
+                    intent.setClass(getActivity(), AdminExpressDetailActivity.class);   //已评价
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }
@@ -325,7 +352,10 @@ public class MyOrderTwoFragment extends Fragment {
         public void handleMessage(Message msg) {
             // TODO Auto-generated method stub
             super.handleMessage(msg);
-            Toast.makeText(getActivity(),"取消成功",Toast.LENGTH_SHORT).show();
+            declare.setUserMoney(String.valueOf(Double.parseDouble(declare.getUserMoney())+Double.parseDouble(order.getOrderPay())));
+
+            //订单取消，酬金返还余额
+            Toast.makeText(getActivity(),"取消成功!酬金已返还至余额",Toast.LENGTH_SHORT).show();
             list.remove(j);//选择行的位置
             adapter.notifyDataSetChanged();
             lv.invalidate();
@@ -348,7 +378,10 @@ public class MyOrderTwoFragment extends Fragment {
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
-
+                                Bundle bundle=new Bundle();
+                                bundle.putString("orderPay",order.getOrderPay());
+                                user.setUserMoney(String.valueOf(Double.parseDouble(declare.getUserMoney())+Double.parseDouble(order.getOrderPay()))); //更新
+                                userService.UpdateUserInfo(user);
                                 orderService.DeleteOrder(order.getOrderId());
                                 Message msg=new Message();
                                 mHandler.sendMessage(msg);

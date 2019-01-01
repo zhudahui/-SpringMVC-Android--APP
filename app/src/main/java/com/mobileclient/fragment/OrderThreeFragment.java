@@ -63,6 +63,7 @@ public class OrderThreeFragment extends Fragment {
     ReceiveAddress receiveAddress=new ReceiveAddress();
     private int userId;
     private Declare declare;
+    private int j=0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -274,6 +275,17 @@ public class OrderThreeFragment extends Fragment {
                     map.put("userId", expressOrderList.get(i).getUserId());
                     user = userService.GetUserInfo(expressOrderList.get(i).getUserId());
                     map.put("nickName", user.getNickName());
+
+                    if(j<10) {
+                        map.put("i",String.valueOf(j));
+                        j++;
+
+                    }
+                    else {
+                        j=0;
+                        map.put("i",String.valueOf(j));
+                    }
+
                     byte[] userPhoto_data = null;
                     // 获取图片数据
                     userPhoto_data = ImageService.getImage(HttpUtil.DOWNURL + user.getUserPhoto());

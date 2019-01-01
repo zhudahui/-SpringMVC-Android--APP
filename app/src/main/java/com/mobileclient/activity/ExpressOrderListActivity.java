@@ -48,10 +48,9 @@ private final static int REFRESH_COMPLETE = 0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //去除工具栏
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
         setContentView(R.layout.order_layout);
         initViews();
-
         mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(), mFragmentList);
         vp.setOffscreenPageLimit(4);//ViewPager的缓存为4帧
         vp.setAdapter(mFragmentAdapter);

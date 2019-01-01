@@ -6,11 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.mobileclient.activity.AdminExpressDetailActivity;
 import com.mobileclient.activity.ExpressOrderDetailActivity;
 import com.mobileclient.activity.MyProgressDialog;
 import com.mobileclient.activity.R;
 import com.mobileclient.activity.SecondOrderDetailActivity;
-import com.mobileclient.adapter.ExpressOrderAdapter;
 import com.mobileclient.adapter.MyOrderAdapter;
 import com.mobileclient.app.Declare;
 import com.mobileclient.app.RefreshListView;
@@ -45,7 +45,6 @@ import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 
 import butterknife.ButterKnife;
@@ -65,6 +64,7 @@ public class MyOrderFourFragment extends Fragment {
     UserService userService=new UserService();
     ReceiveAddress receiveAddress=new ReceiveAddress();
     private int userId;
+    Declare declare;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -74,7 +74,7 @@ public class MyOrderFourFragment extends Fragment {
         ButterKnife.bind(this, view);
         queryConditionExpressOrder = new Order();
         queryConditionExpressOrder=null;
-        Declare declare = (Declare) getActivity().getApplicationContext();
+        declare = (Declare) getActivity().getApplicationContext();
         userId=declare.getUserId();
         setViews();
         return view;
@@ -205,14 +205,26 @@ public class MyOrderFourFragment extends Fragment {
                 bundle.putInt("receiveAddressId",Integer.parseInt(list.get(arg2).get("receiveAddressId").toString()));
                 bundle.putString("evaluate",list.get(arg2).get("evaluate").toString());
                 bundle.putInt("takeUserId", Integer.parseInt(list.get(arg2).get("takeUserId").toString()));
-                if (list.get(arg2).get("evaluate").toString().equals("-+-")||list.get(arg2).get("evaluate").toString().equals("请评价")) {//若评价为空
-                    intent.putExtras(bundle);
-                    intent.setClass(getActivity(), ExpressOrderDetailActivity.class);   //已评价
-                    startActivityForResult(intent, ActivityUtils.UPDATE_CODE);
-                }
-                else {
-                    Log.i("zhu111", "已评价");
-                    intent.setClass(getActivity(), SecondOrderDetailActivity.class);   //已评价
+                bundle.putString("orderPic", list.get(arg2).get("orderPic").toString());
+                bundle.putString("score",list.get(arg2).get("score").toString());
+                if(declare.getIdentify().equals("user")){
+
+                    if (list.get(arg2).get("evaluate").toString().equals("-+-")||list.get(arg2).get("evaluate").toString().equals("请评价")) {//若评价为空
+                        intent.putExtras(bundle);
+                        if(declare.getIdentify().equals("user"))
+                            intent.setClass(getActivity(), ExpressOrderDetailActivity.class);   //已评价
+                        else
+                            intent.setClass(getActivity(), AdminExpressDetailActivity.class);
+                        startActivityForResult(intent, ActivityUtils.UPDATE_CODE);
+                    }
+                    else {
+                        Log.i("zhu111", "已评价");
+                        intent.setClass(getActivity(), SecondOrderDetailActivity.class);   //已评价
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }}
+                else{
+                    intent.setClass(getActivity(), AdminExpressDetailActivity.class);   //已评价
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }

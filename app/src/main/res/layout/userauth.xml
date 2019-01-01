@@ -34,7 +34,7 @@
                         android:layout_height="225dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        android:src="@drawable/damen" />
+                        android:src="@drawable/beijing_four" />
                 </TableRow>
                 <TableRow android:layout_marginTop="8dp">
                     <TextView
@@ -108,7 +108,7 @@
                     android:layout_marginLeft="5dip"
                     android:layout_marginRight="5dip"
                     android:layout_marginTop="5dip"
-                    android:background="#D64F4D"
+                    android:background="#F3CE5C"
                     android:textColor="@color/white" />
             </LinearLayout>
         </LinearLayout>

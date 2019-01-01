@@ -28,6 +28,10 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-hdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_tubiao_one.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/tubiao_one.png"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-mdpi-v4/abc_list_pressed_holo_dark.9.png"
     },
@@ -92,6 +96,10 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable/bg_orange_oval.xml"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_fabu_two.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/fabu_two.png"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_design_ic_visibility_off.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/design-26.0.0.aar/cf3361910aa1a1332725c02fe6e0cf3a/res/drawable-xhdpi-v4/design_ic_visibility_off.png"
     },
@@ -130,6 +138,10 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_smst.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/smst.png"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_my_one.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/my_one.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/color-v23_abc_color_highlight_material.xml.flat",
@@ -272,6 +284,10 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-xhdpi-v4/abc_list_selector_disabled_holo_light.9.png"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_user_login.xml.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/user_login.xml"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher_round.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
     },
@@ -322,6 +338,10 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_notice_add.xml.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/notice_add.xml"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_beijingtupian_two.jpeg.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/beijingtupian_two.jpeg"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-mdpi_default_photo.png.flat",
@@ -402,10 +422,6 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_orderstate_list_item.xml.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/orderstate_list_item.xml"
-    },
-    {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_movie_bar.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable/movie_bar.xml"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_abc_screen_simple_overlay_action_mode.xml.flat",
@@ -560,6 +576,10 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/dsbj.png"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_modifypwd.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/modifypwd.png"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_textfield_search_activated_mtrl_alpha.9.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-hdpi-v4/abc_textfield_search_activated_mtrl_alpha.9.png"
     },
@@ -604,12 +624,20 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/add.png"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/anim_push_left_in.xml.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/anim/push_left_in.xml"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_icn_7.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/icn_7.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_daiqu.jpg.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/daiqu.jpg"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_my_bar.xml.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable/my_bar.xml"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_noimage.jpg.flat",
@@ -836,10 +864,6 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/button_h.png"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_more_bar.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable/more_bar.xml"
-    },
-    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_background.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/background.png"
     },
@@ -852,8 +876,8 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.0.aar/f7dfa5efd342d556ffcd75addb2bbd63/res/drawable-mdpi-v4/notification_bg_low_pressed.9.png"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout-v17_bmb.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/boommenu/build/intermediates/packaged_res/debug/layout-v17/bmb.xml"
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_publish.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/publish.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_haimian.jpg.flat",
@@ -884,12 +908,12 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/base_head_layout_grey.xml"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_city_item.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/city_item.xml"
-    },
-    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_xueli.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/xueli.png"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_city_item.xml.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/city_item.xml"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/anim_fade_in.xml.flat",
@@ -952,6 +976,10 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-ldrtl-hdpi-v17/abc_spinner_mtrl_am_alpha.9.png"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_daiqu_two.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/daiqu_two.png"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-xhdpi_list_item_btn_normal.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-xhdpi/list_item_btn_normal.png"
     },
@@ -1004,6 +1032,14 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.0.aar/f7dfa5efd342d556ffcd75addb2bbd63/res/drawable-xhdpi-v4/notification_bg_low_normal.9.png"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_admin_user_auth.xml.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/admin_user_auth.xml"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_tubiao_eight.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/tubiao_eight.png"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-xhdpi-v4/abc_scrubber_control_off_mtrl_alpha.png"
     },
@@ -1046,6 +1082,10 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_orderstate_query.xml.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/orderstate_query.xml"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_paypwd.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/paypwd.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_ooopice.png.flat",
@@ -1104,10 +1144,6 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/anim/abc_fade_in.xml"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_bmb_text_inside_circle_button.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/boommenu/build/intermediates/packaged_res/debug/layout/bmb_text_inside_circle_button.xml"
-    },
-    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_run.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/run.png"
     },
@@ -1164,8 +1200,12 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable/abc_ic_search_api_material.xml"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_piece_dot.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/boommenu/build/intermediates/packaged_res/debug/drawable/piece_dot.xml"
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_jingling.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/jingling.png"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_zhuye.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/zhuye.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
@@ -1174,10 +1214,6 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_background_view_rounded_top.xml.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable/background_view_rounded_top.xml"
-    },
-    {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_zhuye.png.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/zhuye.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_text_select_handle_middle_mtrl_light.png.flat",
@@ -1266,6 +1302,10 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_text_select_handle_middle_mtrl_light.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-mdpi-v4/abc_text_select_handle_middle_mtrl_light.png"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_tubiao_three.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/tubiao_three.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_list.xml.flat",
@@ -1364,12 +1404,16 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/search_delete.png"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/color_abc_primary_text_disable_only_material_light.xml.flat",
-        "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/color/abc_primary_text_disable_only_material_light.xml"
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_daiqu_one.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/daiqu_one.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_edit_bg.xml.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable/edit_bg.xml"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/color_abc_primary_text_disable_only_material_light.xml.flat",
+        "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/color/abc_primary_text_disable_only_material_light.xml"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -1544,6 +1588,10 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable/abc_list_selector_holo_dark.xml"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_address.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/address.png"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_xyfc_damen.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/xyfc_damen.png"
     },
@@ -1554,10 +1602,6 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_focused_holo.9.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-xhdpi-v4/abc_list_focused_holo.9.png"
-    },
-    {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_shape_rectangle_normal.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/boommenu/build/intermediates/packaged_res/debug/drawable/shape_rectangle_normal.xml"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_notification_template_part_time.xml.flat",
@@ -1580,16 +1624,16 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/transition/fabtransition.xml"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_fragment_fouth.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/fragment_fouth.xml"
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_orderstate_list.xml.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/orderstate_list.xml"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_activity_xuan.xml.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/activity_xuan.xml"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_orderstate_list.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/orderstate_list.xml"
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_fragment_fouth.xml.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/fragment_fouth.xml"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_gerenxinxi.png.flat",
@@ -1648,6 +1692,10 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/item_base.xml"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-xhdpi_beijing_five.jpg.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-xhdpi/beijing_five.jpg"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_icon_check_true.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/icon_check_true.png"
     },
@@ -1668,6 +1716,10 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/fragment_order_one.xml"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_renzheng.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/renzheng.png"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_user_pwd.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-xhdpi/ic_user_pwd.png"
     },
@@ -1686,6 +1738,10 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_btna.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/btna.png"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_exit.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/exit.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_w04.jpg.flat",
@@ -1720,10 +1776,6 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/dir13.png"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_activity_change_boom_button.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/activity_change_boom_button.xml"
-    },
-    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_item_merchandise.xml.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/item_merchandise.xml"
     },
@@ -1748,12 +1800,12 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/home.xml"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_querya.png.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/querya.png"
-    },
-    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_expresstake_list_item.xml.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/expresstake_list_item.xml"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_querya.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/querya.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_notification_tile_bg.xml.flat",
@@ -1796,6 +1848,14 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-hdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_fabu_bar.xml.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable/fabu_bar.xml"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_my_two.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/my_two.png"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-hdpi-v4/abc_popup_background_mtrl_mult.9.png"
     },
@@ -1810,10 +1870,6 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_xiaowanzi.jpg.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable/xiaowanzi.jpg"
-    },
-    {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_shape_oval_normal.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/boommenu/build/intermediates/packaged_res/debug/drawable/shape_oval_normal.xml"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_takeorder_edit.xml.flat",
@@ -1832,6 +1888,10 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/search_top_background.png"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_modify_pwd.xml.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/modify_pwd.xml"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-hdpi-v4/abc_scrubber_track_mtrl_alpha.9.png"
     },
@@ -1840,20 +1900,12 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/plus.png"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_modify_pwd.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/modify_pwd.xml"
-    },
-    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/mipmap-hdpi/ic_launcher.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-mdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png"
-    },
-    {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_about.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/about.xml"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_dir11.png.flat",
@@ -1976,8 +2028,16 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_015.png"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_zhu.jpg.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/zhu.jpg"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_nicolas_cage.jpg.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/nicolas_cage.jpg"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_tubiao_nine.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/tubiao_nine.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_tab_settings_normal.png.flat",
@@ -1992,6 +2052,10 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/pop.png"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_beijingtupian_one.jpeg.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/beijingtupian_one.jpeg"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_ditu_exit.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/ditu_exit.png"
     },
@@ -2002,6 +2066,10 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_icon_me_setting.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/icon_me_setting.png"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_apptubiao.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/apptubiao.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_icn_1.png.flat",
@@ -2116,10 +2184,6 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/popupa.png"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_piece.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/boommenu/build/intermediates/packaged_res/debug/drawable/piece.xml"
-    },
-    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-mdpi-v4/abc_btn_check_to_on_mtrl_015.png"
     },
@@ -2130,6 +2194,10 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_gridviewbga.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/gridviewbga.png"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_auth.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/auth.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_button_j.png.flat",
@@ -2212,6 +2280,10 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable/abc_btn_default_mtrl_shape.xml"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_btn_style.xml.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable/btn_style.xml"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_text_select_handle_left_mtrl_light.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-xhdpi-v4/abc_text_select_handle_left_mtrl_light.png"
     },
@@ -2244,12 +2316,12 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/list_divider.xml"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_expresstake_detail.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/expresstake_detail.xml"
-    },
-    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_inputpwd_layout.xml.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/inputpwd_layout.xml"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_expresstake_detail.xml.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/expresstake_detail.xml"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
@@ -2360,6 +2432,10 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/tabbgga.png"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_shengdan.jpg.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/shengdan.jpg"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_state_list_animator_z.xml.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/state_list_animator_z.xml"
     },
@@ -2432,6 +2508,10 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/btn_common_bg_selector.xml"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_tubiao_four.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/tubiao_four.png"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-xhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
     },
@@ -2460,10 +2540,6 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable/abc_seekbar_track_material.xml"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_bmb_ham_button.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/boommenu/build/intermediates/packaged_res/debug/layout/bmb_ham_button.xml"
-    },
-    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-mdpi_login.jpg.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-mdpi/login.jpg"
     },
@@ -2478,6 +2554,10 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_tab_bg.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/tab_bg.png"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_beijing_four.jpeg.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/beijing_four.jpeg"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_damen.jpg.flat",
@@ -2568,6 +2648,10 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-hdpi-v4/abc_list_divider_mtrl_alpha.9.png"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_add.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/add.png"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldrtl-xhdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-ldrtl-xhdpi-v17/abc_spinner_mtrl_am_alpha.9.png"
     },
@@ -2614,6 +2698,14 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-mdpi_ml_default_image.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-mdpi/ml_default_image.png"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_tubiao_six.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/tubiao_six.png"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_beijingtupian_three.jpeg.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/beijingtupian_three.jpeg"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_btna_down.png.flat",
@@ -2664,12 +2756,16 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.0.aar/f7dfa5efd342d556ffcd75addb2bbd63/res/layout-v21/notification_action_tombstone.xml"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_bmb_simple_circle_button.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/boommenu/build/intermediates/packaged_res/debug/layout/bmb_simple_circle_button.xml"
-    },
-    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_register.jpg.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/register.jpg"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_plusplus.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/plusplus.png"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_returning.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/returning.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_background_div.xml.flat",
@@ -2722,6 +2818,10 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_dir2.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/dir2.png"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_mesage.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/mesage.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
@@ -2868,6 +2968,10 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-xxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_notice.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/notice.png"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_main_bg.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/main_bg.png"
     },
@@ -2972,6 +3076,10 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/layout2.xml"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_tubiao_two.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/tubiao_two.png"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-xhdpi-v4/abc_text_select_handle_right_mtrl_light.png"
     },
@@ -3002,6 +3110,10 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_list_selector.xml.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable/list_selector.xml"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_denglubeijing.jpeg.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/denglubeijing.jpeg"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_wodefb.png.flat",
@@ -3054,6 +3166,10 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_tushuguan.jpg.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/tushuguan.jpg"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_zhuye_two.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/zhuye_two.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
@@ -3112,6 +3228,10 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-xxhdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_fabu_one.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/fabu_one.png"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-mdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png"
     },
@@ -3158,10 +3278,6 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_amap_car.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/amap_car.png"
-    },
-    {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_register.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/register.xml"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_sp_moreb.png.flat",
@@ -3260,6 +3376,10 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/list_item_selector.xml"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/anim_push_left_out.xml.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/anim/push_left_out.xml"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_guojia.jpg.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable/guojia.jpg"
     },
@@ -3328,6 +3448,10 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/mipmap-hdpi/img_down_arrow.png"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_tubiao_five.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/tubiao_five.png"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-xxhdpi-v4/abc_ic_star_half_black_16dp.png"
     },
@@ -3346,6 +3470,10 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/mipmap-hdpi_myinput_close.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/mipmap-hdpi/myinput_close.png"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_popmenu.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/popmenu.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/anim_design_snackbar_in.xml.flat",
@@ -3444,6 +3572,10 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-hdpi-v4/abc_ic_star_black_36dp.png"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_daiqu_bar.xml.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable/daiqu_bar.xml"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_arrow_right_blue.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/arrow_right_blue.png"
     },
@@ -3482,6 +3614,10 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-mdpi-v4/abc_ab_share_pack_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_tubiao_ten.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/tubiao_ten.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_amap_end.png.flat",
@@ -3556,6 +3692,10 @@
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/color/abc_secondary_text_material_light.xml"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_save.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/save.png"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_jy_drltsz_btn_addperson.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/jy_drltsz_btn_addperson.png"
     },
@@ -3592,10 +3732,6 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable/green_track.xml"
     },
     {
-        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_bmb_text_outside_circle_button.xml.flat",
-        "source": "/Users/zhuhui/Desktop/demowork/aaa/boommenu/build/intermediates/packaged_res/debug/layout/bmb_text_outside_circle_button.xml"
-    },
-    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/xml_preference_about.xml.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/xml/preference_about.xml"
     },
@@ -3622,6 +3758,10 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/color_abc_tint_btn_checkable.xml.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/color/abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_tuichu.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/tuichu.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_list_focused_holo.9.png.flat",
@@ -3668,6 +3808,10 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/activity_kechengbiao.xml"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_background.jpeg.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/background.jpeg"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_list_longpressed_holo.9.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-mdpi-v4/abc_list_longpressed_holo.9.png"
     },
@@ -3678,6 +3822,10 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_star_black_48dp.png.flat",
         "source": "/Users/zhuhui/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.0.aar/b688b65b0a18d0f4e29841af11b84386/res/drawable-mdpi-v4/abc_ic_star_black_48dp.png"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_admin_expressdetail.xml.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/admin_expressdetail.xml"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_banner_dian_blur.png.flat",
@@ -3874,6 +4022,10 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_back.xml.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable/back.xml"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_search_title.xml.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/search_title.xml"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_bg_bottom_bar.9.png.flat",
@@ -4076,6 +4228,10 @@
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/button_b.png"
     },
     {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_zhijie_register.xml.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/layout/zhijie_register.xml"
+    },
+    {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-ldpi_c_down.png.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-ldpi/c_down.png"
     },
@@ -4090,6 +4246,10 @@
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable_bg_edittext_normal.xml.flat",
         "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable/bg_edittext_normal.xml"
+    },
+    {
+        "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/drawable-hdpi_tubiao_seven.png.flat",
+        "source": "/Users/zhuhui/Desktop/demowork/aaa/app/src/main/res/drawable-hdpi/tubiao_seven.png"
     },
     {
         "merged": "/Users/zhuhui/Desktop/demowork/aaa/app/build/intermediates/res/merged/debug/layout_notice_edit.xml.flat",

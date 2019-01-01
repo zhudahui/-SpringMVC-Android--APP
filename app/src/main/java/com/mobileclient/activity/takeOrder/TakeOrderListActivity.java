@@ -11,14 +11,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cc.testdemo.FouthFragment;
 import com.cc.testdemo.ThreeFragment;
 import com.cc.testdemo.TwoFragment;
 import com.mobileclient.activity.ExpressOrderAddActivity;
+import com.mobileclient.activity.MainUserActivity;
 import com.mobileclient.activity.MyInfoActivtiy;
 import com.mobileclient.activity.R;
 import com.mobileclient.activity.UserInfoEditActivity;
+import com.mobileclient.app.Declare;
 import com.mobileclient.fragment.MyOrderFourFragment;
 import com.mobileclient.fragment.MyOrderOneFragment;
 import com.mobileclient.fragment.MyOrderThreeFragment;
@@ -44,13 +47,18 @@ public class TakeOrderListActivity extends AppCompatActivity implements View.OnC
     private ImageView add;
     // String[] titles = new String[]{"待接单", "送单中", "待收获","待评价"};
     Intent intent=new Intent();
-
+    Declare declare;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //去除工具栏
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         setContentView(R.layout.take_order);
+        declare= (Declare) getApplication();
+        if(declare.getUserType().equals("普通用户")){
+            Toast.makeText(TakeOrderListActivity.this,"请先认证！",Toast.LENGTH_SHORT).show();
+            return;
+        }
         initViews();
         title.setText("我的代取");
         ImageView back = (ImageView) this.findViewById(R.id.back_btn);
@@ -124,7 +132,7 @@ public class TakeOrderListActivity extends AppCompatActivity implements View.OnC
             case R.id.item_quanbu:
                 vp.setCurrentItem(0, true);
                 break;
-            case R.id.item_jiedan:
+            case R.id.item_songdan:
                 vp.setCurrentItem(1, true);
                 break;
             case R.id.item_shouhuo:

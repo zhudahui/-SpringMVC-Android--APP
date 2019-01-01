@@ -40,62 +40,73 @@
                     android:textSize="18sp" />
 
             </LinearLayout>
+
             <TextView
-                android:id="@+id/expressCompanyName"
-                android:layout_width="100dp"
+                android:layout_below="@id/rl"
+                android:id="@+id/expressCompanyAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:background="@drawable/textview_border"
+                android:paddingLeft="3dp"
+                android:paddingTop="2dp"
+                android:paddingRight="3dp"
+                android:paddingBottom="2dp"
+                android:text="北邮 北门"
+                android:textColor="#F3CE5C" />
+            <TextView
+                android:id="@+id/tv"
+                android:layout_toRightOf="@id/expressCompanyAddress"
+                android:layout_below="@id/rl"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawablePadding="3dp"
-                android:text="快递公司"
-                android:layout_below="@+id/rl"/>
+                android:paddingBottom="2dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:paddingTop="2dp"
+                android:text="->"
+                android:textColor="#F3CE5C"/>
+
+            <TextView
+                android:layout_below="@id/rl"
+                android:id="@+id/tv_receiveAddressName"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_toRightOf="@id/tv"
+                android:background="@drawable/textview_border"
+                android:paddingLeft="3dp"
+                android:paddingTop="2dp"
+                android:paddingRight="3dp"
+                android:paddingBottom="2dp"
+                android:text="北邮 学十"
+                android:textColor="#F3CE5C" />
+
 
 
             <ImageView
+                android:id="@+id/tubiao"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentTop="true"
 
 
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/order_dai" />
+                android:src="@drawable/jingling" />
 
 
             <LinearLayout
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/expressCompanyName">
+               android:layout_below="@id/expressCompanyAddress">
+                <TextView
 
-                <TextView
-                    android:id="@+id/expressCompanyAddress"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/expressCompanyName"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="2dp"
-                    android:paddingLeft="3dp"
-                    android:paddingRight="3dp"
-                    android:paddingTop="2dp"
-                    android:background="@drawable/textview_border"
-                    android:text="北邮 北门"
-                    android:textColor="#fd4f28"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="2dp"
-                    android:paddingLeft="3dp"
-                    android:paddingRight="3dp"
-                    android:paddingTop="2dp"
-                    android:text="->"
-                    android:textColor="#fd4f28"/>
-                <TextView
-                    android:id="@+id/tv_receiveAddressName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="2dp"
-                    android:paddingLeft="3dp"
-                    android:paddingRight="3dp"
-                    android:paddingTop="2dp"
-                    android:background="@drawable/textview_border"
-                    android:text="北邮 学十"
-                    android:textColor="#fd4f28"/>
+                    android:drawablePadding="3dp"
+                    android:text="快递公司"
+                    />
+
 
                 <TextView
                     android:id="@+id/addTime"

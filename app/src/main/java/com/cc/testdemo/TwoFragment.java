@@ -164,7 +164,7 @@ public class TwoFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
                 Intent intent = new Intent();
-                intent.setClass(getActivity(), SecondUserDetailActivity.class);
+                intent.setClass(getActivity(), UserInfoDetailActivity.class);
                 arg2=arg2-1;
                 Bundle bundle = new Bundle();
                 bundle.putString("nickName", list.get(arg2).get("nickName").toString());
@@ -180,6 +180,8 @@ public class TwoFragment extends Fragment {
                 bundle.putInt("userReputation", Integer.parseInt(list.get(arg2).get("userReputation").toString()));
                 bundle.putString("regTime", list.get(arg2).get("regTime").toString());
                 bundle.putString("userAuthFile", list.get(arg2).get("userAuthFile").toString());
+                bundle.putString("userAuthState", list.get(arg2).get("userAuthState").toString());
+                bundle.putString("payPwd", list.get(arg2).get("payPwd").toString());
                 bundle.putByteArray("photo", (byte[]) list.get(arg2).get("photo"));
                 bundle.putString("Photo", list.get(arg2).get("Photo").toString());
                 intent.putExtras(bundle);
@@ -307,6 +309,8 @@ public class TwoFragment extends Fragment {
                     map.put("regTime", userList.get(i).getRegTime());
                     map.put("studentId", userList.get(i).getStudentId());
                     map.put("nickName", userList.get(i).getNickName());
+                    map.put("userAuthState",userList.get(i).getUserAuthState());
+                    map.put("payPwd",userList.get(i).getPayPwd());
 				/*byte[] userPhoto_data = ImageService.getImage(HttpUtil.BASE_URL+ UserList.get(i).getUserPhoto());// 获取图片数据
 				BitmapFactory.Options userPhoto_opts = new BitmapFactory.Options();
 				userPhoto_opts.inJustDecodeBounds = true;

@@ -1,8 +1,6 @@
 package com.mobileclient.activity;
 
-import com.mobileclient.activity.myorder.ExpressTakeMyListActivity;
 import com.mobileclient.activity.takeOrder.TakeOrderListActivity;
-import com.mobileclient.app.BuilderManager;
 import com.mobileclient.app.Declare;
 import com.mobileclient.app.IdentityImageView;
 import com.mobileclient.dialog.ActionItem;
@@ -23,7 +21,6 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.Uri;
@@ -42,22 +39,16 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
+
 import com.mobileclient.dialog.TitlePopup.OnItemOnClickListener;
 import com.mobileclient.util.ImageService;
-import com.nightonke.boommenu.BoomButtons.BoomButton;
-import com.nightonke.boommenu.BoomButtons.HamButton;
-import com.nightonke.boommenu.BoomMenuButton;
-import com.nightonke.boommenu.OnBoomListenerAdapter;
+import com.mobileclient.util.Utils;
+
 
 import android.widget.Toast;
-
-import org.apache.http.message.BasicNameValuePair;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -95,17 +86,20 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 	private File outputImagepath;//存储拍完照后的图片
 	String imagePath=null;//存储路径
 	String photoPath=null;
-	private BoomMenuButton bmb;
+
 	Declare declare;
+	Intent intent=new Intent();
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//去除title
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//requestWindowFeature(Window.FEATURE_NO_TITLE);
 		//去掉Activity上面的状态栏
-		getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
+		//getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
 		// 设置当前Activity界面布局
 		setContentView(R.layout.userinfo_detail);
+		Utils.setStatusBar(this, false, false);
+		Utils.setStatusTextColor(false, UserInfoDetailActivity.this);
 		declare = (Declare) getApplicationContext();
 		userId=findViewById(R.id.tv_userId);
 		studentId = findViewById(R.id.tv_studentId);
@@ -141,29 +135,7 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 //		title=findViewById(R.id.title);
 //		title.setText("个人信息");
 
-		bmb = (BoomMenuButton) findViewById(R.id.bmb);
-		assert bmb != null;
-		bmb.addBuilder(BuilderManager.getHamButtonBuilder("用户发布订单管理", "...")
-		.normalColorRes(R.color.black));
-		bmb.addBuilder(BuilderManager.getHamButtonBuilder("用户代取订单管理", "...")
-				.normalColorRes(R.color.black)
-				.normalImageRes(R.drawable.elephant));
-		bmb.addBuilder(BuilderManager.getHamButtonBuilder("用户收货地址管理", "...")
-				.normalColorRes(R.color.black));
-		bmb.addBuilder(BuilderManager.getHamButtonBuilder("用户认证管理", "...")
-				.normalColorRes(R.color.black));
-		bmb.addBuilder(BuilderManager.getHamButtonBuilder("更多", "...")
-				.normalColorRes(R.color.black)
-				.unableImageRes(R.drawable.butterfly)
-				.unableText("Unable!"));
 
-		bmb.setOnBoomListener(new OnBoomListenerAdapter() {
-			@Override
-			public void onClicked(int index, BoomButton boomButton) {
-				super.onClicked(index, boomButton);
-				changeBoomButton(index);
-			}
-		});
 
 
 
@@ -193,32 +165,33 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 		 extras = this.getIntent().getExtras();
 //======================================================
 		userType=extras.getString("userType");
-		if(userType.equals("普通用户")){
-			if(extras.getString("userAuthFile").equals("--")) {
+			if(extras.getString("userAuthState").equals("未认证")) {
 				userName.setText("未认证");
 				studentId.setText("未认证");
+			}
+
+		    else if(extras.getString("userAuthState").equals("已认证")) {
+				userName.setText(extras.getString("userName"));
+				studentId.setText(String.valueOf(extras.getInt("studentId")));
 			}
 			else {
 				userName.setText("待认证" + extras.getString("userName"));
 				studentId.setText("待认证"+extras.getInt("studentId"));
 				//如果是待审核用户，则出现审核按钮
-
-
 			}
-		}else {
-			userName.setText(extras.getString("userName"));
-			studentId.setText(String.valueOf(extras.getInt("studentId")));
-		}
+
 		byte [] photo=null;
 		photo=extras.getByteArray("photo");
 		Bitmap iuserPhoto = BitmapFactory.decodeByteArray(photo, 0, photo.length);
 		// 获取图片数据
 		userPhoto.getBigCircleImageView().setImageBitmap(iuserPhoto);
+//		if(userType.equals("快递员")) {
+//			btnDown.setVisibility(View.VISIBLE);
+//			userPhoto.getSmallCircleImageView().setImageResource(R.drawable.v);
+//		}
 		if(userType.equals("快递员")) {
-			btnDown.setVisibility(View.VISIBLE);
-			userPhoto.getSmallCircleImageView().setImageResource(R.drawable.v);
+			userPhoto.getSmallCircleImageView().setImageResource(R.drawable.renzheng);
 		}
-
         userType1.setText(extras.getString("userType"));
 		userPassword.setText(extras.getString("userPassword"));
 		userId.setText(String.valueOf(extras.get("userId")));
@@ -257,12 +230,16 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 		titlePopup.setItemOnClickListener(onitemClick);
 		// 给标题栏弹窗添加子类
 		titlePopup.addAction(new ActionItem(this, R.string.menu_groupchat,
-				R.drawable.icon_menu_group));
+				R.drawable.abv));
 		titlePopup.addAction(new ActionItem(this, R.string.menu_addfriend,
-				R.drawable.icon_menu_addfriend));
+				R.drawable.abv));
 		titlePopup.addAction(new ActionItem(this, R.string.menu_qrcode,
-				R.drawable.icon_menu_sao));
-		titlePopup.addAction(new ActionItem(this, R.string.menu_money,
+				R.drawable.abv));
+		titlePopup.addAction(new ActionItem(this,"认证信息",
+				R.drawable.abv));
+		titlePopup.addAction(new ActionItem(this,"用户订单",
+				R.drawable.abv));
+		titlePopup.addAction(new ActionItem(this,"用户收货地址",
 				R.drawable.abv));
 	}
 	//======================================================
@@ -291,6 +268,8 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 							user.setNickName(extras.getString("nickName"));
 							user.setStudentId(extras.getInt("studentId"));
 							user.setUserPhone(extras.getString("userPhone"));
+							user.setUserAuthState("已认证");
+							user.setPayPwd(extras.getString("payPwd"));
 							userService.UpdateUserInfo(user);
 							Log.i("ppppp",""+"点击1");
 							Message msg=new Message();
@@ -305,10 +284,7 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 				case 1:// 不通过审核
 //
 					break;
-				case 2:// 查看订单
-//
-					break;
-				case 3://编辑
+				case 2:// 更新
 					new Thread(new Runnable() {
 						@Override
 						public void run() {
@@ -329,6 +305,7 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 								user.setNickName(nickName.getText().toString());
 								user.setStudentId(Integer.parseInt(studentId.getText().toString()));
 								user.setUserPhone(userPhone.getText().toString());
+								user.setPayPwd(extras.getString("payPwd"));
 								userService.UpdateUserInfo(user);
 								Bundle bundle = new Bundle();
 								bundle.putSerializable("user", user);
@@ -350,6 +327,7 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 								user.setNickName(nickName.getText().toString());
 								user.setStudentId(Integer.parseInt(studentId.getText().toString()));
 								user.setUserPhone(userPhone.getText().toString());
+								user.setPayPwd(extras.getString("payPwd"));
 								userService.UpdateUserInfo(user);
 								Bundle bundle=new Bundle();
 								bundle.putSerializable("user", user);
@@ -360,8 +338,30 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 					}).start();
 
 
+					break;
+				case 3://查看认证信息
+					declare.setStudentId(extras.getInt("studentId"));
+					//declare.setAdminUserId(Integer.parseInt(userId.getText().toString()));    //记住当前用户Id
+					declare.setUserName(extras.getString("userName"));
+					declare.setUserAuthFile(extras.getString("userAuthFile"));
 
 
+					intent = new Intent(UserInfoDetailActivity.this, AdminUserAuthActivity.class);
+					startActivity(intent);
+
+					break;
+				case 4:
+					declare.setUserId(Integer.parseInt(userId.getText().toString()));
+					//declare.setAdminUserId(Integer.parseInt(userId.getText().toString()));    //记住当前用户Id
+					declare.setNickName(nickName.getText().toString());
+					intent.setClass(UserInfoDetailActivity.this,TakeOrderListActivity.class);
+					startActivity(intent);
+					break;
+				case 5:
+					declare.setUserId(Integer.parseInt(userId.getText().toString()));    //记住当前用户Id
+					declare.setNickName(nickName.getText().toString());
+					intent.setClass(UserInfoDetailActivity.this,ReceiveAddressListActivity.class);
+					startActivity(intent);
 					break;
 				default:
 					break;
@@ -385,48 +385,7 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 	}
 //============
 
-	private void changeBoomButton(int index) {
-		// From version 2.0.9, BMB supports a new feature to change contents in boom-button
-		// by changing contents in the corresponding builder.
-		// Please notice that not every method supports this feature. Only the method whose comment
-		// contains the "Synchronicity" tag supports.
-		// For more details, check:
-		// https://github.com/Nightonke/BoomMenu/wiki/Change-Boom-Buttons-Dynamically
-		Intent intent=new Intent();
-		HamButton.Builder builder = (HamButton.Builder) bmb.getBuilder(index);
-		if (index == 0) { //跳转到用户发布订单页面
-//			builder.normalText("Changed!");
-////			builder.highlightedText("Highlighted, changed!");
-////			builder.subNormalText("Sub-text, changed!");
-			declare.setUserId(Integer.parseInt(userId.getText().toString()));
-			//declare.setAdminUserId(Integer.parseInt(userId.getText().toString()));    //记住当前用户Id
-            //declare.setAdminNickName(nickName.getText().toString());
-			declare.setNickName(nickName.getText().toString());
-			intent.setClass(UserInfoDetailActivity.this,ExpressTakeMyListActivity.class);
-			startActivity(intent);
-			builder.normalTextColor(Color.YELLOW);
-			builder.highlightedTextColorRes(R.color.colorPrimary);
-			builder.subNormalTextColor(Color.BLACK);
-		} else if (index == 1) {    //跳转到用户代取订单管理页面
-			declare.setUserId(Integer.parseInt(userId.getText().toString()));
-			//declare.setAdminUserId(Integer.parseInt(userId.getText().toString()));    //记住当前用户Id
-			declare.setNickName(nickName.getText().toString());
-			intent.setClass(UserInfoDetailActivity.this,TakeOrderListActivity.class);
-			startActivity(intent);
-			builder.normalImageRes(R.drawable.bat);
-			builder.highlightedImageRes(R.drawable.bear);
-		} else if (index == 2) {//跳转到用户收货地址管理
-			declare.setUserId(Integer.parseInt(userId.getText().toString()));    //记住当前用户Id
-			declare.setNickName(nickName.getText().toString());
-			intent.setClass(UserInfoDetailActivity.this,ReceiveAddressListActivity.class);
-			startActivity(intent);
-			builder.normalColorRes(R.color.colorAccent);
-		} else if (index == 3) {    //用户认证信息管理
-			builder.pieceColor(Color.WHITE);
-		} else if (index == 4) {
-			builder.unable(true);
-		}
-	}
+
 	//=====================
 
 	Handler handler=new Handler(){
@@ -459,7 +418,7 @@ public class UserInfoDetailActivity extends Activity implements View.OnClickList
 				Bitmap photo1 = BitmapFactory.decodeByteArray(photo, 0, photo.length);
 				userPhoto.getBigCircleImageView().setImageBitmap(photo1);
 				if(userType.equals("快递员")) {
-					btnDown.setVisibility(View.VISIBLE);
+					//btnDown.setVisibility(View.VISIBLE);
 					userPhoto.getSmallCircleImageView().setImageResource(R.drawable.v);
 				}
 

@@ -23,6 +23,7 @@ android {
     }
 }
 repositories {
+
     maven {
         url "https://jitpack.io"
     }
@@ -51,7 +52,7 @@ dependencies {
     implementation files('libs/jna-platform-4.1.0.jar')
     // OKHttp
     implementation 'com.squareup.okhttp3:okhttp:3.2.0'
-    implementation 'com.squareup.okio:okio:1.6.0'
+    //implementation 'com.squareup.okio:okio:1.6.0'
     // Glide
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation files('libs/gson-2.7-javadoc.jar')
@@ -60,9 +61,18 @@ dependencies {
     implementation 'com.github.ozodrukh:CircularReveal:1.0.4'
     implementation files('libs/butterknife-7.0.1.jar')
     implementation files('libs/alipaySdk-20180601.jar')
-    implementation project(':boommenu')
+
     implementation 'com.google.code.gson:gson:2.8.0'
     implementation 'com.just.agentweb:agentweb:2.0.1'
     implementation 'com.readystatesoftware.systembartint:systembartint:1.0.4'
     implementation files('libs/org.simalliance.openmobileapi.jar')
+
+
+    /**
+     * bmob Data SDK
+     */
+   // implementation 'cn.bmob.android:bmob-sdk:3.5.0'
+    //bmob-sms ：Bmob单独为短信服务提供的包
+
+
 }

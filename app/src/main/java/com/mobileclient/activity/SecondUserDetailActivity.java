@@ -86,6 +86,7 @@ public class SecondUserDetailActivity extends Activity implements View.OnClickLi
     private File outputImagepath;//存储拍完照后的图片
     String imagePath=null;//存储路径
     String photoPath=null;
+    String userAuthState;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -168,21 +169,19 @@ public class SecondUserDetailActivity extends Activity implements View.OnClickLi
         extras = this.getIntent().getExtras();
 //======================================================
         userType=extras.getString("userType");
-        if(userType.equals("普通用户")){
-            if(extras.getString("userAuthFile").equals("--")) {
+        userAuthState=extras.getString("userAuthState");
+        if(userType.equals("普通用户")) {
+            if (userAuthState.equals("未认证")) {
                 userName.setText("未认证");
                 studentId.setText("未认证");
-            }
-            else {
+            } else if (userAuthState.equals("已认证")) {
+                userName.setText(extras.getString("userName"));
+                studentId.setText(String.valueOf(extras.getInt("studentId")));
+            } else {
                 userName.setText("待认证" + extras.getString("userName"));
-                studentId.setText("待认证"+extras.getInt("studentId"));
+                studentId.setText("待认证" + extras.getInt("studentId"));
                 //如果是待审核用户，则出现审核按钮
-
-
             }
-        }else {
-            userName.setText(extras.getString("userName"));
-            studentId.setText(String.valueOf(extras.getInt("studentId")));
         }
         byte [] photo=null;
         photo=extras.getByteArray("photo");

@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:background="#F5F5F5"
     android:orientation="vertical" >
+
 <include layout="@layout/title" />
 <ScrollView
  android:layout_width="fill_parent" 

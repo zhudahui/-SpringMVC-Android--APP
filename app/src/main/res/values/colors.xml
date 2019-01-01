@@ -78,7 +78,7 @@
 
     <color name="gray">#333333</color>
 
-    <color name="lightgoldenrodyellow">#FAFAD2</color>
+    <color name="lightgoldenrodyellow">#F3CE5C</color>
     <color name="darkgoldenrod">#B8860B</color>
     <color name="snow">#FFFAFA</color>
     <color name="dark">#000000</color>
@@ -153,4 +153,6 @@
     <color name="white">#ffffff</color>
     <color name="myInputPwdBase_blue">#0887ee</color>
     <color name="myInputPwdBase_gray">#f0f0f6</color>
+    <color name="iron">#CCCCCC</color>
+    <color name="accent">#FFFFFF</color>
     </resources>

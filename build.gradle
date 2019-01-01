@@ -3,6 +3,10 @@ buildscript {
     repositories {
         jcenter()
         google()
+        /**
+         * bmob SDK 仓库
+         */
+        maven { url "https://raw.github.com/bmob/bmob-android-sdk/master" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.0'
@@ -15,5 +19,9 @@ allprojects {
     repositories {
         jcenter()
         google()
+        /**
+         * bmob SDK 仓库
+         */
+        maven { url "https://raw.github.com/bmob/bmob-android-sdk/master" }
     }
 }

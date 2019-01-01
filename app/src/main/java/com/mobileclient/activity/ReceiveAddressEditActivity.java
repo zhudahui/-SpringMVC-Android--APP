@@ -15,32 +15,39 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mobileclient.app.Declare;
 import com.mobileclient.domain.ReceiveAddress;
 import com.mobileclient.service.ReceiveAddressService;
+import com.mobileclient.util.Utils;
 
 public class ReceiveAddressEditActivity extends Activity {
     private EditText ET_receiveName;
     private EditText ET_reivePhone;
     private EditText ET_receiveAddressName;
     private Switch receiveState;
-    private TextView save;
+    private ImageView save;
     private Declare declare;
     private Button btnDelete;
     private ImageView back;
+    private TextView title;
     ReceiveAddress receiveAddress=new ReceiveAddress();
     ReceiveAddress receiveAddress1=new ReceiveAddress();
     ReceiveAddressService receiveAddressService=new ReceiveAddressService();
+    private int flag=0;
+    Bundle extras;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //去除title
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+       // requestWindowFeature(Window.FEATURE_NO_TITLE);
         //去掉Activity上面的状态栏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         // 设置当前Activity界面布局
         setContentView(R.layout.receiveaddress_edit);
+        Utils.setStatusBar(this, false, false);
+        Utils.setStatusTextColor(false, ReceiveAddressEditActivity.this);
         save=findViewById(R.id.save);
         declare = (Declare) getApplicationContext();
         ET_receiveAddressName=findViewById(R.id.et_receiveAdressName);
@@ -55,8 +62,9 @@ public class ReceiveAddressEditActivity extends Activity {
             }
         });
         btnDelete=findViewById(R.id.btnDelete);
-
-        Bundle extras = this.getIntent().getExtras();
+        title=findViewById(R.id.title);
+        title.setText("地址修改");
+        extras = this.getIntent().getExtras();
         ET_receiveAddressName.setText(extras.getString("receiveAddressName"));
         ET_receiveName.setText(extras.getString("receiveName"));
         ET_reivePhone.setText(extras.getString("receivePhone"));
@@ -82,6 +90,7 @@ public class ReceiveAddressEditActivity extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
+                    flag=1;
                     receiveAddress.setReceiveState("1");
                     receiveAddress1.setReceiveAddressName(declare.getReceiveAddressName());
                     receiveAddress1.setReceiveName(declare.getReceiveName());
@@ -91,24 +100,50 @@ public class ReceiveAddressEditActivity extends Activity {
                     receiveAddress1.setReceivePhone(declare.getReceivePhone());
                 }else {
                     //Todo
+                    flag=1;
                     receiveAddress.setReceiveState("0");
                 }
             }
         });
-        final Handler handler=new Handler(){
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                Intent intent = new Intent();  //点击返回地址名和地址Id
-                setResult(RESULT_OK,intent);
-                finish();
-            }
-        };
+
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final Handler handler=new Handler(){
+                    @Override
+                    public void handleMessage(Message msg) {
+                        super.handleMessage(msg);
+                        Log.i("1234567","1111");
+                        Toast.makeText(ReceiveAddressEditActivity.this,"修改成功！",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent();  //点击返回地址名和地址Id
+                        setResult(RESULT_OK,intent);
+                        finish();
+                    }
+                };
+
+                if(ET_receiveName.getText().toString().equals("")){
+                    Toast.makeText(ReceiveAddressEditActivity.this,"收货人不能为空",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(ET_reivePhone.getText().toString().equals("")){
+                    Toast.makeText(ReceiveAddressEditActivity.this,"收货电话不能为空！",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(ET_reivePhone.getText().toString().length()!=11){
+                    Toast.makeText(ReceiveAddressEditActivity.this,"手机号非法！",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(ET_receiveAddressName.getText().toString().equals("")){
+                    Toast.makeText(ReceiveAddressEditActivity.this,"收货地址不能为空！",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if (declare.getReceiveId() != -1 && receiveId != declare.getReceiveId()) {   //有默认地址，且换另一个默认地址
+
+                    if(flag==0){
+                        Log.i("1234567","444");
+                        receiveAddress.setReceiveState(extras.getString("receiveState"));
+                    }
                     receiveAddress.setReceiveName(ET_receiveName.getText().toString());
                     receiveAddress.setReceivePhone(ET_reivePhone.getText().toString());
                     receiveAddress.setReceiveAddressName(ET_receiveAddressName.getText().toString());
@@ -125,6 +160,11 @@ public class ReceiveAddressEditActivity extends Activity {
                     }).start();
                 }
                 if (declare.getReceiveId() == -1) {   // 无默认地址
+                    if(flag==0){
+                        Log.i("1234567","222");
+                        receiveAddress.setReceiveState(extras.getString("receiveState"));
+                    }
+                    Log.i("1234567","333");
                     receiveAddress.setReceiveName(ET_receiveName.getText().toString());
                     receiveAddress.setReceivePhone(ET_reivePhone.getText().toString());
                     receiveAddress.setReceiveAddressName(ET_receiveAddressName.getText().toString());

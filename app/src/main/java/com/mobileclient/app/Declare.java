@@ -1,27 +1,33 @@
 package com.mobileclient.app;
  
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
 import com.mobileclient.util.HttpUtil;
 
+//import cn.bmob.v3.Bmob;
+
 
 public class Declare extends Application {
 
 	private static Declare sInstance;
+	private ArrayList<Activity> list;
 	@Override
 	public void onCreate() {
 		super.onCreate();
 		sInstance = this;
+		//Bmob.initialize(this,"eb501c214a09b1fef037a4d12335306a");
 		CrashHandler crashHandler = CrashHandler.getInstance();    
 	    crashHandler.init(getApplicationContext()); 
 	    context = this.getApplicationContext(); 
 	    File path = new File(HttpUtil.FILE_PATH);
-
+		list = new ArrayList<>();
 	    if(!path.exists()) path.mkdirs();
 	}
 	public static Declare getInstance() {
@@ -33,7 +39,7 @@ public class Declare extends Application {
 	private int userId;//用户Id
     private String userName;
 
-    private List<Map<String, Object>> list;
+
 	public String getUserType() {
 		return userType;
 	}
@@ -66,11 +72,9 @@ public class Declare extends Application {
 	private String receiveName;
 	private String receivePhone;
     private int receiveAddressId;
-
-
     private int adminUserId;  //管理员管理用户ID；
 	private String adminNickName;//管理员管理用户
-
+	private String netWork;
 
 
     public String getUserName() {
@@ -202,13 +206,7 @@ public class Declare extends Application {
 		this.studentId = studentId;
 	}
 
-	public List<Map<String, Object>> getList() {
-		return list;
-	}
 
-	public void setList(List<Map<String, Object>> list) {
-		this.list = list;
-	}
 
 	public String getUserAuthState() {
 		return userAuthState;
@@ -300,4 +298,34 @@ public class Declare extends Application {
 	public void setPayPwd(String payPwd) {
 		this.payPwd = payPwd;
 	}
+
+
+	public String getNetWork() {
+		return netWork;
+	}
+
+	public void setNetWork(String netWork) {
+		this.netWork = netWork;
+	}
+
+
+
+	public void AddActivity(Activity activity) {
+
+		list.add(activity);
+
+	}
+
+	public void exit() {
+		try {
+			for (Activity activity : list) {
+				if (activity != null)
+					activity.finish();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
 }

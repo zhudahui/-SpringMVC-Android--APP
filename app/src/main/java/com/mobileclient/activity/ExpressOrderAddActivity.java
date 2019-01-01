@@ -20,9 +20,11 @@ import com.mobileclient.domain.ReceiveAddress;
 import com.mobileclient.domain.User;
 import com.mobileclient.service.OrderService;
 import com.mobileclient.service.ReceiveAddressService;
+import com.mobileclient.service.UserService;
 import com.mobileclient.util.ActivityUtils;
 import com.mobileclient.util.BitmapUtil;
 import com.mobileclient.util.HttpUtil;
+import com.mobileclient.util.Utils;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -104,14 +106,16 @@ public class ExpressOrderAddActivity extends Activity {
     private String pay;
     private Declare declare;
     private ImageView orderPic;
+    UserService userService=new UserService();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //去除title
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
         //去掉Activity上面的状态栏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         // 设置当前Activity界面布局
+        Utils.setStatusBar(this, false, false);
         setContentView(R.layout.expressorder_add);
         ImageView search = (ImageView) this.findViewById(R.id.search);
         search.setVisibility(View.GONE);
@@ -191,7 +195,7 @@ public class ExpressOrderAddActivity extends Activity {
                     }
                     order.setRemark(ET_remark.getText().toString());
                     /*验证获取收货备注*/
-                    if (ET_receiveCode.getText().toString().equals("")) {
+                    if (ET_receiveCode.getText().toString().equals("")||ET_receiveCode.getText().toString().equals("请添加收货地址！")) {
                         Toast.makeText(ExpressOrderAddActivity.this, "收货地址输入不能为空!", Toast.LENGTH_LONG).show();
                         ET_receiveCode.setFocusable(true);
                         ET_receiveCode.requestFocus();
@@ -205,12 +209,36 @@ public class ExpressOrderAddActivity extends Activity {
                         ET_orderPay.requestFocus();
                         return;
                     }
-                    order.setOrderPay(ET_orderPay.getText().toString());
-//                    if(Integer.parseInt(order.getOrderPay())>Integer.parseInt()){
-//                        Toast.makeText(ExpressOrderAddActivity.this, "你的余额不足，请充值!", Toast.LENGTH_LONG).show();
-//                        return;
-//                    }
+                    if(Double.parseDouble(ET_orderPay.getText().toString())<1.0){    //判断余额是否充足
+                        Toast.makeText(ExpressOrderAddActivity.this, "酬金最低一元!", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    if(Double.parseDouble(ET_orderPay.getText().toString())>Double.parseDouble((declare.getUserMoney()))){    //判断余额是否充足
+                        Toast.makeText(ExpressOrderAddActivity.this, "你的余额不足，请充值!", Toast.LENGTH_LONG).show();
+                        return;
+                    }
 
+                    order.setOrderPay(ET_orderPay.getText().toString());   //余额充足
+                   // declare.setUserMoney(String.valueOf(Double.parseDouble(declare.getUserMoney())-Double.parseDouble(ET_orderPay.getText().toString())));
+                    //扣除余额
+                    user.setPayPwd(declare.getPayPwd());  //更新
+                    user.setUserId(declare.getUserId());
+                    user.setUserName(declare.getUserName());
+                    user.setUserAuthFile(declare.getUserAuthFile());
+                    user.setUserPhoto(declare.getUserPhoto());
+                    user.setUserPassword(declare.getUserPassword());
+                    user.setUserMoney(String.valueOf(Double.parseDouble(declare.getUserMoney())-Double.parseDouble(ET_orderPay.getText().toString())));
+                    Log.i("ffffffffffff",""+user.getUserMoney());
+                    user.setRegTime(declare.getRegTime());
+                    user.setUserEmail(declare.getUserEmail());
+                    user.setUserGender(declare.getUserGender());
+                    user.setUserPhone(declare.getUserPhone());
+                    user.setUserPassword(declare.getUserPassword());
+                    user.setUserReputation(declare.getUserReputation());
+                    user.setUserType(declare.getUserType());
+                    user.setNickName(declare.getNickName());
+                    user.setStudentId(declare.getStudentId());
+                    user.setUserAuthState(declare.getUserAuthState());
                     /*调用业务逻辑层上传快递代拿信息*/
                     ExpressOrderAddActivity.this.setTitle("正在上传快递代拿信息，稍等...");
                     order.setUserId(userId);//添加发布者Id
@@ -229,10 +257,7 @@ public class ExpressOrderAddActivity extends Activity {
                     initAdd();
                     //String money=String.valueOf(Integer.parseInt()-Integer.parseInt(order.getOrderPay()));
                     //declare.setUserMoney(money);//  扣除订单金额
-                    Intent intent = getIntent();
-                    //intent.putExtras(bundle);
-                    setResult(RESULT_OK,intent);
-                    finish();
+
                     //intent.setClass(ExpressOrderAddActivity.this,MainUserActivity.class);
                     //  startActivity(intent);
                     //setResult(RESULT_OK,intent);
@@ -254,6 +279,11 @@ public class ExpressOrderAddActivity extends Activity {
                 if (msg.what == 0x123) {
                     Log.i("ppppppppp","state"+msg.getData().getString("receiveAddressName"));
                     declare.setReceiveAddressId(msg.getData().getInt("receiveId"));
+                    order.setReceiveAdressId(msg.getData().getInt("receiveId"));
+                    order.setReceiveName(msg.getData().getString("receiveName"));
+                    order.setReceivePhone(msg.getData().getString("receivePhone"));
+                    order.setReceiveState(msg.getData().getString("receiveState"));
+                    order.setReceiveAddressName(msg.getData().getString("receiveAddressName"));
 
                     ET_receiveAddressName.setText(msg.getData().getString("receiveAddressName"));   //绑定默认地址
                 }
@@ -290,7 +320,13 @@ public class ExpressOrderAddActivity extends Activity {
 
                             message.what = 0x123;
                         } else {
-                            Log.i("ppppppppp", "state" + receiveAddressesrList.get(1).getReceiveAddressName());
+                            bundle.putString("receiveAddressName", receiveAddressesrList.get(0).getReceiveAddressName());//获得默认地址
+                            bundle.putString("receiveName",receiveAddressesrList.get(0).getReceiveName());
+                            bundle.putString("receivePhone",receiveAddressesrList.get(0).getReceivePhone());
+                            bundle.putString("receiveState",receiveAddressesrList.get(0).getReceiveState());
+                            // bundle.putString("receiveName",receiveAddressesrList.get(i).getReceiveName());
+                            bundle.putInt("receiveId", receiveAddressesrList.get(0).getReceiveId());
+                            Log.i("ppppppppp", "state" + receiveAddressesrList.get(0).getReceiveAddressName());
                             //bundle.putString("receiveAddressName", receiveAddressesrList.get(1).getReceiveAddressName());//获得第一个地址
                             message.what = 0x123;
                         }
@@ -315,13 +351,24 @@ public class ExpressOrderAddActivity extends Activity {
             @Override
             public void handleMessage(Message msg) {
                 if (msg.what == 0x123) {
+                    declare.setUserMoney(String.valueOf(Double.parseDouble(declare.getUserMoney())-Double.parseDouble(ET_orderPay.getText().toString())));
+                    //扣除余额
 
                     Toast.makeText(ExpressOrderAddActivity.this, "发布成功！", Toast.LENGTH_SHORT).show();
+                    Intent intent = getIntent();
+                    //intent.putExtras(bundle);
+                    setResult(RESULT_OK,intent);
+                    finish();
 
                 }
                 if (msg.what == 0x124) {
+                    declare.setUserMoney(String.valueOf(Double.parseDouble(declare.getUserMoney())-Double.parseDouble(ET_orderPay.getText().toString())));
 
-                    Toast.makeText(ExpressOrderAddActivity.this, "请选择实物图", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ExpressOrderAddActivity.this, "发布成功", Toast.LENGTH_SHORT).show();
+                    Intent intent = getIntent();
+                    //intent.putExtras(bundle);
+                    setResult(RESULT_OK,intent);
+                    finish();
 
                 }
                 super.handleMessage(msg);
@@ -334,14 +381,17 @@ public class ExpressOrderAddActivity extends Activity {
                 if(imagePath!=null) {
                     upload();
                     order.setOrderPic(photo);
-
+                    userService.UpdateUserInfo(user);
                     orderService.AddOrder(order);
-
                     msg.what = 0x123;
                     myhandler.sendMessage(msg);
                 }
                 else{
+                    userService.UpdateUserInfo(user);
+                    order.setOrderPic("--");
+                    orderService.AddOrder(order);
                     msg.what = 0x124;
+                    myhandler.sendMessage(msg);
                 }
             }
         }).start();
@@ -551,13 +601,15 @@ public class ExpressOrderAddActivity extends Activity {
                 }
                 break;
             case ActivityUtils.ADD_CODE:
-                Bundle extras = data.getExtras();
-                ET_receiveAddressName.setText(extras.getString("receiveAddressName"));
-                order.setReceiveAdressId(extras.getInt("receiveId"));
-                order.setReceiveName(extras.getString("receiveName"));
-                order.setReceivePhone(extras.getString("receivePhone"));
-                order.setReceiveState(extras.getString("receiveState"));
-                order.setReceiveAddressName(extras.getString("receiveAddressName"));
+                if (data!=null) {
+                    Bundle extras = data.getExtras();
+                    ET_receiveAddressName.setText(extras.getString("receiveAddressName"));
+                    order.setReceiveAdressId(extras.getInt("receiveId"));
+                    order.setReceiveName(extras.getString("receiveName"));
+                    order.setReceivePhone(extras.getString("receivePhone"));
+                    order.setReceiveState(extras.getString("receiveState"));
+                    order.setReceiveAddressName(extras.getString("receiveAddressName"));
+                }
                 break;
             default:
                 break;

@@ -3,100 +3,112 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include layout="@layout/title_layout"/>
+
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        >
-        <TableRow android:layout_marginTop="50dp">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <TableRow android:layout_marginTop="90dp">
+
             <TextView
-                android:text="姓名"
                 android:id="@+id/TV_receiveName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/hint_color"
-                android:layout_weight="1.5"/>
+                android:layout_weight="1.5"
+                android:text="姓名"
+                android:textColor="@color/hint_color" />
+
             <EditText
-                android:text=""
                 android:id="@+id/et_receiveName"
                 android:layout_width="0dp"
-                android:layout_weight="4"
                 android:layout_height="40dp"
                 android:layout_marginTop="5dip"
                 android:layout_marginRight="5dp"
+                android:layout_weight="4"
                 android:background="@drawable/btn_item_medium_default"
                 android:drawableLeft="@drawable/ic_user_info"
                 android:drawablePadding="10dp"
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:paddingLeft="4dp"
-                android:singleLine="true"/>
+                android:singleLine="true"
+                android:text="" />
         </TableRow>
+
         <TableRow android:layout_marginTop="8dp">
+
             <TextView
-                android:text="手机号："
                 android:id="@+id/TV_receivePhone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/hint_color"
-                android:layout_weight="1.5"/>
+                android:layout_weight="1.5"
+                android:text="手机号："
+                android:textColor="@color/hint_color" />
+
             <EditText
-                android:text=""
                 android:id="@+id/et_receivePhone"
                 android:layout_width="0dp"
-                android:layout_weight="4"
                 android:layout_height="40dp"
                 android:layout_marginTop="5dip"
                 android:layout_marginRight="5dp"
+                android:layout_weight="4"
                 android:background="@drawable/btn_item_medium_default"
                 android:drawableLeft="@drawable/ic_user_info"
                 android:drawablePadding="10dp"
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:paddingLeft="4dp"
-                android:singleLine="true"/>
+                android:singleLine="true"
+                android:text="" />
         </TableRow>
+
         <TableRow android:layout_marginTop="5dp">
+
             <TextView
-                android:text="地址："
                 android:id="@+id/TV_receiveAddressName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
+                android:text="地址："
                 android:textColor="@color/hint_color" />
+
             <EditText
-                android:text=""
                 android:id="@+id/et_receiveAdressName"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_weight="4"
                 android:layout_marginTop="5dip"
+                android:layout_marginRight="5dp"
+                android:layout_weight="4"
                 android:background="@drawable/btn_item_medium_default"
                 android:drawableLeft="@drawable/ic_user_pwd"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="4dp"
-                android:layout_marginRight="5dp"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="" />
         </TableRow>
+
         <TableRow android:layout_marginTop="5dp">
+
             <TextView
-                android:text="设为默认地址："
                 android:id="@+id/TV_receiveState"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
-                />
+                android:text="设为默认地址：" />
 
-                <Switch
-                    android:id="@+id/receiveState"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:switchMinWidth="20dp"
-                    android:textOn="  "
-                    android:textOff="  "
-                    android:thumb="@drawable/thumb"
-                    android:track="@drawable/track" />
-            
+            <Switch
+                android:id="@+id/receiveState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:switchMinWidth="20dp"
+                android:textOff="  "
+                android:textOn="  "
+                android:thumb="@drawable/thumb"
+                android:track="@drawable/track" />
+
         </TableRow>
     </TableLayout>
 
@@ -108,7 +120,7 @@
             android:layout_marginLeft="5dip"
             android:layout_marginRight="5dip"
             android:layout_marginTop="450dip"
-            android:background="#D64F4D"
+            android:background="#F3CE5C"
             android:textColor="@color/white" />
 
 </RelativeLayout>

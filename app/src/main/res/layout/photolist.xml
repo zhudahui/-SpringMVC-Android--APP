@@ -1,122 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#F5F5F5"
-    android:orientation="vertical" >
+    android:layout_height="match_parent"
+    >
 
-    <include layout="@layout/title" />
+    <Button
+        android:id="@+id/btn_add_shortcut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Shortcut"
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#FFCCCCCC"
-            android:orientation="vertical">
+    <Button
+        android:id="@+id/btn_send_notification_channel1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+      />
 
-            <RelativeLayout
-                android:layout_marginTop="1dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/white"
-                >
+    <Button
+        android:id="@+id/btn_send_notification_channel2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-                <TextView
-                    android:id="@+id/TV_title_Label"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="4"
-                    android:gravity="center"
-                    android:text="标题："
-                    android:textColor="@color/black"
-
-
-                    />
-
-                <TextView
-                    android:id="@+id/TV_noticeTitlee"
-                    android:layout_width="500dp"
-                    android:layout_height="40dp"
-                    android:layout_toRightOf="@id/TV_title_Label"
-                    android:layout_weight="4"
-                    android:gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:text="" />
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_marginTop="1dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white"
-
-            >
-
-                <TextView
-                    android:id="@+id/TV_content_Label"
-                    android:layout_width="100dp"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="4"
-                    android:gravity="center"
-                    android:text="公告内容："
-                    android:textColor="@color/black"
-
-                    />
-
-                <TextView
-                    android:id="@+id/TV_noticeContent"
-                    android:layout_width="500dp"
-                    android:layout_height="70dp"
-                    android:layout_toRightOf="@id/TV_content_Label"
-                    android:layout_weight="4"
-                    android:gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:text="北邮北门"
-                    android:inputType="textMultiLine"
-                    />
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/white"
-                android:layout_marginTop="1dp"
-                >
-
-                <TextView
-                    android:id="@+id/TV_publishDate_Label"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="4"
-                    android:gravity="center"
-                    android:text="发布时间："
-                    android:textColor="@color/black"
-
-
-                    />
-
-                <TextView
-                    android:id="@+id/TV_publishDate"
-                    android:layout_width="500dp"
-                    android:layout_height="40dp"
-                    android:layout_toRightOf="@id/TV_publishDate_Label"
-                    android:layout_weight="4"
-                    android:gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:text="2018-11-14"
-                  />
-
-            </RelativeLayout>
-
+      />
 
 </LinearLayout>
-
-    </ScrollView>
-</LinearLayout>
-

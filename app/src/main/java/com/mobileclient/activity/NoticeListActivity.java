@@ -10,6 +10,8 @@ import com.mobileclient.app.RefreshListView;
 import com.mobileclient.domain.Notice;
 import com.mobileclient.service.NoticeService;
 import com.mobileclient.util.ActivityUtils;import com.mobileclient.adapter.NoticeSimpleAdapter;
+import com.mobileclient.util.Utils;
+
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
@@ -49,16 +51,20 @@ public class NoticeListActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//去除title
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//requestWindowFeature(Window.FEATURE_NO_TITLE);
 		//去掉Activity上面的状态栏
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		//getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.notice_list);
+		Utils.setStatusBar(this, false, false);
+		Utils.setStatusTextColor(false, NoticeListActivity.this);
 		dialog = MyProgressDialog.getInstance(this);
 		declare = (Declare) getApplicationContext();
 		String username = declare.getUserName();
 		//标题栏控件
 		ImageView search = (ImageView) this.findViewById(R.id.search);
 		search.setImageResource(R.drawable.btn_add);
+		if(declare.getIdentify().equals("user"))
+		    search.setVisibility(View.GONE);
 		search.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {

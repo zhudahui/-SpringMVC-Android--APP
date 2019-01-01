@@ -8,7 +8,7 @@
 <RelativeLayout 
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/bg"
+    android:background="@color/white"
      >
     
 <TabWidget android:id="@android:id/tabs"
@@ -23,7 +23,7 @@
  <RadioGroup
         android:id="@+id/rg_main_btns"
         android:layout_width="match_parent"
-        android:layout_height="60dip"
+        android:layout_height="70dip"
         android:layout_alignParentBottom="true"
         android:background="#5CACEE"
         android:gravity="center"
@@ -38,7 +38,7 @@
             android:background="@drawable/bar_bg"
             android:checked="true"
             android:drawablePadding="5dip"
-            android:drawableTop="@drawable/movie_bar"
+            android:drawableTop="@drawable/cinema_bar"
             android:gravity="center"
             android:paddingBottom="5dip"
             android:paddingTop="5dip"
@@ -53,7 +53,7 @@
             android:layout_weight="1"
             android:background="@drawable/bar_bg"
             android:drawablePadding="5dip"
-            android:drawableTop="@drawable/cinema_bar"
+            android:drawableTop="@drawable/daiqu_bar"
             android:gravity="center"
             android:paddingBottom="5dip"
             android:paddingTop="5dip"
@@ -68,7 +68,7 @@
             android:layout_weight="1"
             android:background="@drawable/bar_bg"
             android:drawablePadding="5dip"
-            android:drawableTop="@drawable/ticket_bar"
+            android:drawableTop="@drawable/fabu_bar"
             android:gravity="center"
             android:paddingBottom="5dip"
             android:paddingTop="5dip"
@@ -83,7 +83,7 @@
             android:layout_weight="1"
             android:background="@drawable/bar_bg"
             android:drawablePadding="5dip"
-            android:drawableTop="@drawable/more_bar"
+            android:drawableTop="@drawable/my_bar"
             android:gravity="center"
             android:paddingBottom="5dip"
             android:paddingTop="5dip"

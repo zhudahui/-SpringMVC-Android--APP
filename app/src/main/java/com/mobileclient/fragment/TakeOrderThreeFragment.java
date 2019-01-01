@@ -7,11 +7,13 @@ import java.util.List;
 import java.util.Map;
 
 import com.mobileclient.activity.ExpressOrderDetailActivity;
+import com.mobileclient.activity.ExpressRouteActivity;
 import com.mobileclient.activity.MyProgressDialog;
 import com.mobileclient.activity.R;
 import com.mobileclient.activity.SecondOrderDetailActivity;
 import com.mobileclient.adapter.ExpressOrderAdapter;
 import com.mobileclient.adapter.MyOrderAdapter;
+import com.mobileclient.adapter.TakeOrderAdapter;
 import com.mobileclient.app.Declare;
 import com.mobileclient.app.RefreshListView;
 import com.mobileclient.domain.Order;
@@ -51,7 +53,7 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 import butterknife.ButterKnife;
 
 public class TakeOrderThreeFragment extends Fragment {
-    MyOrderAdapter adapter;
+    TakeOrderAdapter adapter;
     RefreshListView lv;
     List<Map<String, Object>> list;
     int orderId;
@@ -107,8 +109,8 @@ public class TakeOrderThreeFragment extends Fragment {
                     @Override
                     public void run() {
                         dialog.cancel();
-                        adapter = new MyOrderAdapter(getActivity(), list,
-                                R.layout.my_order_two_item,
+                        adapter = new TakeOrderAdapter(getActivity(), list,
+                                R.layout.takeorder_list_item,
                                 new String[] { "orderPic","orderName","orderPay","orderState","addTime"},
                                 new int[] { R.id.img_takeUserPhoto,R.id.tv_orderName,R.id.tv_orderPay,R.id.tv_orderState,R.id.tv_addTime,
                                 },lv);
@@ -154,6 +156,7 @@ public class TakeOrderThreeFragment extends Fragment {
                 bundle.putString("remark",list.get(arg2).get("remark").toString());
                 bundle.putString("receiveCode",list.get(arg2).get("receiveCode").toString());
                 bundle.putString("receiveName",list.get(arg2).get("receiveName").toString());
+                bundle.putString("receiveState",list.get(arg2).get("receiveState").toString());
                 bundle.putString("orderPay",list.get(arg2).get("orderPay").toString());
                 bundle.putString("orderState",list.get(arg2).get("orderState").toString());
                 bundle.putString("addTime",list.get(arg2).get("addTime").toString());
@@ -255,6 +258,7 @@ public class TakeOrderThreeFragment extends Fragment {
                     map.put("receiveAddressName", expressOrderList.get(i).getReceiveAddressName());
                     map.put("receiveName", expressOrderList.get(i).getReceiveName());
                     map.put("receivePhone", expressOrderList.get(i).getReceivePhone());
+                    map.put("receiveState", expressOrderList.get(i).getReceiveState());
                     map.put("addTime", expressOrderList.get(i).getAddTime());
                     map.put("orderState", expressOrderList.get(i).getOrderState());
                     map.put("orderPay", expressOrderList.get(i).getOrderPay());

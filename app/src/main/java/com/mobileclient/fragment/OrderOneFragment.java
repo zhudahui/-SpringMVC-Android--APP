@@ -66,6 +66,7 @@ public class OrderOneFragment extends Fragment {
     ReceiveAddress receiveAddress=new ReceiveAddress();
     private int userId;
     private Declare declare;
+    private int j=0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -314,6 +315,17 @@ public class OrderOneFragment extends Fragment {
                     map.put("evaluate", expressOrderList.get(i).getOrderEvaluate());
                     map.put("takeUserId", expressOrderList.get(i).getTakeUserId());
                     map.put("orderType", expressOrderList.get(i).getOrderType());
+
+                    if(j<10) {
+                        map.put("i",String.valueOf(j));
+                        j++;
+
+                    }
+                    else {
+                        j=0;
+                        map.put("i",String.valueOf(j));
+                    }
+
                     byte[] orderpic = null;
                     // 获取图片数据
                     if(expressOrderList.get(i).getOrderPic().equals("--")){

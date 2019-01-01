@@ -111,8 +111,8 @@ public class SearchActivity extends Activity {
                     intent.putExtra("q",1);
                     //Log.i("zhu8888",""+declare.getQuery());
                     setResult(RESULT_OK,intent);
-                    intent.setClass(SearchActivity.this,ReceiveAddressListActivity.class);
-                    startActivity(intent);
+                    //intent.setClass(SearchActivity.this,ReceiveAddressListActivity.class);
+                   // startActivity(intent);
                 } catch (Exception e) {}
             }
         });
@@ -308,7 +308,7 @@ public class SearchActivity extends Activity {
                     @Override
                     public void run() {
                         dialog.cancel();
-                        Log.i("ppppppp",""+list.get(0).get("nickName"));
+                       // Log.i("ppppppp",""+list.get(0).get("nickName"));
                         adapter = new SearchAdapter(SearchActivity.this,list);
                         lv.setAdapter(adapter);
 

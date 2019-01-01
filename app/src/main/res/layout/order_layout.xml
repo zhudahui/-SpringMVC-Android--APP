@@ -3,9 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fff">
+    android:background="#fff"
+
+    >
 
     <FrameLayout
+        android:layout_marginTop="10dp"
         android:id="@+id/frame_bg"
         android:layout_width="match_parent"
         android:layout_height="120dp"
@@ -31,7 +34,6 @@
             android:layout_marginLeft="25dp"
             android:text="北京市海淀区"
             android:textColor="#000"
-
             android:textSize="18sp" />
 
         <ImageView

@@ -363,19 +363,6 @@
 
 			</TableLayout>
 
-			<com.nightonke.boommenu.BoomMenuButton
-				android:id="@+id/bmb"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_alignParentEnd="true"
-				android:layout_alignParentRight="true"
-				android:layout_alignParentBottom="true"
-
-				app:bmb_autoHide="false"
-				app:bmb_buttonEnum="ham"
-				app:bmb_buttonPlaceEnum="buttonPlace_ham_5"
-				app:bmb_piecePlaceEnum="piecePlace_ham_5" />
-
 
 		</RelativeLayout>
 	</ScrollView>

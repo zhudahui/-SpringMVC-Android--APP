@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.mobileclient.activity.ExpressOrderDetailActivity;
+import com.mobileclient.activity.ExpressRouteActivity;
 import com.mobileclient.activity.MyProgressDialog;
 import com.mobileclient.activity.R;
 import com.mobileclient.activity.ReceiveAddressEditActivity;
@@ -113,12 +114,23 @@ public class TakeOrderTwoFragment extends Fragment {
                     public void run() {
                         dialog.cancel();
                         adapter = new TakeOrderAdapter(getActivity(), list,
-                                R.layout.my_order_two_item,
+                                R.layout.takeorder_list_item,
                                 new String[] { "orderPic","orderName","orderPay","orderState","addTime"},
                                 new int[] { R.id.img_takeUserPhoto,R.id.tv_orderName,R.id.tv_orderPay,R.id.tv_orderState,R.id.tv_addTime,
                                 },lv);
                         lv.setAdapter(adapter);
-                        adapter.setOnItemEditClickListener(new MyOrderAdapter.onItemEditListener() {  //确认收货
+                        adapter.setOnItemMapClickListener(new TakeOrderAdapter.onItemMapListener() {
+                            @Override
+                            public void onMapClick(int i) {
+                                Intent intent = new Intent();
+                                intent.setClass(getActivity(), ExpressRouteActivity.class);
+                                intent.putExtra("point", list.get(i).get("receiveAddressName").toString());
+                                intent.putExtra("tel", list.get(i).get("receivePhone").toString());
+                                intent.putExtra("receiveCode",list.get(i).get("receiveCode").toString());
+                                startActivity(intent);
+                            }
+                        });
+                        adapter.setOnItemEditClickListener(new TakeOrderAdapter.onItemEditListener() {  //确认收货
                             @Override
                             public void onDeleteClick(int i) {
                                 order.setUserId(Integer.parseInt(list.get(i).get("userId").toString()));
@@ -287,6 +299,7 @@ public class TakeOrderTwoFragment extends Fragment {
                     map.put("receiveAddressName", expressOrderList.get(i).getReceiveAddressName());
                     map.put("receiveName", expressOrderList.get(i).getReceiveName());
                     map.put("receivePhone", expressOrderList.get(i).getReceivePhone());
+                    map.put("receiveState", expressOrderList.get(i).getReceiveState());
                     map.put("addTime", expressOrderList.get(i).getAddTime());
                     map.put("orderState", expressOrderList.get(i).getOrderState());
                     map.put("orderPay", expressOrderList.get(i).getOrderPay());

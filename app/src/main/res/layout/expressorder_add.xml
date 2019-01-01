@@ -33,7 +33,7 @@
                         android:layout_weight="4"
                         android:layout_marginTop="5dip"
                         android:background="@drawable/btn_item_medium_default"
-                        android:drawableLeft="@drawable/ic_user_pwd"
+
                         android:drawablePadding="10dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="4dp"
@@ -42,17 +42,17 @@
                 </TableRow>
                 <TableRow android:layout_marginTop="5dp">
                     <TextView
-                        android:text="物品图"
+                        android:text="物品图           （可选）："
                         android:id="@+id/TV_orderPic"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.5"
                         android:textColor="@color/hint_color" />
                     <ImageView
-                        android:src="@drawable/jiahao"
+                        android:src="@drawable/add"
                         android:id="@+id/orderPic"
                         android:layout_width="0dp"
-                        android:layout_height="200dp"
+                        android:layout_height="70dp"
                         android:layout_weight="4"
                         android:layout_marginTop="5dip"
 
@@ -74,7 +74,7 @@
                         android:layout_weight="4"
                         android:layout_marginTop="5dip"
                         android:background="@drawable/btn_item_medium_default"
-                        android:drawableLeft="@drawable/ic_user_pwd"
+
                         android:drawablePadding="10dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="4dp"
@@ -97,7 +97,7 @@
                         android:layout_weight="4"
                         android:layout_marginTop="5dip"
                         android:background="@drawable/btn_item_medium_default"
-                        android:drawableLeft="@drawable/ic_user_pwd"
+
                         android:drawablePadding="10dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="4dp"
@@ -121,7 +121,7 @@
                         android:layout_weight="4"
                         android:layout_marginTop="5dip"
                         android:background="@drawable/btn_item_medium_default"
-                        android:drawableLeft="@drawable/ic_user_pwd"
+
                         android:drawablePadding="5dp"
                         android:ellipsize="end"
                         android:gravity="top"
@@ -147,7 +147,7 @@
                         android:layout_weight="4"
                         android:layout_marginTop="5dip"
                         android:background="@drawable/btn_item_medium_default"
-                        android:drawableLeft="@drawable/ic_user_pwd"
+
                         android:drawablePadding="10dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="4dp"
@@ -165,13 +165,12 @@
                     <EditText
                         android:text=""
                         android:id="@+id/ET_receiveCode"
-                        android:inputType="numberDecimal"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="4"
                         android:layout_marginTop="5dip"
                         android:background="@drawable/btn_item_medium_default"
-                        android:drawableLeft="@drawable/ic_user_pwd"
+
                         android:drawablePadding="10dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
@@ -195,7 +194,6 @@
                         android:layout_weight="4"
                         android:layout_marginTop="5dip"
                         android:background="@drawable/btn_item_medium_default"
-                        android:drawableLeft="@drawable/ic_user_pwd"
                         android:drawablePadding="10dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
@@ -217,7 +215,7 @@
                     android:layout_marginLeft="5dip"
                     android:layout_marginRight="5dip"
                     android:layout_marginTop="5dip"
-                    android:background="#D64F4D"
+                    android:background="#F3CE5C"
                     android:textColor="@color/white" />
             </LinearLayout>
         </LinearLayout>

@@ -116,7 +116,7 @@ public class OrderService {
                 order.setOrderType(object.getString("orderType"));
                 order.setOrderPic(object.getString("orderPic"));
                 order.setScore(object.getString("score"));
-                order.setOrderState("orderState");
+                order.setOrderState(object.getString("orderState"));
 
 
                 //order.set

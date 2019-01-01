@@ -179,6 +179,8 @@ public class ThreeFragment extends Fragment {
                 bundle.putString("userPhoto", list.get(arg2).get("userPhoto").toString());
                 bundle.putByteArray("photo", (byte[]) list.get(arg2).get("photo"));
                 bundle.putString("Photo", list.get(arg2).get("Photo").toString());
+                bundle.putString("userAuthState",list.get(arg2).get("userAuthState").toString());
+                bundle.putString("payPwd",list.get(arg2).get("payPwd").toString());
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -298,6 +300,8 @@ public class ThreeFragment extends Fragment {
                     map.put("regTime", userList.get(i).getRegTime());
                     map.put("studentId", userList.get(i).getStudentId());
                     map.put("nickName", userList.get(i).getNickName());
+                    map.put("userAuthState",userList.get(i).getUserAuthState());
+                    map.put("payPwd",userList.get(i).getPayPwd());
 				/*byte[] userPhoto_data = ImageService.getImage(HttpUtil.BASE_URL+ UserList.get(i).getUserPhoto());// 获取图片数据
 				BitmapFactory.Options userPhoto_opts = new BitmapFactory.Options();
 				userPhoto_opts.inJustDecodeBounds = true;

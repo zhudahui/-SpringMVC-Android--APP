@@ -20,7 +20,10 @@ public class Notice implements Serializable {
     /*发布时间*/
     private String publishDate;
     /*发布公告的附件*/
-    private String noticeFile;
+    private String noticeFile;  //暂时代替 userId
+
+
+
     public String getPublishDate() {
         return publishDate;
     }

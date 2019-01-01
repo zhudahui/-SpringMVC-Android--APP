@@ -2,9 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/web_title_layout"
     android:layout_width="fill_parent"
-    android:layout_height="48dip"
-    android:background="#D64F4D"
+    android:layout_height="65dip"
+    android:background="#F3CE5C"
     >
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:background="#F3CE5C"
+        android:layout_width="match_parent"
+        android:layout_height="17dp">
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_below="@id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -13,7 +24,9 @@
         android:gravity="center"
         android:singleLine="true"
         android:textColor="#FFFFFF"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+
+        />
 
     <ImageView
         android:id="@+id/back_btn"
@@ -25,8 +38,10 @@
         android:padding="5dip"
         android:textColor="#888888"
         android:textSize="14sp"
-        android:onClick="back" />
-    <TextView
+        android:onClick="back"
+
+        />
+    <ImageView
         android:id="@+id/save"
         android:layout_width="48dip"
         android:layout_height="48dip"
@@ -34,9 +49,8 @@
         android:layout_alignParentRight="true"
         android:scaleType="fitXY"
         android:layout_centerVertical="true"
-        android:background="@drawable/buttons"
-        android:textColor="#ffffff"
-        android:text="保存"
+        android:src="@drawable/save"/>
 
+    </RelativeLayout>
         />
 </RelativeLayout>

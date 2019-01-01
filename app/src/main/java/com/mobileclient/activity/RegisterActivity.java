@@ -44,6 +44,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mobileclient.app.Declare;
@@ -84,6 +85,7 @@ public class RegisterActivity extends Activity {
 	 private ImageView back,search;
 	private RadioGroup rg;
 	Declare declare;
+	private TextView title;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -96,6 +98,8 @@ public class RegisterActivity extends Activity {
 		nickName=findViewById(R.id.ET_nickName);   //用户名
 		userPassword = findViewById(R.id.ET_userPwd);
 		userPhoto=findViewById(R.id.userPhoto);
+		title=findViewById(R.id.title);
+		title.setText("注册");
 		//userType = findViewById(R.id.ET_userType);
 		userPhone = findViewById(R.id.ET_userPhone);
 		userGender = findViewById(R.id.ET_userGender);
@@ -151,6 +155,13 @@ public class RegisterActivity extends Activity {
 					userPassword.requestFocus();
 					return;
 				}
+				if(userPassword.getText().toString().length()<6||userPassword.getText().toString().length()>12)
+				{
+					Toast.makeText(RegisterActivity.this, "密码不能低于6位或者高于12位!", Toast.LENGTH_LONG).show();
+					userPassword.setFocusable(true);
+					userPassword.requestFocus();
+					return;
+				}
 
 				if(userPhone.getText().toString().equals(""))
 				{
@@ -158,13 +169,21 @@ public class RegisterActivity extends Activity {
 					userPhone.setFocusable(true);
 					userPhone.requestFocus();
 					return;
-				}if(userEmail.getText().toString().equals(""))
+				}
+				if(userPhone.getText().toString().length()!=11)
 				{
-					Toast.makeText(RegisterActivity.this, "邮箱输入不能为空!", Toast.LENGTH_LONG).show();
+					Toast.makeText(RegisterActivity.this, "手机号不正确!", Toast.LENGTH_LONG).show();
+					userPhone.setFocusable(true);
+					userPhone.requestFocus();
+					return;
+				}if(userEmail.getText().toString().equals("")||!android.util.Patterns.EMAIL_ADDRESS.matcher(userEmail.getText().toString()).matches())
+				{
+					Toast.makeText(RegisterActivity.this, "邮箱不合法!", Toast.LENGTH_LONG).show();
 					userEmail.setFocusable(true);
 					userEmail.requestFocus();
 					return;
 				}
+
 				register();
 			}
 		});
@@ -208,7 +227,7 @@ public class RegisterActivity extends Activity {
 				if (msg.what == 0x123) {
 
 					Toast.makeText(RegisterActivity.this, "注册成功！", Toast.LENGTH_SHORT).show();
-					intent.setClass(RegisterActivity.this, LoginActivity.class);
+					intent.setClass(RegisterActivity.this, UserLoginActivity.class);
 					startActivity(intent);
 
 				}
@@ -248,7 +267,7 @@ public class RegisterActivity extends Activity {
                             Log.i("ccccc",""+declare.getUserGender());
 							user.setUserEmail(userEmail.getText().toString());
 							user.setUserReputation(100);   //用户初始信誉为100
-							user.setUserMoney("" + 6);   //用户初始余额为6元
+							user.setUserMoney("" + 1);   //用户初始余额为1元，首单免费
 							user.setUserAuthFile("");
 							SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 							//添加发布时间

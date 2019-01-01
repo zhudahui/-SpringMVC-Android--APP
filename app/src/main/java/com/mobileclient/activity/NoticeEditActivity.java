@@ -2,6 +2,7 @@ package com.mobileclient.activity;
 
 import com.mobileclient.domain.Notice;
 import com.mobileclient.service.NoticeService;
+import com.mobileclient.util.Utils;
 import com.sun.jna.platform.win32.WinNT;
 
 import android.app.Activity;
@@ -44,11 +45,12 @@ public class NoticeEditActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//去除title
-		requestWindowFeature(Window.FEATURE_NO_TITLE); 
+		//requestWindowFeature(Window.FEATURE_NO_TITLE);
 		//去掉Activity上面的状态栏
-		getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
+		//getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
 		// 设置当前Activity界面布局
-		setContentView(R.layout.notice_edit); 
+		setContentView(R.layout.notice_edit);
+		Utils.setStatusBar(this, false, false);
 		ImageView search = (ImageView) this.findViewById(R.id.search);
 		search.setVisibility(View.GONE);
 		TextView title = (TextView) this.findViewById(R.id.title);

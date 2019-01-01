@@ -91,6 +91,7 @@ public class NoticeAddActivity extends Activity {
 					//添加发布时间
 
 					notice.setPublishDate(df.format(new Date()));
+					notice.setNoticeFile("--");
 					/*调用业务逻辑层上传新闻公告信息*/
 					NoticeAddActivity.this.setTitle("正在上传新闻公告信息，稍等...");
 					final Handler handler=new Handler()

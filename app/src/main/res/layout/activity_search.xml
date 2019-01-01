@@ -6,6 +6,10 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="me.wcy.express.activity.SearchActivity">
+    <include
+
+        layout="@layout/search_title"
+        />
 
     <View
         style="@style/AppTheme.Divider"
@@ -39,7 +43,7 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:hint="请输入扫描运单"
+            android:hint="@string/input_post_id"
             android:inputType="textEmailAddress"
             android:singleLine="true"
             android:textCursorDrawable="@null"
@@ -48,15 +52,6 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/iv_scan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:contentDescription="@null"
-                android:padding="5dp"
-                android:src="@drawable/ic_scan" />
 
 
 

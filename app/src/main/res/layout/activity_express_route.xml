@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/act_background" >
-
+<include layout="@layout/title_layout"/>
     <RelativeLayout
         android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
@@ -43,6 +43,14 @@
             android:layout_marginRight="10dp"
             android:orientation="horizontal"
             android:gravity="center_vertical">
+            <TextView
+                android:id="@+id/receivePhone"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="手机尾号"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/receiveCode"
@@ -50,7 +58,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:text="取货码"
-                android:textColor="@color/blue"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
 
             <Button
@@ -63,6 +71,7 @@
     </RelativeLayout>
 
     <com.amap.api.maps.MapView
+        android:layout_marginTop="65dp"
         android:id="@+id/route_map"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -85,19 +94,19 @@
 
     <ImageView
         android:id="@+id/telphone"
-        android:layout_marginTop="300dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="230dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:background="@drawable/phone"
         android:layout_alignParentEnd="true"/>
 
     <ImageView
         android:id="@+id/ems"
-        android:layout_width="83dp"
-        android:layout_height="83dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="150dp"
-        android:background="@drawable/smst" />
+        android:background="@drawable/mesage" />
     <LinearLayout
         android:id="@+id/bus_result"
         android:layout_width="match_parent"

@@ -32,7 +32,7 @@ public class MainMenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setTitle("手机客户端-主界面");
         setContentView(R.layout.main_menu);
-        GridView gridview = (GridView) findViewById(R.id.gridview);
+       // GridView gridview = (GridView) findViewById(R.id.gridview);
         
         AnimationSet set = new AnimationSet(false);
         Animation animation = new AlphaAnimation(0,1);
@@ -53,9 +53,9 @@ public class MainMenuActivity extends Activity {
         
         LayoutAnimationController controller = new LayoutAnimationController(set, 1);
         
-        gridview.setLayoutAnimation(controller);
+       // gridview.setLayoutAnimation(controller);
         
-        gridview.setAdapter(new ImageAdapter(this));
+       // gridview.setAdapter(new ImageAdapter(this));
     }
     
     // 继承BaseAdapter

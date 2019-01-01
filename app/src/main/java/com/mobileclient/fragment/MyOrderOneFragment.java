@@ -5,16 +5,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 
+import com.mobileclient.activity.AdminExpressDetailActivity;
 import com.mobileclient.activity.ExpressOrderDetailActivity;
 import com.mobileclient.activity.MyProgressDialog;
 import com.mobileclient.activity.PayResultActivity;
 import com.mobileclient.activity.R;
 import com.mobileclient.activity.SecondOrderDetailActivity;
-import com.mobileclient.activity.myorder.AdminUserOrderDetailActivity;
-import com.mobileclient.adapter.ExpressOrderAdapter;
 import com.mobileclient.adapter.MyOrderAdapter;
 import com.mobileclient.app.Declare;
 import com.mobileclient.app.RefreshListView;
@@ -67,6 +64,8 @@ public class MyOrderOneFragment extends Fragment {
     OrderService orderService=new OrderService();
     Order  order=new Order();
     User user=new User();
+    User user1=new User();
+    User user2=new User();
     UserService userService=new UserService();
     ReceiveAddress receiveAddress=new ReceiveAddress();
     private int userId;
@@ -92,7 +91,7 @@ public class MyOrderOneFragment extends Fragment {
         }
         else
         {
-            userId=declare.getAdminUserId();
+            userId=declare.getUserId();
         }
         /***
          *
@@ -144,6 +143,12 @@ public class MyOrderOneFragment extends Fragment {
                         @Override
                         public void run() {
                             orderService.UpdateOrder(order);
+                            user2.setUserMoney(String.valueOf(Double.parseDouble(user2.getUserMoney())+Double.parseDouble(order.getOrderPay())));
+                            //代取者收钱
+
+                            user.setUserMoney(declare.getUserMoney());
+                            userService.UpdateUserInfo(user);
+                            userService.UpdateUserInfo(user2);
                             Message msg=new Message();
                             msg.what=0x122;
                             myHandler.sendMessage(msg);
@@ -203,6 +208,8 @@ public class MyOrderOneFragment extends Fragment {
                             public void onDeleteClick(int i) {
                                 if(list.get(i).get("orderState").equals("送单中")||list.get(i).get("orderState").equals("已送达")){
                                     //收货
+
+                                    user2= (User) list.get(i).get("user2");
                                     order.setUserId(Integer.parseInt(list.get(i).get("userId").toString()));
                                     order.setTakeUserId(Integer.parseInt(list.get(i).get("takeUserId").toString()));
                                     order.setOrderId(Integer.parseInt(list.get(i).get("orderId").toString()));
@@ -219,12 +226,55 @@ public class MyOrderOneFragment extends Fragment {
                                     order.setScore(list.get(i).get("score").toString());
                                     order.setOrderType(list.get(i).get("orderType").toString());
                                     order.setOrderPic(list.get(i).get("orderPic").toString());
+
+                                    order.setReceiveName(list.get(i).get("receiveName").toString());
+                                    order.setReceivePhone(list.get(i).get("receivePhone").toString());
+                                    order.setReceiveState(list.get(i).get("receiveState").toString());
+                                    order.setReceiveAddressName(list.get(i).get("receiveAddressName").toString());
+                                    user.setUserId(declare.getUserId());
+                                    user.setUserName(declare.getUserName());
+                                    user.setUserAuthFile(declare.getUserAuthFile());
+                                    user.setUserPhoto(declare.getUserPhoto());
+                                    user.setUserPassword(declare.getUserPassword());
+                                    user.setPayPwd(declare.getPayPwd());
+                                    user.setRegTime(declare.getRegTime());
+                                    user.setUserEmail(declare.getUserEmail());
+                                    user.setUserGender(declare.getUserGender());
+                                    user.setUserPhone(declare.getUserPhone());
+                                    user.setUserPassword(declare.getUserPassword());
+                                    user.setUserReputation(declare.getUserReputation());
+                                    user.setUserType(declare.getUserType());
+                                    user.setNickName(declare.getNickName());
+                                    user.setStudentId(declare.getStudentId());
+                                    user.setUserAuthState(declare.getUserAuthState());
                                     flag=1;
-                                    showDialog();
+                                    if(declare.getPayPwd().equals("--")){
+                                        Toast.makeText(getActivity(),"请先设置支付密码！",Toast.LENGTH_SHORT).show();
+                                    }
+                                    else {
+                                        showDialog();
+                                    }
                                 }
                                 else if(list.get(i).get("orderState").equals("待接单")){
                                     //取消订单
                                     order.setOrderId(Integer.parseInt(list.get(i).get("orderId").toString()));
+                                    order.setOrderPay(list.get(i).get("orderPay").toString());
+                                    user.setUserId(declare.getUserId());
+                                    user.setUserName(declare.getUserName());
+                                    user.setUserAuthFile(declare.getUserAuthFile());
+                                    user.setUserPhoto(declare.getUserPhoto());
+                                    user.setUserPassword(declare.getUserPassword());
+                                    user.setPayPwd(declare.getPayPwd());
+                                    user.setRegTime(declare.getRegTime());
+                                    user.setUserEmail(declare.getUserEmail());
+                                    user.setUserGender(declare.getUserGender());
+                                    user.setUserPhone(declare.getUserPhone());
+                                    user.setUserPassword(declare.getUserPassword());
+                                    user.setUserReputation(declare.getUserReputation());
+                                    user.setUserType(declare.getUserType());
+                                    user.setNickName(declare.getNickName());
+                                    user.setStudentId(declare.getStudentId());
+                                    user.setUserAuthState(declare.getUserAuthState());
                                     j=i;
                                     flag=2;
                                     showDialog();
@@ -322,20 +372,25 @@ public class MyOrderOneFragment extends Fragment {
                 bundle.putInt("receiveAddressId",Integer.parseInt(list.get(arg2).get("receiveAddressId").toString()));
                 bundle.putString("evaluate",list.get(arg2).get("evaluate").toString());
                 bundle.putInt("takeUserId", Integer.parseInt(list.get(arg2).get("takeUserId").toString()));
-
+                bundle.putString("orderPic", list.get(arg2).get("orderPic").toString());
                 bundle.putString("score",list.get(arg2).get("score").toString());
-
+                if(declare.getIdentify().equals("user")){
                 if (list.get(arg2).get("evaluate").toString().equals("-+-")||list.get(arg2).get("evaluate").toString().equals("请评价")) {//若评价为空
                     intent.putExtras(bundle);
                     if(declare.getIdentify().equals("user"))
                         intent.setClass(getActivity(), ExpressOrderDetailActivity.class);   //已评价
                     else
-                        intent.setClass(getActivity(), AdminUserOrderDetailActivity.class);
+                        intent.setClass(getActivity(), AdminExpressDetailActivity.class);
                     startActivityForResult(intent, ActivityUtils.UPDATE_CODE);
                 }
                 else {
                     Log.i("zhu111", "已评价");
                     intent.setClass(getActivity(), SecondOrderDetailActivity.class);   //已评价
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }}
+                else{
+                    intent.setClass(getActivity(), AdminExpressDetailActivity.class);   //已评价
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }
@@ -402,37 +457,39 @@ public class MyOrderOneFragment extends Fragment {
             for (int i = 0; i < expressOrderList.size(); i++) {
                 Map<String, Object> map = new HashMap<String, Object>();
                 //if(expressOrderList.get(i).getOrderState().equals("待接单")) {
-                    map.put("orderId", expressOrderList.get(i).getOrderId());
-                    map.put("orderName", expressOrderList.get(i).getOrderName());
-                    map.put("userId", expressOrderList.get(i).getUserId());
-                    user = userService.GetUserInfo(expressOrderList.get(i).getUserId());
-                    map.put("userName", user.getUserName());
-                    map.put("nickName", user.getNickName());
-                    byte[] userPhoto_data = null;
-                    // 获取图片数据
-                    userPhoto_data = ImageService.getImage(HttpUtil.DOWNURL + user.getUserPhoto());
-                    map.put("photo", userPhoto_data);
-                    Bitmap userPhoto = BitmapFactory.decodeByteArray(userPhoto_data, 0, userPhoto_data.length);
-                    map.put("userPhoto", userPhoto);
-                    map.put("expressCompanyName", expressOrderList.get(i).getExpressCompanyName());
-                    map.put("expressCompanyAddress", expressOrderList.get(i).getExpressCompanyAddress());
-                    map.put("receiveAddressId", expressOrderList.get(i).getReceiveAddressId());
-                    // 根据获取到z的地址Id，查询地址名以及收获人姓名
-                   // receiveAddress = receiveAdressService.QueryReceiveAdress(expressOrderList.get(i).getReceiveAddressId());
-                    Log.i("zhu1111", "查询ttt" + expressOrderList.get(i).getReceiveAddressName());
-                    map.put("receiveAddressName", expressOrderList.get(i).getReceiveAddressName());
-                    map.put("receiveName", expressOrderList.get(i).getReceiveName());
-                    map.put("receivePhone", expressOrderList.get(i).getReceivePhone());
-                    map.put("receiveState", expressOrderList.get(i).getReceiveState());
-                    map.put("addTime", expressOrderList.get(i).getAddTime());
-                    map.put("orderState", expressOrderList.get(i).getOrderState());
-                    map.put("orderPay", expressOrderList.get(i).getOrderPay());
-                    map.put("remark", expressOrderList.get(i).getRemark());
-                    map.put("receiveCode", expressOrderList.get(i).getReceiveCode());
-                    map.put("evaluate", expressOrderList.get(i).getOrderEvaluate());
-                    map.put("takeUserId", expressOrderList.get(i).getTakeUserId());
-                   // map.put("nickName",expressOrderList.get(i).);
-                    map.put("orderType", expressOrderList.get(i).getOrderType());
+                map.put("orderId", expressOrderList.get(i).getOrderId());
+                map.put("orderName", expressOrderList.get(i).getOrderName());
+                map.put("userId", expressOrderList.get(i).getUserId());
+                user1 = userService.GetUserInfo(expressOrderList.get(i).getUserId());
+                map.put("userName", user1.getUserName());
+                map.put("nickName", user1.getNickName());
+                user2=userService.GetUserInfo(expressOrderList.get(i).getTakeUserId());
+                map.put("user2", user2);
+                byte[] userPhoto_data = null;
+                // 获取图片数据
+                userPhoto_data = ImageService.getImage(HttpUtil.DOWNURL + user1.getUserPhoto());
+                map.put("photo", userPhoto_data);
+                Bitmap userPhoto = BitmapFactory.decodeByteArray(userPhoto_data, 0, userPhoto_data.length);
+                map.put("userPhoto", userPhoto);
+                map.put("expressCompanyName", expressOrderList.get(i).getExpressCompanyName());
+                map.put("expressCompanyAddress", expressOrderList.get(i).getExpressCompanyAddress());
+                map.put("receiveAddressId", expressOrderList.get(i).getReceiveAddressId());
+                // 根据获取到z的地址Id，查询地址名以及收获人姓名
+                //receiveAddress = receiveAdressService.QueryReceiveAdress(expressOrderList.get(i).getReceiveAddressId());
+                Log.i("zhu1111", "查询ttt" + expressOrderList.get(i).getReceiveAddressName());
+                map.put("receiveAddressName", expressOrderList.get(i).getReceiveAddressName());
+                map.put("receiveName", expressOrderList.get(i).getReceiveName());
+                map.put("receivePhone", expressOrderList.get(i).getReceivePhone());
+                map.put("receiveState", expressOrderList.get(i).getReceiveState());
+                map.put("addTime", expressOrderList.get(i).getAddTime());
+                map.put("orderState", expressOrderList.get(i).getOrderState());
+                map.put("orderPay", expressOrderList.get(i).getOrderPay());
+                map.put("remark", expressOrderList.get(i).getRemark());
+                map.put("receiveCode", expressOrderList.get(i).getReceiveCode());
+                map.put("evaluate", expressOrderList.get(i).getOrderEvaluate());
+                map.put("takeUserId", expressOrderList.get(i).getTakeUserId());
+
+                map.put("orderType", expressOrderList.get(i).getOrderType());
                 byte[] orderpic = null;
                 // 获取图片数据
                 if(expressOrderList.get(i).getOrderPic().equals("--")){
@@ -463,12 +520,18 @@ public class MyOrderOneFragment extends Fragment {
         public void handleMessage(Message msg) {
             // TODO Auto-generated method stub
             super.handleMessage(msg);
-            System.out.println("这是刷新返回来的信息");
-            list.remove(j);//选择行的位置
-            adapter.notifyDataSetChanged();
-            lv.invalidate();
+           // Log.i("ffffff",Double.parseDouble(declare.getUserMoney())+"nnn"+msg.getData().getString("orderPay"));
+           // declare.setUserMoney(String.valueOf(Double.parseDouble(declare.getUserMoney())+Double.parseDouble(msg.getData().getString("orderPay"))));
 
-        }
+                //订单取消，酬金返还余额
+
+                Toast.makeText(getActivity(), "取消成功!酬金已返还至余额", Toast.LENGTH_SHORT).show();
+                list.remove(j);//选择行的位置
+                adapter.notifyDataSetChanged();
+                lv.invalidate();
+            }
+
+
 
     };
 
@@ -481,7 +544,10 @@ public class MyOrderOneFragment extends Fragment {
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            myInputPwdUtil.show();
+                                myInputPwdUtil.show();
+
+
+                            //user.setUserMoney(declare.getUserMoney());
 
                         }
                     });
@@ -502,8 +568,14 @@ public class MyOrderOneFragment extends Fragment {
                             new Thread(new Runnable() {
                                 @Override
                                 public void run() {
+                                    Bundle bundle=new Bundle();
+                                    bundle.putString("orderPay",order.getOrderPay());
+                                    Log.i("llllll",Double.parseDouble(declare.getUserMoney())+"和"+Double.parseDouble(order.getOrderPay()));
+                                    user.setUserMoney(String.valueOf(Double.parseDouble(declare.getUserMoney())+Double.parseDouble(order.getOrderPay()))); //更新
+                                    userService.UpdateUserInfo(user);
                                     orderService.DeleteOrder(order.getOrderId());
                                     Message msg = new Message();
+                                    msg.setData(bundle);
                                     mHandler.sendMessage(msg);
                                 }
                             }).start();
@@ -522,4 +594,23 @@ public class MyOrderOneFragment extends Fragment {
         dialog.show();
 
     }
+
+
+    /***
+     * 推送通知
+     *
+     *
+     */
+
+
+
+
+    /***
+     *
+     * 检测订单状态
+     *
+     *
+     */
+
+
 }

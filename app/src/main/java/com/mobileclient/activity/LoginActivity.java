@@ -9,6 +9,10 @@ import java.util.concurrent.Executors;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityOptions;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -42,12 +46,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.mobileclient.app.Declare;
 import com.mobileclient.domain.User;
 import com.mobileclient.service.UserService;
 import com.mobileclient.util.HttpUtil;
 
+
 import butterknife.OnClick;
+
 
 
 /**
@@ -71,7 +78,8 @@ public class LoginActivity extends Activity implements View.OnClickListener{
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.READ_PHONE_STATE,
-            Manifest.permission.CALL_PHONE
+            Manifest.permission.CALL_PHONE,
+            Manifest.permission.VIBRATE
     };
 
     private static final int PERMISSON_REQUESTCODE = 0;
@@ -86,6 +94,10 @@ public class LoginActivity extends Activity implements View.OnClickListener{
     private FloatingActionButton fab;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
+    // 获取消息线程
+    private int flag=1;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,8 +117,12 @@ public class LoginActivity extends Activity implements View.OnClickListener{
         register.setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivity(intent);
+               // Intent intent = new Intent(LoginActivity.this, KuaiSuRegister.class);
+                //startActivity(intent);
+
+               // Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+
+             // startActivity(intent);
             }
         });
         Declare declare = (Declare)LoginActivity.this.getApplication();
@@ -118,66 +134,89 @@ public class LoginActivity extends Activity implements View.OnClickListener{
         btn_login.setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View arg0) {
-                if("".equals(et_nickName.getText().toString())){
-                    Toast.makeText(LoginActivity.this, "用户名必填", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if("".equals(et_userPwd.getText().toString())){
-                   Toast.makeText(LoginActivity.this, "密码必填", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                dialog.show();
-                ExecutorService e = Executors.newCachedThreadPool();
-                e.execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        Declare declare = (Declare) LoginActivity.this.getApplication();
-                        try {
-                            user=userService.GetUserInfo(et_nickName.getText().toString());  //验证登录名是否存在
+                /***
+                 *
+                 *
+                 *
+                 * 检查网络
+                 */
 
-                            if(user!=null){ //验证用户是否存在
-                                Log.i("pppppppp","cccc"+user.getUserPassword()+""+et_userPwd.getText().toString());
-                                if(user.getUserPassword().equals(et_userPwd.getText().toString()))   //用户账号存在时验证密码是否正确
-                                {
-                                    //declare.setUserId(Integer.parseInt(et_nickName.getText().toString()));
-                                    Log.i("pppppppp","cccc"+declare.getUserId());
-                                    declare.setUserId(user.getUserId());  //将系统Id存储为全局可用
-                                    declare.setUserName(user.getUserName());
-                                    declare.setUserType(user.getUserType());
-                                    declare.setUserPhoto(user.getUserPhoto());
-                                    declare.setUserMoney(user.getUserMoney());
-                                    declare.setUserGender(user.getUserGender());
-                                    declare.setRegTime(user.getRegTime());
-                                    declare.setUserEmail(user.getUserEmail());
-                                    declare.setUserReputation(user.getUserReputation());
-                                    declare.setUserAuthFile(user.getUserAuthFile());
-                                    declare.setUserPhone(user.getUserPhone());
-                                    declare.setUserPassword(user.getUserPassword());
-                                    declare.setNickName(user.getNickName());
-                                    declare.setStudentId(user.getStudentId());
-                                    declare.setUserAuthState(user.getUserAuthState());
-                                    declare.setPayPwd(user.getPayPwd());
+                Runtime runtime = Runtime.getRuntime();
+                try {
+                    Process p = runtime.exec("ping -c 2 www.baidu.com");
+                    int ret = p.waitFor();
+                    System.out.println("查询到的网络访问码是：：" + ret);
+                    if (ret != 0) {
+                        //网络不通，停止加载
+                        Toast.makeText(LoginActivity.this, "网络已断开", Toast.LENGTH_SHORT).show();
+                        flag=0;
 
-                                    declare.setReceiveId(-1);
-                                    declare.setReceiveName("--");
-                                    declare.setReceiveAddressName("--");
-                                    declare.setReceiveUserId(-1);
-                                    declare.setReceivePhone("--");
-
-                                    handler.sendEmptyMessage(1);
-                                }
-                                else{
-                                    handler.sendEmptyMessage(2);
-                                }
-                            }else{
-                                handler.sendEmptyMessage(0);
-                            }
-                        } catch (Exception e) {
-                            // TODO: handle exception
-                            Log.i("LoginActivity",e.toString());
-                        }
                     }
-                });
+                }catch (Exception e){
+
+                }
+                if(flag==1) {
+                    if ("".equals(et_nickName.getText().toString())) {
+                        Toast.makeText(LoginActivity.this, "用户名必填", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if ("".equals(et_userPwd.getText().toString())) {
+                        Toast.makeText(LoginActivity.this, "密码必填", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    dialog.show();
+                    ExecutorService e = Executors.newCachedThreadPool();
+                    e.execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            Declare declare = (Declare) LoginActivity.this.getApplication();
+                            try {
+                                user = userService.GetUserInfo(et_nickName.getText().toString());  //验证登录名是否存在
+
+                                if (user != null) { //验证用户是否存在
+                                    Log.i("pppppppp", "cccc" + user.getUserPassword() + "" + et_userPwd.getText().toString());
+                                    if (user.getUserPassword().equals(et_userPwd.getText().toString()))   //用户账号存在时验证密码是否正确
+                                    {
+                                        //declare.setUserId(Integer.parseInt(et_nickName.getText().toString()));
+                                        Log.i("pppppppp", "cccc" + declare.getUserId());
+                                        declare.setUserId(user.getUserId());  //将系统Id存储为全局可用
+                                        declare.setUserName(user.getUserName());
+                                        declare.setUserType(user.getUserType());
+                                        declare.setUserPhoto(user.getUserPhoto());
+                                        declare.setUserMoney(user.getUserMoney());  //
+                                        declare.setUserGender(user.getUserGender());
+                                        declare.setRegTime(user.getRegTime());
+                                        declare.setUserEmail(user.getUserEmail());
+                                        declare.setUserReputation(user.getUserReputation());
+                                        declare.setUserAuthFile(user.getUserAuthFile());
+                                        declare.setUserPhone(user.getUserPhone());
+                                        declare.setUserPassword(user.getUserPassword());
+                                        declare.setNickName(user.getNickName());
+                                        declare.setStudentId(user.getStudentId());
+                                        declare.setUserAuthState(user.getUserAuthState());
+                                        declare.setPayPwd(user.getPayPwd());
+                                        declare.setReceiveId(-1);
+                                        declare.setReceiveName("--");
+                                        declare.setReceiveAddressName("--");
+                                        declare.setReceiveUserId(-1);
+                                        declare.setReceivePhone("--");
+
+                                        handler.sendEmptyMessage(1);
+                                    } else {
+                                        handler.sendEmptyMessage(2);
+                                    }
+                                } else {
+                                    handler.sendEmptyMessage(0);
+                                }
+                            } catch (Exception e) {
+                                // TODO: handle exception
+                                Log.i("LoginActivity", e.toString());
+                            }
+                        }
+                    });
+                }else{
+                    Toast.makeText(LoginActivity.this, "请连接网络", Toast.LENGTH_SHORT).show();
+                }
             }
 
         });
@@ -369,6 +408,10 @@ public class LoginActivity extends Activity implements View.OnClickListener{
         }
         return super.onKeyDown(keyCode, event);
     }
+
+
+
+
 
 }
 

@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:orientation="vertical" >
+
     <include layout="@layout/title_list" />
     <TableLayout
         android:layout_width="fill_parent"

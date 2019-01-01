@@ -10,7 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.mobileclient.activity.ModifyPwdActivity;
 import com.mobileclient.activity.R;
+import com.mobileclient.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,14 +27,15 @@ public class UserInfoListActivity extends AppCompatActivity implements View.OnCl
     private List<Fragment> mFragmentList = new ArrayList<Fragment>();
     private FragmentAdapter mFragmentAdapter;
 
-    String[] titles = new String[]{"快递员", "普通用户", "待审核"};
+    //String[] titles = new String[]{"快递员", "普通用户", "待审核"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //去除工具栏
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
         setContentView(R.layout.userstate);
+
         initViews();
 
         mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(), mFragmentList);
@@ -51,7 +54,7 @@ public class UserInfoListActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onPageSelected(int position) {
                 /*此方法在页面被选中时调用*/
-                title.setText(titles[position]);
+               // title.setText(titles[position]);
                 changeTextColor(position);
             }
 
@@ -70,6 +73,7 @@ public class UserInfoListActivity extends AppCompatActivity implements View.OnCl
      */
     private void initViews() {
         title = (TextView) findViewById(R.id.title);
+        title.setText("用户管理");
         item_kuaidiyuan = (TextView) findViewById(R.id.item_kuaidiyuan);
         item_putongyonghu = (TextView) findViewById(R.id.item_putongyonghu);
         item_dairenzheng = (TextView) findViewById(R.id.item_dairenzheng);
@@ -99,6 +103,7 @@ public class UserInfoListActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.item_kuaidiyuan:
+
                 vp.setCurrentItem(0, true);
                 break;
             case R.id.item_putongyonghu:

@@ -1,1 +1,1 @@
-include ':app',':boommenu'
+include ':app'

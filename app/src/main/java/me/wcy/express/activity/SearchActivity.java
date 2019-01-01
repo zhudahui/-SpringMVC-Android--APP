@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
@@ -42,8 +43,6 @@ import me.wcy.express.widget.radapter.RSingleDelegate;
 public class SearchActivity extends BaseActivity implements TextWatcher, View.OnClickListener {
     @Bind(R.id.et_post_id)
     private EditText etPostId;
-    @Bind(R.id.iv_scan)
-    private ImageView ivScan;
 
     @Bind(R.id.iv_clear)
     private ImageView ivClear;
@@ -53,15 +52,26 @@ public class SearchActivity extends BaseActivity implements TextWatcher, View.On
     private Map<String, CompanyEntity> companyMap = new HashMap<>();
     private List<CompanyEntity> suggestionList = new ArrayList<>();
     private RAdapter<CompanyEntity> adapter;
-
+    private ImageView back,search;
+    private TextView title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        title=findViewById(R.id.title);
+        back=findViewById(R.id.back_btn);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        search=findViewById(R.id.search);
+        search.setVisibility(View.GONE);
         readCompany();
-
+        title.setText("快递通");
         etPostId.addTextChangedListener(this);
-        ivScan.setOnClickListener(this);
+        //ivScan.setOnClickListener(this);
         ivClear.setOnClickListener(this);
 
         adapter = new RAdapter<>(suggestionList, new RSingleDelegate<>(SuggestionViewHolder.class));
@@ -104,10 +114,10 @@ public class SearchActivity extends BaseActivity implements TextWatcher, View.On
     @Override
     public void afterTextChanged(final Editable s) {
         if (s.length() > 0) {
-            ivScan.setVisibility(View.INVISIBLE);
+           // ivScan.setVisibility(View.INVISIBLE);
             ivClear.setVisibility(View.VISIBLE);
         } else {
-            ivScan.setVisibility(View.VISIBLE);
+            //vScan.setVisibility(View.VISIBLE);
             ivClear.setVisibility(View.INVISIBLE);
         }
         suggestionList.clear();
@@ -159,9 +169,9 @@ public class SearchActivity extends BaseActivity implements TextWatcher, View.On
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-          //  case R.id.iv_scan:
+            //case R.id.iv_scan:
 
-              //  break;
+                //break;
             case R.id.iv_clear:
                 etPostId.setText("");
                 break;

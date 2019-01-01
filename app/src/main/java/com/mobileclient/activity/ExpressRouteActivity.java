@@ -111,7 +111,8 @@ public class ExpressRouteActivity extends Activity implements OnMapClickListener
     private String tel;
     private ImageView telphone;
     private ImageView ems;
-    private TextView receiveCode;
+    private TextView receiveCode,title,receivePhone;
+    ImageView back,save;
 
     //===================================地理编码===============================================================
     @Override
@@ -122,6 +123,19 @@ public class ExpressRouteActivity extends Activity implements OnMapClickListener
         //去掉Activity上面的状态栏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_express_route);
+        back=findViewById(R.id.back_btn);
+        save=findViewById(R.id.save);
+        save.setVisibility(View.GONE);
+        back.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        title=findViewById(R.id.title);
+        title.setText("送单路线");
+        receivePhone=findViewById(R.id.receivePhone);
 
         mContext = this.getApplicationContext();
         mapView = (MapView) findViewById(R.id.route_map);
@@ -139,7 +153,8 @@ public class ExpressRouteActivity extends Activity implements OnMapClickListener
 
             value =  intent .getStringExtra("point");
             tel=intent .getStringExtra("tel");
-            receiveCode.setText("取货码"+intent .getStringExtra("receiveCode"));
+            receivePhone.setText("手机尾号："+tel.substring(7,11));
+            receiveCode.setText("取货码："+intent .getStringExtra("receiveCode"));
             Log.i("22222222222222222222", String.valueOf(value));
 
             getLatlon(value);

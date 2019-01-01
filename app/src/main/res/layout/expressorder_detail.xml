@@ -23,10 +23,10 @@
                 android:background="@android:color/white"
                 android:orientation="vertical">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/userPhoto"
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="10dp"
@@ -306,6 +306,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
+                >
+
+                <TextView
+                    android:id="@+id/TV_takeUserId"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:text="代取者：        "
+                    android:textColor="@color/black"
+                    />
+
+                <TextView
+                    android:id="@+id/takeUserId"
+                    android:layout_width="500dp"
+                    android:layout_height="40dp"
+                    android:layout_toRightOf="@id/TV_takeUserId"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:text="5" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
                 android:layout_marginTop="1dp"
                 >
 
@@ -351,7 +379,7 @@
                     android:visibility="gone"
                     />
                 <EditText
-                    android:text=""
+                    android:hint="评价"
                     android:id="@+id/ET_Evaluate"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
@@ -376,7 +404,7 @@
                     android:layout_marginLeft="5dip"
                     android:layout_marginRight="5dip"
                     android:layout_marginTop="15dip"
-                    android:background="#D64F4D"
+                    android:background="#F3CE5C"
                     android:textColor="@color/white"
                     android:visibility="gone" />
 
@@ -388,7 +416,7 @@
                     android:layout_marginLeft="5dip"
                     android:layout_marginRight="5dip"
                     android:layout_marginTop="15dip"
-                    android:background="#D64F4D"
+                    android:background="#F3CE5C"
                     android:textColor="@color/white"
                     android:visibility="gone" />
 

@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -65,6 +66,7 @@ public class ExpressOrderAdapter extends SimpleAdapter {
        // holder.receiveAddressName=convertView.findViewById(R.id.receiveAddressName);
         holder.receiveAddressName=convertView.findViewById(R.id.tv_receiveAddressName);
         holder.addTime = (TextView)convertView.findViewById(R.id.addTime);
+        holder.tubiao=convertView.findViewById(R.id.tubiao);
         //holder.orderState=convertView.findViewById(R.id.orderState);
         /*设置各个控件的展示内容*/
         /*设置各个控件的展示内容*/
@@ -79,6 +81,39 @@ public class ExpressOrderAdapter extends SimpleAdapter {
         holder.expressCompanyAddress.setText( mData.get(position).get("expressCompanyAddress").toString());
         holder.receiveAddressName.setText( mData.get(position).get("receiveAddressName").toString());
         holder.addTime.setText(mData.get(position).get("addTime").toString());
+
+        if(mData.get(position).get("i").toString().equals("1")){
+            holder.tubiao.setImageResource(R.drawable.tubiao_one);
+        }
+        if(mData.get(position).get("i").toString().equals("2")){
+            holder.tubiao.setImageResource(R.drawable.tubiao_two);
+        }if(mData.get(position).get("i").toString().equals("3")){
+            holder.tubiao.setImageResource(R.drawable.tubiao_three);
+        }if(mData.get(position).get("i").toString().equals("4")){
+            holder.tubiao.setImageResource(R.drawable.tubiao_four);
+        }if(mData.get(position).get("i").toString().equals("5")){
+            holder.tubiao.setImageResource(R.drawable.tubiao_five);
+        }if(mData.get(position).get("i").toString().equals("6")){
+            holder.tubiao.setImageResource(R.drawable.tubiao_six);
+        }if(mData.get(position).get("i").toString().equals("7")){
+            holder.tubiao.setImageResource(R.drawable.tubiao_seven);
+        }if(mData.get(position).get("i").toString().equals("8")){
+            holder.tubiao.setImageResource(R.drawable.tubiao_eight);
+        }if(mData.get(position).get("i").toString().equals("9")){
+            holder.tubiao.setImageResource(R.drawable.tubiao_nine);
+        }
+        if(mData.get(position).get("i").toString().equals("10")){
+            holder.tubiao.setImageResource(R.drawable.tubiao_ten);
+        }
+
+
+
+
+
+
+
+
+
        // holder.orderState.setText( mData.get(position).get("orderState").toString());
         /*返回修改好的view*/
         return convertView;
@@ -92,6 +127,7 @@ public class ExpressOrderAdapter extends SimpleAdapter {
         TextView expressCompanyAddress;
         TextView receiveAddressName;
         TextView addTime;
+        ImageView tubiao;
         TextView orderState;
     }
     //改变拍完照后图片方向不正的问题

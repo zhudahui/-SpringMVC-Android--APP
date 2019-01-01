@@ -10,6 +10,7 @@ import com.mobileclient.app.Declare;
 import com.mobileclient.domain.ReceiveAddress;
 import com.mobileclient.service.ReceiveAddressService;
 import com.mobileclient.util.ActivityUtils;
+import com.mobileclient.util.Utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -44,16 +45,18 @@ public class ReceiveAddressListActivity extends Activity  {
     ReceiveAddressService receiveAddressService = new ReceiveAddressService();
     private ImageView back;
     Bundle extras;
-    private TextView add;
+    private ImageView add;
     private int j;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //去除title
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+       // requestWindowFeature(Window.FEATURE_NO_TITLE);
         //去掉Activity上面的状态栏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.receiveaddress_list);
+        Utils.setStatusBar(this, false, false);
+        Utils.setStatusTextColor(false, ReceiveAddressListActivity.this);
         lv = findViewById(R.id.address_list_view);
         dialog = MyProgressDialog.getInstance(this);
         declare = (Declare) getApplicationContext();
@@ -62,7 +65,7 @@ public class ReceiveAddressListActivity extends Activity  {
         TextView title = (TextView) this.findViewById(R.id.title);
         title.setText("收货地址");
         add=findViewById(R.id.save); //地址添加
-        add.setText("添加");
+        add.setImageResource(R.drawable.plusplus);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

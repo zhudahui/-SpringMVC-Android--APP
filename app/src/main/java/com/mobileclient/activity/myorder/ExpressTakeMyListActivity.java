@@ -11,19 +11,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cc.testdemo.FouthFragment;
 import com.cc.testdemo.ThreeFragment;
 import com.cc.testdemo.TwoFragment;
 import com.mobileclient.activity.ExpressOrderAddActivity;
+import com.mobileclient.activity.ExpressOrderDetailActivity;
+import com.mobileclient.activity.MainUserActivity;
 import com.mobileclient.activity.MyInfoActivtiy;
+import com.mobileclient.activity.PayPwdActivity;
 import com.mobileclient.activity.R;
 import com.mobileclient.activity.UserInfoEditActivity;
+import com.mobileclient.app.Declare;
 import com.mobileclient.fragment.MyOrderFourFragment;
 import com.mobileclient.fragment.MyOrderOneFragment;
 import com.mobileclient.fragment.MyOrderThreeFragment;
 import com.mobileclient.fragment.MyOrderTwoFragment;
 import com.mobileclient.util.ActivityUtils;
+import com.mobileclient.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,12 +46,17 @@ public class ExpressTakeMyListActivity extends AppCompatActivity implements View
     private ImageView add;
    // String[] titles = new String[]{"待接单", "送单中", "待收获","待评价"};
     Intent intent=new Intent();
+    Declare declare;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //去除工具栏
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         setContentView(R.layout.my_order);
+
+
+        declare= (Declare) getApplication();
+
         initViews();
         title=findViewById(R.id.title);
         title.setText("我的发布");
@@ -59,11 +70,19 @@ public class ExpressTakeMyListActivity extends AppCompatActivity implements View
         item_quanbu.setTextColor(Color.parseColor("#66CDAA"));
         //=====add==
         add=findViewById(R.id.search);
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent.setClass(ExpressTakeMyListActivity.this, ExpressOrderAddActivity.class);
-                startActivityForResult(intent,ActivityUtils.ADD_CODE);
+                if(declare.getPayPwd().equals("--")){
+                    Toast.makeText(ExpressTakeMyListActivity.this,"请先设置支付密码！",Toast.LENGTH_SHORT).show();
+                    intent = new Intent(ExpressTakeMyListActivity.this, PayPwdActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    intent.setClass(ExpressTakeMyListActivity.this, ExpressOrderAddActivity.class);
+                    startActivityForResult(intent, ActivityUtils.ADD_CODE);
+                }
             }
         });
         //=======

@@ -55,7 +55,7 @@
     <application
         android:name="com.mobileclient.app.Declare"
         android:allowBackup="true"
-        android:icon="@drawable/appname"
+        android:icon="@drawable/apptubiao"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <meta-data
@@ -76,7 +76,6 @@
         <activity android:name=".IndexActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".MainUserActivity" />
-        <activity android:name=".AboutActivity" />
         <activity android:name=".MainMenuActivity" />
         <activity android:name=".UserInfoQueryActivity" />
         <activity android:name=".UserInfoAddActivity" />
@@ -103,10 +102,11 @@
 
         <activity
             android:name=".AdminLoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.Dark"/>
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/login"
+            android:name=".UserLoginActivity"
+            android:label="代取吧！皮卡丘"
+            android:theme="@style/AppTheme.Dark"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -138,11 +138,18 @@
             android:label="@string/title_activity_choose_com"
             android:screenOrientation="portrait" />
         <activity android:name="me.wcy.express.activity.SearchActivity"/>
-        <activity android:name=".myorder.AdminUserOrderDetailActivity"/>
         <activity android:name=".PayPwdActivity"/>
         <activity android:name=".ModifyPwdActivity"/>
         <activity android:name=".PayResultActivity"/>
+        <activity android:name=".AdminExpressDetailActivity"/>
+        <activity android:name=".AdminUserAuthActivity"/>
+
 
     </application>
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-permission android:name="android.permission.FLASHLIGHT"></uses-permission>
+
 
 </manifest>

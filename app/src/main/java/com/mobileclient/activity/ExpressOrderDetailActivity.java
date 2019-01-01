@@ -1,4 +1,6 @@
 package com.mobileclient.activity;
+
+import com.mobileclient.activity.myorder.MyNotificationManager;
 import com.mobileclient.app.Declare;
 import com.mobileclient.domain.Notice;
 import com.mobileclient.domain.Order;
@@ -10,9 +12,13 @@ import com.mobileclient.service.OrderService;
 import com.mobileclient.service.ReceiveAddressService;
 import com.mobileclient.service.UserService;
 import com.mobileclient.util.ActivityUtils;
+import com.mobileclient.util.Utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,6 +26,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -76,7 +83,7 @@ public class ExpressOrderDetailActivity extends Activity {
     private int Id;//获取用户Id
     private Button btnGetOrder;
     private Button btnViewOrder;
-    private ImageView ci_userPhoto;
+    private CircleImageView ci_userPhoto;
     UserService userService = new UserService();
     ReceiveAddress receiveAddress = new ReceiveAddress();
     ReceiveAddressService receiveAdressService = new ReceiveAddressService();
@@ -90,27 +97,41 @@ public class ExpressOrderDetailActivity extends Activity {
     private int q=0;//异步抢单
     private  RatingBar mRatingBar;
     String tt_receiveCode; //暂记住收货码
+    Bundle extras;
+    Order order2=new Order();
+    // 点击查看
+    private Intent messageIntent = null;
+    private PendingIntent messagePendingIntent = null;
     /**
      * 模拟支付
      */
+    // 获取消息线程
+    private ExpressOrderDetailActivity.MessageThread messageThread = null;
     private MyInputPwdUtil myInputPwdUtil;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //去除title
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
         //去掉Activity上面的状态栏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         // 设置当前Activity界面布局
+        Utils.setStatusBar(this, false, false);
+        Utils.setStatusTextColor(false, ExpressOrderDetailActivity.this);
         setContentView(R.layout.expressorder_detail);
         ImageView search = (ImageView) this.findViewById(R.id.search);
         search.setVisibility(View.GONE);
         TextView title = (TextView) this.findViewById(R.id.title);
         title.setText("快递信息");
         ImageView back = (ImageView) this.findViewById(R.id.back_btn);
+        //推送通知
+        messageIntent = new Intent(this, ExpressOrderDetailActivity.class);
+        messagePendingIntent = PendingIntent.getActivity(this, 0,
+                messageIntent, 0);
 
         // 通过findViewById方法实例化组件
         declare = (Declare) getApplicationContext();
+
         userId = declare.getUserId();
         Log.i("userType", "" + declare.getUserId());
         Log.i("userType", "" + declare.getUserType());
@@ -138,6 +159,8 @@ public class ExpressOrderDetailActivity extends Activity {
                 Toast.makeText(ExpressOrderDetailActivity.this, "评分星级=" + rating, Toast.LENGTH_SHORT).show();
             }
         });
+        MyNotificationManager.initNotificationChannel(this);//推送通知·
+
 /***
  *
  *
@@ -228,12 +251,15 @@ public class ExpressOrderDetailActivity extends Activity {
 
         evaluate = findViewById(R.id.ET_Evaluate);
         btnViewOrder = (Button) findViewById(R.id.btnViewOrder);
-        Bundle extras = this.getIntent().getExtras();
+         extras = this.getIntent().getExtras();
         if (extras != null) {
             orderId = extras.getInt("orderId");//订单发布者Id
             Log.i("34566", "" + extras.getString("orderName"));
             tx_orderName.setText(extras.getString("orderName"));
-            byte[] photo = extras.getByteArray("photo");
+
+            byte[] photo ;
+
+            photo= extras.getByteArray("photo");
             Bitmap userPhoto = BitmapFactory.decodeByteArray(photo, 0, photo.length);
             ci_userPhoto.setImageBitmap(userPhoto);
             tx_nickName.setText(extras.getString("nickName"));
@@ -248,11 +274,17 @@ public class ExpressOrderDetailActivity extends Activity {
                 tx_receiveCode.setVisibility(View.VISIBLE);
                 tx_receivePhone.setVisibility(View.VISIBLE);
             }
-
+            tx_receiveCode.setText(extras.getString("receiveCode"));
             tx_receivePhone.setText(extras.getString("receivePhone"));
             tx_remark.setText(extras.getString("remark"));
             tx_orderPay.setText(extras.getString("orderPay"));
             tx_orderState.setText(extras.getString("orderState"));
+            if(extras.getString("orderState").equals("待接单")){
+                // 开启线程
+                messageThread =new MessageThread();
+                messageThread.isRunning = true;
+                messageThread.start();
+            }
             //tx_receiveCode.setText(extras.getString("receiveCode"));
             tt_receiveCode=extras.getString("receiveCode");
             tx_addTime.setText(extras.getString("addTime"));
@@ -272,7 +304,6 @@ public class ExpressOrderDetailActivity extends Activity {
             order.setReceiveState(extras.getString("receiveState"));
             order.setReceiveAddressName(extras.getString("receiveAddressName"));
 
-
             order.setAddTime(extras.getString("addTime"));
             order.setOrderState(extras.getString("orderState"));
             order.setOrderPay(extras.getString("orderPay"));
@@ -283,14 +314,14 @@ public class ExpressOrderDetailActivity extends Activity {
 
         }
         if (declare.getUserType().equals("快递员")) {
-            if (extras.getString("orderState").equals("待接单")) {
+            if (tx_orderState.getText().toString().equals("待接单")) {
                 if (extras.getString("nickName").equals(declare.getNickName())) {  //如果是本人
                     Toast.makeText(ExpressOrderDetailActivity.this, "您的订单还未有人接单！", Toast.LENGTH_SHORT).show();
                 } else {    //其他人可以接单
                     flag = 1;
                     btnGetOrder.setVisibility(View.VISIBLE);
                 }
-            } else if (extras.getString("orderState").equals("送单中")) {
+            } else if (tx_orderState.getText().toString().equals("送单中")) {
                 Log.i("ppp",""+extras.getString("nickName")+"33"+declare.getNickName());
                 if (extras.getString("nickName").equals(declare.getNickName())) {  //如果是本人
                     btnGetOrder.setVisibility(View.VISIBLE);
@@ -306,7 +337,7 @@ public class ExpressOrderDetailActivity extends Activity {
                 } else {
                     Toast.makeText(ExpressOrderDetailActivity.this, "已有人接单！", Toast.LENGTH_SHORT).show();
                 }
-            } else if (extras.getString("orderState").equals("已送达")) {
+            } else if (tx_orderState.getText().toString().equals("已送达")) {
                 if (extras.getString("nickName").equals(declare.getNickName())) {  //如果是本人
                     btnGetOrder.setVisibility(View.VISIBLE);
                     flag = 3;
@@ -320,7 +351,7 @@ public class ExpressOrderDetailActivity extends Activity {
                 } else {
                     Toast.makeText(ExpressOrderDetailActivity.this, "已有人接单！", Toast.LENGTH_SHORT).show();
                 }
-            } else if (extras.getString("orderState").equals("交易结束")) {
+            } else if (tx_orderState.getText().toString().equals("交易结束")) {
                 if (extras.getString("nickName").equals(declare.getNickName())) {  //如果是本人
                     btnGetOrder.setVisibility(View.VISIBLE);
                     mRatingBar.setVisibility(View.VISIBLE);
@@ -340,7 +371,17 @@ public class ExpressOrderDetailActivity extends Activity {
 
 
         }else {  //如果是普通用户
-            if (extras.getString("orderState").equals("已送达")) {
+            if (tx_orderState.getText().toString().equals("待接单")) {
+                if (extras.getString("nickName").equals(declare.getNickName())) {  //如果是本人
+                    btnGetOrder.setVisibility(View.VISIBLE);
+                    flag = 9;
+                    btnGetOrder.setText("确认收货");
+
+                } else {
+
+                }
+            }
+            if (tx_orderState.getText().toString().equals("已送达")) {
                 if (extras.getString("nickName").equals(declare.getNickName())) {  //如果是本人
                     btnGetOrder.setVisibility(View.VISIBLE);
                     flag = 3;
@@ -350,7 +391,7 @@ public class ExpressOrderDetailActivity extends Activity {
                     Toast.makeText(ExpressOrderDetailActivity.this, "订单交易中！", Toast.LENGTH_SHORT).show();
                 }
             }
-             if (extras.getString("orderState").equals("交易结束")) {
+             if (tx_orderState.getText().toString().equals("交易结束")) {
                 if (extras.getString("nickName").equals(declare.getNickName())) {  //如果是本人
                         btnGetOrder.setVisibility(View.VISIBLE);
                         evaluate.setVisibility(View.VISIBLE);
@@ -371,44 +412,11 @@ public class ExpressOrderDetailActivity extends Activity {
                 public void onClick(View v) {
 
                     if(flag==1) {
-                        final Handler handler = new Handler() {
-                            @Override
-                            public void handleMessage(Message msg) {
-                                super.handleMessage(msg);
-                                if (msg.what == 0x123) {
-                                    if (msg.getData().getInt("takeUserId") != -1) {
 
-                                        Toast.makeText(ExpressOrderDetailActivity.this, "已有人接单！", Toast.LENGTH_SHORT).show();
-                                        tx_orderState.setText("送单中");
-
-                                    }
-                                    else{
-
-                                    showDialog();
-                                }
-                                }
-                            }
-                        };
-
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    order =  orderService.QueryTake(order.getOrderId());
-                                    Bundle bundle = new Bundle();
-                                    bundle.putInt("takeUserId", order.getTakeUserId());
-                                    Log.i("zhuUser",""+order.getTakeUserId());
-                                    Message msg = new Message();
-                                    msg.what = 0x123;
-                                    msg.setData(bundle);
-                                    handler.sendMessage(msg);
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        }).start();
-
+                        showDialog();
                         p=1;
+                    }else if(flag==9){
+                        Toast.makeText(ExpressOrderDetailActivity.this, "请先认证！", Toast.LENGTH_SHORT).show();
                     }
                     else {
                         if (btnGetOrder.getText().toString().equals("等待确认收货")) {
@@ -498,19 +506,65 @@ public class ExpressOrderDetailActivity extends Activity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         p=1;
                         if(flag==1){     //接单后，订单状态修改   跳转到送单页面
-                            Intent intent = getIntent();
-                            intent.setClass(ExpressOrderDetailActivity.this, ExpressRouteActivity.class);
-                            intent.putExtra("point", tx_receiveAddressName.getText());
-                            intent.putExtra("tel", tx_receivePhone.getText());
-                            intent.putExtra("receiveCode", tt_receiveCode);
-                            startActivity(intent);
-                            order.setTakeUserId(userId);
-                            order.setOrderState("送单中");
-                            order.setOrderEvaluate("-+-");
-                            order.setScore("--");
-                            Toast.makeText(ExpressOrderDetailActivity.this, "恭喜您抢到订单！", Toast.LENGTH_SHORT).show();
-                            btnGetOrder.setText("确认送达");
-                            flag=2;
+                            /*******
+                             *
+                             *
+                             */
+                            final Handler handler = new Handler() {
+                                @Override
+                                public void handleMessage(Message msg) {
+                                    super.handleMessage(msg);
+                                    if (msg.what == 0x123) {
+                                        if (msg.getData().getInt("takeUserId") != -1) {
+
+                                            Toast.makeText(ExpressOrderDetailActivity.this, "已有人接单！", Toast.LENGTH_SHORT).show();
+                                            tx_orderState.setText("送单中");
+
+                                        }
+                                        else{   //点击确定接单，没人接单的话
+                                            Intent intent = getIntent();
+                                            intent.setClass(ExpressOrderDetailActivity.this, ExpressRouteActivity.class);
+                                            intent.putExtra("point", tx_receiveAddressName.getText());
+                                            intent.putExtra("tel", tx_receivePhone.getText());
+                                            intent.putExtra("receiveCode", tt_receiveCode);
+
+                                            order.setTakeUserId(userId);
+                                            order.setOrderState("送单中");
+                                            order.setOrderEvaluate("-+-");
+                                            order.setScore("--");
+                                            update();
+                                            Toast.makeText(ExpressOrderDetailActivity.this, "恭喜您抢到订单！", Toast.LENGTH_SHORT).show();
+                                            btnGetOrder.setText("确认送达");
+                                            flag=2;
+
+
+                                        }
+                                    }
+                                }
+                            };
+
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        order =  orderService.QueryTake(order.getOrderId());
+                                        Bundle bundle = new Bundle();
+                                        bundle.putInt("takeUserId", order.getTakeUserId());
+                                        bundle.putInt("takeUserId", order.getTakeUserId());
+                                        Log.i("zhuUser",""+order.getTakeUserId());
+                                        Message msg = new Message();
+                                        msg.what = 0x123;
+                                        msg.setData(bundle);
+                                        handler.sendMessage(msg);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }).start();
+
+
+                            //==================
+
                             //flag=2;
                             //更新订单，把快递代取者添加到订单中
                         }else if(flag==2){//确认送达后，订单状态修改，等待用户确认送达
@@ -525,11 +579,14 @@ public class ExpressOrderDetailActivity extends Activity {
 
                         }else if(flag==4){
                             if(evaluate.getText().toString().equals(""))
-                                return;
+                                order.setOrderEvaluate("默认好评");
+                            else
+                                order.setOrderEvaluate(evaluate.getText().toString());
                             order.setScore(""+mRatingBar.getRating());
-                            order.setOrderEvaluate(evaluate.getText().toString());
+
                             flag=0;
                         }
+
                         update();
                     }
                 });
@@ -570,4 +627,80 @@ public class ExpressOrderDetailActivity extends Activity {
 
         }
     }
+
+    /**
+     * 定义一个handler处理请求返回来的信息
+     */
+    Handler mHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            // TODO Auto-generated method stub
+            super.handleMessage(msg);
+            // Log.i("ffffff",Double.parseDouble(declare.getUserMoney())+"nnn"+msg.getData().getString("orderPay"));
+            // declare.setUserMoney(String.valueOf(Double.parseDouble(declare.getUserMoney())+Double.parseDouble(msg.getData().getString("orderPay"))));
+            tx_orderState.setText(msg.getData().getString("orderState"));   //实时刷新订单状态
+            //订单取消，酬金返还余额
+
+        }
+
+
+
+    };
+
+    /*
+     * 从服务器端获取消息
+     *
+     */
+    class MessageThread extends Thread {
+        // 设置是否循环推送
+        public boolean isRunning = true;
+
+        public void run() {
+            while (isRunning) {
+// 间隔时间
+                try {
+                    // 间隔时间
+                    Thread.sleep(1000);
+                    try {
+                        order2=orderService.QueryTake(extras.getInt("orderId"));
+                        Log.i("nnnnnnnn",""+order2.getOrderState());
+                        if(order2.getUserId()==declare.getUserId()&&order2.getOrderState().equals("送单中")){
+                            Log.i("nnnnnnnn","hhhh");
+                            //被人接单，推送通知
+                            MyNotificationManager.showChannel2Notification(getApplicationContext());
+//
+//                            NotificationManager manager= (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+//                            Notification notification=new NotificationCompat.Builder(ExpressOrderDetailActivity.this)
+//                                    .setContentTitle("1111")
+//                                    .setContentText("11111")
+//                                    .setWhen(System.currentTimeMillis())
+//                                    .setSmallIcon(R.mipmap.ic_launcher)
+//                                    .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher))
+//                                    .setContentIntent(messagePendingIntent)
+//                                    .build();
+//                            manager.notify(1,notification);
+                             messageThread.stop(); //检测停止
+                        }
+                        Message message=new Message();
+                        Bundle bundle=new Bundle();
+                        bundle.putString("orderState",order2.getOrderState());
+                        message.what=0x122;
+                        message.setData(bundle);
+                        Log.i("gggggggg", "1111" );
+                        mHandler.sendMessage(message);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+    }
+
+
 }

@@ -188,8 +188,8 @@ public class IndexActivity extends Activity {
 		imageView9.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(IndexActivity.this, AboutActivity.class);
-				startActivity(intent);
+				//Intent intent = new Intent(IndexActivity.this, AboutActivity.class);
+				//startActivity(intent);
 			}
 		});
 //===================================================

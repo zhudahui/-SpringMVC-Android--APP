@@ -14,6 +14,7 @@ import com.mobileclient.activity.rewardOrder.RewardActivity;
 import com.mobileclient.app.Declare;
 import com.mobileclient.domain.User;
 import com.mobileclient.service.UserService;
+import com.mobileclient.util.BitmapUtil;
 import com.mobileclient.util.HttpUtil;
 import com.mobileclient.util.ImageService;
 
@@ -186,9 +187,9 @@ public class UserInfoEditActivity extends Activity {
 //					return;
 //				}
 
-				if(userPhone.getText().toString().equals(""))
+				if(userPhone.getText().toString().equals("")||userPhone.getText().toString().length()!=11)
 				{
-					Toast.makeText(UserInfoEditActivity.this, "手机号输入不能为空!", Toast.LENGTH_LONG).show();
+					Toast.makeText(UserInfoEditActivity.this, "手机号输入不合法!", Toast.LENGTH_LONG).show();
 					userPhone.setFocusable(true);
 					userPhone.requestFocus();
 					return;
@@ -198,9 +199,9 @@ public class UserInfoEditActivity extends Activity {
 					userGender.setFocusable(true);
 					userGender.requestFocus();
 					return;
-				}if(userEmail.getText().toString().equals(""))
+				}if(userEmail.getText().toString().equals("")||!android.util.Patterns.EMAIL_ADDRESS.matcher(userEmail.getText().toString()).matches())
 				{
-					Toast.makeText(UserInfoEditActivity.this, "邮箱输入不能为空!", Toast.LENGTH_LONG).show();
+					Toast.makeText(UserInfoEditActivity.this, "邮箱不合法!", Toast.LENGTH_LONG).show();
 					userEmail.setFocusable(true);
 					userEmail.requestFocus();
 					return;
@@ -228,6 +229,8 @@ public class UserInfoEditActivity extends Activity {
 							user.setUserType(declare.getUserType());
 							user.setNickName(nickName.getText().toString());
 							user.setStudentId(declare.getStudentId());
+							user.setPayPwd(declare.getPayPwd());
+							user.setUserAuthState(declare.getUserAuthState());
 							userService.UpdateUserInfo(user);
 							user=userService.GetUserInfo(declare.getUserId());
 							Bundle bundle=new Bundle();
@@ -250,6 +253,8 @@ public class UserInfoEditActivity extends Activity {
 							user.setUserReputation(declare.getUserReputation());
 							user.setUserType(declare.getUserType());
 							user.setNickName(nickName.getText().toString());
+							user.setPayPwd(declare.getPayPwd());
+							user.setUserAuthState(declare.getUserAuthState());
 							userService.UpdateUserInfo(user);
 							user=userService.GetUserInfo(declare.getUserId());
 							Bundle bundle=new Bundle();
@@ -688,7 +693,7 @@ public class UserInfoEditActivity extends Activity {
 //		final ProgressDialog progressDialog = new ProgressDialog(this);
 		//progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		//progressDialog.show();
-		File file = new File(imagePath);
+		File file = new File(BitmapUtil.compressImage(imagePath));
 		//构造一个请求体
 		FileNameMap fileNameMap = URLConnection.getFileNameMap();
 		String contentTypeFor = fileNameMap.getContentTypeFor(file.getAbsolutePath());

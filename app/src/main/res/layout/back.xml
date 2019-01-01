@@ -3,7 +3,7 @@
     android:id="@+id/web_title_layout"
     android:layout_width="fill_parent"
     android:layout_height="48dip"
-    android:background="#D64F4D"
+    android:background="#F3CE5C"
     >
     <TextView
         android:id="@+id/title"

@@ -6,12 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.mobileclient.activity.AdminExpressDetailActivity;
 import com.mobileclient.activity.ExpressOrderDetailActivity;
 import com.mobileclient.activity.MyProgressDialog;
 import com.mobileclient.activity.PayResultActivity;
 import com.mobileclient.activity.R;
 import com.mobileclient.activity.SecondOrderDetailActivity;
-import com.mobileclient.adapter.ExpressOrderAdapter;
 import com.mobileclient.adapter.MyOrderAdapter;
 import com.mobileclient.app.Declare;
 import com.mobileclient.app.RefreshListView;
@@ -130,6 +130,7 @@ public class MyOrderThreeFragment extends Fragment {
                         @Override
                         public void run() {
                             orderService.UpdateOrder(order);
+                            userService.UpdateUserInfo(user);
                             Message msg=new Message();
                             msg.what=0x122;
                             myHandler.sendMessage(msg);
@@ -261,18 +262,29 @@ public class MyOrderThreeFragment extends Fragment {
                 bundle.putInt("receiveAddressId",Integer.parseInt(list.get(arg2).get("receiveAddressId").toString()));
                 bundle.putString("evaluate",list.get(arg2).get("evaluate").toString());
                 bundle.putInt("takeUserId", Integer.parseInt(list.get(arg2).get("takeUserId").toString()));
-                if (list.get(arg2).get("evaluate").toString().equals("-+-")||list.get(arg2).get("evaluate").toString().equals("请评价")) {//若评价为空
-                    intent.putExtras(bundle);
-                    intent.setClass(getActivity(), ExpressOrderDetailActivity.class);   //已评价
-                    startActivityForResult(intent, ActivityUtils.UPDATE_CODE);
-                }
-                else {
-                    Log.i("zhu111", "已评价");
-                    intent.setClass(getActivity(), SecondOrderDetailActivity.class);   //已评价
+                bundle.putString("orderPic", list.get(arg2).get("orderPic").toString());
+                bundle.putString("score",list.get(arg2).get("score").toString());
+                if(declare.getIdentify().equals("user")){
+
+                    if (list.get(arg2).get("evaluate").toString().equals("-+-")||list.get(arg2).get("evaluate").toString().equals("请评价")) {//若评价为空
+                        intent.putExtras(bundle);
+                        if(declare.getIdentify().equals("user"))
+                            intent.setClass(getActivity(), ExpressOrderDetailActivity.class);   //已评价
+                        else
+                            intent.setClass(getActivity(), AdminExpressDetailActivity.class);
+                        startActivityForResult(intent, ActivityUtils.UPDATE_CODE);
+                    }
+                    else {
+                        Log.i("zhu111", "已评价");
+                        intent.setClass(getActivity(), SecondOrderDetailActivity.class);   //已评价
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }}
+                else{
+                    intent.setClass(getActivity(), AdminExpressDetailActivity.class);   //已评价
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }
-
 
             }
         });
@@ -334,7 +346,7 @@ public class MyOrderThreeFragment extends Fragment {
             List<Order> expressOrderList = orderService.UserQuery(userId);
             for (int i = 0; i < expressOrderList.size(); i++) {
                 Map<String, Object> map = new HashMap<String, Object>();
-                if(expressOrderList.get(i).getOrderState().equals("送单中")) {
+                if(expressOrderList.get(i).getOrderState().equals("送单中")||expressOrderList.get(i).getOrderState().equals("已送达")) {
                     map.put("orderId", expressOrderList.get(i).getOrderId());
                     map.put("orderName", expressOrderList.get(i).getOrderName());
                     map.put("userId", expressOrderList.get(i).getUserId());
@@ -410,9 +422,25 @@ public class MyOrderThreeFragment extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                                 myInputPwdUtil.show();
-//                                orderService.UpdateOrder(order);
-//                                Message msg=new Message();
-//                                mHandler.sendMessage(msg);
+
+                        user.setUserId(declare.getUserId());
+                        user.setUserName(declare.getUserName());
+                        user.setUserAuthFile(declare.getUserAuthFile());
+
+                        user.setUserPhoto(declare.getUserPhoto());
+                        user.setUserPassword(declare.getUserPassword());
+                        user.setUserMoney(declare.getUserMoney());
+                        user.setRegTime(declare.getRegTime());
+                        user.setUserEmail(declare.getUserEmail());
+                        user.setUserGender(declare.getUserGender());
+                        user.setUserPhone(declare.getUserPhone());
+                        user.setUserPassword(declare.getUserPassword());
+                        user.setUserReputation(declare.getUserReputation());
+                        user.setUserType(declare.getUserType());
+                        user.setNickName(declare.getNickName());
+                        user.setStudentId(declare.getStudentId());
+                        user.setPayPwd(declare.getPayPwd());
+                        user.setUserAuthState(declare.getUserAuthState());
 
 
 

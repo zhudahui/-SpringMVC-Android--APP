@@ -7,6 +7,7 @@ import com.mobileclient.domain.User;
 import com.mobileclient.service.UserService;
 import com.mobileclient.util.HttpUtil;
 import com.mobileclient.util.ImageService;
+import com.mobileclient.util.Utils;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -55,11 +56,13 @@ public class SecondAuthActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //去除title
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+       // requestWindowFeature(Window.FEATURE_NO_TITLE);
         //去掉Activity上面的状态栏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         // 设置当前Activity界面布局
         setContentView(R.layout.secondauth);
+        Utils.setStatusBar(this, false, false);
+        Utils.setStatusTextColor(false, SecondAuthActivity.this);
         declare = (Declare) getApplicationContext();
         TV_studentId = findViewById(R.id.tv_studentId);
         TV_userName = findViewById(R.id.tv_userName);
@@ -70,7 +73,7 @@ public class SecondAuthActivity extends Activity {
         back = findViewById(R.id.back_btn);
         title = findViewById(R.id.title);
         btnUpload = findViewById(R.id.btnUpload);
-        title.setText("个人信息");
+        title.setText("认证信息");
         TV_studentId.setText(String.valueOf(declare.getStudentId()));
         TV_userName.setText(declare.getUserName());
         new Thread(new Runnable() {

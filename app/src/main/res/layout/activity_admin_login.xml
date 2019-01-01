@@ -1,123 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.mobileclient.activity.LoginActivity"
-    android:background="@drawable/beijing">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/beijing_five"
+    >
 
-    <FrameLayout
-        android:layout_centerInParent="true"
-        android:paddingTop="70dp"
-        android:layout_width="320dp"
-        android:layout_height="403dp">
-        <android.support.v7.widget.CardView
-            android:id="@+id/cv_add"
-            app:cardBackgroundColor="#2ea67f"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            app:cardCornerRadius="6dp"
-            app:cardElevation="3dp"
-            app:cardUseCompatPadding="true"
-            >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="56dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="50dp"
-                    android:text="管理员登录"
-                    android:textColor="#fff"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:paddingStart="50dp"
-                    android:paddingEnd="30dp">
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColorHint="#f0f7f4"
-                        android:theme="@style/TextLabel">
-
-                        <EditText
-                            android:id="@+id/et_adminName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/selector_bg_edit_2"
-                            android:hint="账号"
-                            android:inputType="textPersonName"
-                            android:paddingBottom="2dp"
-                            android:textColor="#f0f7f4"
-                            android:textCursorDrawable="@drawable/bg_input_cursor_2"
-                            android:textSize="13sp" />
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:orientation="horizontal"
-                    android:paddingStart="50dp"
-                    android:paddingEnd="30dp">
-
-                    <android.support.design.widget.TextInputLayout
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColorHint="#f0f7f4"
-                        android:theme="@style/TextLabel">
-
-                        <EditText
-                            android:id="@+id/et_adminPassword"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/selector_bg_edit_2"
-                            android:hint="@string/Password"
-                            android:inputType="textPassword"
-                            android:paddingBottom="2dp"
-                            android:textColor="#f0f7f4"
-                            android:textCursorDrawable="@drawable/bg_input_cursor_2"
-                            android:textSize="13sp" />
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-
-
-
-
-                <Button
-                    android:id="@+id/bt_go"
-                    android:layout_width="150dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/bt_shape_2"
-                    android:stateListAnimator="@drawable/state_list_animator_z"
-                    android:text="登录"
-                    android:textColor="#2fa881"></Button>
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
+        <TextView
+            android:id="@+id/userlogin"
+            android:text="管理登录"
+            android:textSize="30dp"
             android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center_horizontal" />
+
+        <!--  Email Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:fabSize="normal"
-            android:src="@drawable/plus_x"
-            android:transitionName="loginFab"
-            android:layout_gravity="center_horizontal|top" />
-    </FrameLayout>
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/et_adminName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="管理员账号"
+
+                />
+        </android.support.design.widget.TextInputLayout>
+
+        <!--  Password Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/et_adminPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="密码"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_go"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:padding="12dp"
+            android:text="Login"/>
 
 
-</RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>

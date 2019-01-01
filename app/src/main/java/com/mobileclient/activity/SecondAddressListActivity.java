@@ -41,7 +41,7 @@ public class SecondAddressListActivity extends Activity  {
     Declare declare;
     private MyProgressDialog dialog; //进度条	@Override
     ReceiveAddressService receiveAddressService = new ReceiveAddressService();
-    private ImageView back;
+    private ImageView back,add;
     Bundle extras;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,16 +57,24 @@ public class SecondAddressListActivity extends Activity  {
         String username = declare.getUserName();
         TextView title = (TextView) this.findViewById(R.id.title);
         title.setText("收货地址");
+        add=findViewById(R.id.save); //地址添加
+        add.setImageResource(R.drawable.plusplus);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(SecondAddressListActivity.this, ReceiveAddressAddActivity.class), ActivityUtils.ADD_CODE);
+            }
+        });
         back=findViewById(R.id.back_btn);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 finish();
             }
         });
         // Log.i("pppppppppppppppp", "11111" + declare.getUserId());
         //ListView item 中的删除按钮的点击事件
+
         setViews();
 
     }
@@ -75,17 +83,11 @@ public class SecondAddressListActivity extends Activity  {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == ActivityUtils.QUERY_CODE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            if (extras != null)
-                queryConditionReceiveAddress = (ReceiveAddress) extras.getSerializable("queryConditionReceiveAddress");
-            setViews();
-        }
+
         if (requestCode == ActivityUtils.EDIT_CODE && resultCode == RESULT_OK) {
             setViews();
         }
         if (requestCode == ActivityUtils.ADD_CODE && resultCode == RESULT_OK) {
-            queryConditionReceiveAddress = null;
             setViews();
         }
     }
@@ -122,7 +124,7 @@ public class SecondAddressListActivity extends Activity  {
                                 bundle.putString("receivePhone", list.get(i).get("receivePhone").toString());
                                 bundle.putString("receiveState", list.get(i).get("receiveState").toString());
                                 intent.putExtras(bundle);
-                                startActivity(intent);
+                                startActivityForResult(intent,ActivityUtils.EDIT_CODE);
 
                             }
                         });
@@ -230,4 +232,7 @@ public class SecondAddressListActivity extends Activity  {
         }
         return list;
     }
+
+
+
 }

@@ -17,6 +17,7 @@ import com.mobileclient.app.Declare;
 import com.mobileclient.domain.User;
 import com.mobileclient.service.UserService;
 import com.mobileclient.util.HttpUtil;
+import com.mobileclient.util.Utils;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -93,11 +94,13 @@ public class UserAuthActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //去除title
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+       // requestWindowFeature(Window.FEATURE_NO_TITLE);
         //去掉Activity上面的状态栏
-        getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
+       // getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
         // 设置当前Activity界面布局
         setContentView(R.layout.userauth);
+        Utils.setStatusBar(this, false, false);
+        Utils.setStatusTextColor(false, UserAuthActivity.this);
         studentId = findViewById(R.id.ET_userId);
         userName = findViewById(R.id.ET_userName);
         authFile=findViewById(R.id.authFile);
@@ -167,7 +170,8 @@ public class UserAuthActivity extends Activity {
                             user.setStudentId(Integer.parseInt(studentId.getText().toString()));
                             user.setNickName(declare.getNickName());
                             user.setUserId(declare.getUserId());
-                            user.setUserAuthState("待认证");         //认证状态由未认证改为待认证
+                            user.setUserAuthState("待认证");         //认证状态由未认证改为待认
+                            user.setPayPwd(declare.getPayPwd());
                             userService.UpdateUserInfo(user);
                             Bundle bundle=new Bundle();
                             bundle.putString("userName",userName.getText().toString());
@@ -182,7 +186,7 @@ public class UserAuthActivity extends Activity {
                         handler.sendMessage(msg);
                     }
                 });
-                  finish();
+
             }
 
 
@@ -201,6 +205,7 @@ public class UserAuthActivity extends Activity {
                 declare.setUserName(msg.getData().getString("userName"));
                 declare.setUserAuthState("待认证");
                 Toast.makeText(UserAuthActivity.this, "已上传!请等待认证", Toast.LENGTH_LONG).show();
+                finish();
 
 
             }

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.mobileclient.activity.ExpressOrderDetailActivity;
+import com.mobileclient.activity.ExpressRouteActivity;
 import com.mobileclient.activity.MyProgressDialog;
 import com.mobileclient.activity.R;
 import com.mobileclient.activity.SecondOrderDetailActivity;
@@ -115,15 +116,51 @@ public class TakeOrderOneFragment extends Fragment {
                     public void run() {
                         dialog.cancel();
                         adapter = new TakeOrderAdapter(getActivity(), list,
-                                R.layout.my_order_two_item,
+                                R.layout.takeorder_list_item,
                                 new String[] { "orderPic","orderName","orderPay","orderState","addTime"},
                                 new int[] { R.id.img_takeUserPhoto,R.id.tv_orderName,R.id.tv_orderPay,R.id.tv_orderState,R.id.tv_addTime,
                                 },lv);
                         lv.setAdapter(adapter);
-                        adapter.setOnItemEditClickListener(new MyOrderAdapter.onItemEditListener() {  //确认收货
+                        adapter.setOnItemMapClickListener(new TakeOrderAdapter.onItemMapListener() {
+                            @Override
+                            public void onMapClick(int i) {
+                                Intent intent = new Intent();
+                                intent.setClass(getActivity(), ExpressRouteActivity.class);
+                                intent.putExtra("point", list.get(i).get("receiveAddressName").toString());
+                                intent.putExtra("tel", list.get(i).get("receivePhone").toString());
+                                intent.putExtra("receiveCode",list.get(i).get("receiveCode").toString());
+                                startActivity(intent);
+                            }
+                        });
+                        adapter.setOnItemEditClickListener(new TakeOrderAdapter.onItemEditListener() {  //确认收货
                             @Override
                             public void onDeleteClick(int i) {
-                                if(list.get(i).get("orderState").equals("送单中")||list.get(i).get("orderState").equals("已送达")){
+                                if(list.get(i).get("orderState").equals("送单中")){
+                                    //收货
+                                    order.setUserId(Integer.parseInt(list.get(i).get("userId").toString()));
+                                    order.setTakeUserId(Integer.parseInt(list.get(i).get("takeUserId").toString()));
+                                    order.setOrderId(Integer.parseInt(list.get(i).get("orderId").toString()));
+                                    order.setOrderName(list.get(i).get("orderName").toString());
+                                    order.setExpressCompanyName(list.get(i).get("expressCompanyName").toString());
+                                    order.setExpressCompanyAdress(list.get(i).get("expressCompanyAddress").toString());
+                                    order.setReceiveAdressId(Integer.parseInt(list.get(i).get("receiveAddressId").toString()));
+                                    order.setAddTime(list.get(i).get("addTime").toString());
+                                    order.setOrderState("已送达");
+                                    order.setOrderPay(list.get(i).get("orderPay").toString());
+                                    order.setRemark(list.get(i).get("remark").toString());
+                                    order.setReceiveCode(list.get(i).get("receiveCode").toString());
+                                    order.setOrderEvaluate(list.get(i).get("evaluate").toString());
+                                    order.setScore(list.get(i).get("score").toString());
+                                    order.setOrderType(list.get(i).get("orderType").toString());
+                                    order.setOrderPic(list.get(i).get("orderPic").toString());
+                                    order.setReceiveName(list.get(i).get("receiveName").toString());
+                                    order.setReceivePhone(list.get(i).get("receivePhone").toString());
+                                    order.setReceiveState(list.get(i).get("receiveState").toString());
+                                    order.setReceiveAddressName(list.get(i).get("receiveAddressName").toString());
+                                    flag=1;
+                                    showDialog();
+                                }
+                                else if(list.get(i).get("orderState").equals("已送达")){
                                     //收货
                                     order.setUserId(Integer.parseInt(list.get(i).get("userId").toString()));
                                     order.setTakeUserId(Integer.parseInt(list.get(i).get("takeUserId").toString()));

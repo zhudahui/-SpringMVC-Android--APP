@@ -16,9 +16,11 @@ import android.widget.Toast;
 import com.mobileclient.app.Declare;
 import com.mobileclient.domain.User;
 import com.mobileclient.service.UserService;
+import com.mobileclient.util.Utils;
 
 public class ModifyPwdActivity extends Activity {
-    private TextView title,save;
+    private TextView title;
+    private ImageView save;
     private EditText orgin_et,id_new_et,id_confirm_et;
     private ImageView search;
     private ImageView back_btn;
@@ -30,10 +32,12 @@ public class ModifyPwdActivity extends Activity {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         //去除title
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
         //去掉Activity上面的状态栏
-        getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
+        //getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
         setContentView(R.layout.modify_pwd);
+        Utils.setStatusBar(this, false, false);
+        Utils.setStatusTextColor(false, ModifyPwdActivity.this);
         declare= (Declare) getApplication();
         orgin_et=findViewById(R.id.id_orgin_et);
         id_new_et=findViewById(R.id.id_new_et);

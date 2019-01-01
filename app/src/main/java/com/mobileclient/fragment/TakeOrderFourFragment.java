@@ -109,12 +109,13 @@ public class TakeOrderFourFragment extends Fragment {
                     public void run() {
                         dialog.cancel();
                         adapter = new TakeOrderAdapter(getActivity(), list,
-                                R.layout.my_order_two_item,
+                                R.layout.takeorder_list_item,
                                 new String[] { "orderPic","orderName","orderPay","orderState","addTime"},
                                 new int[] { R.id.img_takeUserPhoto,R.id.tv_orderName,R.id.tv_orderPay,R.id.tv_orderState,R.id.tv_addTime,
                                 },lv);
                         lv.setAdapter(adapter);
-                        adapter.setOnItemEditClickListener(new MyOrderAdapter.onItemEditListener() {  //确认收货
+
+                        adapter.setOnItemEditClickListener(new TakeOrderAdapter.onItemEditListener() {  //确认收货
                             @Override
                             public void onDeleteClick(int i) {
 
